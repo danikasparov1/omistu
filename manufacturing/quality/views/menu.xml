@@ -1,9 +1,0 @@
-<odoo>
-    <menuitem id="menu_quality_root" name="Quality Management"/>
-
-    <!-- <menuitem id="menu_quality_check_field" name="Check Fields" parent="menu_quality_root" action="action_quality_check"/> -->
-    <!-- <menuitem id="menu_quality_stage_fields" name="Stage Fields" parent="menu_quality_root" action="action_quality_stage_fields"/> -->
-    <!-- <menuitem id="menu_quality_check_state" name="Quality Test" parent="menu_quality_root" action="action_quality_assurance"/> -->
-    <!-- <menuitem id="menu_quality_stage_setup" name="Stage Config" parent="menu_quality_root" action="action_quality_check_state"/> -->
-
-</odoo>

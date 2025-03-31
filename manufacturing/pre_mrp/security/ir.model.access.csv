@@ -1,7 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_mpr_planing,pre_mrp.mrp_planing,model_mrp_planing,mrp_staging.group_production_manager,1,1,1,1
-access_mrp_plan_template,pre_mrp.mrp_plan_template,model_mrp_plan_template,mrp_staging.group_production_manager,1,1,1,1
-access_mrp_planing_shift,pre_mrp.mrp_plan_shift_leader,model_mrp_planing,group_shift_leader,1,0,0,0
-access_mrp_planing_shift_template,pre_mrp.mrp_plan_shift_template_leader,model_mrp_plan_template,group_shift_leader,1,0,0,0
-access_mpr_planing,pre_mrp.mrp_planing,model_mrp_planing,group_sales_order_manager,1,1,1,1
-access_mrp_plan_template,pre_mrp.mrp_plan_template,model_mrp_plan_template,group_sales_order_manager,1,1,1,1
