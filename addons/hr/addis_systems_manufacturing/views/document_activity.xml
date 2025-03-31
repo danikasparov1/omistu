@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="addisystems_mrp_production_tree" model="ir.ui.view">
+        <field name="name">addissystems.mrp.production.tree</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="state" position="after">
+                <field name="activity_state" widget="badge" string="Edited"/>
+            </field>
+        </field>
+    </record>
+
+
+</odoo>

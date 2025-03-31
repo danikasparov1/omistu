@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="seq_product_request" model="ir.sequence">
+            <field name="name">Product Request</field>
+            <field name="code">addissystems.product.request.name</field>
+            <field name="prefix">PR</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+        </record>
+        <record id="addisystems_product_request_picking_type" model="stock.picking.type">
+            <field name="name">Product Request </field>
+            <field name="code">product_request</field>
+            <field name="sequence_code">PR</field>
+        </record>
+    </data>
+
+</odoo>

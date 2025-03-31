@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="addis_systems_product_request_tree_view" model="ir.ui.view">
+        <field name="name">addis_systems_manufacturing.product.request.tree.view</field>
+        <field name="model">addisystems.product.request</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="picking_type_id"/>
+                <field name="name"/>
+                <field name="requested_date"/>
+
+                <field name="partner_id"/>
+                <field name="state"
+                    decoration-success="state == 'validated'"
+                    decoration-info="state == 'draft'"
+                    decoration-danger="state == 'canceled'"
+                    decoration-primary="state == 'sent'"
+                    widget="badge"
+                />
+            </tree>
+        </field>
+        </record>
+
+
+    <record id="addis_systems_customer_product_request_form_view" model="ir.ui.view">
+        <field name="name">addis_systems_manufacturing.addisystems.product.request.form.view</field>
+        <field name="model">addisystems.product.request</field>
+        <field name="arch" type="xml">
+            <form string="Product Request">
+                <header>
+                    <button name="action_confirm" class="oe_highlight" string="Send To Manager" type="object" invisible="state != 'draft'"/>
+                    <button name="action_validate" class="oe_highlight" string="Validate" type="object" invisible="state in ['draft','canceled','validated'] or not can_approve"/>
+                    <button name="action_cancel" class="oe_highlight" string="cancel" type="object" invisible="state in ['draft','canceled','validated'] or not can_approve"/>
+                    <button name="action_print"  string="print" type="object"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="Title" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                        
+                            <field name="can_approve" invisible="1"/>
+                            <field name="user_id" required="1"/>
+                            <field name="manager_id" />
+                        </group>
+                        <group>
+                            <field name="expire_date"/>
+                            <field name="picking_type_id" invisible="0"/>
+                            <field name="company_id" invisible="1"/>
+                            <field name="manufacturing_order"/>
+
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Request Lines" name="request_lines">
+                    <field name="request_line" widget="section_and_note_one2many" readonly="state in ['sent', 'canceled']">
+                        <tree string="Products" editable="bottom">
+                            <field name="product_id" />
+                            <field name="qty_requested" />
+                            </tree>
+                    </field>
+                    </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+        <record id="view_customer_product_request_filter" model="ir.ui.view">
+        <field name="name">addisystems.product.request.select</field>
+        <field name="model">addisystems.product.request</field>
+        <field name="arch" type="xml">
+            <search string="Search Store Request">
+                <filter string="To Do" name="todo" domain="[('state','=','sent')]"
+                        help="Product Requests that are sent"/>
+            </search>
+            </field>
+            </record>
+
+<record id="open_stock_requests" model="ir.actions.act_window">
+    <field name="name">Product Requests</field>
+    <field name="res_model">addisystems.product.request</field>
+    <field name="view_mode">tree,kanban,form</field>
+    <field name="domain">[('picking_type_id', '=', active_id)]</field>
+</record>
+</odoo>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="stock_production_type_kanban" model="ir.ui.view">
+        <field name="name">stock.picking.type.kanban</field>
+        <field name="model">stock.picking.type</field>
+        <field name="inherit_id" ref="stock.stock_picking_type_kanban"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="count_pr_todo"/>
+            </field>
+            <xpath expr="//t[@t-name='kanban-box']" position="inside">
+                <div t-if="record.code.raw_value == 'product_request'" t-attf-class="#{!selection_mode ? kanban_color(record.color.raw_value) : ''}">
+                    <div>
+                        <div t-attf-class="o_kanban_card_header">
+                            <div class="o_kanban_card_header_title">
+                                <div class="o_primary" t-if="!selection_mode">
+                                    <a type="object" name="get_product_request_stock_picking_action_picking_type">
+                                        <field name="name"/>
+
+                                    </a>
+                                </div>
+                                <span class="o_primary" t-if="selection_mode"><field name="name"/></span>
+                                <div class="o_secondary"><field class="o_secondary" name="warehouse_id" readonly="1" groups="stock.group_stock_multi_warehouses"/></div>
+                            </div>
+                        </div>
+                        <div class="container o_kanban_card_content" t-if="!selection_mode">
+                            <div class="row">
+                                <div class="col-6 o_kanban_primary_left">
+                                    <button class="btn btn-primary" name="%(open_stock_requests)d" type="action" context="{'search_default_todo': 1, 'default_picking_type_id': id}">
+                                        <span t-if="record.code.raw_value == 'product_request'">
+                                            <t t-esc="record.count_pr_todo.value"/> To Process
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    </odoo>
