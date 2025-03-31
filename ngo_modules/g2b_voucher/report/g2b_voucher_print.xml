@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="generate_voucher_print_report_id" model="ir.actions.report">
+            <field name="name">Voucher</field>
+            <field name="model">g2b.amend.voucher.form</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">g2b_voucher.agreement_report</field>
+            <field name="report_file">g2b_voucher.agreement_report</field>
+            <field name="print_report_name">'Voucher'</field>
+            <field name="binding_model_id" ref="model_g2b_amend_voucher_form"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+    <template id="agreement_report">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="oe_title">
+                    <h1>
+                        Voucher
+                    </h1>
+                    <div>
+                   <t t-foreach="docs" t-as="doc">
+                    <div>
+                        <span>Beneficiary:<t t-esc="doc.voucher_id.beneficiary_id.name"/> </span><br></br>
+                        <span>Provider:<t t-esc="doc.voucher_id.provider_id.name"/> </span><br></br>
+                        <span>Bank:<t t-esc="doc.bank"/> :<t t-esc="doc.account"/> </span><br></br>
+                        <span>Amount:<t t-esc="doc.amount"/> </span><br></br>
+
+                        <span style="margin-left:-60px;">
+                            <span style="margin-left:-60px;">
+                                   <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', 'test-0001', 600, 100)"
+                                        style="width:350px;height:60px;"/>
+                               </span><br></br>
+                             <t t-esc="doc.voucher_id.name"/><br></br>
+                        </span>
+                    </div>
+                    </t>
+
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,49 @@
+<odoo>
+    <record id="view_quality_assurance_form" model="ir.ui.view">
+        <field name="name">quality.assurance.form</field>
+        <field name="model">quality.assurance</field>
+        <field name="arch" type="xml">
+            <form string="Quality Assurance">
+                <sheet>
+                    <group>
+                        <field name="product_id"/>
+                        <field name="stage_id"/>
+                        <field name="pass_field" readonly="1"/>
+                    </group>
+                    <notebook>
+                        <page string="Quality Checks">
+                            <field name="check_ids">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="min_threshold"/>
+                                    <field name="max_threshold"/>
+                                    <field name="test_value"/>
+                                    <field name="pass_field" readonly="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_quality_assurance_tree" model="ir.ui.view">
+        <field name="name">quality.assurance.tree</field>
+        <field name="model">quality.assurance</field>
+        <field name="arch" type="xml">
+            <tree string="Quality Assurances">
+                <field name="product_id"/>
+                <field name="stage_id"/>
+                <field name="pass_field"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_quality_assurance" model="ir.actions.act_window">
+        <field name="name">Quality Assurance</field>
+        <field name="res_model">quality.assurance</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

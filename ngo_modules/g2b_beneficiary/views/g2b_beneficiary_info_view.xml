@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="g2b_beneficiary_info_form_view" model="ir.ui.view">
+        <field name="name">G2B beneficiary Information</field>
+        <field name="model">g2b.beneficiary.info</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_confirm_beneficiary" string="Confirm" type="object" class="btn-success"
+                            invisible="state !=  'registered'"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1 style="display: flex;">
+                            <field name="beneficiary_code" readonly="1"/>
+                            <field name="image" widget="image" class="oe_avatar" options="{'preview_image': 'image'}"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="id_type"/>
+                            <field name="name"/>
+                            <field name="birth_date"/>
+                            <field name="region"/>
+                            <field name="woreda"/>
+                        </group>
+                        <group>
+                            <field name="beneficiary_id"/>
+                            <field name="phone"/>
+                            <field name="category_id"/>
+                            <field name="zone"/>
+                            <field name="kebele"/>
+                        </group>
+                    </group>
+                     <notebook>
+                         <page string="Benefit" name="benefit_line">
+                            <field name="state" invisible="1"/>
+                            <field name="benefit_line" widget="section_and_note_one2many" mode="tree,kanban"  readonly="state in ['done','cancel']">
+                                <tree string="Voucher List" editable="bottom">
+                                    <field name="benefit_id"/>
+                                    <field name="description"/>
+                                    <field name="qty"/>
+                                    <field name="unit_price"/>
+                                    <field name="sub_total" sum="Total"/>
+                                </tree>
+                            </field>
+                        </page>
+                          <page string="Vouchers" name="voucher_line">
+                               <field name="state" invisible="1"/>
+                            <field name="voucher_line" widget="section_and_note_one2many" mode="tree,kanban" readonly="state in ['done','cancel']">
+                                <tree string="Voucher List" editable="bottom">
+                                    <field name="voucher"/>
+                                    <field name="beneficiary_id"/>
+                                    <field name="benefit_id"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                        </page>
+                     </notebook>
+
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="g2b_beneficiary_info_tree_view" model="ir.ui.view">
+        <field name="name">G2B Beneficiary info</field>
+        <field name="model">g2b.beneficiary.info</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="beneficiary_code"/>
+                <field name="beneficiary_id"/>
+                <field name="name"/>
+                <field name="category_id"/>
+                <field name="phone"/>
+                <field name="birth_date"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+     <record  id="g2b_beneficiary_info_search_view" model="ir.ui.view">
+           <field name="name">Search</field>
+           <field name="model">g2b.beneficiary.info</field>
+           <field name="arch" type="xml">
+               <search>
+                   <field name="beneficiary_code"/>
+                    <filter name="registered" string="Registered" domain="[('state', '=', 'registered')]"/>
+                    <filter name="Confirmed" string="Confirmed" domain="[('state', '=', 'confirmed')]"/>
+                    <filter name="Canceled" string="Canceled" domain="[('state', '=', 'canceled')]"/>
+                    <filter name="Expired" string="Expired" domain="[('state', '=', 'expired')]"/>
+                   <separator/>
+                    <filter name="today_report" string="Today's Report" domain="[('create_date','>',(context_today() + datetime.timedelta(-1)).strftime('%Y-%m-%d'))]"/>
+                    <filter name="this_week_report" string="This Week Report" domain="[('create_date','>',(context_today() + datetime.timedelta(-7)).strftime('%Y-%m-%d'))]"/>
+                    <filter name="this_month_report" string="This Month Report" domain="[('create_date','>',(context_today()+ datetime.timedelta(-30)).strftime('%Y-%m-%d'))]"/>
+               </search>
+           </field>
+      </record>
+    <record id="g2b_beneficiary_info_action_id" model="ir.actions.act_window">
+        <field name="name">G2B Beneficiary Information</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">g2b.beneficiary.info</field>
+        <field name="view_mode">tree,form</field>
+        <field name="type">ir.actions.act_window</field>
+    </record>
+
+</odoo>

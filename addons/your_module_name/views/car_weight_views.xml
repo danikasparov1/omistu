@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Car Entry Weight Tree View -->
+    <record id="view_car_entry_weight_tree" model="ir.ui.view">
+        <field name="name">car.entry.weight.tree</field>
+        <field name="model">car.entry.weight</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="reference_name"/>
+                <field name="default_car_weight"/>
+                <field name="current_car_weight"/>
+                <field name="raw_material_amount"/>
+                <field name="entry_time"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Car Entry Weight Form View -->
+    <record id="view_car_entry_weight_form" model="ir.ui.view">
+        <field name="name">car.entry.weight.form</field>
+        <field name="model">car.entry.weight</field>
+        <field name="arch" type="xml">
+            <form string="Car Entry Weight">
+                <sheet>
+                    <group>
+                        <field name="reference_name"/>
+                        <field name="default_car_weight"/>
+                        <field name="current_car_weight"/>
+                        <field name="raw_material_amount"/>
+                        <field name="entry_time"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Car Exit Weight Tree View -->
+    <record id="view_car_exit_weight_tree" model="ir.ui.view">
+        <field name="name">car.exit.weight.tree</field>
+        <field name="model">car.exit.weight</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="reference_name"/>
+                <field name="default_car_weight"/>
+                <field name="current_car_weight"/>
+                <field name="produced_amount"/>
+                <field name="entry_time"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Car Exit Weight Form View -->
+    <record id="view_car_exit_weight_form" model="ir.ui.view">
+        <field name="name">car.exit.weight.form</field>
+        <field name="model">car.exit.weight</field>
+        <field name="arch" type="xml">
+            <form string="Car Exit Weight">
+                <sheet>
+                    <group>
+                        <field name="reference_name"/>
+                        <field name="default_car_weight"/>
+                        <field name="current_car_weight"/>
+                        <field name="produced_amount"/>
+                        <field name="entry_time"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Car Entry Weight Action -->
+    <record id="action_car_entry_weight" model="ir.actions.act_window">
+        <field name="name">Car Entry Weights</field>
+        <field name="res_model">car.entry.weight</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first car entry weight
+            </p>
+        </field>
+    </record>
+
+    <!-- Car Exit Weight Action -->
+    <record id="action_car_exit_weight" model="ir.actions.act_window">
+        <field name="name">Car Exit Weights</field>
+        <field name="res_model">car.exit.weight</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first car exit weight
+            </p>
+        </field>
+    </record>
+
+    <!-- Car Weight Menu -->
+    <menuitem id="menu_car_weight" parent="mrp.menu_mrp_root" name="Car Weight" sequence="10"/>
+
+    <!-- Car Entry Weight Menu -->
+    <menuitem id="menu_car_entry_weight" name="Car Entry Weights" parent="menu_car_weight" action="action_car_entry_weight" sequence="10"/>
+
+    <!-- Car Exit Weight Menu -->
+    <menuitem id="menu_car_exit_weight" name="Car Exit Weights" parent="menu_car_weight" action="action_car_exit_weight" sequence="20"/>
+</odoo>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<record  id="g2b_amend_voucher_form_view" model="ir.ui.view">
+           <field name="name">G2B Amend Voucher</field>
+           <field name="model">g2b.amend.voucher.form</field>
+           <field name="arch" type="xml">
+               <form>
+                   <sheet>
+                        <group string="G2B voucher Amend" class="form-title">
+                       <group>
+                            <field name="voucher_id"/>
+                            <field name="provider_name"/>
+                            <field name="beneficiary_name"/>
+                            <field name="bank"/>
+                            <field name="account"/>
+                            <field name="amount"/>
+                        </group>
+                       </group>
+                       <footer>
+                             <button name="compute_and_amend_vouchers" type="object" string="Claim Voucher" class="btn-primary"/>
+                             <button string="Cancel" class="btn-secondary" special="cancel"/>
+                        </footer>
+                   </sheet>
+<!--                    <div class="oe_chatter">-->
+<!--                        <field name="message_follower_ids"/>-->
+<!--                        <field name="activity_ids"/>-->
+<!--                        <field name="message_ids" options="{'post_refresh': 'recipients'}"/>-->
+<!--                    </div>-->
+               </form>
+           </field>
+       </record>
+       <record  id="g2b_amend_voucher_form_tree_view" model="ir.ui.view">
+           <field name="name">G2B voucher amend</field>
+           <field name="model">g2b.amend.voucher.form</field>
+           <field name="arch" type="xml">
+               <tree>
+                    <field name="voucher_id"/>
+                    <field name="provider_name"/>
+                    <field name="beneficiary_name"/>
+                    <field name="bank"/>
+                    <field name="account"/>
+               </tree>
+           </field>
+       </record>
+       <record id="g2b_amend_voucher_form_action_id" model="ir.actions.act_window">
+           <field name="name">G2B voucher amend</field>
+           <field name="type">ir.actions.act_window</field>
+          <field name="res_model">g2b.amend.voucher.form</field>
+           <field name="view_mode">tree,form</field>
+           <field name="type">ir.actions.act_window</field>
+       </record>
+
+</odoo>

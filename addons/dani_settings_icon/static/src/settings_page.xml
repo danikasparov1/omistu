@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <!-- Inherit the web.SettingsPage template -->
+    <t t-inherit="web.SettingsPage" t-inherit-mode="extension">
+        <xpath expr="//div[@class='settings_tab h-100 border-end']//div[contains(@class, 'tab')]" position="replace">
+            <!-- Add new content inside each 'tab' -->
+            <div class="tab" t-if="!module.isVisible"
+                             t-att-class="{
+                                'selected': state.selectedTab === module.key and state.search.value.length === 0, 'text-bg-primary shadow-none': state.selectedTab === module.key and state.search.value.length === 0 and env.isSmall
+                             }" t-att-data-key="module.key" role="tab" t-on-click="() => this.onSettingTabClick(module.key)">
+                            <div class="icon d-none d-md-block" t-attf-style="background : url('{{module.newKey}}') no-repeat center;background-size:contain;"/> <span class="app_name"><t t-esc="module.string"/></span>
+
+                        </div>
+        </xpath>
+    </t>
+</templates>

@@ -1,0 +1,38 @@
+<odoo>
+	<record id="view_mrp_production_form_inherit" model="ir.ui.view">
+		<field name="name">
+			mrp.production.form.inherit
+		</field>
+		<field name="model">mrp.production</field>
+		<field name="inherit_id" ref="mrp.mrp_production_form_view" />
+		<field name="arch" type="xml">
+			<!-- Add production type, current stage, and current step -->
+			<xpath expr="//label[@name='bom_label']" position="before">
+				<label for="production_type" name="production_type_label" />
+				<div class="o_row" name="production_type_div">
+					<field name="production_type" invisible="1" />
+				</div>
+				<label for="current_stage" name="current_stage_label" />
+				<div class="o_row" name="current_stage_div">
+					<field name="current_stage" readonly="1" />
+				</div>
+				<label for="current_step" name="current_step_label" />
+				<div class="o_row" name="current_step_div">
+					<field name="current_step" readonly="1" />
+				</div>
+			</xpath>
+			<xpath expr="//div[@class='oe_title']/following-sibling::*" position="after">
+				<field name="on_qa" invisible="1" />
+				<div  invisible="state not in ['progress','confirmed']">
+					<button 
+					invisible="on_qa"
+					 string="Proceed to Next Step" type="object" name="proceed_to_next_step" class="btn-primary" />
+					<p invisible="not on_qa" type="object" class="btn btn-warning fa fa-warning">
+						ON QA
+					</p>
+				</div>
+			</xpath>
+			
+		</field>
+	</record>
+</odoo>

@@ -1,0 +1,4 @@
+<odoo>
+    <menuitem id="property_management_menu" name="Property Management" parent="crm.crm_menu_root" sequence="10"/>
+    <menuitem id="property_management_submenu" name="Properties" parent="property_management_menu" action="action_property_management"/>
+</odoo>

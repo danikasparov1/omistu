@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<menuitem  id="g2b_voucher_info_menu_id"
+           name="voucher"
+           sequence="13"
+ />
+<menuitem  id="g2b_voucher_info_submenu_id"
+           name="Manage Vouchers"
+           parent="g2b_voucher_info_menu_id"
+           sequence="1"
+           action="g2b_voucher_info_action_id"
+ />
+ <menuitem  id="g2b_generate_voucher_info_submenu_id"
+           name="Generate Vouchers"
+           parent="g2b_voucher_info_menu_id"
+           sequence="2"
+           action="action_g2b_generate_voucher_form_id"
+ />
+ <menuitem  id="g2b_voucher_detail_submenu_id"
+           name="Vouchers Detail"
+           parent="g2b_voucher_info_menu_id"
+           sequence="3"
+           action="g2b_voucher_detail_action_id"
+ />
+ <menuitem  id="g2b_voucher_amend_submenu_id"
+           name="Claim Voucher"
+           parent="g2b_voucher_info_menu_id"
+           sequence="3"
+           action="g2b_amend_voucher_form_action_id"
+ />
+</odoo>

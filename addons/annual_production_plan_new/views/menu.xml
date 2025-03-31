@@ -1,0 +1,5 @@
+<odoo>
+    <menuitem id="menu_annual_production_plan_root" parent="mrp.menu_mrp_root" name="Annual Production Plan" sequence="10"/>
+
+    <menuitem id="menu_annual_production_plan" name="Plans" parent="menu_annual_production_plan_root" action="action_annual_production_plan" sequence="10"/>
+</odoo>

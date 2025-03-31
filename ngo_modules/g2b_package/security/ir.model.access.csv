@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+g2b_package.g2b_package_info,access_g2b_package_info,g2b_package.model_g2b_package_info,base.group_system,1,1,1,1

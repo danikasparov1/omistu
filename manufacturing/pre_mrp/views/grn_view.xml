@@ -1,0 +1,23 @@
+<odoo>
+	<record id="view_stock_picking_form_inherit" model="ir.ui.view">
+		<field name="name">
+			stock.picking.form.inherit
+		</field>
+		<field name="model">stock.picking</field>
+		<field name="inherit_id" ref="stock.view_picking_form" />
+		<field name="arch" type="xml">
+			<!-- Add production type, current stage, and current step -->
+			<xpath expr="//field[@name='location_dest_id']" position="after">
+				<label for="is_customers" name="is_customers_label" />
+				<div class="o_row" name="is_customers_div">
+					<field name="is_customers" />
+				</div>
+				
+			</xpath>
+			<xpath expr="//button[@name='action_cancel']" position="after">
+				<button string="Create MO" name="create_mo" type="object" class="oe_highlight"  invisible="not is_customers"/>
+				
+			</xpath>
+		</field>
+	</record>
+</odoo>

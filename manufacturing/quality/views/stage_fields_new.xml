@@ -1,0 +1,42 @@
+<odoo>
+    <record id="view_quality_check_form" model="ir.ui.view">
+        <field name="name">quality.check.form</field>
+        <field name="model">quality.check</field>
+        <field name="arch" type="xml">
+            <form string="Quality Check">
+                <sheet>
+                    <group>
+                        <field name="stage_id"/>
+                    </group>
+                    <group>
+                        <field name="min_threshold"/>
+                        <field name="max_threshold"/>
+                        <field name="test_value"/>
+                        <field name="pass_field" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_quality_check_tree" model="ir.ui.view">
+        <field name="name">quality.check.tree</field>
+        <field name="model">quality.check</field>
+        <field name="arch" type="xml">
+            <tree string="Quality Checks">
+                <field name="name"/>
+                <field name="stage_id"/>
+                <field name="min_threshold"/>
+                <field name="max_threshold"/>
+                <field name="pass_field"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_quality_check" model="ir.actions.act_window">
+        <field name="name">Quality Checks</field>
+        <field name="res_model">quality.check</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

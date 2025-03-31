@@ -1,0 +1,25 @@
+<odoo>
+    <record id="g2b_generate_voucher_form_report_form" model="ir.ui.view">
+        <field name="name">g2b.generate.voucher.form</field>
+        <field name="model">g2b.generate.voucher.form</field>
+        <field name="arch" type="xml">
+            <form string="Generate Vouchers">
+                <group>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="category_id"/>
+                </group>
+                <footer>
+                     <button name="compute_and_open_vouchers" type="object" string="Claim" class="btn-primary"/>
+                     <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_g2b_generate_voucher_form_id" model="ir.actions.act_window">
+        <field name="name">Generate Voucher</field>
+        <field name="res_model">g2b.generate.voucher.form</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

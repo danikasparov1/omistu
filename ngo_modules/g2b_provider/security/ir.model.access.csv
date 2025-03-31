@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+g2b_provider.g2b_provider_info,access_g2b_provider_info,g2b_provider.model_g2b_provider_info,base.group_system,1,1,1,1
+g2b_provider.g2b_product_line,access_g2b_product_line,g2b_provider.model_g2b_product_line,base.group_system,1,1,1,1

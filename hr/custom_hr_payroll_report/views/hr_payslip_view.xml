@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <record id="view_hr_payslip_form_user_group" model="ir.ui.view">
+        <field name="name">hr.payslip</field>
+        <field name="model">hr.payslip</field>
+        <field name="inherit_id" ref="om_hr_payroll.view_hr_payslip_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//button[@name='action_payslip_done']" position="attributes">
+                    <attribute name="groups">custom_hr_payroll_report.action_payslip_done_group_user</attribute>
+            </xpath>
+            <xpath expr="//button[@name='refund_sheet']" position="attributes">
+                    <attribute name="groups">custom_hr_payroll_report.payslip_refund_group_user</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_payslip_draft']" position="attributes">
+                    <attribute name="groups">custom_hr_payroll_report.action_payslip_draft_group_id</attribute>
+            </xpath>
+            <xpath expr="//button[@name='compute_sheet']" position="attributes">
+                    <attribute name="groups">custom_hr_payroll_report.compute_sheet_group_id</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_payslip_cancel']" position="attributes">
+                    <attribute name="groups">custom_hr_payroll_report.action_payslip_cancel_cancel_group</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_send_email']" position="attributes">
+                    <attribute name="groups">custom_hr_payroll_report.action_send_email_group_id</attribute>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

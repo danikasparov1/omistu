@@ -1,0 +1,45 @@
+<odoo>
+    <record id="view_quality_test_instance_tree" model="ir.ui.view">
+        <field name="name">quality.test.instance.tree</field>
+        <field name="model">quality.test.instance</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="quality_assurance_id"/>
+                <field name="check_field"/>
+                <field name="min_threshold"/>
+                <field name="max_threshold"/>
+                <field name="test_value"/>
+                <field name="pass_field"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_quality_test_instance_form" model="ir.ui.view">
+        <field name="name">quality.test.instance.form</field>
+        <field name="model">quality.test.instance</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="quality_assurance_id"/>
+                        <field name="check_field"/>
+                        <field name="min_threshold"/>
+                        <field name="max_threshold"/>
+                        <field name="test_value"/>
+                        <field name="pass_field" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_quality_test_instance" model="ir.actions.act_window">
+        <field name="name">Quality Test Instances</field>
+        <field name="res_model">quality.test.instance</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- <menuitem id="menu_quality_test_instance" name="Quality Test Instances"
+        parent="menu_quality_root"
+        action="action_quality_test_instance"/> -->
+</odoo>

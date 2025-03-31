@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+g2b_beneficiary.g2b_beneficiary_info,access_g2b_beneficiary_info,g2b_beneficiary.model_g2b_beneficiary_info,base.group_system,1,1,1,1
+g2b_beneficiary.g2b_benefit_info,access_g2b_benefit_info,g2b_beneficiary.model_g2b_benefit_info,base.group_system,1,1,1,1
+g2b_beneficiary.g2b_package_line,access_g2b_package_line,g2b_beneficiary.model_g2b_package_line,base.group_system,1,1,1,1
+g2b_beneficiary.g2b_id_type,access_g2b_id_type,g2b_beneficiary.model_g2b_id_type,base.group_system,1,1,1,1
+g2b_beneficiary.g2b_benefit_line,access_g2b_benefit_line,g2b_beneficiary.model_g2b_benefit_line,base.group_system,1,1,1,1
+g2b_beneficiary.g2b_beneficiary_detail,access_g2b_beneficiary_detail,g2b_beneficiary.model_g2b_beneficiary_detail,base.group_system,1,1,1,1
+g2b_beneficiary.g2b_beneficiary_category,access_g2b_beneficiary_category,g2b_beneficiary.model_g2b_beneficiary_category,base.group_system,1,1,1,1
+g2b_beneficiary.g2b_voucher_line,access_gg2b_voucher_line,g2b_beneficiary.model_g2b_voucher_line,base.group_system,1,1,1,1
+g2b_beneficiary.g2b_benefit_detail_line,access_g2b_benefit_detail_line,g2b_beneficiary.model_g2b_benefit_detail_line,base.group_system,1,1,1,1
+g2b_beneficiary.g2b_voucher_detail_line,access_g2b_voucher_detail_line,g2b_beneficiary.model_g2b_voucher_detail_line,base.group_system,1,1,1,1

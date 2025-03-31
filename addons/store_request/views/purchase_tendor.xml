@@ -1,0 +1,40 @@
+<odoo>
+    <record id="view_purchase_tender_line_tree" model="ir.ui.view">
+        <field name="name">purchase.tender.line.tree</field>
+        <field name="model">purchase.tender.line</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="partner_id"/>
+                <!-- <field name="committee_average_score"/> -->
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_purchase_tender_line_form" model="ir.ui.view">
+        <field name="name">purchase.tender.line.form</field>
+        <field name="model">purchase.tender.line</field>
+        <field name="arch" type="xml">
+            <form string="Purchase Tender Line">
+                <sheet>
+                    <group>
+                        <field name="partner_id"/>
+                        <!-- <field name="committee_average_score" readonly="1"/> -->
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_purchase_tender_line" model="ir.actions.act_window">
+        <field name="name">Purchase Tender Lines</field>
+        <field name="res_model">purchase.tender.line</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_purchase_tender_root" name="Purchase Tender" sequence="20"/>
+
+    <menuitem id="menu_purchase_tender_lines"
+              name="Tender Lines"
+          
+              action="action_purchase_tender_line"/>
+</odoo>

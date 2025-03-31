@@ -1,0 +1,361 @@
+<odoo>
+    <template id="hr_report_template_id">
+        <t t-call="web.basic_layout">
+             <style>
+                        .text-header {
+                            font-size: 12px;
+                            font-weight: bold;
+                            text-align: center;
+                            margin-bottom: 1px;
+                            text-decoration: underline;
+                        }
+
+                        .table {
+                            width: 100%;
+                            border-collapse: collapse;
+                        }
+
+                        .table th, .table td {
+                            border: 1px solid black;
+                            text-align: left;
+                            font-size: 9px;
+                            margin-bottom: 1px;
+                        }
+
+                        .table thead th {
+                            background-color: #f2f2f2;
+                        }
+
+                        .text-end {
+                            text-align: right;
+                        }
+
+                        .page {
+                            margin: 20px;
+                        }
+                    </style>
+            <div class="page">
+                 <div class="text-header">
+                            <h6>Saria Consultancy plc
+<!--                                - -->
+<!--                                <span t-esc="o.company_id.name"/>-->
+                            </h6>
+<!--                            <h6>Monthly Pay Slip</h6>-->
+<!--                            <h6>For the Month of-->
+<!--                                <span t-esc="o.period"/>-->
+<!--                                - -->
+<!--                                <span t-esc="o.date_to"/>-->
+<!--                            </h6>-->
+                        </div>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <t t-if="colum['employee']">
+                                <th>Employee</th>
+                            </t>
+                            <t t-if="colum['department_id']">
+                                <th>Department</th>
+                            </t>
+                            <t t-if="colum['bank_account_id']">
+                                <th>Bank Account</th>
+                            </t>
+                            <t t-if="colum['period']">
+                                <th>Period</th>
+                            </t>
+                            <t t-if="colum['monthly_basic_salary']">
+                                <th>Monthly Basic Salary</th>
+                            </t>
+                            <t t-if="colum['total_working_days']">
+                                <th>Total Working Days</th>
+                            </t>
+                            <t t-if="colum['total_day_worked']">
+                                <th>Total Day Worked</th>
+                            </t>
+                            <t t-if="colum['payslip_run_name']">
+                                <th>Payslip Run Name</th>
+                            </t>
+                            <t t-if="colum['structure']">
+                                <th>Structure</th>
+                            </t>
+                            <t t-if="colum['payslip_name']">
+                                <th>Payslip Name</th>
+                            </t>
+                            <t t-if="colum['basic']">
+                                <th>BASIC (USD)</th>
+                            </t>
+                            <t t-if="colum['basic_etb']">
+                                <th>BASIC (ETB)</th>
+                            </t>
+                            <t t-if="colum['gross']">
+                                <th>Gross</th>
+                            </t>
+                            <t t-if="colum['net']">
+                                <th>Net</th>
+                            </t>
+                            <t t-if="colum['pension']">
+                                <th>Employee Pension (7%)</th>
+                            </t>
+                            <t t-if="colum['pension_comp']">
+                                <th>Employer Pension (11%)</th>
+                            </t>
+                            <t t-if="colum['tax']">
+                                <th>Income Tax</th>
+                            </t>
+                            <t t-if="colum['total_deduction']">
+                                <th>Total Deduction</th>
+                            </t>
+                            <t t-if="colum['overtime']">
+                                <th>Overtime</th>
+                            </t>
+                            <t t-if="colum['hra']">
+                                <th>HRA</th>
+                            </t>
+                            <t t-if="colum['da']">
+                                <th>Professional Allowance</th>
+                            </t>
+                            <t t-if="colum['travel_allowance']">
+                                <th>Transport Allowance</th>
+                            </t>
+                            <t t-if="colum['travel_allowance_notax']">
+                                <th>None Taxable Transport Allowance</th>
+                            </t>
+                            <t t-if="colum['meal_allowance']">
+                                <th>Meal Allowance</th>
+                            </t>
+                            <t t-if="colum['medical_allowance']">
+                                <th>Medical Allowance</th>
+                            </t>
+                            <t t-if="colum['communication_allowance']">
+                                <th>Communication Allowance</th>
+                            </t>
+                            <t t-if="colum['internet_allowance']">
+                                <th>Internet Allowance</th>
+                            </t>
+                            <t t-if="colum['fuel_allowance']">
+                                <th>Fuel Allowance</th>
+                            </t>
+                            <t t-if="colum['unused_leave_payment']">
+                                <th>Unused Leave Payment</th>
+                            </t>
+                            <t t-if="colum['severance_pay_compensation']">
+                                <th>Severance Pay Compensation</th>
+                            </t>
+                            <t t-if="colum['training_development']">
+                                <th>Training And Development</th>
+                            </t>
+                            <t t-if="colum['position_allowance']">
+                                <th>Position Allowance</th>
+                            </t>
+                            <t t-if="colum['desert_allowance']">
+                                <th>Desert Allowance</th>
+                            </t>
+                            <t t-if="colum['representation_allowance']">
+                                <th>Representation Allowance</th>
+                            </t>
+                            <t t-if="colum['taxable_salary']">
+                                <th>Taxable Salary</th>
+                            </t>
+                            <t t-if="colum['total_payment']">
+                                <th>Severance Net Payment</th>
+                            </t>
+                            <t t-if="colum['total_adjusted_payout']">
+                                <th>Severance TAX Payment</th>
+                            </t>
+                            <t t-if="colum['expense']">
+                                <th>Expense</th>
+                            </t>
+                            <t t-if="colum['loan']">
+                                <th>Loan</th>
+                            </t>
+                            <t t-if="colum['advance_salary']">
+                                <th>Advance Salary</th>
+                            </t>
+                            <t t-if="colum['bonus']">
+                                <th>Bonus</th>
+                            </t>
+                            <t t-if="colum['status']">
+                                <th>Status</th>
+                            </t>
+                            <t t-if="colum['updated_on']">
+                                <th>Updated On</th>
+                            </t>
+                            <t t-if="colum['created_on']">
+                                <th>Created Date</th>
+                            </t>
+                            <t t-if="colum['last_updated']">
+                                <th>Last Updated</th>
+                            </t>
+                            <t t-if="colum['provident_employee']">
+                                <th>Employee Provident Fund</th>
+                            </t>
+                            <t t-if="colum['provident_employer']">
+                                <th>Employer Provident Fund</th>
+                            </t>
+                            <t t-if="colum['total_provident']">
+                                <th>Total Provident Fund</th>
+                            </t>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="docs" t-as="doc">
+                            <tr>
+                                <t t-if="colum['employee']">
+                                  <td><t t-esc="doc.employee"/></td>
+                                </t>
+                                 <t t-if="colum['department_id']">
+                                  <td><t t-esc="doc.department_id.name"/></td>
+                                </t>
+                                 <t t-if="colum['bank_account_id']">
+                                     <td><t t-esc="doc.bank_account_id.acc_number"/></td>
+                                 </t>
+                                 <t t-if="colum['period']">
+                                <td><t t-esc="doc.period"/></td>
+                                 </t>
+                                <t t-if="colum['monthly_basic_salary']">
+                                <td><t t-esc="doc.monthly_basic_salary"/></td>
+                                </t>
+                                <t t-if="colum['total_working_days']">
+                                <td><t t-esc="doc.total_working_days"/></td>
+                                </t>
+                                <t t-if="colum['total_day_worked']">
+                                <td><t t-esc="doc.total_day_worked"/></td>
+                                </t>
+                                <t t-if="colum['payslip_run_name']">
+                                <td><t t-esc="doc.payslip_run_name"/></td>
+                                </t>
+                                <t t-if="colum['structure']">
+                                <td><t t-esc="doc.structure"/></td>
+                                </t>
+                                <t t-if="colum['payslip_name']">
+                                <td><t t-esc="doc.payslip_name"/></td>
+                                </t>
+                                <t t-if="colum['basic']">
+                                <td><t t-esc="doc.basic"/></td>
+                                </t>
+                                <t t-if="colum['basic_etb']">
+                                <td><t t-esc="doc.basic_etb"/></td>
+                                </t>
+                                <t t-if="colum['gross']">
+                                <td><t t-esc="doc.gross"/></td>
+                                </t>
+                                <t t-if="colum['net']">
+                                <td><t t-esc="doc.net"/></td>
+                                </t>
+                                <t t-if="colum['pension']">
+                                <td><t t-esc="doc.pension"/></td>
+                                </t>
+                                <t t-if="colum['pension_comp']">
+                                <td><t t-esc="doc.pension_comp"/></td>
+                                </t>
+                                <t t-if="colum['tax']">
+                                <td><t t-esc="doc.tax"/></td>
+                                </t>
+                                <t t-if="colum['total_deduction']">
+                                <td><t t-esc="doc.total_deduction"/></td>
+                                </t>
+                                <t t-if="colum['overtime']">
+                                <td><t t-esc="doc.overtime"/></td>
+                                </t>
+                                <t t-if="colum['hra']">
+                                <td><t t-esc="doc.hra"/></td>
+                                </t>
+                                <t t-if="colum['da']">
+                                <td><t t-esc="doc.da"/></td>
+                                </t>
+                                <t t-if="colum['travel_allowance']">
+                                <td><t t-esc="doc.travel_allowance"/></td>
+                                </t>
+                                <t t-if="colum['travel_allowance_notax']">
+                                <td><t t-esc="doc.travel_allowance_notax"/></td>
+                                </t>
+                                <t t-if="colum['meal_allowance']">
+                                <td><t t-esc="doc.meal_allowance"/></td>
+                                </t>
+                                <t t-if="colum['medical_allowance']">
+                                <td><t t-esc="doc.medical_allowance"/></td>
+                                </t>
+                                <t t-if="colum['communication_allowance']">
+                                <td><t t-esc="doc.communication_allowance"/></td>
+                                </t>
+                                <t t-if="colum['internet_allowance']">
+                                <td><t t-esc="doc.internet_allowance"/></td>
+                                </t>
+                                <t t-if="colum['fuel_allowance']">
+                                <td><t t-esc="doc.fuel_allowance"/></td>
+                                </t>
+                                <t t-if="colum['unused_leave_payment']">
+                                <td><t t-esc="doc.unused_leave_payment"/></td>
+                                </t>
+                                <t t-if="colum['severance_pay_compensation']">
+                                <td><t t-esc="doc.severance_pay_compensation"/></td>
+                                </t>
+                                <t t-if="colum['training_development']">
+                                <td><t t-esc="doc.training_development"/></td>
+                                </t>
+                                <t t-if="colum['position_allowance']">
+                                <td><t t-esc="doc.position_allowance"/></td>
+                                </t>
+                                <t t-if="colum['desert_allowance']">
+                                <td><t t-esc="doc.desert_allowance"/></td>
+                                </t>
+                                <t t-if="colum['representation_allowance']">
+                                <td><t t-esc="doc.representation_allowance"/></td>
+                                </t>
+                                <t t-if="colum['taxable_salary']">
+                                <td><t t-esc="doc.taxable_salary"/></td>
+                                </t>
+                                <t t-if="colum['total_payment']">
+                                <td><t t-esc="doc.total_payment"/></td>
+                                </t>
+                                <t t-if="colum['total_adjusted_payout']">
+                                <td><t t-esc="doc.total_adjusted_payout"/></td>
+                                </t>
+                                <t t-if="colum['expense']">
+                                <td><t t-esc="doc.expense"/></td>
+                                </t>
+                                <t t-if="colum['loan']">
+                                <td><t t-esc="doc.loan"/></td>
+                                </t>
+                                <t t-if="colum['advance_salary']">
+                                <td><t t-esc="doc.advance_salary"/></td>
+                                </t>
+                                <t t-if="colum['bonus']">
+                                <td><t t-esc="doc.bonus"/></td>
+                                </t>
+                                <t t-if="colum['status']">
+                                <td><t t-esc="doc.status"/></td>
+                                </t>
+                                <t t-if="colum['updated_on']">
+                                <td><t t-esc="doc.updated_on"/></td>
+                                </t>
+                                <t t-if="colum['created_on']">
+                                <td><t t-esc="doc.created_on"/></td>
+                                </t>
+                                <t t-if="colum['last_updated']">
+                                <td><t t-esc="doc.last_updated"/></td>
+                                </t>
+                                <t t-if="colum['provident_employee']">
+                                <td><t t-esc="doc.provident_employee"/></td>
+                                </t>
+                                <t t-if="colum['provident_employer']">
+                                <td><t t-esc="doc.provident_employer"/></td>
+                                </t>
+                                <t t-if="colum['total_provident']">
+                                <td><t t-esc="doc.total_provident"/></td>
+                                </t>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+    <report
+        id="payroll_report_action_id"
+        model="custom.hr.payroll.report"
+        string="Payslip Payroll"
+        report_type="qweb-pdf"
+        name="custom_hr_payroll_report.hr_report_template_id"
+        file="custom_hr_payroll_report.hr_report_template_id"
+    />
+</odoo>

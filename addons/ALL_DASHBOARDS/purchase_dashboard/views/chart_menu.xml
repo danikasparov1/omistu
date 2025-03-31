@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+
+ 
+        <record id="action_chart_js_purchase_new" model="ir.actions.client">
+        <field name="name">Chart js Sample</field>
+        <field name="tag">purchase_chart</field>
+        <field name="target"></field>
+
+    </record>
+
+
+
+
+
+<menuitem id="menu_chart_js_sample_purchase" parent="purchase.menu_purchase_root" action="action_chart_js_purchase_new"
+              name="Dashboard" sequence="-10"/>
+
+            
+
+</odoo>

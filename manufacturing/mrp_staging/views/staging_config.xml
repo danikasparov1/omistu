@@ -1,0 +1,90 @@
+<odoo>
+
+    <record id="view_mrp_stage_name_form" model="ir.ui.view">
+        <field name="name">mrp.stage.name.form</field>
+        <field name="model">mrp.stage.name</field>
+        <field name="arch" type="xml">
+            <form string="Production Stage">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="sequence" />
+                    </group>
+                    <notebook>
+                        <page string="Steps">
+                            <field name="steps">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="step_no"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_mrp_stage_name_tree" model="ir.ui.view">
+        <field name="name">mrp.stage.name.tree</field>
+        <field name="model">mrp.stage.name</field>
+        <field name="arch" type="xml">
+            <tree string="Production Stages">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+ <record id="view_mrp_production_steps_form" model="ir.ui.view">
+        <field name="name">mrp.production.steps.form</field>
+        <field name="model">mrp.production.steps</field>
+        <field name="arch" type="xml">
+            <form string="Production Step">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="step_no"/>
+                        <field name="stage_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_mrp_production_steps_tree" model="ir.ui.view">
+        <field name="name">mrp.production.steps.tree</field>
+        <field name="model">mrp.production.steps</field>
+        <field name="arch" type="xml">
+            <tree string="Production Steps">
+                <field name="name"/>
+                <field name="step_no"/>
+                <field name="stage_id"/>
+            </tree>
+        </field>
+    </record>
+<record id="action_mrp_stage_name" model="ir.actions.act_window">
+        <field name="name">Production Stages</field>
+        <field name="res_model">mrp.stage.name</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new production stage.
+            </p>
+        </field>
+    </record>
+
+      <record id="action_mrp_production_steps" model="ir.actions.act_window">
+        <field name="name">Production Steps</field>
+        <field name="res_model">mrp.production.steps</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create and manage production steps here.
+            </p>
+        </field>
+    </record>
+    <menuitem id="menu_mrp_production" name="Production" sequence="10" groups="group_production_manager"/>
+
+    <menuitem id="menu_production_stages" name="Production Stages" parent="menu_mrp_production" action="action_mrp_stage_name" sequence="10"/>
+    <menuitem id="menu_production_steps" name="Production Steps" parent="menu_mrp_production" action="action_mrp_production_steps" sequence="20"/>
+
+</odoo>

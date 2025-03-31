@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates>
+    <t t-name="ChartUpdateButton">
+        <ul class="list-inline my-hover-list">
+            <li class="list-inline-item chart-update-button-list-item edit-item-chart" t-att-data-chart-item-id="id" t-on-click="(ev) => this.edit_item_chart(ev)">
+                <i class="fa fa-pencil-square-o" id="chart_edit_item_new"/>
+            </li>
+            <li class="list-inline-item chart-update-button-list-item delete-item-chart" t-att-data-chart-item-id="id" t-on-click="(ev) => this.delete_chart_item(ev)">
+                <i class="fa fa-trash-o" id="chart_delete_item_new"/>
+            </li>
+        </ul>
+    </t>
+</templates>

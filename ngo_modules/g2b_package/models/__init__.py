@@ -1,0 +1,1 @@
+from .import (g2b_package_info)

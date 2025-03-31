@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="my_categoiry" name="category">
+        <ul class="list-group">
+            <li class="list-group-item" style="color: #233835;">Departments</li>
+            <t t-foreach="departments" t-as="d">
+                <li class="list-group-item" ><a style="color: #FEBC11;" t-attf-href="/category/{{d.id}}"><t t-esc="d.name" /></a> </li>
+            </t>
+        </ul>
+    </template>
+        <template id="employment_type" name="Employment type">
+              <div class="py-3">
+                  <ul class="list-group">
+                    <li class="list-group-item" style="color: #233835;">Employment Type</li>
+                    <t t-foreach="contracts" t-as="c">
+                            <li class="list-group-item"><a style="color: #FEBC11;" t-attf-href="/employment/{{c.id}}"><t t-esc="c.name" /></a> </li>
+                    </t>
+
+                </ul>
+              </div>
+    </template>
+</odoo>

@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+g2b_voucher.g2b_voucher_info,access_g2b_g2b_voucher_info,g2b_voucher.model_g2b_voucher_info,base.group_system,1,1,1,1
+g2b_voucher.g2b_generate_voucher_form,access_g2b_generate_voucher_form,g2b_voucher.model_g2b_generate_voucher_form,base.group_system,1,1,1,1
+g2b_voucher.g2b_voucher_package_line,access_g2b_voucher_package_line,g2b_voucher.model_g2b_voucher_package_line,base.group_system,1,1,1,1
+g2b_voucher.g2b_voucher_detail,access_g2b_voucher_detail,g2b_voucher.model_g2b_voucher_detail,base.group_system,1,1,1,1
+g2b_voucher.g2b_voucher_detail_package_line,access_g2b_voucher_detail_package_line,g2b_voucher.model_g2b_voucher_detail_package_line,base.group_system,1,1,1,1
+g2b_voucher.g2b_amend_voucher_form,access_g2b_amend_voucher_form,g2b_voucher.model_g2b_amend_voucher_form,base.group_system,1,1,1,1

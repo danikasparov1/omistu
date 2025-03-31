@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_event_management,event_management,model_event_management,,1,1,1,1
+access_event_service,event_service,model_event_service,,1,1,1,1
+
+access_event_food_booking_line,event.food.booking.line,model_event_food_booking_line,,1,1,1,1
+access_event_drinks_line,event.drinks.line,model_event_drinks_line,,1,1,1,1
+access_event_fleet_booking_line,event.fleet.booking.line,model_event_fleet_booking_line,,1,1,1,1
+access_event_hotel_service,event.hotel.service,model_event_hotel_service,,1,1,1,1
+access_event_service_booking_line,event.service.booking.line,model_event_service_booking_line,,1,1,1,1
+access_event_room_booking_line,event.room.booking.line,model_event_room_booking_line,,1,1,1,1
+access_communication_details,communication.details,model_communication_details,,1,1,1,1
+access_account_move,account.move,model_account_move,,1,1,1,1
+access_account_move_line,account.move.line,model_account_move_line,,1,1,1,1

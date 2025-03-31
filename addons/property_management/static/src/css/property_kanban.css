@@ -1,0 +1,97 @@
+<style>
+/* 🌟 Main Property Card */
+.property_card {
+    background: linear-gradient(135deg, #ffffff, #f9f9f9);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+/* ✅ Green Card for Available */
+.ribbon-success {
+    background: #28a745;
+    height: 25px;  /* Decreased height */
+    padding: 3px 10px;  /* Reduced padding */
+    font-size: 12px;  /* Slightly smaller font size */
+}
+
+/* ❌ Red Card for Sold */
+.addis_systme_ribbon-danger {
+    background: #dc3545;
+    height: 25px;  /* Decreased height */
+    padding: 3px 10px;  /* Reduced padding */
+    font-size: 12px;  /* Slightly smaller font size */
+}
+
+
+.property_card:hover {
+    transform: scale(1.05);
+}
+
+/* 🏠 Inner Grey Card */
+.property_inner_card {
+    background: #e0e0e0;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 🌟 Header */
+.property_header {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* 🔥 Stylish Text Colors */
+.text-blue { color: #007bff; font-weight: bold; }
+.text-purple { color: #6f42c1; font-weight: bold; }
+.text-green { color: #28a745; font-weight: bold; }
+.text-orange { color: #fd7e14; font-weight: bold; }
+.text-red { color: #dc3545; font-weight: bold; }
+
+/* 🏷 Labels */
+.label {
+    font-weight: bold;
+    color: #444;
+}
+
+/* 🎀 Status addis_ribbon*/
+.ribbon {
+    position: absolute;
+    top: 8px;  /* Slightly reduced top margin */
+    right: -8px;  /* Reduced right margin */
+    color: white;
+    padding: 3px 10px;  /* Smaller padding */
+    font-weight: bold;
+    font-size: 12px;  /* Decreased font size */
+    text-transform: uppercase;
+    border-radius: 4px;
+    transform: rotate(15deg);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* ✅ Green for Available */
+.ribbon-success {
+    background: #28a745;
+}
+
+/* ❌ Red for Sold */
+.ribbon-danger {
+    background: #dc3545;
+}
+
+
+/* 🌟 Status Borders */
+.available {
+    border-left: 6px solid #28a745;
+}
+
+.sold {
+    border-left: 6px solid #dc3545;
+}
+</style>

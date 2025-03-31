@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="custom_hr_pyslip_employees_id" model="ir.ui.view">
+        <field name="name">Custom hr payslip employees</field>
+        <field name="model">hr.payslip.employees</field>
+        <field name="inherit_id" ref="om_hr_payroll.view_hr_payslip_by_employees"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@class='alert alert-info mb-0']" position="after">
+            <label for="department_id" class="oe_edit_only"/>
+            <field name="department_id"/>
+        </xpath>
+        </field>
+    </record>
+</odoo>
