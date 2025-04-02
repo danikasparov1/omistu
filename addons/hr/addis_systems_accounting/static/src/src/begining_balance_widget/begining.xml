@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="addis_systems_accounting.begining" t-inherit="web.MonetaryField">
+        <!-- <xpath expr="//input" position="after">
+           <span t-if="props.record.data[props.name]" class="text-danger"><t t-esc="props.record.data[props.name]"/></span>
+        </xpath> -->
+        
+        <xpath expr="//input" position="after">
+        <span>hello</span>
+                <!-- <attribute name="class">form-control-plaintext bg-light text-muted</attribute> -->
+        </xpath>
+    </t>
+</templates>

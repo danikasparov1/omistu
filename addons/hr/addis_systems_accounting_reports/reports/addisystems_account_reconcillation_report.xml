@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="accounting_account_reconcillation_report_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.internal_layout">
+                    <div class="page">
+                        <h2 t-esc="'Account Reconcillation'"/>
+
+                        <div class="row mt32 mb32">
+                            <div class="col-4">
+                                <strong>Target Moves:</strong>
+                                <p>
+                                    <span t-if="o.target_move == ' '">All Entries</span>
+                                    <span t-if="o.target_move == 'posted'">All Posted Entries</span>
+                                </p>
+                            </div>
+                            <div class="col-4">
+                                <p>
+                                    <t t-if="o.date_from"><strong>Date from :</strong> <span t-esc="o.date_from"/><br/></t>
+                                    <t t-if="o.date_to"><strong>Date to :</strong> <span t-esc="o.date_to"/></t>
+                                </p>
+                            </div>
+                            <div class="col-4">
+                                <p>
+                                    <t t-if="o.period_from"><strong>Period from :</strong> <span t-esc="o.period_from.name"/><br/></t>
+                                    <t t-if="o.period_to"><strong>Period to :</strong> <span t-esc="o.period_to.name"/></t>
+                                </p>
+                            </div>
+                           
+                            
+                        </div>
+                       
+                        <t t-set="style" t-value="'font-weight: normal;'"/>
+                        <t t-set="stylebold" t-value="'font-weight: bold;'"/>
+                        <table class="table table-sm table-reports">
+                            <thead>
+                                <tr>
+                                     <th/>
+                                    <th class="text">Transaction Date</th>
+                                    <th class="text">Label</th>
+                                    <th class="text">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <t t-set="total_receipt" t-value="0"/>
+                            <tr>
+                             <td t-att-style="stylebold" t-esc="'Balance of ' + o.journal_bank_ids.default_account_id.display_name"></td>
+                                <td/>
+                                <td/>
+                                <td t-esc="o.get_balance_of_bank_account()" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+
+                            </tr>
+                                <tr>
+
+                             <td>
+                             <span t-att-style="stylebold" t-esc="'Including Unreconciled Receipts'"/></td>
+                                <td/>
+                                <td/>
+                                <td>
+                                <span t-att-style="style" t-esc="o.get_total_receipts_with_unreconcilled()" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+
+                                </td>
+
+                            </tr>
+                            
+                                <tr t-foreach="o.get_receipts_with_unreconcilled()" t-as="trxn">
+                                    <t t-set="total_receipt" t-value="total_receipt + trxn.amount"/>
+
+                                        <td>
+                                            <span style="color: white;" t-esc="'....'"/>
+                                            <span t-att-style="style" t-esc="trxn.move_id.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-att-style="style" t-esc="trxn.date"/>
+                                        </td>
+                                        <td>
+                                            <span t-att-style="style" t-esc="trxn.payment_ref"/>
+                                        </td>
+                                      
+                                        <td>
+                                            <span t-att-style="style" t-esc="trxn.amount" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                        </td>
+
+                                </tr>
+                            <tr>
+
+                             <td>
+                             <span t-att-style="stylebold" t-esc="'Including Unreconciled Payments'"/></td>
+                                <td/>
+                                <td/>
+                                <td>  <span t-att-style="style" t-esc="o.get_total_payments_with_unreconcilled()" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+
+                            </tr>
+                                                           
+
+                             <tr t-foreach="o.get_payments_with_unreconcilled()" t-as="trxn">       
+                                        
+                                        <td>
+                                            <span style="color: white;" t-esc="'....'"/>
+                                            <span t-att-style="style" t-esc="trxn.move_id.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-att-style="style" t-esc="trxn.date"/>
+                                        </td>
+                                        <td>
+                                            <span t-att-style="style" t-esc="trxn.payment_ref"/>
+                                        </td>
+                                      
+                                        <td>
+                                            <span t-att-style="style" t-esc="trxn.amount" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                        </td>
+
+                                </tr>
+
+
+
+                                <tr>
+
+                             <td>
+                             <span t-att-style="stylebold" t-esc="'Outstanding Receipts'"/></td>
+                                <td/>
+                                <td/>
+                                <td>  <span t-att-style="style" t-esc="o.get_total_outstanding_receipts()" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+
+                            </tr>
+                                                           
+
+                             <tr t-foreach="o.get_outstanding_receipts()" t-as="trxn">       
+                                        
+                                        <td>
+                                            <span style="color: white;" t-esc="'....'"/>
+                                            <span t-att-style="style" t-esc="trxn.move_id.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-att-style="style" t-esc="trxn.date"/>
+                                        </td>
+                                        <td>
+                                            <span t-att-style="style" t-esc="trxn.ref"/>
+                                        </td>
+                                      
+                                        <td>
+                                            <span t-att-style="style" t-esc="trxn.amount" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                        </td>
+
+                                </tr>
+
+
+  <tr>
+
+                             <td>
+                             <span t-att-style="stylebold" t-esc="'Outstanding Payments'"/></td>
+                                <td/>
+                                <td/>
+                                <td>  <span t-att-style="style" t-esc="o.get_total_outstanding_payments()" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+
+                            </tr>
+                                                           
+
+                             <tr t-foreach="o.get_outstanding_payments()" t-as="trxn">       
+                                        
+                                        <td>
+                                            <span style="color: white;" t-esc="'....'"/>
+                                            <span t-att-style="style" t-esc="trxn.move_id.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-att-style="style" t-esc="trxn.date"/>
+                                        </td>
+                                        <td>
+                                            <span t-att-style="style" t-esc="trxn.ref"/>
+                                        </td>
+                                      
+                                        <td>
+                                            <span t-att-style="style" t-esc="-1*trxn.amount" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                        </td>
+
+                                </tr>
+
+
+
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

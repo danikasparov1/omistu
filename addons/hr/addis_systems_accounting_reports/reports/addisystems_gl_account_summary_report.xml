@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="accounting_gl_account_report_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.internal_layout">
+                    <div class="page">
+                        <h2 t-esc="'GL Account Summary'"/>
+
+                        <div class="row mt32 mb32">
+                            <div class="col-4">
+                                <strong>Target Moves:</strong>
+                                <p>
+                                    <span t-if="o.target_move == ' '">All Entries</span>
+                                    <span t-if="o.target_move == 'posted'">All Posted Entries</span>
+                                </p>
+                            </div>
+                            <div class="col-4">
+                                <p>
+                                    <t t-if="o.date_from"><strong>Date from :</strong> <span t-esc="o.date_from"/><br/></t>
+                                    <t t-if="o.date_to"><strong>Date to :</strong> <span t-esc="o.date_to"/></t>
+                                </p>
+                            </div>
+                            <div class="col-4">
+                                <p>
+                                    <t t-if="o.period_from"><strong>Period from :</strong> <span t-esc="o.period_from.name"/><br/></t>
+                                    <t t-if="o.period_to"><strong>Period to :</strong> <span t-esc="o.period_to.name"/></t>
+                                </p>
+                            </div>
+                            
+                        </div>
+
+                        <table class="table table-sm table-reports">
+                            <thead>
+                                <tr>
+                                    <th>Account Number</th>
+                                    <th class="text">Account Description</th>
+                                    <th class="text">Begining Balance</th>
+                                    <th class="text">Debit Change</th>
+                                    <th class="text">Credit Change</th>
+                                    <th class="text">Net Change</th>
+                                    <th class="text">Ending Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="o.get_accounts()" t-as="acct">
+                                        <t t-if="1"><t t-set="style" t-value="'font-weight: normal;'"/></t>
+                                        <t t-if="0"><t t-set="style" t-value="'font-weight: bold;'"/></t>
+
+                                        <td>
+                                            <span t-att-style="style" t-esc="acct.code"/>
+                                        </td>
+                                        <td>
+                                            <span t-att-style="style" t-esc="acct.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-att-style="style" t-esc="o.get_begining_balance(acct.id)" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                        </td>
+                                        <td>
+                                            <span t-att-style="style" t-esc="o.get_debit_balance(acct.id)" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                        </td>
+
+                                        <td>
+                                            <span t-att-style="style" t-esc="o.get_credit_balance(acct.id)" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                        </td>
+
+                                        <td>
+                                            <span t-att-style="style" t-esc="o.get_balance(acct.id)" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                        </td>
+                                        <td>
+                                            <span t-att-style="style" t-esc="o.get_ending_balance(acct.id)" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                        </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

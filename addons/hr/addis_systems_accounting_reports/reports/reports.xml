@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="addis_systems_balance_budget_report" model="ir.actions.report">
+            <field name="name">Balance Sheet with budget</field>
+            <field name="model">addisystems.balance.budget.report</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">addis_systems_accounting_reports.accounting_balance_budget_report_template</field>
+            <field name="report_file">addis_systems_accounting_reports.accounting_balance_budget_report_template</field>
+            <field name="print_report_name">'Balance Sheet with Balance'</field>
+            <field name="binding_model_id" ref="model_addisystems_balance_budget_report"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="addis_systems_gl_account_summary_report" model="ir.actions.report">
+            <field name="name">GL Account Summary</field>
+            <field name="model">addisystems.glaccount.summary.report</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">addis_systems_accounting_reports.accounting_gl_account_report_template</field>
+            <field name="report_file">addis_systems_accounting_reports.accounting_gl_account_report_template</field>
+            <field name="print_report_name">'GL Account summary'</field>
+            <field name="binding_model_id" ref="model_addisystems_glaccount_summary_report"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="addis_systems_cash_flow_summary_report" model="ir.actions.report">
+            <field name="name">Cash Flow Summary</field>
+            <field name="model">addisystems.cash.statement.report</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">addis_systems_accounting_reports.accounting_cash_statement_report_template</field>
+            <field name="report_file">addis_systems_accounting_reports.accounting_cash_statement_report_template</field>
+            <field name="print_report_name">'Cash Flow Report'</field>
+            <field name="binding_model_id" ref="model_addisystems_cash_statement_report"/>
+            <field name="binding_type">report</field>
+        </record>
+        <record id="addis_systems_income_statement_summary_report" model="ir.actions.report">
+            <field name="name">Income Statement Summary</field>
+            <field name="model">addisystems.income.statement.report</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">addis_systems_accounting_reports.accounting_income_statement_report_template</field>
+            <field name="report_file">addis_systems_accounting_reports.accounting_income_statement_report_template</field>
+            <field name="print_report_name">'Income Statement Report'</field>
+            <field name="binding_model_id" ref="model_addisystems_income_statement_report"/>
+            <field name="binding_type">report</field>
+        </record>
+
+
+        <record id="addis_systems_income_statement_twelve_periods_summary_report" model="ir.actions.report">
+            <field name="name">Income Statement twelve Summary</field>
+            <field name="model">addisystems.income.statement.report</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">addis_systems_accounting_reports.accounting_income_statement_twelve_report_template</field>
+            <field name="report_file">addis_systems_accounting_reports.accounting_income_statement_twelve_report_template</field>
+            <field name="print_report_name">'Income Statement Report 12 periods'</field>
+            <field name="binding_model_id" ref="model_addisystems_income_statement_report"/>
+            <field name="binding_type">report</field>
+        </record>
+        <record id="addis_systems_account_reconcillation_report" model="ir.actions.report">
+            <field name="name">Account Reconcillation</field>
+            <field name="model">addisystems.account.reconcillation.report</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">addis_systems_accounting_reports.accounting_account_reconcillation_report_template</field>
+            <field name="report_file">addis_systems_accounting_reports.accounting_account_reconcillation_report_template</field>
+            <field name="print_report_name">'Account Reconcillation'</field>
+            <field name="binding_model_id" ref="model_addisystems_account_reconcillation_report"/>
+            <field name="binding_type">report</field>
+        </record>
+
+    </data>
+</odoo>

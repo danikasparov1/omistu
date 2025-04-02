@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+
+
+
+
+        
+        <!-- Inherit the existing view -->
+      
+       <record id="server_action_custom_action" model="ir.actions.server">
+            <field name="name">Custom Server Action</field>
+            <field name="model_id" ref="model_account_move"/> <!-- Replace with your model -->
+            <field name="binding_model_id" ref="model_account_move"/> <!-- Optional -->
+            <field name="state">code</field>
+            <field name="code">
+                action = env['account.move'].custom_action()
+            </field>
+        </record>
+    </data>
+
+
+
+
+     <menuitem id="menu_accounting_begining"
+              name="Beginning Balance"
+              sequence="1"
+              parent="account.account_account_menu"
+              action="server_action_custom_action"
+              />
+
+</odoo>
