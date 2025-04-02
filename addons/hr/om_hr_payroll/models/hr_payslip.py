@@ -113,13 +113,12 @@ class HrPayslip(models.Model):
         except ValueError:
             template_id = False
         try:
-            compose_form_id = ir_model_data._xmlid_lookup('mail.email_compose_message_wizard_form')[1]
-
+            compose_form_id = ir_model_data._xmlid_lookup('mail.email_compose_message_wizard_form')[2]
         except ValueError:
             compose_form_id = False
         ctx = {
             'default_model': 'hr.payslip',
-            'default_res_ids': self.ids,
+            'default_res_id': self.ids[0],
             'default_use_template': bool(template_id),
             'default_template_id': template_id,
             'default_composition_mode': 'comment',

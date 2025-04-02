@@ -22,11 +22,11 @@
                                     Post payroll slips in accounting
                                 </div>
                             </div>
-<!--                            <div class="o_setting_right_pane">-->
-<!--                                <a target="_blank" href="https://apps.odoo.com/apps/modules/17.0/om_hr_payroll_account/"-->
-<!--                                   style="text-decoration: underline;">HR Payroll Accounting-->
-<!--                                </a>-->
-<!--                            </div>-->
+                            <div class="o_setting_right_pane">
+                                <a target="_blank" href="https://apps.odoo.com/apps/modules/17.0/om_hr_payroll_account/"
+                                   style="text-decoration: underline;">HR Payroll Accounting
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
