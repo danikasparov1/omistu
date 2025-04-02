@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="mrp_progressbar_extended_tree_view" model="ir.ui.view">
+        <field name="name">mrp.progressbar.extended.tree.view</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="duration" position="after">
+                <field name="mrp_progress" widget="progressbar" optional="show"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="mrp_progressbar_extended_form_view" model="ir.ui.view">
+        <field name="name">mrp.progressbar.extended.form.view</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+            <field name="user_id" position="after">
+                <field name="mrp_progress" widget="progressbar"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="mrp_workorder_extended_tree_view" model="ir.ui.view">
+        <field name="name">mrp.workorder.extended.tree.view</field>
+        <field name="model">mrp.workorder</field>
+        <field name="inherit_id" ref="mrp.mrp_production_workorder_tree_editable_view"/>
+        <field name="arch" type="xml">
+            <field name="duration" position="after">
+                <field name="is_completed"/>
+            </field>
+        </field>
+    </record>
+</odoo>
