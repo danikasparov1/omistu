@@ -1,51 +1,52 @@
 <odoo>
-    <data>
-        <!-- Form view for the Annual Production Plan -->
-        <record id="view_form_annual_production_plan" model="ir.ui.view">
-            <field name="name">annual.production.plan.form</field>
-            <field name="model">annual.production.plan</field>
-            <field name="arch" type="xml">
-                <form string="Annual Production Plan">
-                    <sheet>
-                        <group>
-                            <group>
-                                <field name="name"/>
-                                <field name="year"/>
-                                <field name="product_id"/>
-                                <field name="planned_quantity"/>
-                                <!-- <field name="produced_quantity"/> -->
-                                <field name="is_produced"/>
-                            </group>
-                            <!-- <group>
-                                
-                                <field name="status_notification" readonly="1" 
-                                       t-attf-class="{'o_statusbar_red': produced_quantity < planned_quantity, 'o_statusbar_green': produced_quantity >= planned_quantity}"/>
-                            </group> -->
-                        </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>
+    <record id="view_annual_production_plan_form" model="ir.ui.view">
+        <field name="name">annual.production.plan.form</field>
+        <field name="model">annual.production.plan</field>
+        <field name="arch" type="xml">
+            <form string="Annual Production Plan">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="year"/>
+                        <field name="product_id"/>
+                        <field name="planned_quantity"/>
+                        <field name="is_produced" readonly="1"/>
+                    </group>
+                    <notebook>
+                        <page string="BOM Components">
+                            <field name="bom_component_ids" readonly="1">
+                                <tree>
+                                    <field name="component_name"/>
+                                    <field name="quantity"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
 
-        <!-- Action to show the form view -->
-        <record id="action_annual_production_plan" model="ir.actions.act_window">
-            <field name="name">Annual Production Plans</field>
-            <field name="res_model">annual.production.plan</field>
-            <field name="view_mode">tree,form</field>
-        </record>
+    <record id="view_annual_production_plan_tree" model="ir.ui.view">
+        <field name="name">annual.production.plan.tree</field>
+        <field name="model">annual.production.plan</field>
+        <field name="arch" type="xml">
+            <tree string="Annual Production Plans">
+                <field name="name"/>
+                <field name="year"/>
+                <field name="product_id"/>
+                <field name="planned_quantity"/>
+                <field name="is_produced"/>
+            </tree>
+        </field>
+    </record>
 
-        <!-- Action to show the form view -->
-        <record id="action_annual_production_plan" model="ir.actions.act_window">
-            <field name="name">Annual Production Plans</field>
-            <field name="res_model">annual.production.plan</field>
-            <field name="view_mode">tree,form</field>
-        </record>
+    <record id="action_annual_production_plan" model="ir.actions.act_window">
+        <field name="name">Annual Production Plans</field>
+        <field name="res_model">annual.production.plan</field>
+        <field name="view_mode">tree,form</field>
+    </record>
 
-        <!-- Menu item for the Annual Production Plan -->
-        <menuitem id="menu_annual_production_plan" 
-        parent="mrp.menu_mrp_root"
-                  name="Annual Production Plans"
-                  action="action_annual_production_plan"
-                  sequence="10"/>
-    </data>
+    <menuitem id="menu_annual_production_plan_root" name="Production Plans" sequence="10"/>
+    <menuitem id="menu_annual_production_plan" name="Annual Production Plans" parent="menu_annual_production_plan_root" action="action_annual_production_plan" sequence="10"/>
 </odoo>

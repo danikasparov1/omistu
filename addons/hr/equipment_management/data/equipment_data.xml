@@ -1,0 +1,30 @@
+<odoo>
+    <record id="default_equipment_1" model="equipment.management.equipment">
+        <field name="name">Machine A</field>
+        <field name="status">working</field>
+    </record>
+
+    <record id="default_component_1" model="equipment.management.component">
+        <field name="name">Temperature Sensor</field>
+        <field name="status">working</field>
+        <field name="equipment_id" ref="default_equipment_1"/>
+    </record>
+
+    <data noupdate="1">
+        <record id="notification_template_component_failure" model="mail.template">
+            <field name="name">Component Failure Notification</field>
+            <field name="email_from">${(user.email_formatted or 'support@example.com')|safe}</field>
+            <field name="subject">Component Failure Notification</field>
+            <field name="model_id" ref="model_equipment_management_component"/>
+            <field name="body_html"><![CDATA[
+                <p>Hello,</p>
+                <p>The following component of your equipment has failed:</p>
+                <p>Equipment: ${object.equipment_id.name}</p>
+                <p>Component: ${object.name}</p>
+                <p>Please inspect the component and take necessary action.</p>
+            ]]></field>
+        </record>
+    </data>
+
+
+</odoo>
