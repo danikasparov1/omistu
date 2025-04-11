@@ -27,6 +27,24 @@
         </field>
     </record>
 
+
+
+    <record id="view_bom_form_inherit_wastage" model="ir.ui.view">
+        <field name="name">mrp.bom.form.inherit.wastage</field>
+        <field name="model">mrp.bom</field>
+        <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+        <field name="arch" type="xml">
+            <!-- Insert field in the tree view of bom_line_ids under Components tab -->
+            <xpath expr="//page[@name='components']/field[@name='bom_line_ids']/tree" position="inside">
+                <field name="wastage_tolerance"/>
+            </xpath>
+        </field>
+    </record>
+
+
+
+
+
     <record id="view_annual_production_plan_tree" model="ir.ui.view">
         <field name="name">annual.production.plan.tree</field>
         <field name="model">annual.production.plan</field>
