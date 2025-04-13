@@ -57,3 +57,10 @@ class MrpBomLine(models.Model):
         help="Percentage of material to account for possible wastage during production.",
         default=0.0,
     )
+
+
+
+class MrpProduction(models.Model):
+    _inherit = 'mrp.production'
+
+    reference_number = fields.Char(string="Reference Number")
