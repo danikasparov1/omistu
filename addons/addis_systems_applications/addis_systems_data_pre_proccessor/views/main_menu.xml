@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+ <record id="view_peachtree" model="ir.ui.view">
+            <field name="name">peachtree.tree</field>
+            <field name="model">peachtree.peachtreefile</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="title"/>
+                    <field name="customerfile"/>
+                    <field  name="vendorfile"/>
+                    <field  name="jrnl_rowfile"/>
+                    <field  name="jrnl_hdrfile"/>
+                    <field  name="chart_psvfile"/>
+                    <field  name="chart_peachree"/>
+                    <field  name="tax_code"/>
+                    <field  name="tax_authority"/>
+                </tree>
+            </field>
+        </record>
+
+         <record id="form_peachtree" model="ir.ui.view">
+            <field name="name">peachtree.form</field>
+            <field name="model">peachtree.peachtreefile</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                    <group>
+                    <group>
+                    <field name="title"/>
+                    <field name="customerfile"/>
+                    <field name="vendorfile"/>
+                    <field  name="jrnl_rowfile"/>
+                    <field  name="jrnl_hdrfile"/>
+                    </group>
+                     <group>
+                    
+                    <field  name="chart_psvfile"/>
+                    <field name="chart_peachree"/>
+                    <field  name="tax_code"/>
+                    <field  name="tax_authority"/>
+                    </group>
+                    </group>
+                    </sheet>
+                    <sheet>
+                   
+                    <div
+
+                     style="display:flex;flex-direction:row;flex-wrap;justify-content:space-between;padding: 10px;gap:30px;"
+                     >
+                        <button name="download_chart_of_accounts_data" string="Download Chart Of Accounts" type="object" class="btn-primary"/>
+                        <button  name="download_all_journal_entries_data" string="Download Journal Entry" type="object" class="btn-primary"/>
+                        <button name="download_all_receipts_data" string="Download Receipts" type="object" class="btn-primary"/>
+                        <button name="download_all_direct_jrnls_data" string="Download Direct Journal Entries" type="object" class="btn-primary"/>
+
+                        <button name="default" string="Download Products" type="object" class="btn-primary"/>
+                    </div>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="form_invoice" model="ir.ui.view">
+            <field name="name">invoice.import.form</field>
+            <field name="model">thirdpartyaddisysstems.invoice</field>
+            <field name="arch" type="xml">
+                <form>
+                    <field name="name" readonly="1" invisible="1"/>
+                    <field name="invoice_file"/>
+                   
+                    <div style=""
+                     >
+                        <button name="download_newinvoice" invisible="not invoice_file" string="Download" type="object" class="btn-secondary"/>
+                       
+                    </div>
+
+                </form>
+            </field>
+        </record>
+    
+
+    <record id="action_addis_data_preprocessor" model="ir.actions.act_window">
+		<field name="name">Peachtree 2010</field>
+        <field name="res_model">peachtree.peachtreefile</field>
+		<field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+
+	</record>
+
+    <record id="action_addis_systems_invoice" model="ir.actions.act_window">
+		<field name="name">Addissystems Invoice</field>
+        <field name="res_model">thirdpartyaddisysstems.invoice</field>
+		<field name="type">ir.actions.act_window</field>
+        <field name="view_mode">form</field>
+
+	</record>
+
+
+ <!-- Define the tree view -->
+
+     <menuitem id="menu_peachTree_data_preprocessor"
+        parent="menu_data_processor_root"
+        name="PeachTree"
+        action="action_addis_data_preprocessor"
+        sequence="10"
+        
+    />
+    <menuitem id="menu_invoice_data_preprocessor"
+        parent="addis_systems_data_pre_proccessor.menu_data_processor_root"
+        name="Invoice"
+        action="addis_systems_data_pre_proccessor.action_addis_systems_invoice"
+        sequence="10"
+        
+    />   
+    
+
+</odoo>

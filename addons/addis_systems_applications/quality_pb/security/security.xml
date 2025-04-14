@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- This group is meant to manage quality stages -->
+    <record model="ir.module.category" id="module_category_quality">
+        <field name="name">Quality</field>
+        <field name="description">Helps you manage your quality alerts and quality checks.</field>
+        <field name="sequence">5</field>
+    </record>
+
+    <record id="group_quality_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="category_id" ref="module_category_quality"/>
+        <field name="comment">The quality user uses the quality process</field>
+    </record>
+
+    <record id="group_quality_manager" model="res.groups">
+        <field name="name">Administrator</field>
+        <field name="category_id" ref="module_category_quality"/>
+        <field name="implied_ids" eval="[(4, ref('quality_pb.group_quality_user'))]"/>
+        <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+        <field name="comment">The quality manager manages the quality process</field>
+    </record>
+   
+    <record id="stock_move_access_quality_user" model="ir.model.access">
+        <field name="name">stock.move access for Quality User</field>
+        <field name="model_id" ref="model_stock_move"/>
+        <field name="group_id" ref="group_quality_user"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+   
+    <record id="stock_move_access_quality_manager" model="ir.model.access">
+        <field name="name">stock.move access for Quality Manager</field>
+        <field name="model_id" ref="model_stock_move"/>
+        <field name="group_id" ref="group_quality_manager"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+
+
+    <record model="ir.rule" id="quality_check_comp_rule">
+            <field name="name">Quality check company rule</field>
+            <field name="model_id" ref="model_quality_check"/>
+            <field name="domain_force">['|', ('company_id','=',False),('company_id', 'in', company_ids)]</field>
+        </record> 
+
+
+
+
+</odoo>

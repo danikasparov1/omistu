@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--    Stock Card form view    -->
+
+        <record id="addis_systems_stock_move_stock_balance_wizard" model="ir.ui.view">
+            <field name="name">addis.systems.report.stock.move.stock.balance</field>
+            <field name="model">report.stock.move.stock.balance</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        
+                        <group>
+                            <field name="product_categ_ids" widget="many2many_tags"
+                            options="{'no_create': True}"></field>
+                        </group>
+
+                        <group>
+                            <field name="product_ids" widget="many2many_tags"
+                                options="{'no_create': True}"
+                                invisible="not product_categ_ids"
+                                domain="[
+                                '|',
+                                ('categ_id', 'in', product_categ_ids),
+                                ('id', '=', False)
+                            ]"/>
+                            <field name="product_ids" widget="many2many_tags" options="{'no_create': True}" invisible="product_categ_ids"/>
+                        </group>
+
+                    </group>
+                    <footer>
+                        <button name="preview_html" string="Preview" type="object" class="oe_highlight"/>
+                        <button name="process_pdf" string="PDF" type="object" class="oe_highlight"/>
+                        <button name="process_excel" string="Excel" type="object" class="oe_highlight"/>
+                        <button string="Discard" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!--    Action for profit and loss    -->
+
+        <record id="action_stock_move_stock_balance_report" model="ir.actions.act_window">
+            <field name="name">Stock Balance</field>
+            <field name="res_model">report.stock.move.stock.balance</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="addis_systems_stock_move_stock_balance_wizard"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem name="Stock Balance" id="menu_addis_systems_stock_balance" parent="stock.menu_warehouse_report" sequence="260" action="action_stock_move_stock_balance_report"/>
+
+    </data>
+</odoo>

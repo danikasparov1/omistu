@@ -1,0 +1,11 @@
+<odoo>
+    <record id="action_payment_order" model="ir.actions.act_window">
+        <field name="name">Payment Orders</field>
+        <field name="res_model">payment.order</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_payment_order_root" name="Payment Orders" parent="account.menu_finance_entries" sequence="10" />
+    <menuitem id="menu_payment_order" name="Payment Orders" parent="menu_payment_order_root" sequence="10"
+              action="action_payment_order" />
+</odoo>

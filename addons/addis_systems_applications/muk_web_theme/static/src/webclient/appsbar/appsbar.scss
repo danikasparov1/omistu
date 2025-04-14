@@ -1,0 +1,152 @@
+.mk_apps_sidebar_panel {
+    @include mk-disable-scrollbar();
+    overflow-y: auto;	
+	position: fixed; 
+    top: $o-navbar-height;
+    height: calc(100% - #{$o-navbar-height}); 
+   // background: $mk-appbar-background;
+    margin: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    border: 2px rgb(218, 216, 216) !important;
+    box-shadow: -5px 0px 10px 1px #EEEEEE;;
+    width: 185px !important;
+    height: 85%;
+	background-color: white;
+    margin-right: 10px;
+//     position: absolute;
+//      z-index: 100 !important;
+    .mk_apps_sidebar {
+        //color: yellow !important;
+        //width: 300px;
+      //  background: white !important;
+	    padding: 3px;
+	    //margin-left: -10px;
+	    white-space: nowrap;
+        //width: 370px;
+	    .mk_apps_sidebar_menu {
+		    list-style: none;
+		    margin: 0;
+		    padding: 0;
+		   // width: 370px;
+
+		    > li {
+		        margin: 0;
+		        padding: 3px;
+		        border: 0px;
+		       // color: black !important;
+		        display: block;
+				font-weight: bold !important;
+		       // width: 370px;
+		        > a {
+		            font-family: $ashewa-font-type !important;
+                    font-weight: bold !important;
+                    color: $ashewa-text-color!important;
+		            margin: 2px;
+		            border: 1px;
+		            display: block;
+		            cursor: pointer;
+		            font-size: 13px;
+		            font-weight: 300;
+		            overflow: hidden;
+		            padding: 10px 11px;
+		            position: relative;
+		            text-decoration: none;
+		           // width: 370px;
+		         //   color: $mk-appbar-color;
+		            text-overflow: ellipsis;
+		            .mk_apps_sidebar_icon {
+					    width: 30px;
+					    height: 30px;
+					    margin-left: 0;
+					    margin-right: 5px;
+					   // background: yellow;
+					    border-radius: 50px;
+					}
+		        }
+// 		        > a:hover {
+// 		           background: $o-sidebar-hover !important;
+// 		           border-radius: 25px;
+// 		           color: $ashewa-hover-text-color !important;
+// 		        }
+		    }
+		  > li:hover > a {
+		   background: $o-sidebar-hover !important;
+                 border-radius: 7px;
+                 color: $ashewa-hover-text-color !important;
+             }
+	    }
+	}
+}
+
+@include media-breakpoint-up(lg) {
+	.mk_sidebar_type_large {
+		.mk_apps_sidebar_panel {
+			width: $mk-sidebar-large-width;
+		}
+		.o_navbar + .o_action_manager {
+			padding-left: $mk-sidebar-large-width;
+		}
+	}
+	.mk_sidebar_type_small {
+		.mk_apps_sidebar_panel {
+			width: $mk-sidebar-small-width;
+			.mk_apps_sidebar_name {
+				display: none;
+			}
+			.mk_apps_sidebar_icon {
+				margin-right: 0 !important;
+			}
+		}
+		.o_navbar + .o_action_manager {
+			padding-left: $mk-sidebar-small-width;
+		}
+	}
+	.mk_sidebar_type_invisible {
+		.mk_apps_sidebar_panel {
+			display: none;
+		}
+	}
+}
+
+@include media-breakpoint-only(md) {
+	.mk_sidebar_type_large, .mk_sidebar_type_small {
+		.mk_apps_sidebar_panel {
+			width: $mk-sidebar-small-width;
+			.mk_apps_sidebar_name {
+				display: none;
+			}
+			.mk_apps_sidebar_icon {
+				margin-right: 0 !important;
+			}
+		}
+		.o_navbar + .o_action_manager {
+			padding-left: $mk-sidebar-small-width;
+		}
+	}
+	.mk_sidebar_type_invisible {
+		.mk_apps_sidebar_panel {
+			display: none;
+		}
+	}
+}
+
+@include media-breakpoint-down(sm) {
+	.mk_apps_sidebar_panel {
+		display: none;
+	}
+	.o_action_manager {
+		padding-left: 0;
+	}
+}
+
+.editor_has_snippets_hide_backend_navbar {
+	.mk_apps_sidebar_panel {
+		display: none !important;
+	}
+	.o_action_manager {
+		padding-left: 0 !important;
+	}
+}
+
+

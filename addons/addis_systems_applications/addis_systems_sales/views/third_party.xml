@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="account_inherit_view_move_form_inherit" model="ir.ui.view">
+            <field name="name">addissystems_third_pary.account_move.inherited_form_view</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            
+            <field name="arch" type="xml">
+                <xpath expr="//header/button[@name='action_register_payment']" position="before">
+                    <field name="cnet_enabled" invisible="1" />
+                    <field name="maraki_enabled" invisible="1"   />
+                    <field name="peds_enabled" invisible="1"  />
+                    <field name="is_xml_downloaded" invisible="1"  />
+
+                    <button name="download_xml" class="oe_highlight" string='XML' type='object' invisible="(state != 'posted') or is_xml_downloaded"/>
+
+                    <button name="download_xml" class="oe_highlight" string='Cnet' type='object' invisible="(state != 'posted') or  (not cnet_enabled) or True"/>
+                    <button name="download_xml" class="oe_highlight" string='Maraki' type='object' invisible="state != 'posted' or not maraki_enabled or True"/>
+                    <button name="download_xml" class="oe_highlight" string='Peds' type='object' invisible="state != 'posted' or not peds_enabled or True"/>
+
+                </xpath>
+            </field>
+            </record>
+            </data>
+            </odoo>

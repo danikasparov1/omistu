@@ -1,0 +1,35 @@
+<odoo>
+    <data>
+        <!-- Inherit the manufacturing order form view -->
+        <record id="view_mrp_production_form_inherit" model="ir.ui.view">
+            <field name="name">mrp.production.form.inherit</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="arch" type="xml">
+            <xpath expr="//sheet//div[@class='oe_button_box']" position="inside">
+                <button name="open_manufacturing_requests" 
+                        type="object" 
+                        string="Product Requests"
+                        class="oe_stat_button"
+                        icon="fa-cogs">
+                    <field name="product_request_count" widget="statinfo"/>
+                </button>
+            </xpath>
+            <xpath expr="//header" position="inside">
+                <button name="action_open_product_request_form" type="object" string="Request Product"/>
+            </xpath>
+                <xpath expr="//header//button[@name='action_open_label_type']" position="after">
+                    <!-- Add your new field here -->
+                    <button string="Print" type="object" name="download_report"/>
+                </xpath>
+         
+                <xpath expr="//group//group//div[@name='bom_div']" position="after">
+                    <!-- Add your new field here -->
+                    <field name="customer_info"/>
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="invenotory_product_expiry">
+        <t t-call="web.html_container">
+                <t t-call="web.internal_layout">
+                    <div class="page">
+                        <h2><span t-esc="res_company.name"/>:Stock expiry report</h2>
+                        <t t-set="date_range_dict" t-value="{'month': 'This Month', 'year': 'This Year', 'first-quarter': 'January - March', 'second-quarter': 'April - June', 'third-quarter': 'July - September', 'last-quarter': 'October - December'}"/>
+
+                        <h6>
+                            <t t-if="filters.get('date_range')">
+                                <t t-esc="date_range_dict[filters.get('date_range')]"/>
+                            </t>
+                            <t t-else="">
+                                <t t-if="filters.get('date_from') and filters.get('date_to')">
+                                    From <t t-esc="filters.get('date_from')"/> to <t t-esc="filters.get('date_to')"/>
+                                </t>
+                                <t t-elif="filters.get('date_from')">
+                                    From <t t-esc="filters.get('date_from')"/> onwards
+                                </t>
+                                <t t-elif="filters.get('date_to')">
+                                    Up to <t t-esc="filters.get('date_to')"/>
+                                </t>
+                                <t t-else="">
+                                    No date range specified
+                                </t>
+                            </t>
+                        </h6>
+
+                        <table class="table table-sm table-reports">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Lot/Serial</th>
+                                    <th>Expiry Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               <t t-foreach="data.get('data')" t-as="product">
+                                <tr>
+                                    <td><span t-att-style="style" t-esc="product.get('product_name')"/></td>
+                                    <td></td>
+                                </tr>
+                                <t t-foreach="product.get('lots')" t-as="product_line">
+                                    <tr>
+                                    <td></td>
+                                    <td> <span style="color: white;" t-esc="'.....'"/><span t-att-style="style" t-esc="product_line.get('lot_name')"/></td>
+                                    <td><span t-att-style="style" t-esc="product_line.get('expiration_date')"/></td>
+                                </tr>
+                                </t>
+                            </t>
+                                </tbody>
+                        </table>
+                    </div>
+                </t>
+        </t>
+    </template>
+</odoo>

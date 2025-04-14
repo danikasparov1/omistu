@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+<record id="action_report_partnerledger_excel" model="ir.actions.report">
+            <field name="name">Partner Ledger</field>
+            <field name="model">account.report.partner.ledger</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">accounting_pdf_reports.report_partnerledger_excel</field>
+            <field name="report_file">accounting_pdf_reports.report_partnerledger_excel</field>
+</record>
+ <record id="action_report_aged_partner_balance_excel" model="ir.actions.report">
+            <field name="name">Aged Partner Balance Excel</field>
+            <field name="model">res.partner</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">accounting_pdf_reports.report_agedpartnerbalance_excel</field>
+            <field name="report_file">accounting_pdf_reports.report_agedpartnerbalance_excel</field>
+</record>
+ <record id="action_report_general_ledger_excel" model="ir.actions.report">
+            <field name="name">General Ledger</field>
+            <field name="model">account.report.general.ledger</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">accounting_pdf_reports.report_general_ledger_excel</field>
+            <field name="report_file">accounting_pdf_reports.report_general_ledger_excel</field>
+        </record>
+<record id="action_report_trial_balance_excel" model="ir.actions.report">
+            <field name="name">Trial Balance</field>
+            <field name="model">account.balance.report</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">accounting_pdf_reports.report_trialbalance_excel</field>
+            <field name="report_file">accounting_pdf_reports.report_trialbalance_excel</field>
+        </record>
+<record id="action_report_account_tax_excel" model="ir.actions.report">
+            <field name="name">Tax Report</field>
+            <field name="model">account.tax.report.wizard</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">accounting_pdf_reports.report_tax_excel</field>
+            <field name="report_file">accounting_pdf_reports.report_tax_excel</field>
+</record>
+ <record id="action_report_journal_excel" model="ir.actions.report">
+            <field name="name">Journals Audit</field>
+            <field name="model">account.common.journal.report</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">accounting_pdf_reports.report_journal_excel</field>
+            <field name="report_file">accounting_pdf_reports.report_journal_excel</field>
+        </record>
+
+<record id="action_report_day_book_excel" model="ir.actions.report">
+            <field name="name">Day Book</field>
+            <field name="model">account.daybook.report</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">om_account_daily_reports.report_daybook_excel</field>
+            <field name="report_file">om_account_daily_reports.report_daybook_excel</field>
+        </record>
+
+        <record id="action_report_cash_book_excel" model="ir.actions.report">
+            <field name="name">Cash Book</field>
+            <field name="model">account.cashbook.report</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">om_account_daily_reports.report_cashbook_excel</field>
+            <field name="report_file">om_account_daily_reports.report_cashbook_excel</field>
+        </record>
+
+        <record id="action_report_bank_book_excel" model="ir.actions.report">
+            <field name="name">Bank Book</field>
+            <field name="model">account.bankbook.report</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">om_account_daily_reports.report_bankbook_excel</field>
+            <field name="report_file">om_account_daily_reports.report_bankbook_excel</field>
+        </record>
+         <record id="action_report_financial_excel" model="ir.actions.report">
+            <field name="name">Financial Report</field>
+            <field name="model">account.financial.report</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">accounting_pdf_reports.report_financial_excel</field>
+            <field name="report_file">accounting_pdf_reports.report_financial_excel</field>
+        </record>
+</odoo>

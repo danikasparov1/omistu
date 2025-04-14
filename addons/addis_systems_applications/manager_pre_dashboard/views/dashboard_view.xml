@@ -1,0 +1,44 @@
+<odoo>
+    <record id="view_manager_dashboard_form" model="ir.ui.view">
+        <field name="name">manager.dashboard.form</field>
+        <field name="model">manager.dashboard</field>
+        <field name="arch" type="xml">
+            <form string="Manager Dashboard">
+                <sheet>
+                    <group>
+                        <h2>Welcome, Manager!</h2>
+                        <div>
+                            <h4>Quick Overview:</h4>
+                            <div class="o_row">
+                                <div class="o_col">
+                                    <strong>Sales Orders</strong>
+                                    <button name="open_reports_menu" string="View" type="object" class="btn-primary" />
+                                    <field name="sales_count" widget="statinfo" />
+                                </div>
+                                <div class="o_col">
+                                    <strong>Purchase Orders</strong>
+                                    <button name="open_reports_menu" string="View" type="object" class="btn-primary" />
+                                    <field name="purchase_count" widget="statinfo" />
+                                </div>
+                                <div class="o_col">
+                                    <strong>Pending Tasks</strong>
+                                    <button name="open_tasks_menu" string="View" type="object" class="btn-primary" />
+                                    <field name="task_count" widget="statinfo" />
+                                </div>
+                            </div>
+                        </div>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_manager_dashboard" model="ir.actions.act_window">
+        <field name="name">Manager Dashboard</field>
+        <field name="res_model">manager.dashboard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_manager_dashboard" name="Manager Dashboard" action="action_manager_dashboard" sequence="1" />
+</odoo>

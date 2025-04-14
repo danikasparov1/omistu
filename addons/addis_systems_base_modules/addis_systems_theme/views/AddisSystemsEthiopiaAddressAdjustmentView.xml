@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="addis_systems_base_theme_res_company_view_form_inherit" model="ir.ui.view">
+            <field name="name">addis.systems.base.res.company.form.inherit</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/div[hasclass('oe_title')]" position="inside">
+                    <label for="trade_name"/>
+                    <h2>
+                        <field name="trade_name" placeholder="Trade Name"/>
+                    </h2>
+                </xpath>
+                <xpath expr="//div[hasclass('o_address_format')]" position="replace">
+                    <div class="o_address_addis_systems_format">
+                        <field name="street" placeholder="Street..." class="o_address_street"/>
+                        <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                        <div name="partner_address_house_number" class="d-flex justify-content-between">
+                            <field name="post_office_number" placeholder="P.O.BOX" class="o_address_city"/>
+                            <field name="house_number" placeholder="House Number" class="o_address_city"/>
+                        </div>
+                        <div name="partner_address_woreda_and_kebele" class="d-flex justify-content-between">
+                            <field name="kebele" placeholder="Kebele" class="o_address_city"/>
+                            <field name="woreda" placeholder="Woreda" class="o_address_city"/>
+                        </div>
+                        <div name="partner_address_city_zip" class="d-flex justify-content-between">
+                            <field name="sub_city" placeholder="Sub-City" class="o_address_city"/>
+                            <field name="city" placeholder="City" class="o_address_city"/>
+                            <field name="zip" placeholder="ZIP Code" class="o_address_zip" invisible="0"/>
+                        </div>
+                        <div name="partner_address_country" class="d-flex justify-content-between" invisible="not country_id">
+                            <field name="zone_id" class="partner_address_country" placeholder="Zone" options="{'no_open': True, 'no_quick_create': True}" invisible="not state_id"
+                                   context="{'country_id': country_id, 'default_country_id': country_id, 'state_id': state_id, 'default_state_id': state_id}"/>
+                            <field name="state_id" class="partner_address_country" placeholder="Region" options="{'no_open': True, 'no_quick_create': True}" invisible="not country_id"
+                                   context="{'country_id': country_id, 'default_country_id': country_id}"/>
+                        </div>
+                        <div name="partner_address_country" class="d-flex justify-content-between">
+                            <field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}'/>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="addis_systems_base_theme_res_partner_view_form_inherit" model="ir.ui.view">
+            <field name="name">addis.systems.base.res.partner.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/div[hasclass('oe_title')]" position="inside">
+                    <h2 invisible="type != 'contact' or not is_company">
+                        <field name="trade_name" placeholder="Trade Name" invisible="type != 'contact' or not is_company"/>
+                    </h2>
+                </xpath>
+                <field name="vat" position="replace">
+                    <field name="vat" placeholder="e.g. BE0477472701" string="Tin Number" readonly="parent_id"/>
+                </field>
+                <xpath expr="//div[hasclass('o_address_format')]" position="replace">
+                    <div class="o_address_addis_systems_format">
+                        <field name="street" placeholder="Street..." class="o_address_street"
+                               readonly="type == 'contact' and parent_id"/>
+                        <field name="street2" placeholder="Street 2..." class="o_address_street" readonly="type == 'contact' and parent_id"/>
+                        <div name="partner_address_house_number" class="d-flex justify-content-between">
+                            <field name="post_office_number" placeholder="P.O.BOX" class="o_address_city"/>
+                            <field name="house_number" placeholder="House Number" class="o_address_city"/>
+                        </div>
+                        <div name="partner_address_woreda_and_kebele" class="d-flex justify-content-between">
+                            <field name="kebele" placeholder="Kebele" class="o_address_city"/>
+                            <field name="woreda" placeholder="Woreda" class="o_address_city"/>
+                        </div>
+                        <div name="partner_address_city_zip" class="d-flex justify-content-between">
+                            <field name="sub_city" placeholder="Sub-City" class="o_address_city"/>
+                            <field name="city" placeholder="City" class="o_address_city" readonly="type == 'contact' and parent_id"/>
+                            <field name="zip" placeholder="ZIP Code" class="o_address_zip" readonly="type == 'contact' and parent_id" invisible="0"/>
+                        </div>
+                        <div name="partner_address_country" class="d-flex justify-content-between" invisible="not country_id">
+                            <field name="zone_id" class="partner_address_country" placeholder="Zone" options="{'no_open': True, 'no_quick_create': True}" readonly="type == 'contact' and parent_id" invisible="not state_id"
+                                   context="{'country_id': country_id, 'default_country_id': country_id, 'state_id': state_id, 'default_state_id': state_id}"/>
+                            <field name="state_id" class="partner_address_country" placeholder="Region" options="{'no_open': True, 'no_quick_create': True}" readonly="type == 'contact' and parent_id" invisible="not country_id"
+                                   context="{'country_id': country_id, 'default_country_id': country_id}"/>
+                        </div>
+                        <div name="partner_address_country" class="d-flex justify-content-between">
+                            <field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}' readonly="type == 'contact' and parent_id"/>
+                        </div>
+                    </div>
+                </xpath>
+                <xpath expr="//div[@name='div_address']" position="replace">
+                    <div class="o_address_addis_systems_format" name="div_address">
+                        <field name="street" placeholder="Street..." class="o_address_street"
+                               readonly="type == 'contact' and parent_id"/>
+                        <field name="street2" placeholder="Street 2..." class="o_address_street" readonly="type == 'contact' and parent_id"/>
+                        <div name="partner_address_house_number" class="d-flex justify-content-between">
+                            <field name="post_office_number" placeholder="P.O.BOX" class="o_address_city"/>
+                            <field name="house_number" placeholder="House Number" class="o_address_city"/>
+                        </div>
+                        <div name="partner_address_woreda_and_kebele" class="d-flex justify-content-between">
+                            <field name="kebele" placeholder="Kebele" class="o_address_city"/>
+                            <field name="woreda" placeholder="Woreda" class="o_address_city"/>
+                        </div>
+                        <div name="partner_address_city_zip" class="d-flex justify-content-between">
+                            <field name="sub_city" placeholder="Sub-City" class="o_address_city"/>
+                            <field name="city" placeholder="City" class="o_address_city" readonly="type == 'contact' and parent_id"/>
+                            <field name="zip" placeholder="ZIP Code" class="o_address_zip" readonly="type == 'contact' and parent_id" invisible="0"/>
+                        </div>
+                        <div name="partner_address_country" class="d-flex justify-content-between" invisible="not country_id">
+                            <field name="zone_id" class="partner_address_country" placeholder="Zone" options="{'no_open': True, 'no_quick_create': True}" readonly="type == 'contact' and parent_id" invisible="not state_id"
+                                   context="{'country_id': country_id, 'default_country_id': country_id, 'state_id': state_id, 'default_state_id': state_id}"/>
+                            <field name="state_id" class="partner_address_country" placeholder="Region" options="{'no_open': True, 'no_quick_create': True}" readonly="type == 'contact' and parent_id" invisible="not country_id"
+                                   context="{'country_id': country_id, 'default_country_id': country_id}"/>
+                        </div>
+                        <div name="partner_address_country" class="d-flex justify-content-between">
+                            <field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}' readonly="type == 'contact' and parent_id"/>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

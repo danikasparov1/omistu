@@ -1,0 +1,51 @@
+<odoo>
+    <template id="report_purchaseorder_document_inherit" inherit_id="purchase.report_purchaseorder_document">
+        <xpath expr="//div[@id='informations']" position="before">
+            <div class="row">
+                <div class="col-6">
+                    <h5 t-if="o.partner_id">Vendor : <span t-esc="o.partner_id.name"/></h5>
+                    <!-- <span t-field="doc.partner_id.name"/> -->
+                </div>
+            </div>
+        </xpath>
+    </template>
+        <!-- <template id="report_mrp_production_order_document_inherit" inherit_id="mrp.report_mrp_production_components">
+        <xpath expr="//table" position="after">
+            <div class="row">
+                <div class="col-6">
+                    <h5>Here we lAND</h5>
+                    <ul>
+                    <li t-foreach="doc.manufacturing_other_fields_ids" t-as="field">
+                        <span t-field="field.name" />
+                    </li>
+                </ul>
+                </div>
+            </div>
+        </xpath>
+    </template> -->
+
+
+
+
+<template id="report_mrp_production_order_document_inherit" inherit_id="mrp.report_mrp_production_components">
+    <xpath expr="//table" position="after">
+        <div class="row">
+            <div class="col-6">
+                <h5>Services</h5>
+                <ul>
+                    <li t-foreach="docs" t-as="doc">
+                        <!-- <strong t-field="doc.name" /> Displays production name -->
+                        <ul>
+                            <li t-foreach="doc.manufacturing_other_fields_ids" t-as="field">
+                                <span t-field="field.name" /> <!-- Displays related field name -->
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </xpath>
+</template>
+
+
+</odoo>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates>
+    <t t-name="addis_systems_reconcillation.AccountMoveLineReconcileView.Buttons" t-inherit="web.ListView.Buttons" owl="1">
+        <xpath expr="//div[hasclass('o_list_buttons')]" position="inside">
+            <button t-if="nbSelected" class="btn btn-primary ms-2 w-100" t-on-click="reconcile_items">Reconcile</button>
+        </xpath>
+    </t>
+
+    <t t-name="addis_systems_reconcillation.AccountMoveLineReconcileView" t-inherit="web.ListView" owl="1">
+        <xpath expr="//t[contains(@t-component, 'props.Renderer')]" position="before">
+            <div class="p-3 bg-white o_res_partner_kanban_view_sidebar">
+                <div class="row mt4 mb4">
+
+                <h2 t-if ="this.state.bank_info" t-esc="state.bank_info.bank_name"/>
+                <h2 t-if ="this.state.bank_info" t-esc="state.bank_info.default_account_id"/>
+                <h2 t-if ="this.state.bank_info" t-esc="'Account Balance : ' + formatCurrency(state.bank_info.account_balance)"/>
+
+
+                    <div class="col-4">
+                        <strong>Book Opening Balance:</strong>
+                            <span t-if ="this.state.bank_info" t-esc="formatCurrency(state.bank_info.begining_balance)"  class="border border-secondary rounded px-2 py-1 bg-light ms-3"></span>
+                    </div>
+
+                       <div class="col-4">
+                        <strong>Total Selected:</strong>
+                            <span t-esc="formatCurrency(Totalclickedamount)"  class="border border-secondary rounded px-2 py-1 bg-light ms-3"></span>
+                    </div>
+                </div>
+
+
+                <div class="row mt4 mb4">
+                    <div class="col-4">
+                        <strong>Difference :</strong>
+                            <span t-if ="this.state.bank_info" t-esc="formatCurrency(state.bank_info.ending_balance - Totalclickedamount - this.state.bank_info.reconciled_amount)"  class="border border-secondary rounded px-2 py-1 bg-light ms-3"></span>
+                    </div>
+                    <div class="col-4">
+                        <strong>Reconciled Amount:</strong>
+                            <span t-if = "this.state.bank_info" t-esc="formatCurrency(this.state.bank_info.reconciled_amount)"  class="border border-secondary rounded px-2 py-1 bg-light ms-3"></span>
+                    </div>
+                </div>
+
+                <div class="row mt4 mb4">
+                 
+                    <div class="col-4">
+                        <strong>Book Statement Ending Balance:</strong>
+                        <span t-if="this.state.bank_info" t-esc="formatCurrency(state.bank_info.ending_balance)" class="border border-secondary rounded px-2 py-1 bg-light ms-3"></span>
+                    </div>
+                     <div class="col-4">
+                        <strong>Unreconciled Amount:</strong>
+                        <span t-if="this.state.bank_info" t-esc="formatCurrency(state.bank_info.un_reconciled_amount)" class="border border-secondary rounded px-2 py-1 bg-light ms-3"></span>
+                    </div>
+                </div>
+
+                 
+
+
+               
+            </div>
+        </xpath>
+
+
+
+
+    </t>
+</templates>

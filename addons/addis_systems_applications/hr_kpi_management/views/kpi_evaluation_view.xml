@@ -1,0 +1,50 @@
+<odoo>
+    <data>
+
+        <!-- Form View for hr.kpi.evaluation -->
+        <record id="view_form_hr_kpi_evaluation" model="ir.ui.view">
+            <field name="name">hr.kpi.evaluation.form</field>
+            <field name="model">hr.kpi.evaluation</field>
+            <field name="arch" type="xml">
+                <form string="KPI Evaluation">
+                    <sheet>
+                        <group>
+                            <field name="kpi_id"/>
+                            <field name="employee_id"/>
+                            <field name="actual_value"/>
+                            <field name="evaluation_date"/>
+                            <field name="performance_score" readonly="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree View for hr.kpi.evaluation -->
+        <record id="view_tree_hr_kpi_evaluation" model="ir.ui.view">
+            <field name="name">hr.kpi.evaluation.tree</field>
+            <field name="model">hr.kpi.evaluation</field>
+            <field name="arch" type="xml">
+                <tree string="KPI Evaluation">
+                    <field name="kpi_id"/>
+                    <field name="employee_id"/>
+                    <field name="actual_value"/>
+                    <field name="evaluation_date"/>
+                    <field name="performance_score"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action for hr.kpi.evaluation -->
+        <record id="action_hr_kpi_evaluation" model="ir.actions.act_window">
+            <field name="name">KPI Evaluations</field>
+            <field name="res_model">hr.kpi.evaluation</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+        </record>
+
+        <!-- Menu item for KPI Evaluations -->
+        <menuitem id="menu_hr_kpi_evaluation" name="KPI Evaluations"  action="action_hr_kpi_evaluation"/>
+
+    </data>
+</odoo>

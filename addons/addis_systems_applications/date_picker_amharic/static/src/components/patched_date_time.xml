@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="date_picker_amharic.DateTimeField" t-inherit="web.DateTimeField" owl="1" t-inherit-mode="extension">
+        <xpath expr="//div[@t-ref='root']" position="after">
+            <t t-if="!Array.isArray(getRecordValue()) and getRecordValue()">
+                <div class="ethiopic-date">
+                    <span class="text-muted">
+                        <t t-esc="getRecordValue().reconfigure({ outputCalendar: 'ethiopic' }).setLocale('am').toLocaleString().split(' ')[0]" />
+                        (et.c)
+                    </span>
+                </div>
+            </t>
+                <div t-if="Array.isArray(getRecordValue()) and (getRecordValue()[0] or getRecordValue()[1])" class="ethiopic-date d-flex justify-content-between mt-1">
+                <span t-if="getRecordValue()[0]" class="text-muted">
+                    <t t-esc="getRecordValue()[0].reconfigure({ outputCalendar: 'ethiopic' }).setLocale('am').toLocaleString().split(' ')[0]" />
+                    (et.c)
+                </span>
+                <span t-if="getRecordValue()[1]" class="text-muted">
+                    <t t-esc="getRecordValue()[1].reconfigure({ outputCalendar: 'ethiopic' }).setLocale('am').toLocaleString().split(' ')[0]" />
+                    (et.c)
+                </span>
+</div>
+
+        </xpath>
+    </t>
+</templates>

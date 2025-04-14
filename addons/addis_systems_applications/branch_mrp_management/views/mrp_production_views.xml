@@ -1,0 +1,33 @@
+<odoo>
+    <!-- Form view for mrp.production with branch_id field -->
+    <record id="view_mrp_production_form_branch" model="ir.ui.view">
+        <field name="name">mrp.production.form.branch</field>
+        <field name="model">mrp.production</field>
+        <field name="arch" type="xml">
+            <form string="Manufacturing Order">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="product_id"/>
+                        <field name="branch_id"/>
+                        <!-- Add other fields as needed -->
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree view for mrp.production with branch_id field -->
+    <record id="view_mrp_production_tree_branch" model="ir.ui.view">
+        <field name="name">mrp.production.tree.branch</field>
+        <field name="model">mrp.production</field>
+        <field name="arch" type="xml">
+            <tree string="Manufacturing Orders">
+                <field name="name"/>
+                <field name="product_id"/>
+                <field name="branch_id"/>
+                <!-- Add other fields as needed -->
+            </tree>
+        </field>
+    </record>
+</odoo>

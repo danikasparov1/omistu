@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_general_ledger_inherited_drill_down" inherit_id="accounting_pdf_reports.report_general_ledger">
+        <xpath expr="//t[@t-foreach='Accounts']/tr[2]/td[5]" position="replace">
+            <t t-set="move_link" t-value="docs._get_redirect_link(line['lid'])"/>
+            <td><span><a style="text-decoration: none; color: inherit; font-weight:bold;" t-attf-href="{{move_link}}" target="_blank" t-esc="line['move_name']"/></span></td>
+        </xpath>
+    </template>
+
+</odoo>

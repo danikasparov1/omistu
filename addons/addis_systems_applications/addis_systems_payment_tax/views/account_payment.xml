@@ -1,0 +1,21 @@
+<odoo>
+    <data>
+
+        <record id="addis_systems_account_payment_inherited_form_view" model="ir.ui.view">
+            <field name="name">addis.systems.account.payment.form.inherit</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='date']" position="after">
+                    <field name="tax_ids" widget="many2many_tags" domain = "[('type_tax_use','=','sale')]" invisible="payment_type == 'inbound'"/>
+                    <field name="tax_ids" widget="many2many_tags" domain = "[('type_tax_use','=','purchase')]" invisible="payment_type == 'outbound'"/>
+                    <field name="payment_taxed_amount" invisible="not tax_ids"/>
+                    <field name="expense_account_id"  domain="[('account_type', 'in', ['asset_receivable', 'asset_payable'])]" />
+
+                     
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

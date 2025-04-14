@@ -1,0 +1,1638 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="base.ad" model="res.country">
+            <field name="name_am">አንዶራ</field>
+        </record>
+        <record id="base.ae" model="res.country">
+            <field name="name_am">ዩናይትድ ዓረብ ኤምሬት</field>
+        </record>
+        <record id="base.af" model="res.country">
+            <field name="name_am">አፍጋኒስታን</field>
+        </record>
+        <record id="base.ag" model="res.country">
+            <field name="name_am">አንቲጉአ እና ባርቡዳ</field>
+        </record>
+        <record id="base.ai" model="res.country">
+            <field name="name_am">አንጉላ</field>
+        </record>
+        <record id="base.al" model="res.country">
+            <field name="name_am">አልባኒያ</field>
+        </record>
+        <record id="base.am" model="res.country">
+            <field name="name_am">አርሜኒያ</field>
+        </record>
+        <record id="base.ao" model="res.country">
+            <field name="name_am">አንጎላ</field>
+        </record>
+        <record id="base.aq" model="res.country">
+            <field name="name_am">አንታርክቲካ</field>
+        </record>
+        <record id="base.ar" model="res.country">
+            <field name="name_am">አርጀንቲና</field>
+        </record>
+        <record id="base.as" model="res.country">
+            <field name="name_am">የአሜሪካ ሳሞአ</field>
+        </record>
+        <record id="base.at" model="res.country">
+            <field name="name_am">ኦስትራ</field>
+        </record>
+        <record id="base.au" model="res.country">
+            <field name="name_am">አውስትራሊያ</field>
+        </record>
+        <record id="base.aw" model="res.country">
+            <field name="name_am">አሩባ</field>
+        </record>
+        <record id="base.ax" model="res.country">
+            <field name="name_am">የአላንድ ደሴቶች</field>
+        </record>
+        <record id="base.az" model="res.country">
+            <field name="name_am">አዘርባጃን</field>
+        </record>
+        <record id="base.ba" model="res.country">
+            <field name="name_am">ቦስኒያ እና ሔርዞጎቪያ</field>
+        </record>
+        <record id="base.bb" model="res.country">
+            <field name="name_am">ባርባዶስ</field>
+        </record>
+        <record id="base.bd" model="res.country">
+            <field name="name_am">ባንግላድሽ</field>
+        </record>
+        <record id="base.be" model="res.country">
+            <field name="name_am">ቤልጄም</field>
+        </record>
+        <record id="base.bf" model="res.country">
+            <field name="name_am">ቡርክናፋሶ</field>
+        </record>
+        <record id="base.bg" model="res.country">
+            <field name="name_am">ቡልጋሪያ</field>
+        </record>
+        <record id="base.bh" model="res.country">
+            <field name="name_am">ባሃሬን</field>
+        </record>
+        <record id="base.bi" model="res.country">
+            <field name="name_am">ቡሩንዲ</field>
+        </record>
+        <record id="base.bj" model="res.country">
+            <field name="name_am">ቤኒኒ</field>
+        </record>
+        <record id="base.bl" model="res.country">
+            <field name="name_am">ቅድስት በርተሌሚ</field>
+        </record>
+        <record id="base.bm" model="res.country">
+            <field name="name_am">ቤርሙዳ</field>
+        </record>
+        <record id="base.bn" model="res.country">
+            <field name="name_am">ብሩኒ ዳሩሳላም</field>
+        </record>
+        <record id="base.bo" model="res.country">
+            <field name="name_am">ቦሊቪያ</field>
+        </record>
+        <record id="base.bq" model="res.country">
+            <field name="name_am">ቦናይር፣ ሲንት ኤውስታቲየስ እና ሳባ</field>
+        </record>
+        <record id="base.br" model="res.country">
+            <field name="name_am">ብራዚል</field>
+        </record>
+        <record id="base.bs" model="res.country">
+            <field name="name_am">ባሐማስ</field>
+        </record>
+        <record id="base.bt" model="res.country">
+            <field name="name_am">በሓቱን</field>
+        </record>
+        <record id="base.bv" model="res.country">
+            <field name="name_am">ቡቬት ደሴት</field>
+        </record>
+        <record id="base.bw" model="res.country">
+            <field name="name_am">ቦትስዋና</field>
+        </record>
+        <record id="base.by" model="res.country">
+            <field name="name_am">ቤላሩስ</field>
+        </record>
+        <record id="base.bz" model="res.country">
+            <field name="name_am">ቤሊዜ</field>
+        </record>
+        <record id="base.ca" model="res.country">
+            <field name="name_am">ካናዳ</field>
+        </record>
+        <record id="base.cc" model="res.country">
+            <field name="name_am">ኮኮስ (ኬሊንግ) ደሴቶች</field>
+        </record>
+        <record id="base.cf" model="res.country">
+            <field name="name_am">ሴንትራል አፍሪካ ሪፑቢሊክ</field>
+        </record>
+        <record id="base.cd" model="res.country">
+            <field name="name_am">ዲሞክራቲክ ሩፑብሊክ ኮንጎ</field>
+        </record>
+        <record id="base.cg" model="res.country">
+            <field name="name_am">ኮንጎ</field>
+        </record>
+        <record id="base.ch" model="res.country">
+            <field name="name_am">ስዊዘሪላንድ</field>
+        </record>
+        <record id="base.ci" model="res.country">
+            <field name="name_am">ኮትዲቫር</field>
+        </record>
+        <record id="base.ck" model="res.country">
+            <field name="name_am">ኩክ አይስላንድስ</field>
+        </record>
+        <record id="base.cl" model="res.country">
+            <field name="name_am">ቺሊ</field>
+        </record>
+        <record id="base.cm" model="res.country">
+            <field name="name_am">ካሜሩን</field>
+        </record>
+        <record id="base.cn" model="res.country">
+            <field name="name_am">ቻይና</field>
+        </record>
+        <record id="base.co" model="res.country">
+            <field name="name_am">ኮሎምቢያ</field>
+        </record>
+        <record id="base.cr" model="res.country">
+            <field name="name_am">ኮስታሪካ</field>
+        </record>
+        <record id="base.cu" model="res.country">
+            <field name="name_am">ኩባ</field>
+        </record>
+        <record id="base.cv" model="res.country">
+            <field name="name_am">ኬፕ ቬሪዴ</field>
+        </record>
+        <record id="base.cw" model="res.country">
+            <field name="name_am">ኩራካዎ</field>
+        </record>
+        <record id="base.cx" model="res.country">
+            <field name="name_am">የገና ደሴት</field>
+        </record>
+        <record id="base.cy" model="res.country">
+            <field name="name_am">ቆጵሮስ</field>
+        </record>
+        <record id="base.cz" model="res.country">
+            <field name="name_am">ቼክ ሪፐብሊክ</field>
+        </record>
+        <record id="base.de" model="res.country">
+            <field name="name_am">ጀርመን</field>
+        </record>
+        <record id="base.dj" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.dk" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.dm" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.do" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.dz" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.ec" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.ee" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.eg" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.eh" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.er" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.es" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.et" model="res.country">
+            <field name="name_am">ኢትዮጵያ</field>
+            <field name="vat_label">TIN Number</field>
+            <field eval="251" name="phone_code"/>
+            <field eval="'%(post_office_number)s %(house_number)s\n%(kebele)s %(woreda)s\n%(city)s %(zone_name)s\n%(state_name)s %(country_name)s'" name="address_format"/>
+        </record>
+        <record id="base.fi" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.fj" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.fk" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.fm" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.fo" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.fr" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.ga" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.gd" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.ge" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.gf" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.gh" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.gi" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.gg" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.gl" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.gm" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.gn" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.gp" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.gq" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.gr" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.gs" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.gt" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.gu" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.gw" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.gy" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.hk" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.hm" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.hn" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.hr" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.ht" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.hu" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.id" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.ie" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.il" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.im" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.in" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.io" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.iq" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.ir" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.is" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.it" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.je" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.jm" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.jo" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.jp" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.ke" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.kg" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.kh" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.ki" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.km" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.kn" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.kp" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.kr" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.kw" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.ky" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.kz" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.la" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.lb" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.lc" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.li" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.lk" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.lr" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.ls" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.lt" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.lu" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.lv" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.ly" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.ma" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.mc" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.md" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.me" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.mf" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.mg" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.mh" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.mk" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.ml" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.mm" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.mn" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.mo" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.mp" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.mq" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.mr" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.ms" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.mt" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.mu" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.mv" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.mw" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.mx" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.my" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.mz" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.na" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.nc" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.ne" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.nf" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.ng" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.ni" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.nl" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.no" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.np" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.nr" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.nu" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.nz" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.om" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.pa" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.pe" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.pf" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.pg" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.ph" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.pk" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.pl" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.pm" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.pn" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.pr" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.ps" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.pt" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.pw" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.py" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.qa" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.re" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.ro" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.rs" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.ru" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.rw" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.sa" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.sb" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.sc" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.sd" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.se" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.sg" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.sh" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.si" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.sj" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.sk" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.sl" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.sm" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.sn" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.so" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.sr" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.ss" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.st" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.sv" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.sx" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.sy" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.sz" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.tc" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.td" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.tf" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.tg" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.th" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.tj" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.tk" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.tm" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.tn" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.to" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.tl" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.tr" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.tt" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.tv" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.tw" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.tz" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.ua" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.ug" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.uk" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.um" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.us" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.uy" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.uz" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.va" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.vc" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.ve" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.vg" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.vi" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.vn" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.vu" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.wf" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.ws" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.ye" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.yt" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.za" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.zm" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.zw" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+        <record id="base.xk" model="res.country">
+            <field name="name_am">የሀገር</field>
+        </record>
+
+
+        <!--    Note State    -->
+
+        <record id="base.state_et_1" model="res.country.state">
+            <field name="name">Addis Ababa</field>
+            <field name="name_am">አዲስ አበባ</field>
+            <field name="code">AA</field>
+            <field name="capital_city">Addis Ababa</field>
+            <field name="country_id" ref="base.et"/>
+        </record>
+
+        <record id="base.state_et_2" model="res.country.state">
+            <field name="name">Afar Region</field>
+            <field name="name_am">አፋር ክልል</field>
+            <field name="code">AF</field>
+            <field name="capital_city">Semera</field>
+            <field name="country_id" ref="base.et"/>
+        </record>
+
+        <record id="base.state_et_3" model="res.country.state">
+            <field name="name">Amhara Region</field>
+            <field name="name_am">አማራ ክልል</field>
+            <field name="code">AM</field>
+            <field name="capital_city">Bahir Dar</field>
+            <field name="country_id" ref="base.et"/>
+        </record>
+
+        <record id="base.state_et_4" model="res.country.state">
+            <field name="name">Benishangul-Gumuz Region</field>
+            <field name="name_am">ቤኒሻንጉል ጉሙዝ ክልል</field>
+            <field name="code">BN</field>
+            <field name="capital_city">Asosa</field>
+            <field name="country_id" ref="base.et"/>
+        </record>
+
+        <record id="base.state_et_5" model="res.country.state">
+            <field name="name">Dire Dawa</field>
+            <field name="name_am">ድሬዳዋ</field>
+            <field name="code">DR</field>
+            <field name="capital_city">Dire Dawa</field>
+            <field name="country_id" ref="base.et"/>
+        </record>
+
+        <record id="base.state_et_6" model="res.country.state">
+            <field name="name">Gambela Region</field>
+            <field name="name_am">ጋምቤላ ክልል</field>
+            <field name="code">GM</field>
+            <field name="capital_city">Gambela</field>
+            <field name="country_id" ref="base.et"/>
+        </record>
+
+        <record id="base.state_et_7" model="res.country.state">
+            <field name="name">Harari Region</field>
+            <field name="name_am">ሀራሪ ክልል</field>
+            <field name="code">HR</field>
+            <field name="capital_city">Harar</field>
+            <field name="country_id" ref="base.et"/>
+        </record>
+
+        <record id="base.state_et_8" model="res.country.state">
+            <field name="name">Oromia Region</field>
+            <field name="name_am">ኦሮሚያ ክልል</field>
+            <field name="code">OR</field>
+            <field name="capital_city">Finfine</field>
+            <field name="country_id" ref="base.et"/>
+        </record>
+
+        <record id="base.state_et_9" model="res.country.state">
+            <field name="name">Somali Region</field>
+            <field name="name_am">ሶማል ክልል</field>
+            <field name="code">SM</field>
+            <field name="capital_city">Jijiga</field>
+            <field name="country_id" ref="base.et"/>
+        </record>
+
+        <record id="base.state_et_10" model="res.country.state">
+            <field name="name">South Ethiopia Regional State</field>
+            <field name="name_am">ደቡብ ኢትዮጵያ ክልላዊ መንግስት</field>
+            <field name="code">SE</field>
+            <field name="capital_city">Wolaita Sodo</field>
+            <field name="country_id" ref="base.et"/>
+        </record>
+
+        <record id="base.state_et_11" model="res.country.state">
+            <field name="name">Tigray Region</field>
+            <field name="name_am">ትግራይ ክልል</field>
+            <field name="code">TG</field>
+            <field name="capital_city">Mek'ele</field>
+            <field name="country_id" ref="base.et"/>
+        </record>
+
+        <record id="state_et_12" model="res.country.state">
+            <field name="name">South West Ethiopia Peoples' Region</field>
+            <field name="name_am">ደቡብ ምዕራብ ኢትዮጵያ ህዝቦች ክልል</field>
+            <field name="code">SW</field>
+            <field name="capital_city">Bonga</field>
+            <field name="country_id" ref="base.et"/>
+        </record>
+
+        <record id="state_et_13" model="res.country.state">
+            <field name="name">Central Ethiopia Regional State</field>
+            <field name="name_am">ማዕከላዊ ኢትዮጵያ ክልላዊ መንግስት</field>
+            <field name="code">CER</field>
+            <field name="capital_city">Hosaina</field>
+            <field name="country_id" ref="base.et"/>
+        </record>
+
+        <record id="state_et_14" model="res.country.state">
+            <field name="name">Sidama Region</field>
+            <field name="name_am">ሲዳማ ክልል</field>
+            <field name="code">SI</field>
+            <field name="capital_city">Hawassa</field>
+            <field name="country_id" ref="base.et"/>
+        </record>
+
+        <!--   NOTE Ethiopia  Zone   -->
+
+        <record id="zone_et_1" model="res.country.state.zone">
+            <field name="name">Awsi Rasu</field>
+            <field name="name_am">አውሲ ራሱ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_2"/>
+        </record>
+
+        <record id="zone_et_2" model="res.country.state.zone">
+            <field name="name">Kilbet Rasu</field>
+            <field name="name_am">ኪልቤት ራሱ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_2"/>
+        </record>
+
+        <record id="zone_et_3" model="res.country.state.zone">
+            <field name="name">Gabi Rasu</field>
+            <field name="name_am">ጋቢ ራሱ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_2"/>
+        </record>
+
+        <record id="zone_et_4" model="res.country.state.zone">
+            <field name="name">Fanti Rasu</field>
+            <field name="name_am">ፋንቲ ራሱ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_2"/>
+        </record>
+
+        <record id="zone_et_5" model="res.country.state.zone">
+            <field name="name">Hari Rasu</field>
+            <field name="name_am">ሃሪ ራሱ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_2"/>
+        </record>
+
+        <record id="zone_et_6" model="res.country.state.zone">
+            <field name="name">Mahi Rasu</field>
+            <field name="name_am">ማሂ ራሱ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_2"/>
+        </record>
+
+        <record id="zone_et_7" model="res.country.state.zone">
+            <field name="name">Argobba</field>
+            <field name="name_am">አርጎባ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_2"/>
+        </record>
+
+        <record id="zone_et_8" model="res.country.state.zone">
+            <field name="name">Agew Awi</field>
+            <field name="name_am">አገው አዊ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_3"/>
+        </record>
+
+        <record id="zone_et_9" model="res.country.state.zone">
+            <field name="name">East Gojjam</field>
+            <field name="name_am">ምስራቅ ጎጃም</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_3"/>
+        </record>
+
+        <record id="zone_et_10" model="res.country.state.zone">
+            <field name="name">North Gondar</field>
+            <field name="name_am">ሰሜን ጎንደር</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_3"/>
+        </record>
+
+        <record id="zone_et_11" model="res.country.state.zone">
+            <field name="name">Central Gondar</field>
+            <field name="name_am">ማዕከላዊ ጎንደር</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_3"/>
+        </record>
+
+        <record id="zone_et_12" model="res.country.state.zone">
+            <field name="name">West Gondar</field>
+            <field name="name_am">ምዕራብ ጎንደር</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_3"/>
+        </record>
+
+        <record id="zone_et_13" model="res.country.state.zone">
+            <field name="name">Wag Hemra</field>
+            <field name="name_am">ዋግ ኽምራ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_3"/>
+        </record>
+
+        <record id="zone_et_14" model="res.country.state.zone">
+            <field name="name">West Gojjam</field>
+            <field name="name_am">ምዕራብ ጎጃም</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_3"/>
+        </record>
+
+        <record id="zone_et_15" model="res.country.state.zone">
+            <field name="name">Bahir Dar</field>
+            <field name="name_am">ባህር ዳር</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_3"/>
+        </record>
+
+        <record id="zone_et_16" model="res.country.state.zone">
+            <field name="name">West Gojjam</field>
+            <field name="name_am">ምዕራብ ጎጃም</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_3"/>
+        </record>
+
+        <record id="zone_et_17" model="res.country.state.zone">
+            <field name="name">South Gondar</field>
+            <field name="name_am">ደቡብ ጎንደር</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_3"/>
+        </record>
+
+        <record id="zone_et_18" model="res.country.state.zone">
+            <field name="name">North Wollo</field>
+            <field name="name_am">ሰሜን ወሎ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_3"/>
+        </record>
+
+        <record id="zone_et_19" model="res.country.state.zone">
+            <field name="name">South Wollo</field>
+            <field name="name_am">ደቡብ ወሎ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_3"/>
+        </record>
+
+        <record id="zone_et_20" model="res.country.state.zone">
+            <field name="name">Oromia</field>
+            <field name="name_am">ኦሮሚያ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_3"/>
+        </record>
+
+        <record id="zone_et_21" model="res.country.state.zone">
+            <field name="name">North Shewa</field>
+            <field name="name_am">ሰሜን ሸዋ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_3"/>
+        </record>
+
+        <record id="zone_et_22" model="res.country.state.zone">
+            <field name="name">Asosa</field>
+            <field name="name_am">አሶሳ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_4"/>
+        </record>
+
+        <record id="zone_et_23" model="res.country.state.zone">
+            <field name="name">Kamashi</field>
+            <field name="name_am">ካማሺ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_4"/>
+        </record>
+
+        <record id="zone_et_24" model="res.country.state.zone">
+            <field name="name">Metekel</field>
+            <field name="name_am">መተከል</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_4"/>
+        </record>
+
+        <record id="zone_et_25" model="res.country.state.zone">
+            <field name="name">East Gurage Zone</field>
+            <field name="name_am">ምስራቅ ጉራጌ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="state_et_13"/>
+        </record>
+
+        <record id="zone_et_26" model="res.country.state.zone">
+            <field name="name">Gurage Zone</field>
+            <field name="name_am">ጉራጌ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="state_et_13"/>
+        </record>
+
+        <record id="zone_et_27" model="res.country.state.zone">
+            <field name="name">Halaba Zone</field>
+            <field name="name_am">ሀላባ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="state_et_13"/>
+        </record>
+
+        <record id="zone_et_28" model="res.country.state.zone">
+            <field name="name">Hadiya Zone</field>
+            <field name="name_am">ሀዲያ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="state_et_13"/>
+        </record>
+
+        <record id="zone_et_29" model="res.country.state.zone">
+            <field name="name">Kebena Special Woreda</field>
+            <field name="name_am">ቀቤና ልዩ ወረዳ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="state_et_13"/>
+        </record>
+
+        <record id="zone_et_30" model="res.country.state.zone">
+            <field name="name">Kembata Zone</field>
+            <field name="name_am">ከምባታ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="state_et_13"/>
+        </record>
+
+        <record id="zone_et_31" model="res.country.state.zone">
+            <field name="name">Mareko Special Woreda</field>
+            <field name="name_am">ማረቆ ልዩ ወረዳ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="state_et_13"/>
+        </record>
+
+        <record id="zone_et_32" model="res.country.state.zone">
+            <field name="name">Silt'e Zone</field>
+            <field name="name_am">ስልጤ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="state_et_13"/>
+        </record>
+
+        <record id="zone_et_33" model="res.country.state.zone">
+            <field name="name">Tembaro Special Woreda</field>
+            <field name="name_am">ጠምባሮ ልዩ ወረዳ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="state_et_13"/>
+        </record>
+
+        <record id="zone_et_34" model="res.country.state.zone">
+            <field name="name">Yem Zone</field>
+            <field name="name_am">የም ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="state_et_13"/>
+        </record>
+
+        <record id="zone_et_35" model="res.country.state.zone">
+            <field name="name">Anywaa</field>
+            <field name="name_am">እንይዋዋ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_6"/>
+        </record>
+
+        <record id="zone_et_36" model="res.country.state.zone">
+            <field name="name">Majang</field>
+            <field name="name_am">ማጃንግ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_6"/>
+        </record>
+
+        <record id="zone_et_37" model="res.country.state.zone">
+            <field name="name">Nuer</field>
+            <field name="name_am">ኑዌር</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_6"/>
+        </record>
+
+        <record id="zone_et_38" model="res.country.state.zone">
+            <field name="name">East Arsi</field>
+            <field name="name_am">ምስራቅ አርሲ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_8"/>
+        </record>
+
+        <record id="zone_et_39" model="res.country.state.zone">
+            <field name="name">West Arsi</field>
+            <field name="name_am">ምዕራብ አርሲ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_8"/>
+        </record>
+
+        <record id="zone_et_40" model="res.country.state.zone">
+            <field name="name">East Bale</field>
+            <field name="name_am">ምስራቅ ባሌ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_8"/>
+        </record>
+
+        <record id="zone_et_41" model="res.country.state.zone">
+            <field name="name">West Bale</field>
+            <field name="name_am">ምዕራብ ባሌ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_8"/>
+        </record>
+
+        <record id="zone_et_42" model="res.country.state.zone">
+            <field name="name">Borana</field>
+            <field name="name_am">ቦረና</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_8"/>
+        </record>
+
+        <record id="zone_et_43" model="res.country.state.zone">
+            <field name="name">East Hararghe</field>
+            <field name="name_am">ምስራቅ ሀረርጌ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_8"/>
+        </record>
+
+        <record id="zone_et_44" model="res.country.state.zone">
+            <field name="name">East Shewa</field>
+            <field name="name_am">ምስራቅ ሸዋ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_8"/>
+        </record>
+
+        <record id="zone_et_45" model="res.country.state.zone">
+            <field name="name">East Welega</field>
+            <field name="name_am">ምስራቅ ወለጋ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_8"/>
+        </record>
+
+        <record id="zone_et_46" model="res.country.state.zone">
+            <field name="name">East Guji</field>
+            <field name="name_am">ምስራቅ ጉጂ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_8"/>
+        </record>
+
+        <record id="zone_et_47" model="res.country.state.zone">
+            <field name="name">West Guji</field>
+            <field name="name_am">ምዕራብ ጉጂ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_8"/>
+        </record>
+
+        <record id="zone_et_48" model="res.country.state.zone">
+            <field name="name">Horo Guduru Welega</field>
+            <field name="name_am">ሆሮ ጉዱሩ ወለጋ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_8"/>
+        </record>
+
+        <record id="zone_et_49" model="res.country.state.zone">
+            <field name="name">Illubabor</field>
+            <field name="name_am">ኢሉባቦር</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_8"/>
+        </record>
+
+        <record id="zone_et_50" model="res.country.state.zone">
+            <field name="name">Buno Bedele</field>
+            <field name="name_am">ቡኖ በደሌ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_8"/>
+        </record>
+
+        <record id="zone_et_51" model="res.country.state.zone">
+            <field name="name">Jimma</field>
+            <field name="name_am">ጅማ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_8"/>
+        </record>
+
+        <record id="zone_et_52" model="res.country.state.zone">
+            <field name="name">Kelam Welega</field>
+            <field name="name_am">ቄላም ወለጋ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_8"/>
+        </record>
+
+        <record id="zone_et_53" model="res.country.state.zone">
+            <field name="name">North Shewa</field>
+            <field name="name_am">ሰሜን ሸዋ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_8"/>
+        </record>
+
+        <record id="zone_et_54" model="res.country.state.zone">
+            <field name="name">Southwest Shewa</field>
+            <field name="name_am">ደቡብ ምዕራብ ሸዋ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_8"/>
+        </record>
+
+        <record id="zone_et_55" model="res.country.state.zone">
+            <field name="name">West Haraghe</field>
+            <field name="name_am">ምዕራብ ሃራጌ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_8"/>
+        </record>
+
+        <record id="zone_et_56" model="res.country.state.zone">
+            <field name="name">West Shewa</field>
+            <field name="name_am">ምዕራብ ሸዋ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_8"/>
+        </record>
+
+        <record id="zone_et_57" model="res.country.state.zone">
+            <field name="name">West Welega</field>
+            <field name="name_am">ምዕራብ ሸዋ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_8"/>
+        </record>
+
+        <record id="zone_et_58" model="res.country.state.zone">
+            <field name="name">Oromia Special Zone Surrounding Finfinne</field>
+            <field name="name_am">ፊንፊኔ ዙሪያ ኦሮሚያ ልዩ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_8"/>
+        </record>
+
+        <record id="zone_et_59" model="res.country.state.zone">
+            <field name="name">Burayu Special Zone</field>
+            <field name="name_am">ቡራዩ ልዩ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_8"/>
+        </record>
+
+        <record id="zone_et_60" model="res.country.state.zone">
+            <field name="name">Northern Sidama Zone</field>
+            <field name="name_am">ሰሜናዊ ሲዳማ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="state_et_14"/>
+        </record>
+
+        <record id="zone_et_61" model="res.country.state.zone">
+            <field name="name">Central Sidama Zone</field>
+            <field name="name_am">ማዕከላዊ ሲዳማ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="state_et_14"/>
+        </record>
+
+        <record id="zone_et_62" model="res.country.state.zone">
+            <field name="name">Eastern Sidama Zone</field>
+            <field name="name_am">ምስራቅ ሲዳማ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="state_et_14"/>
+        </record>
+
+        <record id="zone_et_63" model="res.country.state.zone">
+            <field name="name">Southern Sidama Zone</field>
+            <field name="name_am">ደቡብ ሲዳማ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="state_et_14"/>
+        </record>
+
+        <record id="zone_et_64" model="res.country.state.zone">
+            <field name="name">Sitti Zone</field>
+            <field name="name_am">ሲቲ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_9"/>
+        </record>
+
+        <record id="zone_et_65" model="res.country.state.zone">
+            <field name="name">Fafan Zone</field>
+            <field name="name_am">ፋፋን ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_9"/>
+        </record>
+
+        <record id="zone_et_66" model="res.country.state.zone">
+            <field name="name">Jarar Zone</field>
+            <field name="name_am">ጃራራ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_9"/>
+        </record>
+
+        <record id="zone_et_67" model="res.country.state.zone">
+            <field name="name">Erer Zone</field>
+            <field name="name_am">ኤረር ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_9"/>
+        </record>
+
+        <record id="zone_et_68" model="res.country.state.zone">
+            <field name="name">Nogob Zone</field>
+            <field name="name_am">ኖጎብ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_9"/>
+        </record>
+
+        <record id="zone_et_69" model="res.country.state.zone">
+            <field name="name">Dollo Zone</field>
+            <field name="name_am">ዶሎ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_9"/>
+        </record>
+
+        <record id="zone_et_70" model="res.country.state.zone">
+            <field name="name">Korahe Zone</field>
+            <field name="name_am">ቆራሄ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_9"/>
+        </record>
+
+        <record id="zone_et_71" model="res.country.state.zone">
+            <field name="name">Shabelle Zone</field>
+            <field name="name_am">ሸበሌ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_9"/>
+        </record>
+
+        <record id="zone_et_72" model="res.country.state.zone">
+            <field name="name">Afder Zone</field>
+            <field name="name_am">አፍዴር ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_9"/>
+        </record>
+
+        <record id="zone_et_73" model="res.country.state.zone">
+            <field name="name">Liben Zone</field>
+            <field name="name_am">ሊበን ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_9"/>
+        </record>
+
+        <record id="zone_et_74" model="res.country.state.zone">
+            <field name="name">Dhawa Zone</field>
+            <field name="name_am">ዳዋ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_9"/>
+        </record>
+
+        <record id="zone_et_75" model="res.country.state.zone">
+            <field name="name">Jigjiga Special Zone</field>
+            <field name="name_am">ጅግጅጋ ልዩ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_9"/>
+        </record>
+
+        <record id="zone_et_76" model="res.country.state.zone">
+            <field name="name">Tog Wajale Special Zone</field>
+            <field name="name_am">ቶግ ዋጃሌ ልዩ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_9"/>
+        </record>
+
+        <record id="zone_et_77" model="res.country.state.zone">
+            <field name="name">Degehabur Special Zone</field>
+            <field name="name_am">ደገሃቡር ልዩ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_9"/>
+        </record>
+
+        <record id="zone_et_78" model="res.country.state.zone">
+            <field name="name">Gode Special Zone</field>
+            <field name="name_am">ጎዴ ልዩ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_9"/>
+        </record>
+
+        <record id="zone_et_79" model="res.country.state.zone">
+            <field name="name">Kebri Beyah Special Zone</field>
+            <field name="name_am">ቀብሪበያህ ልዩ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_9"/>
+        </record>
+
+        <record id="zone_et_80" model="res.country.state.zone">
+            <field name="name">Kebri Dahar Special Zone</field>
+            <field name="name_am">ቀብሪደሀር ልዩ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_9"/>
+        </record>
+
+        <record id="zone_et_81" model="res.country.state.zone">
+            <field name="name">Ale Zone</field>
+            <field name="name_am">አሌ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_10"/>
+        </record>
+
+        <record id="zone_et_82" model="res.country.state.zone">
+            <field name="name">Amaro Zone</field>
+            <field name="name_am">አማሮ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_10"/>
+        </record>
+
+        <record id="zone_et_83" model="res.country.state.zone">
+            <field name="name">Ari Zone</field>
+            <field name="name_am">አሪ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_10"/>
+        </record>
+
+        <record id="zone_et_84" model="res.country.state.zone">
+            <field name="name">Basketo Zone</field>
+            <field name="name_am">ባስኬቶ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_10"/>
+        </record>
+
+        <record id="zone_et_85" model="res.country.state.zone">
+            <field name="name">Burji Zone</field>
+            <field name="name_am">ቡርጂ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_10"/>
+        </record>
+
+        <record id="zone_et_86" model="res.country.state.zone">
+            <field name="name">Dirashe Zone</field>
+            <field name="name_am">ዲራሼ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_10"/>
+        </record>
+
+        <record id="zone_et_87" model="res.country.state.zone">
+            <field name="name">Gamo Zone</field>
+            <field name="name_am">ጋሞ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_10"/>
+        </record>
+
+        <record id="zone_et_88" model="res.country.state.zone">
+            <field name="name">Gedeo Zone</field>
+            <field name="name_am">ጌዴኦ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_10"/>
+        </record>
+
+        <record id="zone_et_89" model="res.country.state.zone">
+            <field name="name">Gofa Zone</field>
+            <field name="name_am">ጎፋ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_10"/>
+        </record>
+
+        <record id="zone_et_90" model="res.country.state.zone">
+            <field name="name">Konso Zone</field>
+            <field name="name_am">ኮንሶ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_10"/>
+        </record>
+
+        <record id="zone_et_91" model="res.country.state.zone">
+            <field name="name">South Omo Zone</field>
+            <field name="name_am">ደቡብ ኦሞ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_10"/>
+        </record>
+
+        <record id="zone_et_92" model="res.country.state.zone">
+            <field name="name">Wolayita Zone</field>
+            <field name="name_am">ወላይታ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_10"/>
+        </record>
+
+        <record id="zone_et_93" model="res.country.state.zone">
+            <field name="name">Bench Sheko Zone</field>
+            <field name="name_am">ቤንች ሸኮ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="state_et_12"/>
+        </record>
+
+        <record id="zone_et_94" model="res.country.state.zone">
+            <field name="name">Dawro Zone</field>
+            <field name="name_am">ዳውሮ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="state_et_12"/>
+        </record>
+
+        <record id="zone_et_95" model="res.country.state.zone">
+            <field name="name">Keffa Zone</field>
+            <field name="name_am">ከፋ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="state_et_12"/>
+        </record>
+
+        <record id="zone_et_96" model="res.country.state.zone">
+            <field name="name">Sheka Zone</field>
+            <field name="name_am">ሸካ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="state_et_12"/>
+        </record>
+
+        <record id="zone_et_97" model="res.country.state.zone">
+            <field name="name">Konta Zone</field>
+            <field name="name_am">ኮንታ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="state_et_12"/>
+        </record>
+
+        <record id="zone_et_98" model="res.country.state.zone">
+            <field name="name">West Omo Zone</field>
+            <field name="name_am">ምዕራብ ኦሞ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="state_et_12"/>
+        </record>
+
+        <record id="zone_et_99" model="res.country.state.zone">
+            <field name="name">Central Tigray</field>
+            <field name="name_am">ማእከላዊ ትግራይ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_11"/>
+        </record>
+
+        <record id="zone_et_100" model="res.country.state.zone">
+            <field name="name">East Tigray</field>
+            <field name="name_am">ምስራቅ ትግራይ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_11"/>
+        </record>
+
+        <record id="zone_et_101" model="res.country.state.zone">
+            <field name="name">North West Tigray</field>
+            <field name="name_am">ሰሜን ምዕራብ ትግራይ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_11"/>
+        </record>
+
+        <record id="zone_et_102" model="res.country.state.zone">
+            <field name="name">South Tigray</field>
+            <field name="name_am">ደቡብ ትግራይ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_11"/>
+        </record>
+
+        <record id="zone_et_103" model="res.country.state.zone">
+            <field name="name">South East Tigray</field>
+            <field name="name_am">ደቡብ ምስራቅ ትግራይ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_11"/>
+        </record>
+
+        <record id="zone_et_104" model="res.country.state.zone">
+            <field name="name">West Tigray</field>
+            <field name="name_am">ምዕራብ ትግራይ</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_11"/>
+        </record>
+
+        <record id="zone_et_105" model="res.country.state.zone">
+            <field name="name">Mekele Special Zone</field>
+            <field name="name_am">መቀሌ ልዩ ዞን</field>
+            <field name="country_id" ref="base.et"/>
+            <field name="state_id" ref="base.state_et_11"/>
+        </record>
+
+        <!--  NOTE Common Currency Used in Ethiopia FOREX     -->
+
+        <record id="base.EUR" model="res.currency">
+            <field name="active" eval="True"/>
+        </record>
+
+        <record id="base.JPY" model="res.currency">
+            <field name="active" eval="True"/>
+        </record>
+
+        <record id="base.GBP" model="res.currency">
+            <field name="active" eval="True"/>
+        </record>
+
+        <record id="base.CAD" model="res.currency">
+            <field name="active" eval="True"/>
+        </record>
+
+        <record id="base.AUD" model="res.currency">
+            <field name="active" eval="True"/>
+        </record>
+
+        <record id="base.AED" model="res.currency">
+            <field name="active" eval="True"/>
+        </record>
+
+    </data>
+</odoo>

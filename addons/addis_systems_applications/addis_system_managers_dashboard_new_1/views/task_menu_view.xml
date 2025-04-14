@@ -1,0 +1,15 @@
+<odoo>
+    <record id="view_reports_wizard_form" model="ir.ui.view">
+        <field name="name">reports.wizard.form</field>
+        <field name="model">reports.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Reports Wizard">
+                <group>
+                    <button name="open_purchase_reports" string="Purchase Report" type="object" class="btn-primary" />
+                    <button name="open_inventory_reports" string="Inventory Report" type="object" class="btn-primary" />
+                    <button name="open_accounting_reports" string="Accounting Reports" type="object" class="btn-primary" />
+                </group>
+            </form>
+        </field>
+    </record>
+</odoo>

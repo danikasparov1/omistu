@@ -1,0 +1,152 @@
+<odoo>
+    <template id="report_payment_request">
+        <t t-call="web.basic_layout">
+            <div class="page" style="padding: 1px;">
+                
+                <!-- Date on the Right at the Top -->
+                <div style="text-align: right; margin-bottom: 10px;">
+                    <strong>Date:</strong> <t t-esc="docs[0].request_date"/>
+                </div>
+
+                <!-- First Half of the Report -->
+                <div style="padding-bottom: 20px;">
+                    
+                    <!-- Logo and Header in a Row, Aligned Horizontally -->
+                    <div style="display: flex; align-items: center; gap: 5px; margin-top: 20px;">
+                        <!-- Logo Section -->
+                 
+                        
+                        <!-- Titles Section -->
+                        <div style="text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: center;">
+                            <h1 style="font-weight: bold; font-size: 18px; margin: 2;">
+                                ADDIS SYSTEM
+                            </h1>
+                            <h2 style="font-weight: bold; font-size: 16px; margin: 2;">
+                                ADDIS SYSTEM DIFFERENT PAYMENT SYSTEM AND APPROVAL FORM
+                            </h2>
+                        </div>
+                               <div style="margin-top: -80px;"> 
+                            <img src="/payment_request/static/src/img/addissystem.png" alt="Company Logo" style="width: 100px;"/>
+                        </div>
+                    </div>
+
+
+                    <div t-attf-class="d-flex justify-content-between mt-10" style="margin-top: 15px; gap: 30px;">
+                        <div style="flex: 1; margin-right: 20px;">
+                            <strong>Request Department:</strong> <t t-esc="docs[0].department_id.name"/>
+                        </div>
+                        <div style="flex: 1;">
+                            <strong>Name of Requester:</strong> <t t-esc="docs[0].payment_for.name"/>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Amount in Words -->
+                    <div style="margin-top: 20px;">
+                        <strong>Amount in Words:</strong> <t t-esc="docs[0].amount_in_words"/>
+                    </div>
+
+                    <!-- Purpose of Payment in a Box -->
+                    <div style="margin-top: 10px;">
+                        <strong>Purpose of Payment:</strong> <t t-esc="docs[0].payment_reason"/>
+                    </div>
+
+                    <!-- Check Details Box -->
+                  <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+                        <div style="border: 1px solid #000; padding: 2px; text-align: center;">
+                            
+                            <div><strong>VAT:</strong><t t-esc="docs[0].vat"/> </div>
+                            <div><strong>withholding Amount:</strong><t t-esc="docs[0].withholding_amount"/> </div>
+                            <div><strong>Amount:</strong> <t t-esc="docs[0].amount"/></div>
+                            <div><strong>Total Amount:</strong><t t-esc="docs[0].total_amount"/> </div>
+                            <!-- <div><strong>Date:</strong> <t t-esc="docs[0].request_date"/></div> -->
+                        </div>
+                    </div>
+                    <div t-attf-class="d-flex justify-content-between mt-10" style="margin-top: 20px;">
+                        <div style="margin-right: 20px;">
+                            <strong>Prepared by:</strong> ______________________
+                        </div>
+                        <div style="margin-right: 20px;">
+                            <strong>Checked by:</strong> ______________________
+                        </div>
+                        <div>
+                            <strong>Approved by:</strong> ______________________
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Horizontal Line Separator -->
+                <hr style="border: 1px solid #000; margin: 10px 0;"/>
+
+                <!-- Second Half of the Report (Duplicate for HR) -->
+                <div style="padding-top: 20px;">
+                    
+                    <!-- Logo and Header in a Row, Aligned Horizontally -->
+                                 <div style="display: flex; align-items: center; gap: 5px; margin-top: 20px;">
+                        <!-- Logo Section -->
+                 
+                        
+                        <!-- Titles Section -->
+                        <div style="text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: center;">
+                            <h1 style="font-weight: bold; font-size: 18px; margin: 2;">
+                                ADDIS SYSTEM
+                            </h1>
+                            <h2 style="font-weight: bold; font-size: 16px; margin: 2;">
+                                ADDIS SYSTEM DIFFERENT PAYMENT SYSTEM AND APPROVAL FORM
+                            </h2>
+                        </div>
+                               <div style="margin-top: -80px;"> 
+                            <img src="/payment_request/static/src/img/addissystem.png" alt="Company Logo" style="width: 100px;"/>
+                        </div>
+                    </div>
+                    
+
+                                 <div t-attf-class="d-flex justify-content-between mt-10" style="margin-top: 15px; gap: 30px;">
+                                    <div style="flex: 1; margin-right: 20px;">
+                                        <strong>Request Department:</strong> <t t-esc="docs[0].department_id.name"/>
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <strong>Name of Requester:</strong> <t t-esc="docs[0].payment_for.name"/>
+                                    </div>
+                                </div>
+
+
+                    <!-- Amount in Words -->
+                    <div style="margin-top: 20px;">
+                        <strong>Amount in Words:</strong> <t t-esc="docs[0].amount_in_words"/>
+                    </div>
+
+                    <!-- Purpose of Payment in a Box -->
+                    <div style="margin-top: 10px;">
+                        <strong>Purpose of Payment:</strong> <t t-esc="docs[0].payment_reason"/>
+                    </div>
+
+                    <!-- Check Details Box -->
+                    <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+                        <div style="border: 1px solid #000; padding: 2px; text-align: center;">
+                            
+                            <div><strong>VAT:</strong><t t-esc="docs[0].vat"/> </div>
+                            <div><strong>withholding Amount:</strong><t t-esc="docs[0].withholding_amount"/> </div>
+                            <div><strong>Amount:</strong> <t t-esc="docs[0].amount"/></div>
+                            <div><strong>Total Amount:</strong><t t-esc="docs[0].total_amount"/> </div>
+                            <div><strong>Date:</strong> <t t-esc="docs[0].request_date"/></div>
+                        </div>
+                    </div>
+                    <div t-attf-class="d-flex justify-content-between mt-10" style="margin-top: 20px;">
+                        <div style="margin-right: 20px;">
+                            <strong>Prepared by:</strong> ______________________
+                        </div>
+                        <div style="margin-right: 20px;">
+                            <strong>Checked by:</strong> ______________________
+                        </div>
+                        <div>
+                            <strong>Approved by:</strong> ______________________
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </t>
+    </template>
+</odoo>

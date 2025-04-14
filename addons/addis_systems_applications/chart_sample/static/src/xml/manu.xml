@@ -1,0 +1,78 @@
+<templates xml:space="preserve">
+    <t t-name="chart_sample.chartjs_sample_manufacturing" owl="1">
+        <div class="big-card p-4 rounded-4 mt-4">
+            
+            <!-- 🏷️ Navbar Card (Smaller Height) -->
+            <div class="navbar-card d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center p-2 mb-3 shadow rounded-4 bg-white">
+                <div class="d-flex flex-column flex-md-row gap-2 w-100">
+                    <label for="dateFrom" class="form-label">Date From</label>
+                    <input type="date" id="dateFrom" class="form-control" t-on-change="onStartDateChange"/>
+                    <label for="dateTo" class="form-label">Date To</label>
+                    <input type="date" id="dateTo" class="form-control" t-on-change="onEndDateChange"/>
+                    <input type="text" class="form-control" placeholder="Search..." t-on-input="onSearchQueryChange"/>
+                </div>
+            </div>  
+            <!-- 📊 Statistic Cards -->
+            <div class="d-flex flex-wrap flex-md-nowrap gap-3 mb-4">
+                <div id="productsCard" class="stat-card red text-start p-3 rounded-5 shadow position-relative flex-fill">
+                    <div class="stat-content">
+                        <div class="d-flex flex-row align-items-center justify-content-between mb-2">
+                            <div class="icon-box rounded-5 position-absolute top-0 end-1 mt-2">📦</div>
+                        </div>
+                        <!-- Total Manufactured Products -->
+                        <div class="d-flex flex-row align-items-center justify-content-between mb-2">
+                            <h6 class="text-dark mb-0 custom-dd" t-on-click="() => goToManufacturingPage('products')">Total Manufactured Products</h6>
+                            <div class="value-oval bg-white rounded-pill text-center px-3 py-1 shadow-sm">
+                                <p class="fw-bold fs-6 mb-0"><t t-esc="stats.totalManufacturedProducts"/></p>
+                            </div>
+                        </div>
+                        <!-- Total Work Centers -->
+                        <div class="d-flex flex-row align-items-center justify-content-between mb-2">
+                            <h6 class="text-dark mb-0 custom-dd" t-on-click="() => goToManufacturingPage('workCenters')">Total Work Centers</h6>
+                            <div class="value-oval bg-white rounded-pill text-center px-3 py-1 shadow-sm">
+                                <p class="fw-bold fs-6 mb-0"><t t-esc="stats.totalWorkCenters"/></p>
+                            </div>
+                        </div>
+                        <!-- Total Work Orders -->
+                        <div class="d-flex flex-row align-items-center justify-content-between mb-2">
+                            <h6 class="text-dark mb-0 custom-dd" t-on-click="() => goToManufacturingPage('workOrders')">Total Work Orders</h6>
+                            <div class="value-oval bg-white rounded-pill text-center px-3 py-1 shadow-sm">
+                                <p class="fw-bold fs-6 mb-0"><t t-esc="stats.totalWorkOrders"/></p>
+                            </div>
+                        </div>
+                        <!-- Total Operations -->
+                        <div class="d-flex flex-row align-items-center justify-content-between mb-2">
+                            <h6 class="text-dark mb-0 custom-dd" t-on-click="() => goToManufacturingPage('operations')">Total Operations</h6>
+                            <div class="value-oval bg-white rounded-pill text-center px-3 py-1 shadow-sm">
+                                <p class="fw-bold fs-6 mb-0"><t t-esc="stats.totalOperations"/></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Repeat similar structure for other cards -->
+            </div>
+            
+            <!-- 📈 Graphs Section -->
+            <div class="d-flex flex-column flex-md-row gap-3 overflow-x-auto px-2 chart-card">
+                <div class="chart-container flex-fill border rounded-4 p-3 bg-white shadow" style="width: 50%; height: 300px;">
+                    <h4> Top Manufactured Products </h4>
+                    <canvas t-ref="canvas"></canvas>
+                </div>
+                <div class="chart-container flex-fill border rounded-4 p-3 bg-white shadow" style="width: 50%; height: 300px;">
+                    <h4> Top Work Centers </h4>
+                    <canvas t-ref="canvastwo"></canvas>
+                </div>
+            </div>
+            <div class="d-flex flex-column flex-md-row gap-3 overflow-x-auto px-2 mt-3 chart-card">
+                <div class="chart-container flex-fill border rounded-4 p-3 bg-white shadow" style="width: 50%; height: 300px;">
+                    <h4> Work Orders </h4>
+                    <canvas t-ref="canvasDoughnut"></canvas>
+                </div>
+                <div class="chart-container flex-fill border rounded-4 p-3 bg-white shadow" style="width: 50%; height: 300px;">
+                    <h4> Operations </h4>
+                    <canvas t-ref="canvasLeave"></canvas>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

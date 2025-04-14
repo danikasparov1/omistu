@@ -1,0 +1,5 @@
+<!-- <odoo>
+    <menuitem id="menu_hr_kpi_root" name="HR KPI Management" parent="hr.menu_hr_root" sequence="40"/>
+    <menuitem id="menu_hr_kpi" parent="menu_hr_kpi_root" name="KPIs" action="action_kpi"/>
+    <menuitem id="menu_hr_kpi_evaluation" parent="menu_hr_kpi_root" name="KPI Evaluations" action="action_kpi_evaluation"/>
+</odoo> -->

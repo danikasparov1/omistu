@@ -1,0 +1,120 @@
+<templates xml:space="preserve">
+<t t-name="accounting_drill_down_report.base_template">
+<div class="container mt-4" style="height: 100vh; padding-bottom: 20px;">
+           <div class="row">
+                <div class="row my-4">
+                    <div class="col-1 text-center">
+                        <div class="d-flex justify-content-between">
+                            <button t-on-click="()=>this.print_pdf()" class ="btn btn-sm btn-primary">PDF</button>
+                            <button t-on-click="()=>this.getxlsx()" class="btn btn-sm btn-secondary ms-3">XLSX</button>
+                        </div>
+                    </div>
+                    <div class="col-8 text-center">
+                        <h3 t-if="report_name" t-esc="report_name"></h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3" name="default_filters">
+                <div class="col text-end">
+                    <Dropdown togglerClass="'btn btn-secondary'">
+                        <t t-set-slot="toggler">
+                            <strong> Filter By :</strong> <span t-esc="state.filter_by" /><i class="fa fa-caret-down ms-1"/>
+                        </t>
+                        <t t-foreach="['Date','Period']" t-as="fi" t-key="fi">
+                            <DropdownItem class="{ o_menu_item: true }"
+                              t-esc="fi"
+                              onSelected="() => set_filter_by(fi)"
+                            />
+                        </t>
+                    </Dropdown>
+                </div>
+                <div  t-if="state.filter_by=='Date'" class="col d-flex align-items-center">
+                    <strong class="me-2 text-nowrap pr-1">Date from:</strong>
+                    <DateTimeInput
+                        type="'date'"
+                        value="state.date_from"
+                        placeholder="'Select date...'"
+                        onChange="(date) => this.set_date_from(date)"
+                    />
+                </div>
+                <div  t-if="state.filter_by=='Date'"  class="col d-flex align-items-center">
+                    <strong class="me-2 text-nowrap pr-1">Date to:</strong>
+                    <DateTimeInput
+                        type="'date'"
+                        value="state.date_to"
+                        placeholder="'Select date...'"
+                        onChange="(date) => this.set_date_to(date)"
+                    />
+                </div>
+
+                <div  t-if="state.filter_by=='Period'" class="col text-end">
+                    <Dropdown togglerClass="'btn btn-secondary'">
+                        <t t-set-slot="toggler">
+                            <strong> Period From :</strong> <span t-if="state.period_start" t-esc="state.period_start.name" /><i class="fa fa-caret-down ms-1"/>
+                        </t>
+                        <t t-foreach="period_selection" t-as="peri" t-key="peri.id">
+                            <DropdownItem class="{ o_menu_item: true }"
+                              t-esc="peri.name"
+                              onSelected="() => set_period_start(peri.id)"
+                            />
+                        </t>
+                    </Dropdown>
+                </div>
+                <div t-if="state.filter_by=='Period'" class="col text-end">
+                    <Dropdown togglerClass="'btn btn-secondary'">
+                        <t t-set-slot="toggler">
+                            <strong> Period To :</strong> <span t-if="state.period_end" t-esc="state.period_end.name" /><i class="fa fa-caret-down ms-1"/>
+                        </t>
+                        <t t-foreach="period_selection" t-as="peri" t-key="peri.id">
+                            <DropdownItem class="{ o_menu_item: true }"
+                              t-esc="peri.name"
+                              onSelected="() => set_period_end(peri.id)"
+                            />
+                        </t>
+                    </Dropdown>
+                </div>
+                <div class="col text-end">
+                    <Dropdown togglerClass="'btn btn-secondary'">
+                        <t t-set-slot="toggler">
+                            <strong> Target Moves:</strong> <span t-esc="this.state.target_move" /><i class="fa fa-caret-down ms-1"/>
+                        </t>
+                        <t t-foreach="['all']" t-as="measure" t-key="measure">
+                            <DropdownItem class="{ o_menu_item: true, selected: measure == this.state.target_move }"
+                              parentClosingMode="'none'"
+                              t-esc="measure"
+                              onSelected="() => this.set_target_move(measure)"
+                            />
+                        </t>
+                    </Dropdown>
+                </div>
+
+                <div name="jrnl_filter" class="col text-end">
+                    <Dropdown togglerClass="'btn btn-seconadry'">
+                        <t t-set-slot="toggler">
+                            <strong> Journals:</strong>
+                             <t t-foreach="state.journals" t-as="jrnl" t-key="jrnl.id">
+                                <span t-if="jrnl.selected" t-esc="jrnl.code" />
+                                <span t-if="jrnl.selected" t-esc="' ,'" />
+                            </t>
+                            <i class="fa fa-caret-down ms-1"/>
+                        </t>
+                        <t t-foreach="state.journals" t-as="jrnl" t-key="jrnl.id">
+                            <DropdownItem 
+                              class="{ o_menu_item: true, selected: jrnl.selected }"
+                              parentClosingMode="'none'"
+                              t-esc="jrnl.name"
+                              onSelected="() => this.set_journals(jrnl.id)"
+                            />
+                        </t>
+                    </Dropdown>
+                </div>
+            </div>
+
+             <div class="scrollable-section pb-5 w-100" style="height: calc(100vh - 200px); overflow-y: auto; overflow-x: auto;">
+             </div>
+
+</div>
+
+</t>
+
+</templates>

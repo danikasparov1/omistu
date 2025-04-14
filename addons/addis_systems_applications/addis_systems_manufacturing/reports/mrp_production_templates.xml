@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_mrporder_inherit" inherit_id="mrp.report_mrporder">
+        <xpath expr="//t//t//t//div[@t-if='o.user_id']" position="after">
+            <div class="col-6">
+                <strong>Customer:</strong><br/>
+                <span t-field="o.customer">Not Assigned</span><br/>
+                <t t-if="o.customer.vat"><b t-esc="'Tin no :'"/><span t-field="o.customer.vat"> </span><br/></t>
+                <t t-if="o.customer.phone"><b>Phone : </b><span t-field="o.customer.phone"> </span><br/></t>
+                <t t-if="o.customer.contact_address and o.customer.contact_address.strip() "><b>Address : </b><span t-field="o.customer.contact_address"> </span><br/></t>
+                
+            </div>
+        </xpath>
+
+        <xpath expr="//t//t//t//div[@class='oe_structure'][1]" position="after">
+            <div class="col-12">
+                <h2>Manufacturing Order</h2>
+            </div>
+        </xpath>
+    </template>
+</odoo>

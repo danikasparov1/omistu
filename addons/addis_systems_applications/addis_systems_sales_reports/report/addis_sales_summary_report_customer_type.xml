@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="sales_sales_summary_report_report_customer_type" model="ir.actions.report">
+            <field name="name">Summary in Sales customer_type</field>
+            <field name="model">sales.summary.report.customer.type</field>
+           <field name="report_type">qweb-html</field>
+            <field name="report_name">addis_systems_sales_reports.report_Summary_sales_customer_type</field>
+            <field name="report_file">addis_systems_sales_reports.report_Summary_sales_customer_type</field>
+            <field name="print_report_name">'Summary in Sales customer_type'</field>
+            <field name="binding_model_id" ref="model_sales_summary_report_customer_type"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+    <template id="report_Summary_sales_customer_type">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                
+                <t t-call="addis_systems_sales_reports.addis_pay_custom_header_layout_customer_type">
+                    
+                    </t>
+                   
+
+                    <style>
+                    table,th,td{
+                    font-size: 14px;
+                    padding-top: 1px;
+                    }
+                     th{
+                    
+                    text-align: center;
+
+                    }
+                    #first {
+                    font-family: Arial, Helvetica, sans-serif;
+                    border-collapse: collapse;
+                    width: 100%;
+                    }
+                    #first td, #first th{
+                    padding-top: 1px;
+                    padding-bottom: 1px;
+                    font-size: 14px;
+                    border: 1px solid #000000;
+                    }
+                    #second {
+                    font-family: Arial, Helvetica, sans-serif;
+                    border-collapse: collapse;
+                    width: 32%;
+                    }
+                    #second td, #second th{
+                    padding-top: 1px;
+                    padding-bottom: 1px;
+                    text-align: center;
+                    font-size: 14px;
+                    border: 2px solid #000000;
+                    }
+                </style>
+
+                <div class="page">
+                            <table id="first">
+                            <tr style="font-weight:bold; color: rgb(4,36,133);">
+                                <th>Date</th>
+                                <th>Customer Type</th>
+                                <th>Product Category</th>
+                                <th> Quantity</th>
+                                
+                                <th>Total Sales Amount</th>
+                                
+                                <t t-set="total_quantity" t-value='0'/>
+                                <t t-set="total_total" t-value='0'/>
+                                <t t-set="total_grand_total" t-value='0'/>
+                                <t t-set="total_tax" t-value='0'/>
+                                <t t-set="total_discount" t-value='0'/>
+                            </tr>
+                        <t t-foreach="doc.get_dates()" t-as="date">
+                            <tr>
+                               
+                                    <td align="center"><t t-esc="date"/></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                  
+                              
+                          
+                                   
+                                </tr>
+                                <t t-foreach="doc.get_partner_categories(date)" t-as="customer_categ">
+                                    <tr>
+                                    <td style="border-right: none; border-bottom: none; border-top: none;"/>
+                                    <td align="center"><t t-esc="customer_categ.name"/></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                               
+                                    
+                                    <tr/>
+                                <t t-foreach="doc.get_product_categories(date=date,customer_categ=customer_categ)" t-as="pro_categ">
+                                     <tr>
+                                     <t t-set="data" t-value="doc.pro_category_detail(date=date,customer_categ=customer_categ,pro_categ=pro_categ)"/>
+                                     <t t-set="quantity" t-value="data.get('quantity')"/>
+                                     <t t-set="total" t-value="data.get('total')"/>
+                                     <t t-set="grand_total" t-value="data.get('grand_total')"/>
+                                     <t t-set="discount" t-value="data.get('discount')"/>
+                                     <t t-set="total_quantity" t-value='total_quantity + quantity'/>
+                                    <t t-set="total_total" t-value='total_total + total'/>
+                                    <t t-set="total_grand_total" t-value='total_grand_total + grand_total'/>
+                                    <t t-set="total_tax" t-value='total_tax + grand_total - total'/>
+                                    <t t-set="total_discount" t-value='total_discount + discount'/>
+                                    <td style="border-right: none; border-bottom: none; border-top: none;"/>
+                                    <td style="border-right: none; border-bottom: none; border-top: none;"/>
+                                    <td align="center"><t t-esc="pro_categ.name"/></td>
+                                    <td><t t-esc="quantity"/></td>
+                                    <td><t t-esc="total"/></td>
+                                    </tr>
+                                    </t>
+                            
+
+
+                            </tr>
+
+                            </t>
+                             
+                               
+
+                             
+                        </t>
+                        <tr>
+                             <td style="border-bottom: none; border-left: none;border-right: none;"></td>
+                              <td style="border-bottom: none; border-left: none;border-right: none;"></td>
+                               <td style="border-bottom: none; border-left: none;border-right: none;"></td>
+                             </tr >
+                        </table>
+                        <br/><br/><br/>
+                        <table align="right" id="second" class="table table-sm o_main_table">
+                    
+                      <tr>
+                        <tr>
+                            <td>Sub Total</td>
+                            <td>
+                                <t t-esc ="total_total" t-options='{"widget": "float", "precision": 2}'/> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Addtional Charge</td>
+                            <td>0.00</td>
+                        </tr>
+                        <tr>
+                            <td>Discount</td>
+                            <td><t t-esc ="total_discount" t-options='{"widget": "float", "precision": 2}'/></td>
+                        </tr>
+                        <tr>
+                            <td>Tax Amount</td>
+                            <td>
+                                <t t-esc ="total_tax" t-options='{"widget": "float", "precision": 2}'/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Grand Total</td>
+                            <td>
+                                <t t-esc ="total_grand_total" t-options='{"widget": "float", "precision": 2}'/>
+                            </td>
+                        </tr>
+                      </tr>  
+                     </table> 
+
+                </div>
+                  <br/><br/><br/><br/><br/><br/><br/><br/>
+                <table align="left" id="second" class="table">
+                    <tr style="font-weight:bold;">
+                        <td colspan="2">Denomination</td>
+                    </tr>
+                    <tr>
+                        <td>200 Birr</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                    <tr>
+                        <td>100 Birr</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                    <tr>
+                        <td>50 Birr</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                    <tr>
+                        <td>10 Birr</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                    <tr>
+                        <td>5 Birr</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                    <tr>
+                        <td>1 Birr</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                    <tr>
+                        <td>Total Cents</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                    <tr style="font-weight:bold;">
+                        <td>TOTAL</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                </table>
+                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                <table align="left">
+                    <tr>
+                        <td align="justify">Add Cheque ____________________</td>
+                    </tr>
+                    <tr>
+                        <td align="justify">Grand Total ____________________</td>
+                    </tr>
+                    <tr>
+                        <td align="justify">Audit Strip Total ____________________</td>
+                    </tr>
+                    <tr>
+                        <td align="justify">Diffrence Shortage ____________________</td>
+                    </tr>
+                    <tr>
+                        <td align="justify">Overage       ____________________</td>
+                    </tr>
+                </table>
+              
+
+                </t>
+               
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,82 @@
+<odoo>
+    <data>
+        <!-- Inherit the manufacturing order form view -->
+        <record id="addis_systems_manufacturing_production_customer_information_inherited_form" model="ir.ui.view">
+            <field name="name">addis.systems.mrp.production.customer_information_form.inherit</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="arch" type="xml">
+<!--                <xpath expr="//header//button[@name='action_open_label_type']" position="after">-->
+<!--                    &lt;!&ndash; Add your new field here &ndash;&gt;-->
+<!--                    <button string="Print" type="object" name="download_report"/>-->
+<!--                </xpath>-->
+                <field name="user_id" position="after">
+                    <field name="customer_id"/>
+                </field>
+                <xpath expr="//notebook" position="inside">
+                    <page string="Customer Information" name="customer_information" invisible="not customer_id">
+                        <group>
+                            <group>
+                                <field name="customer_tin_number" readonly="1" string="TIN Number"/>
+                                <field name="customer_phone" readonly="1" string="Phone"/>
+                                <field name="customer_mobile" readonly="1" string="Mobile"/>
+                                <field name="customer_email" readonly="1" string="Email"/>
+                            </group>
+                            <group>
+                                <label for="customer_street" string="Address"/>
+                                <div class="o_address_addis_systems_format">
+                                    <field name="customer_street" placeholder="Street..." class="o_address_street" readonly="1"/>
+                                    <field name="customer_street2" placeholder="Street 2..." class="o_address_street" readonly="1"/>
+                                    <div name="partner_address_house_number" class="d-flex justify-content-between">
+                                        <field name="customer_post_office_number" placeholder="P.O.BOX" class="o_address_city" readonly="1"/>
+                                        <field name="customer_house_number" placeholder="House Number" class="o_address_city" readonly="1"/>
+                                    </div>
+                                    <div name="partner_address_woreda_and_kebele" class="d-flex justify-content-between" readonly="1">
+                                        <field name="customer_kebele" placeholder="Kebele" class="o_address_city" readonly="1"/>
+                                        <field name="customer_woreda" placeholder="Woreda" class="o_address_city" readonly="1"/>
+                                    </div>
+                                    <div name="partner_address_city_zip" class="d-flex justify-content-between" readonly="1">
+                                        <field name="customer_sub_city" placeholder="Sub-City" class="o_address_city" readonly="1"/>
+                                        <field name="customer_city" placeholder="City" class="o_address_city" readonly="1"/>
+                                        <field name="customer_zip" placeholder="ZIP Code" class="o_address_zip" readonly="1" invisible="0"/>
+                                    </div>
+                                    <div name="partner_address_country" class="d-flex justify-content-between" invisible="not customer_country_id">
+                                        <field name="customer_zone_id" class="partner_address_country" placeholder="Zone" options="{'no_open': True, 'no_quick_create': True}" invisible="not customer_state_id"
+                                               readonly="1"/>
+                                        <field name="customer_state_id" class="partner_address_country" placeholder="Region" options="{'no_open': True, 'no_quick_create': True}" invisible="not customer_country_id"
+                                               readonly="1"/>
+                                    </div>
+                                    <div name="partner_address_country" class="d-flex justify-content-between">
+                                        <field name="customer_country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}'/>
+                                    </div>
+                                </div>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Inherit the manufacturing order tree view -->
+
+        <record id="addis_systems_manufacturing_production_customer_information_inherited_tree" model="ir.ui.view">
+            <field name="name">addis.systems.mrp.production.customer_information_form.tree.inherit</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='state']" position="after">
+                    <!-- Add your new field here -->
+                    <button name="action_open_wizard" type="object" icon="fa-external-link" class="oe_edit_only" title="Open Work Order" context="{'default_lot_producing_id': lot_producing_id}"/>
+                </xpath>
+
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="addis_systems_manufacturing_production_customer_information_action">
+            <field name="name">Manufacturing Orders</field>
+            <field name="res_model">mrp.production</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="addis_systems_manufacturing_production_customer_information_inherited_form"/>
+        </record>
+    </data>
+</odoo>

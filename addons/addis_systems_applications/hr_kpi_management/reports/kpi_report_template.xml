@@ -1,0 +1,30 @@
+<odoo>
+    <template id="kpi_report_template">
+        <t t-call="web.external_layout">
+            <div class="page">
+                <h2>KPI Evaluation Report</h2>
+                <t t-foreach="docs" t-as="doc">
+                    <p>KPI: <t t-esc="doc.kpi_id.name"/></p>
+                    <p>Employee: <t t-esc="doc.employee_id.name"/></p>
+                    <p>Actual Performance: <t t-esc="doc.actual_value"/></p>
+                    <p>Performance Score: <t t-esc="doc.performance_score"/>%</p>
+                </t>
+            </div>
+        </t>
+    </template>
+
+    <!-- Report Action -->
+    <report
+        id="action_kpi_evaluation_report"
+        model="hr.kpi.evaluation"
+        string="KPI Evaluation Report"
+        report_type="qweb-pdf"
+        name="your_module.kpi_report_template"
+        file="your_module.kpi_report_template"
+        print_report_name="'KPI Evaluation Report - %s' % (object.employee_id.name)"
+    />
+
+    <!-- Menu Item for KPI Evaluation Report -->
+    <menuitem id="menu_kpi_evaluation_report_root" name="KPI Reports" sequence="30"/>
+    <menuitem id="menu_kpi_evaluation_report" name="KPI Evaluation Report" parent="menu_kpi_evaluation_report_root" action="action_kpi_evaluation_report" sequence="30"/>
+</odoo>

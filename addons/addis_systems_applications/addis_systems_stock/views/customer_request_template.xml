@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_customer_request">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2><strong><span t-if="o.picking_type_id" t-out="o.picking_type_id.name"></span></strong></h2>
+                        <h2>
+                            <span t-field="o.name">Crq/0001</span>
+                        </h2>
+                        <div class="container">
+                            <div class="row justify-content border border-dark">
+                                <!-- Left Section -->
+                                <div class="col-6 p-3" style="border-right: 1px solid #343a40;">
+                                    <p>
+                                    <strong >Requested by :</strong>
+                                    <span  style="padding-left:10px" ><t t-esc="o.user_id.name"/></span></p>
+                                </div>
+                        
+                                <!-- Right Section -->
+                                <div class="col-6 p-3">
+                                    <p><strong>Deadline:</strong><span style="padding-left:10px" t-esc="o.expire_date"/></p>
+            
+                                </div>
+                            </div>
+                        </div>
+                        <div class="oe_structure" />
+                        <div class="row">
+                            <div>
+                                <h3>
+                                    <span>
+                                        Lines
+                                    </span>
+                                </h3>
+                            </div>
+                            <br />
+                        </div>
+                        <div class="row">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Quantity</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="o.request_line" t-as="request_line">
+                                        <td>
+                                            <span t-field="request_line.product_id.display_name">8 GB RAM</span>
+                                        </td>
+                                        <td>
+                                            <span t-field="request_line.qty_requested">8 GB RAM</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="oe_structure" />
+                        <div class="container-fluid"> <!-- Use container-fluid for full width -->
+                            <!-- Operations Section -->
+                            <br/>
+                            <br/>
+                            <br/>
+                            <div class="row mt-4">
+                                <div class="col-12">
+                                    <p>
+                                        <strong>Operations</strong>
+                                    </p>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <p>Prepared by ________________________________</p>
+                                        </div>
+                                        <div class="col-6">
+                                            <p>on Date _______________</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <p>Approved by _______________________________</p>
+                                        </div>
+                                        <div class="col-6 d-flex align-items-end">
+                                            <p>On Date _______________</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                
+                            <!-- Copy Distribution Section -->
+                            <div class="row mt-4">
+                                <div class="col-12">
+                                    <p>Copy Distribution ____________________________________</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

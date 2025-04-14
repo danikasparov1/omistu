@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="base.main_company" model="res.company">
+            <field name="cnet">True</field>
+            <field name="peds">True</field>
+            <field name="maraki">True</field>
+            <field name="cnet_xml_path">''</field>
+            <field name="maraki_xml_path">''</field>
+            <field name="maraki_xml_path">''</field>
+        </record>
+    </data>
+</odoo>

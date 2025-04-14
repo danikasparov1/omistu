@@ -1,0 +1,94 @@
+<templates xml:space="preserve">
+    <t t-name="accounting_drill_down_report.bank_book_report_owl" t-inherit="accounting_drill_down_report.base_template" owl="1">
+    <xpath expr="//div[@name='jrnl_filter']" position="replace">
+    <div></div>
+    </xpath>
+        <xpath expr="//t//div[@name='default_filters']" position='after'>
+            <div class="row ms-3 mt-3 mb-3">
+
+                <div class="col">
+                    <Dropdown togglerClass="'btn btn-secondary'">
+                        <t t-set-slot="toggler">
+                            <strong>Accounts:</strong>
+                            <t t-if="state.accounts">
+                                <t t-foreach="state.accounts" t-as="acct" t-key="acct.id">
+                                    <span t-if="acct.selected" t-esc="acct.name" />
+                                    <span t-if="acct.selected" t-esc="' ,'" />
+                                </t>
+                            </t>
+                            <i class="fa fa-caret-down ms-1"/>
+                        </t>
+                        <t t-if="state.accounts">
+                            <t t-foreach="state.accounts" t-as="acct" t-key="acct.id">
+                                <DropdownItem class="{ o_menu_item: true, selected: acct.selected }" parentClosingMode="'none'" t-esc="acct.name" onSelected="() => this.set_accounts(acct.id)" />
+                            </t>
+                        </t>
+                    </Dropdown>
+
+
+                </div>
+            </div>
+
+        </xpath>
+        <xpath expr="//div[@class='scrollable-section pb-5 w-100']" position='inside'>
+            <table class="table table-sm table-reports table-hover">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>JRNL</th>
+                        <th>Partner</th>
+                        <th>Move</th>
+                        <th>Debit</th>
+                        <th>Credit</th>
+                        <th>Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+         
+
+
+                <t t-if ="state['lines']" t-foreach="state['lines']" t-as="line" t-key="line">
+                <tr style="background-color: #f0f0f0;">
+                            <td>
+                             <span t-on-click="()=>toggle_lines(line)">  <i t-if="!state.lines[line].selected" class="fa fa-caret-right"/> <i t-if="state.lines[line].selected" class="fa fa-caret-down"/> <strong t-esc="line + ' '+ state['lines'][line]['name']"/></span> 
+                            </td>
+                            <td/>
+                            <td/>
+                            <td/>
+
+                             <td>
+                                <strong t-esc="formatCurrency(state['lines'][line]['total_data'][0])"/>
+                            </td>
+                             <td>
+                                <strong t-esc="formatCurrency(state['lines'][line]['total_data'][1])"/>
+                            </td>
+                             <td>
+                                <strong t-esc="formatCurrency(state['lines'][line]['total_data'][2])"/>
+                            </td>
+
+                </tr>
+
+                 <t t-if ="state.lines[line]['data']" t-foreach="state.lines[line]['data']" t-as="line_2" t-key="line_2_index">
+                    <tr t-if="state.lines[line].selected">
+                    <t t-log="line_2"/>
+                        <td>
+                          <strong class="ms-3" t-esc="line_2['date']"/>
+                             </td>
+                             <td t-esc="line_2['journal']"/>
+                            <td t-esc="line_2['partner']"/>
+                            <td t-on-dblclick = "()=>goto_journal_entry(line_2['id'])" t-esc="line_2['move_name']"/>
+                            <td t-esc="formatCurrency(line_2['debit'])"/>
+                            <td t-esc="formatCurrency(line_2['credit'])"/>
+                            <td t-esc="formatCurrency(line_2['balance'])"/>
+
+                       
+                    </tr>
+                </t>
+
+                
+                </t>
+                </tbody>
+            </table>
+        </xpath>
+    </t>
+</templates>

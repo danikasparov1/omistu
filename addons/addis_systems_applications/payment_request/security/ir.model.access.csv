@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_user_payment_request,User Access,model_payment_request,group_user_addis_employee_payment,1,1,1,0
+access_manager_payment_request,Manager Access,model_payment_request,group_user_addis_systems_manager_payment,1,1,1,1
+access_user_payment_order_wizard,User Access,model_payment_order_wizard,group_user_addis_employee_payment,1,1,1,0
+access_manager_payment_order_wizard,Manager Access,model_payment_order_wizard,group_user_addis_systems_manager_payment,1,1,1,1

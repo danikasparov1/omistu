@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="action_print_tax_report" model="ir.actions.report">
+        <field name="name">Tax Report</field>
+        <field name="model">addissystems.report_tax</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">accounting_drill_down_report.report_tax</field>
+        <field name="report_file">accounting_drill_down_report.report_tax</field>
+    </record>
+     <record id="action_print_tax_report_xlsx" model="ir.actions.report">
+        <field name="name">Tax Report</field>
+        <field name="model">addissystems.report_tax</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">accounting_drill_down_report.report_tax_xlsx</field>
+        <field name="report_file">accounting_drill_down_report.report_tax_xlsx</field>
+    </record>
+  <record id="action_print_balance_sheet_report" model="ir.actions.report">
+        <field name="name">Balance Sheet</field>
+        <field name="model">addissystems.report_balancesheet</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">accounting_drill_down_report.report_balancesheet</field>
+        <field name="report_file">accounting_drill_down_report.report_balancesheet</field>
+  </record>
+  <record id="action_print_balance_sheet_report_xlsx" model="ir.actions.report">
+        <field name="name">Balance Sheet Excel</field>
+        <field name="model">addissystems.report_balancesheet</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">accounting_drill_down_report.report_balancesheet_xlsx</field>
+        <field name="report_file">accounting_drill_down_report.report_balancesheet_xlsx</field>
+  </record>
+
+  <record id="action_print_partner_ledgure_report" model="ir.actions.report">
+        <field name="name">Partner Ledgure</field>
+        <field name="model">addissystems.report_partnerledgure</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">accounting_drill_down_report.report_partnerledgure</field>
+        <field name="report_file">accounting_drill_down_report.report_partnerledgure</field>
+  </record>
+
+    <record id="action_print_partner_ledgure_report_xlsx" model="ir.actions.report">
+        <field name="name">Partner Ledgure</field>
+        <field name="model">addissystems.report_partnerledgure</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">accounting_drill_down_report.report_partnerledgure_xlsx</field>
+        <field name="report_file">accounting_drill_down_report.report_partnerledgure_xlsx</field>
+  </record>
+
+   <record id="action_print_profit_loss_report" model="ir.actions.report">
+        <field name="name">Profit and Loss</field>
+        <field name="model">addissystems.report_profitandloss</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">accounting_drill_down_report.report_profit_loss</field>
+        <field name="report_file">accounting_drill_down_report.report_profit_loss</field>
+  </record>
+
+    <record id="action_print_profit_loss_report_xlsx" model="ir.actions.report">
+        <field name="name">Profit and Loss</field>
+        <field name="model">addissystems.report_profitandloss</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">accounting_drill_down_report.report_profit_loss_xlsx</field>
+        <field name="report_file">accounting_drill_down_report.report_profit_loss_xlsx</field>
+  </record>
+
+
+
+   <record id="action_print_bankbook_report" model="ir.actions.report">
+        <field name="name">Bank Book</field>
+        <field name="model">addissystems.report_bankbook</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">accounting_drill_down_report.report_bankbook</field>
+        <field name="report_file">accounting_drill_down_report.report_bankbook</field>
+  </record>
+
+    <record id="action_print_bankbook_report_xlsx" model="ir.actions.report">
+        <field name="name">Bank Book</field>
+        <field name="model">addissystems.report_bankbook</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">accounting_drill_down_report.report_bankbook_xlsx</field>
+        <field name="report_file">accounting_drill_down_report.report_bankbook_xlsx</field>
+  </record>
+
+
+<record id="action_print_cashbook_report" model="ir.actions.report">
+        <field name="name">Cash Book</field>
+        <field name="model">addissystems.report_cashbook</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">accounting_drill_down_report.report_cashbook</field>
+        <field name="report_file">accounting_drill_down_report.report_cashbook</field>
+  </record>
+
+    <record id="action_print_cashbook_report_xlsx" model="ir.actions.report">
+        <field name="name">Cash Book</field>
+        <field name="model">addissystems.report_cashbook</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">accounting_drill_down_report.report_cashbook_xlsx</field>
+        <field name="report_file">accounting_drill_down_report.report_cashbook_xlsx</field>
+  </record>
+
+   <record id="action_print_general_ledgure_report" model="ir.actions.report">
+        <field name="name">General Ledgure</field>
+        <field name="model">addissystems.report_generaledgure</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">accounting_drill_down_report.report_generalledgure</field>
+        <field name="report_file">accounting_drill_down_report.report_generalledgure</field>
+  </record>
+
+    <record id="action_print_general_ledgure_report_xlsx" model="ir.actions.report">
+        <field name="name">General Ledgure</field>
+        <field name="model">addissystems.report_generaledgure</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">accounting_drill_down_report.report_generalledgure_xlsx</field>
+        <field name="report_file">accounting_drill_down_report.report_generalledgure_xlsx</field>
+  </record>
+
+   <record id="action_print_trial_balance_report" model="ir.actions.report">
+        <field name="name">Trial Balance</field>
+        <field name="model">addissystems.report_trialbalance</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">accounting_drill_down_report.report_trialbalance</field>
+        <field name="report_file">accounting_drill_down_report.report_trialbalance</field>
+  </record>
+
+    <record id="action_print_trial_balance_report_xlsx" model="ir.actions.report">
+        <field name="name">Trial Balance</field>
+        <field name="model">addissystems.report_trialbalance</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">accounting_drill_down_report.report_trialbalance_xlsx</field>
+        <field name="report_file">accounting_drill_down_report.report_trialbalance_xlsx</field>
+  </record>
+
+     <record id="action_print_aged_payble_report" model="ir.actions.report">
+        <field name="name">Aged Partner </field>
+        <field name="model">addissystems.report_agedpayable</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">accounting_drill_down_report.report_aged_payable</field>
+        <field name="report_file">accounting_drill_down_report.report_aged_payable</field>
+  </record>
+
+    <record id="action_print_aged_payable_report_xlsx" model="ir.actions.report">
+        <field name="name">Aged Partner</field>
+        <field name="model">addissystems.report_agedpayable</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">accounting_drill_down_report.report_aged_payable_xlsx</field>
+        <field name="report_file">accounting_drill_down_report.report_aged_payable_xlsx</field>
+  </record>
+
+
+</odoo>

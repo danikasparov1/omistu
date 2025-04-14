@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VoucherXml>
+  <Voucher>
+    <code>INV/2024/00001</code>
+    <voucherDefnition>108</voucherDefnition>
+    <date>2024-07-31</date>
+    <grandTotal>736.0</grandTotal>
+    <customer>
+      <code>New</code>
+      <name>Dawit PLC Aksum</name>
+      <TIN>1624956715</TIN>
+    </customer>
+  </Voucher>
+  <LineItem>
+    <unitAmount>320.00</unitAmount>
+    <quantity>1.0</quantity>
+    <totalAmount>368.0</totalAmount>
+    <taxType>VAT</taxType>
+    <Itm_Qty>1.0</Itm_Qty>
+    <item>
+      <code>E-COM07</code>
+      <name>Large Cabinet</name>
+      <category>Saleable</category>
+    </item>
+    <LineItemValues>
+      <discount>0.0 %</discount>
+      <additionalCharge>0</additionalCharge>
+    </LineItemValues>
+  </LineItem>
+  <LineItem>
+    <unitAmount>320.00</unitAmount>
+    <quantity>1.0</quantity>
+    <totalAmount>368.0</totalAmount>
+    <taxType>VAT</taxType>
+    <Itm_Qty>1.0</Itm_Qty>
+    <item>
+      <code>E-COM07</code>
+      <name>Large Cabinet</name>
+      <category>Saleable</category>
+    </item>
+    <LineItemValues>
+      <discount>0.0 %</discount>
+      <additionalCharge>0</additionalCharge>
+    </LineItemValues>
+  </LineItem>
+  <voucherValues>
+    <discount>0.0</discount>
+    <additionalCharge>0.00</additionalCharge>
+    <subTotal>640.0</subTotal>
+  </voucherValues>
+  <Activity>
+    <deviceName/>
+    <user>
+      <employeeCode>support@addissystems.et</employeeCode>
+      <fullName>Addis Systems:Administrator</fullName>
+      <userName>support@addissystems.et</userName>
+    </user>
+  </Activity>
+  <Doctor>
+    <code/>
+    <name/>
+  </Doctor>
+  <BusinessSource>
+    <code/>
+    <name/>
+  </BusinessSource>
+</VoucherXml>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="report_jrnls">
+    <t t-call="web.html_container">
+     <t t-call="accounting_pdf_reports.report_general_ledger">
+    
+        <t t-foreach="docs" t-as="o">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h2>Report title</h2>
+                    <p>This object's name is </p>
+                     <head>Abdulselam Tamene</head>
+                     <t t-foreach="lines" t-as="a">
+            <span t-att-style="style" t-esc="a.get('name')"/>
+                    </t>
+                </div>
+                
+            </t>
+        </t>
+       </t>
+    </t>
+
+</template>
+</odoo>

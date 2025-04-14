@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="addis_systems_sales.tinNumber" t-inherit="web.CharField">
+        <xpath expr="//input" position="after">
+           <span t-if="isinvalidTinnumber and props.record.data[props.name]" class="text-danger">invalid tin number</span>
+        </xpath>
+    </t>
+</templates>

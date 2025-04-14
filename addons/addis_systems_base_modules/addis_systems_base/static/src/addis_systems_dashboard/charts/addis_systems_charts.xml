@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="addis_systems_base.AddisSystemsAdministratorDashboardConnected" owl="1">
+        <canvas t-ref="addis_systems_administrator_dashboard_connected_users"/>
+    </t>
+
+    <t t-name="addis_systems_base.AddisSystemsAdministratorDashboardOutgoingMail" owl="1">
+        <canvas t-ref="addis_systems_administrator_dashboard_outgoing_mail"/>
+    </t>
+
+    <t t-name="addis_systems_base.AddisSystemsAdministratorDashboardOdooMessages" owl="1">
+        <canvas t-ref="addis_systems_administrator_dashboard_outgoing_mail"/>
+    </t>
+</templates>
+

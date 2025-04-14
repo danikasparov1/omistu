@@ -1,0 +1,55 @@
+<odoo>
+    <record id="addis_sales_summary_report_cash_credit_form" model="ir.ui.view">
+        <field name="name">addis.sales.summary.reports.cash.credit.refund.view.form</field>
+        <field name="model">sales.report.cash.credit.refund</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <group>
+                    <group>
+                        <field name="date_from"></field>
+                        
+                    </group>
+                    <group>
+                        <field name="date_to"></field>
+                    </group>
+                    <group>
+                        <field name="status"></field>
+                    </group>
+                    <group>
+                        <field name="payment_status"></field>
+                    </group>
+
+                    <group>
+                        <field name="journal"></field>
+                    </group>
+                    <group>
+                        <field name="user_id"></field>
+                    </group>
+
+                    <group>
+                        <field name="customer_id"></field>
+                    </group>
+
+                </group>
+                <footer>
+                    <button string="Generate Report" name="generate_report_category" type="object" class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="addis_adusee_summary_report_cash_credit_refund_action" model="ir.actions.act_window">
+        <field name="name">adusee Summary by Category</field>
+        <field name="res_model">sales.report.cash.credit.refund</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    <menuitem
+            id="addis_adusee_summary_report_cash_credit_refund_menu"
+            name="Sales Summary Cash Credit Refund"
+            action="addis_adusee_summary_report_cash_credit_refund_action"
+            parent="sale.menu_sale_report"
+            sequence="15"
+    />
+</odoo>

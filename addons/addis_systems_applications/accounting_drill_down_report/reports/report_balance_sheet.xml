@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_balancesheet">
+        <t t-call="web.html_container">
+            <t t-set="data_report_margin_top" t-value="12"/>
+            <t t-set="data_report_header_spacing" t-value="9"/>
+            <t t-set="data_report_dpi" t-value="110"/>
+            <t t-call="web.internal_layout">
+                <div class="page">
+                 <h2 t-esc="'Balance Sheet'"/>
+                 <div class="row mt32 mb32">
+                       
+                        <div class="col-3">
+                            <t>
+                                <strong>Date from :</strong>
+                                <span t-esc="data['date_from']"/>
+                            </t>
+                            <br/>
+                            <t>
+                                <strong>Date to :</strong>
+                                <span t-esc="data['date_to']"/>
+                            </t>
+                        </div>
+
+                         <div class="col-3">
+                                <p>
+                                    <t t-if="data['period_start']"><strong>Period from :</strong> <span t-esc="data['period_start']['name']"/><br/></t>
+                                    <t t-if="data['period_end']"><strong>Period to :</strong> <span t-esc="data['period_end']['name']"/></t>
+                                </p>
+                            </div>
+
+                        <div class="col-3">
+                            <strong>Target Moves:</strong>
+                            <p>
+                                <span t-if="data['target_move'] == 'all'">All Entries</span>
+                                <span t-if="data['target_move'] == 'posted'">All Posted Entries</span>
+                            </p>
+                        </div>
+
+                    </div>
+
+                   <table class="table table-sm table-reports table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th class="text-end">Debit</th>
+                                    <th class="text-end">Credit</th>
+                                    <th class="text-end">Balance</th>
+                                </tr>
+                            </thead>
+                                <tbody>
+                                
+
+                                <t t-set="total_asset_non_current_debit" t-value="0"/>
+                                <t t-set="total_asset_non_current_credit" t-value="0"/>
+                                <t t-set="total_asset_non_current_balance" t-value="0"/>
+
+                                <t t-foreach="data['lines']" t-as="line" t-key="line">
+                                  <tr style="background-color: #f0f0f0;">
+                                    <td><strong t-esc="line"/></td>
+                                     <td class="text-end"><strong t-esc="data['lines'][line]['total_data'][0]" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                                     <td class="text-end"><strong t-esc="data['lines'][line]['total_data'][1]" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                                     <td class="text-end"><strong t-esc="data['lines'][line]['total_data'][2]" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                                    </tr>
+
+                                    <t t-if ="data['lines'][line]['datasets']" t-foreach="data['lines'][line]['datasets']" t-as="line_2" t-key="line_2">
+                                <tr>
+                                    <td><strong  class="ms-3" t-esc="data['lines'][line]['datasets'][line_2]['label']"/></td>
+                                    <td class="text-end"><strong   t-esc="data['lines'][line]['datasets'][line_2]['total_data'][0]" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                                    <td class="text-end"><strong  t-esc="data['lines'][line]['datasets'][line_2]['total_data'][1]" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                                    <td class="text-end"><strong  t-esc="data['lines'][line]['datasets'][line_2]['total_data'][2]" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+                                </tr>
+                                <t t-set="total_current_debit" t-value="0"/>
+                                <t t-set="total_current_credit" t-value="0"/>
+                                <t t-set="total_current_balance" t-value="0"/>
+
+                                 <tr t-if ="data['lines'][line]['datasets'][line_2]['data']" t-foreach="data['lines'][line]['datasets'][line_2]['data']" t-as="current_line" t-key="current_line">
+                                    <td><span class="ms-4" t-esc="current_line[1] +' ' + current_line[2]['en_US'] " /></td>
+                                     <td class="text-end"><t t-esc="current_line[3]" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>   </td>
+                                    <td class="text-end"><t t-esc="current_line[4]" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/> </td>
+                                    <td class="text-end"><t t-esc="current_line[5]" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/> </td>
+                                    <t t-set="total_current_debit" t-value="total_current_debit + (current_line[3] or 0)"/>
+                                    <t t-set="total_current_credit" t-value="total_current_credit + (current_line[4] or 0)"/>
+                                    <t t-set="total_current_balance" t-value="total_current_balance + (current_line[5] or 0)"/>
+                                </tr> 
+
+
+                                <tr>
+                                    <td t-if="0"><strong class="ms-3" t-esc="state.lines[line].datasets[line_2]['total']" /></td>
+                                    <td t-if="0" class="text-end" t-esc="total_current_debit" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                    <td t-if="0" class="text-end" t-esc="total_current_credit" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                    <td t-if="0" class="text-end" t-esc="total_current_balance" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                </tr>
+
+
+                                </t>
+                                </t>
+                        </tbody>
+                        </table>
+
+                </div>
+            </t>
+        </t>
+    </template>
+
+</odoo>

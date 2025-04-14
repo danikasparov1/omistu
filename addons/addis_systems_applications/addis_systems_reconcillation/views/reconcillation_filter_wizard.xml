@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Dixmit
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record id="addissystems_reconcile_form" model="ir.ui.view">
+        <field name="name">addis.sales.reconcile.form</field>
+        <field name="model">addisystems.reconcillation.wizard</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <group>
+                    <field name="bank_statement" required="1"/>
+                </group>
+
+                <group>
+                    <field name="account_ids"  required="1"/>
+                </group>
+
+                <footer>
+                    <button string="Reconcile" name="goto_reconcile" type="object" class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+
+                </form>
+
+            </field>
+
+            
+        </record>
+
+
+
+
+<record id="action_addissystems_reconcile" model="ir.actions.act_window">
+    <field name="name">Addisystems Reconcillation</field>
+    <field name="res_model">addisystems.reconcillation.wizard</field>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+</record>
+
+<menuitem
+        id="menu_addissystems_reconcile"
+        name="Reconcile"
+        action="action_addissystems_reconcile"
+        parent="om_account_accountant.menu_accounting_bank_and_cash"
+        sequence="15"
+/>
+</odoo>

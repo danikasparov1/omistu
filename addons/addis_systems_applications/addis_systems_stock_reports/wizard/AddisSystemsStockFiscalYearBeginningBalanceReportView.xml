@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--    Stock Card form view    -->
+
+        <record id="addis_systems_stock_fiscal_year_beginning_balance_report_wizard" model="ir.ui.view">
+            <field name="name">addis.systems.report.stock.fiscal.year.beginning.balance.view</field>
+            <field name="model">report.fiscal.year.beginning.balance</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="fiscal_year" required="1" string="Fiscal Year" options="{'no_create': True, 'no_open': True}"/>
+                        </group>
+                        <group>
+                            <field name="company_id" required="1" string="Company" options="{'no_create': True, 'no_open': True}" readonly="1"/>
+                        </group>
+                        <group invisible="not fiscal_year_opening_date">
+                            <field name="fiscal_year_opening_date" required="1" string="Opening Date" invisible="not fiscal_year_opening_date"/>
+                        </group>
+                        <group invisible="not fiscal_year_closing_date">
+                            <field name="fiscal_year_closing_date" required="1" string="Closing Date" invisible="not fiscal_year_closing_date"/>
+                        </group>
+                    </group>
+                    <notebook invisible="not fiscal_year">
+                        <page string="Locations">
+                            <field name="stock_locations" nolabel="1" string="Company Locations" widget="many2many_tags" readonly="1" invisible="not stock_locations or not fiscal_year"/>
+                        </page>
+                        <page string="Products">
+                            <field name="all_products" string="Company Products" widget="many2many_tags" readonly="1" invisible="not all_products or not fiscal_year"/>
+                        </page>
+                        <page string="Pre Period Moves">
+                            <field name="pre_period_product_moves" widget="one2many">
+                                <tree string="Pre" editable="bottom">
+                                    <field name="date"/>
+                                    <field name="reference"/>
+                                    <field name="location_id"/>
+                                    <field name="location_dest_id"/>
+                                    <field name="quantity"/>
+                                    <field name="state" widget="badge" decoration-success="state == 'done'" decoration-info="state not in ('done', 'cancel')"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="In Period Moves">
+                            <field name="period_product_moves" widget="one2many">
+                                <tree string="Post" editable="bottom">
+                                    <field name="date"/>
+                                    <field name="reference"/>
+                                    <field name="location_id"/>
+                                    <field name="location_dest_id"/>
+                                    <field name="quantity"/>
+                                    <field name="state" widget="badge" decoration-success="state == 'done'" decoration-info="state not in ('done', 'cancel')"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    <!--                    <group invisible="not stock_locations or not fiscal_year">-->
+                    <!--                        <field name="stock_locations" string="Company Locations" widget="many2many_tags" readonly="1" invisible="not stock_locations or not fiscal_year"/>-->
+                    <!--                    </group>-->
+                    <!--                    <group invisible="not all_products or not fiscal_year">-->
+                    <!--                        <field name="all_products" string="Company Products" widget="many2many_tags" readonly="1" invisible="not all_products or not fiscal_year"/>-->
+                    <!--                    </group>-->
+                    <span>NOTE This Takes Fiscal Year as an input and generate stock report on 'can be sold' and 'can be purchased' product only</span>
+                    <footer>
+                        <button name="preview_html" string="Preview" type="object" class="oe_highlight"/>
+                        <button name="process_pdf" string="PDF" type="object" class="oe_highlight"/>
+                        <button name="process_excel" string="Excel" type="object" class="oe_highlight"/>
+                        <button string="Discard" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!--    Action for profit and loss    -->
+
+        <record id="action_stock_fiscal_year_beginning_balance_report" model="ir.actions.act_window">
+            <field name="name">Fiscal Year Balance</field>
+            <field name="res_model">report.fiscal.year.beginning.balance</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="addis_systems_stock_fiscal_year_beginning_balance_report_wizard"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem name="Fiscal Year Balance" id="menu_addis_systems_fiscal_year_balance" parent="stock.menu_warehouse_report" sequence="259" action="action_stock_fiscal_year_beginning_balance_report"/>
+
+    </data>
+</odoo>

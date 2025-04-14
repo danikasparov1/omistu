@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="stock_picking_view_form_inherit_quality" model="ir.ui.view">
+        <field name="name">stock.picking.view.form.inherit.quality</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='location_dest_id']" position="after">
+                <field name="quality_state" optional="show" widget='badge' 
+                decoration-success="quality_state == 'passed'" 
+                decoration-info="quality_state == 'draft'" 
+                decoration-danger="quality_state == 'failed'"/>
+            </xpath>
+
+            <xpath expr="//field[@name='picking_type_entire_packs']" position="after">
+                    <field name="check_ids" invisible="1"/>
+            </xpath>
+
+
+            <div name="button_box" position="inside">
+                <!-- <button name="%(act_checks_from_picking)d"  attrs="{'invisible': [('check_ids', '=', [])]}" type="action" class="oe_stat_button" icon="fa-check"> -->
+                    <!-- <span class="o_stat_text text-danger">Quality Checks</span> -->
+                <!-- </button> -->
+
+            </div>
+        </field>
+    </record>
+</odoo>

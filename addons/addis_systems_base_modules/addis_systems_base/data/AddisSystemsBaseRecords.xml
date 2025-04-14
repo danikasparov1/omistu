@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="website.default_website" model="website">
+            <field name="name">Addis Systems S.C.</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="user_id" ref="base.public_user"/>
+            <field name="favicon" type="base64" file="addis_systems_base/static/description/icon.png"/>
+            <field name="logo" type="base64" file="addis_systems_base/static/description/icon.png"/>
+        </record>
+
+        <record model="res.config.settings" id="addis_systems_default_setting_settler">
+            <field name="user_default_rights" eval="1"/>
+            <field name="external_email_server_default" eval="1"/>
+            <field name="auth_oauth_google_enabled" eval="1"/>
+            <field name="auth_signup_reset_password" eval="0"/>
+            <field name="digest_emails" eval="0"/>
+        </record>
+
+        <function name="execute" model="res.config.settings">
+            <value eval="[ref('addis_systems_default_setting_settler')]"/>
+        </function>
+
+        <record model="auth.oauth.provider" id="auth_oauth.provider_openerp">
+            <field name="enabled" eval="False"/>
+        </record>
+
+        <record model="auth.oauth.provider" id="auth_oauth.provider_facebook">
+            <field name="enabled" eval="0"/>
+        </record>
+
+        <!--    NOTE Google Auth Client ID (Addis Systems Authentication)   -->
+
+        <function model="auth.oauth.provider" name="write">
+            <value eval="[ref('auth_oauth.provider_google')]"/>
+            <value model="ir.config_parameter" eval="{
+                'client_id': '664020827330-lj9gjkpi0oqfh766cchnebi4issnlbmn.apps.googleusercontent.com',
+            }"/>
+        </function>
+
+        <record model="res.partner" id="base.partner_root">
+            <field name="name">AddisBot</field>
+            <field name="email">addisbot@example.com</field>
+            <field name="image_1920" type="base64" file="addis_systems_base/static/description/icon.png"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="active" eval="False"/>
+        </record>
+
+        <record model="res.users" id="base.user_root">
+            <field name="name">AddisBot</field>
+            <field name="partner_id" ref="base.partner_root"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="email">admin@addissystems.et</field>
+            <field name="signature"><![CDATA[<span>-- <br/>System</span>]]></field>
+        </record>
+
+        <record id="addis_systems_base_currency_updater" forcecreate='True' model="ir.cron">
+            <field name="name">Addis Systems: Currency Updater from SAMPLE</field>
+            <field name="active" eval="True"/>
+            <field name="doall" eval="True"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">24</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+            <field name="model_id" ref="base.model_res_company"/>
+            <field name="state">code</field>
+            <field name="code">action = model.addis_systems_currency_updater_in_days()</field>
+        </record>
+
+    </data>
+</odoo>

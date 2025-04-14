@@ -1,0 +1,40 @@
+<odoo>
+    <!-- Tree View -->
+    <record id="view_branch_tree" model="ir.ui.view">
+        <field name="name">branch.tree</field>
+        <field name="model">branch</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="location"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_branch_form" model="ir.ui.view">
+        <field name="name">branch.form</field>
+        <field name="model">branch</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="location"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_branch" model="ir.actions.act_window">
+        <field name="name">Branches</field>
+        <field name="res_model">branch</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu Items -->
+    <menuitem id="menu_branch_root" name="Branches" sequence="10" />
+    <menuitem id="menu_branch" name="Manage Branches" parent="menu_branch_root" action="action_branch" />
+</odoo>

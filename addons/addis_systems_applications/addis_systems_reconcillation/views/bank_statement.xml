@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Dixmit
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record id="addisystems_bank_statement_form" model="ir.ui.view">
+        <field name="name">Addissystems Bank statement</field>
+        <field name="model">addissystems.bank.statement</field>
+        <field name="priority">99</field>
+        <field name="arch" type="xml">
+            <form string="Bank Statement">
+                <sheet>
+                <group>
+                    <group>
+                        <field name="company_id" invisible="1"/>
+                        <field name="name" required="1" />
+                        <field name="journal_id" domain="[('type','=','bank')]"/>
+
+                        <field name="balance_start" />
+                        <field name="balance_end" />
+                        <field name="date"/>
+                         </group>
+                         <group>
+                          <field name="interest_income_amount"/>
+                      <field name="interest_income_account"/>
+                      <field name="service_charge_amount"/>
+                      <field name="service_charge_account"/>
+                        
+                        <field name ="currency_id" invisible="1"/>
+                    </group>
+                    </group>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="addisystems_bank_statement_tree" model="ir.ui.view">
+        <field name="name">Addissystems Bank statement</field>
+        <field name="model">addissystems.bank.statement</field>
+        <field name="priority">99</field>
+        <field name="arch" type="xml">
+            <tree string="Bank Statement">
+                <field name="date"/>
+                <field name="name" />
+                <field name="journal_id"/>
+                <field name="balance_start" />
+                <field name="balance_end" />
+                <field name="interest_income_account"/>
+                <field name="interest_income_amount"/>
+                <field name="service_charge_account"/>
+                <field name="service_charge_amount"/>
+
+                <field name ="currency_id" column_invisible="True"/>
+
+
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="addisystems_bank_statement_search" model="ir.ui.view">
+    <field name="name">Addissystems Bank Statement Search</field>
+    <field name="model">addissystems.bank.statement</field>
+    <field name="arch" type="xml">
+        <search string="Bank Statement Search">
+            <field name="date" filter_domain="[('date', '=', self)]" />
+            <field name="name" />
+            <field name="journal_id" />
+            <field name="balance_start" />
+            <field name="balance_end" />
+            <field name="interest_income_account" />
+            <field name="service_charge_account" />
+            <group expand="1" string="Group By">
+                <filter string="Journal" name="group_by_journal" context="{'group_by': 'journal_id'}" />
+                <filter string="Date" name="group_by_date" context="{'group_by': 'date'}" />
+            </group>
+        </search>
+    </field>
+</record>
+
+
+    <record id="action_addisystems_bank_statement" model="ir.actions.act_window">
+        <field name="name">Bank Statement</field>
+        <field name="res_model">addissystems.bank.statement</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_addissystems_bank_statement" name="Bank Statement" action="action_addisystems_bank_statement" parent="om_account_accountant.menu_accounting_bank_and_cash" sequence="15" />
+    <record id="make_invisible" model="res.groups">
+        <field name="name">Invisible</field>
+    </record>
+
+    <menuitem id="om_account_accountant.menu_accounting_statement_bank" groups="addis_systems_reconcillation.make_invisible" />
+    <menuitem id="om_account_accountant.menu_accounting_statement_cash" groups="addis_systems_reconcillation.make_invisible" />
+    <record id="om_account_accountant.action_account_reconciliation" model="ir.actions.server">
+        <field name="groups_id" eval="[(5,)]" />
+    </record>
+
+    <record id="om_account_accountant.action_account_reconciliation" model="ir.actions.server">
+        <field name="groups_id" eval="[(4, ref('addis_systems_reconcillation.make_invisible'))]" />
+    </record>
+    <record id="account.action_automatic_entry_change_period" model="ir.actions.server">
+        <field name="groups_id" eval="[(5,)]" />
+    </record>
+
+    <record id="account.action_automatic_entry_change_period" model="ir.actions.server">
+        <field name="groups_id" eval="[(4, ref('addis_systems_reconcillation.make_invisible'))]" />
+
+    </record>
+
+    <record id="account.action_automatic_entry_change_account" model="ir.actions.server">
+        <field name="groups_id" eval="[(5,)]" />
+    </record>
+
+    <record id="account.action_automatic_entry_change_account" model="ir.actions.server">
+        <field name="groups_id" eval="[(4, ref('addis_systems_reconcillation.make_invisible'))]" />
+
+    </record>
+
+    <record id="account.action_account_unreconcile" model="ir.actions.act_window">
+        <field name="groups_id" eval="[(5,)]" />
+    </record>
+
+    <record id="account.action_account_unreconcile" model="ir.actions.act_window">
+        <field name="groups_id" eval="[(4, ref('addis_systems_reconcillation.make_invisible'))]" />
+    </record>
+
+</odoo>

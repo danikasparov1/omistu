@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="addis_systems_stock_reports.product_trxname">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.internal_layout">
+                    <div class="page">
+                        <h3>Inventory Summary By Transaction name</h3>
+                        <h6>
+                            <t t-if="doc.date_from and doc.date_to">
+                                Date Range: <t t-esc="doc.date_from"/> to <t t-esc="doc.date_to"/>
+                            </t>
+                            <t t-if="doc.date_from and not doc.date_to">
+                                Date: From <t t-esc="doc.date_from"/>
+                            </t>
+                            <t t-if="not doc.date_from and doc.date_to">
+                                Date: Until <t t-esc="doc.date_to"/>
+                            </t>
+                            <t t-if="not doc.date_from and not doc.date_to">
+                                Date: Not Specified
+                            </t>
+                        </h6>
+                        <table class="table table-sm table-reports">
+                            <thead>
+                                <tr>
+                                    <th>Transaction Name</th>
+                                    <th>Transaction ID</th>
+                                    <th>Date</th>
+                                    <th>product</th>
+                                    <th>In</th>
+                                    <th>Out</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="doc.get_operation_types()" t-as="op_type">
+                                    <tr>
+                                    <td><t t-esc="op_type[0].name"/></td>
+                                    <td colspan="3"/>
+                                    <td><strong><t t-if="op_type[0].code in ['incoming','mrp_operation']" t-esc="op_type[1]"/></strong></td>
+                                    <td><strong><t t-if="op_type[0].code in ['outgoing','internal']" t-esc="op_type[1]"/></strong></td>
+                                    </tr>
+
+                                <t t-foreach="doc.get_references(op_type[0].id)" t-as="reference">
+                                    <tr>
+                                        <td></td>
+                                        <td><strong><t t-esc="reference[0]"/></strong></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><strong><t t-if="op_type[0].code in ['incoming','mrp_operation']" t-esc="reference[1]"/></strong></td>
+                                        <td><strong><t t-if="op_type[0].code in ['outgoing','internal']" t-esc="reference[1]"/></strong></td>
+                                    </tr>
+                                    <t t-foreach="doc.get_dates_under_reference(reference[0])" t-as="date">
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td><strong><t t-esc="date[0]"/></strong></td>
+                                            <td></td>
+                                            <td><strong><t t-if="op_type[0].code in ['incoming','mrp_operation']" t-esc="date[1]"/></strong></td>
+                                        <td><strong><t t-if="op_type[0].code in ['outgoing','internal']" t-esc="date[1]"/></strong></td>
+                                        </tr>
+                                        <t t-foreach="doc.get_products_under_reference_date(reference[0],date[0])" t-as="product">
+                                            <tr>
+                                                <td ></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><t t-esc="product[0].display_name"/></td>
+                                                
+                                                <td><strong><t t-if="op_type[0].code in ['incoming','mrp_operation']" t-esc="product[1]"/></strong></td>
+                                                <td><strong><t t-if="op_type[0].code in ['outgoing','internal']" t-esc="product[1]"/></strong></td>
+                                            </tr>
+                                        </t>
+                                    </t>
+                                </t>
+                            </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

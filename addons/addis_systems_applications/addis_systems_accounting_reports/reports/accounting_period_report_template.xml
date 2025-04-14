@@ -1,0 +1,154 @@
+<odoo>
+    <template id="report_financial_inherit" inherit_id="accounting_pdf_reports.report_financial">
+        <xpath expr="//div[@class='col-4']" position="after">
+            <p>
+                <t t-if="o.period_from">
+                    <strong>Period from :</strong>
+                    <span t-esc="o.period_from.name" />
+                    <br />
+                </t>
+                <t t-if="o.period_to">
+                    <strong>period to :</strong>
+                    <span t-esc="o.period_to.name" />
+                </t>
+            </p>
+        </xpath>
+    </template>
+
+    <template id="report_agedpartnerbalance_inherit"
+        inherit_id="accounting_pdf_reports.report_agedpartnerbalance">
+        <xpath expr="//div[@class='col-3']" position="before">
+            <t esc="docs" />
+            <p>
+                <t t-if="docs[0].period_from ">
+                    <strong>Period from :</strong>
+                    <span t-esc="docs[0].period_from.name" />
+                    <br />
+                </t>
+                <t t-if="docs[0].period_to">
+                    <strong>period to :</strong>
+                    <span t-esc="docs[0].period_to.name" />
+                </t>
+            </p>
+        </xpath>
+    </template>
+
+    <template id="report_partnerledger_inherit"
+        inherit_id="accounting_pdf_reports.report_partnerledger">
+        <xpath expr="//div[@class='col-3']" position="before">
+            <div class="col-3">
+                <t t-if="data.get('form').get('period_from')">
+                    <strong>Period from :</strong>
+                    <span t-esc="data.get('form').get('period_from').name" />
+                    <br />
+                </t>
+                <t t-if="data.get('form').get('period_to')">
+                    <strong>period to :</strong>
+                    <span t-esc="data.get('form').get('period_to').name" />
+                </t>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="report_general_ledger_inherit"
+        inherit_id="accounting_pdf_reports.report_general_ledger">
+        <xpath expr="//div[@class='col-4']" position="before">
+            <div class="col-4">
+                <t t-if="docs[0].period_from ">
+                    <strong>Period from :</strong>
+                    <span t-esc="docs[0].period_from.name" />
+                    <br />
+                </t>
+                <t t-if="docs[0].period_to">
+                    <strong>period to :</strong>
+                    <span t-esc="docs[0].period_to.name" />
+                </t>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="report_trialbalance_inherit"
+        inherit_id="accounting_pdf_reports.report_trialbalance">
+        <xpath expr="//div[@class='col-4']" position="before">
+            <div class="col-4">
+                <t t-if="docs[0].period_from ">
+                    <strong>Period from :</strong>
+                    <span t-esc="docs[0].period_from.name" />
+                    <br />
+                </t>
+                <t t-if="docs[0].period_to">
+                    <strong>period to :</strong>
+                    <span t-esc="docs[0].period_to.name" />
+                </t>
+            </div>
+        </xpath>
+    </template>
+
+
+    <template id="report_tax_inherit" inherit_id="accounting_pdf_reports.report_tax">
+        <xpath expr="//div[@class='col-4']" position="before">
+            <div class="col-4">
+                <t>
+                    <strong>Period from :</strong>
+                    <span t-esc="data['period_from'].name" />
+                </t>
+                <br />
+                <t>
+                    <strong>Period to :</strong>
+                    <span t-esc="data['period_to'].name" />
+                </t>
+            </div>
+        </xpath>
+    </template>
+
+
+    <template id="report_daybook_inherit" inherit_id="om_account_daily_reports.report_daybook">
+        <xpath expr="//div[@class='col-3']" position="before">
+            <div class="col-4">
+                <t>
+                    <strong>Period from :</strong>
+                    <span t-esc="docs[0].period_from.name" />
+                </t>
+                <br />
+                <t>
+                    <strong>Period to :</strong>
+                    <span t-esc="docs[0].period_to.name" />
+                </t>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="report_cashbook_inherit" inherit_id="om_account_daily_reports.report_cashbook">
+        <xpath expr="//div[@class='col-2']" position="before">
+            <div class="col-4">
+                <t>
+                    <strong>Period from :</strong>
+                    <span t-esc="docs[0].period_from.name" />
+                </t>
+                <br />
+                <t>
+                    <strong>Period to :</strong>
+                    <span t-esc="docs[0].period_to.name" />
+                </t>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="report_bankbook_inherit" inherit_id="om_account_daily_reports.report_bankbook">
+        <xpath expr="//div[@class='col-2']" position="before">
+            <div class="col-4">
+                <t>
+                    <strong>Period from :</strong>
+                    <span t-esc="docs[0].period_from.name" />
+                </t>
+                <br />
+                <t>
+                    <strong>Period to :</strong>
+                    <span t-esc="docs[0].period_to.name" />
+                </t>
+            </div>
+        </xpath>
+    </template>
+
+
+</odoo>

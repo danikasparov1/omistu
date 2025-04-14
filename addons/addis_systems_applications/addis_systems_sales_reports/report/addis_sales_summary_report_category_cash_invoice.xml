@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="sales_sales_summary_report_report_category_cash_invoice" model="ir.actions.report">
+            <field name="name">Summary in Sales Category</field>
+            <field name="model">sales.summary.report.category.sales.cash.invoice</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">addis_systems_sales_reports.report_Summary_sales_category_cash_invoice</field>
+            <field name="report_file">addis_systems_sales_reports.report_Summary_sales_category_cash_invoice</field>
+            <field name="print_report_name">'Summary in Sales Category Cash Invoice'</field>
+            <field name="binding_model_id" ref="model_sales_summary_report_category_sales_cash_invoice"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+    <template id="report_Summary_sales_category_cash_invoice">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                
+                <t t-call="addis_systems_sales_reports.addis_pay_custom_header_layout_category_cash_invoice">
+                    
+                    </t>
+                    <t t-set="data" t-value="doc.check()"/>
+                    <t t-foreach="data" t-as="grand_parent">
+
+                    <style>
+                    table,th,td{
+                    font-size: 14px;
+                    padding-top: 1px;
+                    }
+                    th{
+                    text-align: center;
+
+                    }
+                    #first {
+                    font-family: Arial, Helvetica, sans-serif;
+                    border-collapse: collapse;
+                    width: 100%;
+                    }
+                    #first td, #first th{
+                    padding-top: 1px;
+                    padding-bottom: 1px;
+                    font-size: 14px;
+                    border: 1px solid #000000;
+                    }
+                    #second {
+                    font-family: Arial, Helvetica, sans-serif;
+                    border-collapse: collapse;
+                    width: 32%;
+                    }
+                    #second td, #second th{
+                    padding-top: 1px;
+                    padding-bottom: 1px;
+                    text-align: center;
+                    font-size: 14px;
+                    border: 2px solid #000000;
+                    }
+                </style>
+
+                <div class="page">
+                            <table id="first">
+                            <tr style="font-weight:bold; color: rgb(4,36,133);">
+                                <th>Category</th>
+                                <th>Sub Category</th>
+                                <th>product_id</th>
+                                <th> Product Name</th>
+                                <th> Quantity</th>
+                                <th> Unit Price</th>
+                                <th> Tax</th>
+                                <th> SubTotalAmount</th>
+                                <th> Discount</th>
+                                <th> Total_Amount</th>
+                                <t t-set="parent_parent_product_quantity" t-value='0'/>
+                                <t t-set="parent_parent_product_total" t-value='0'/>
+                                <t t-set="parent_parent_product_sub_total" t-value='0'/>
+                                <t t-set="parent_parent_product_tax" t-value='0'/>
+                                <t t-set="parent_parent_product_discount" t-value='0'/>
+                            </tr>
+                        <t t-foreach="data.get(grand_parent)" t-as="parent">
+                            <tr>
+                                <t t-if ="parent != False">
+                                    <td align="center"><t t-esc="parent"/></td>
+                                    <td align="center"></td>
+                                    <td align="center"></td>
+                                    <td align="center"></td>
+                                    <td align="center"></td>
+                                    <td align="center"></td>
+                                    <td align="center"></td>
+                                    <td align="center"></td>
+                                    <td align="center"></td>
+                                    <td align="center"></td>
+                                </t>
+                                <t t-else="">
+                                    <td align="center">Uncatagorized</td>
+                                    <td align="center"></td>
+                                    <td align="center"></td>
+                                    <td align="center"></td>
+                                    <td align="center"></td>
+                                    <td align="center"></td>
+                                    <td align="center"></td>
+                                    <td align="center"></td>
+                                    <td></td>
+                                    <td></td>
+                                </t>
+                                    <t t-set="parent_product_quantity" t-value='0'/>
+                                    <t t-set="parent_product_total" t-value='0'/>
+                                    <t t-set="parent_product_sub_total" t-value='0'/>
+                                    <t t-set="parent_product_tax" t-value='0'/>
+                                    <t t-set="parent_product_discount" t-value='0'/>
+                                </tr>
+                                <t t-foreach="data.get(grand_parent).get(parent)" t-as="sonparent">
+                                    <tr>
+                                    <td style="border-right: none; border-bottom: none; border-top: none;"/>
+                                    <td>
+                                    <t t-esc="sonparent"/></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <t t-set="product_quantity" t-value='0'/>
+                                    <t t-set="product_total" t-value='0'/>
+                                    <t t-set="product_sub_total" t-value='0'/>
+                                    <t t-set="product_tax" t-value='0'/>
+                                    <t t-set="product_discount" t-value='0'/>
+                                    <tr/>
+                                <t t-foreach="data.get(grand_parent).get(parent).get(sonparent)" t-as="sooonparent">
+                                    <tr>
+                                    <td style="border-right: none; border-bottom: none; border-top: none;"/>
+                                    <td style="border-right: none; border-bottom: none; border-top: none;"/>
+                                    <td><t t-esc="data.get(grand_parent).get(parent).get(sonparent).get(sooonparent).get('code')" /></td>
+                                    <td><t t-esc="data.get(grand_parent).get(parent).get(sonparent).get(sooonparent).get('name')" /></td>
+                                    <td><t t-esc="data.get(grand_parent).get(parent).get(sonparent).get(sooonparent).get('Quantity')" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    <td><t t-esc="data.get(grand_parent).get(parent).get(sonparent).get(sooonparent).get('unit_price')" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    <td><t t-esc="data.get(grand_parent).get(parent).get(sonparent).get(sooonparent).get('Tax')" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    <td><t t-esc="data.get(grand_parent).get(parent).get(sonparent).get(sooonparent).get('SubTotalAmount')" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    <td><t t-esc="data.get(grand_parent).get(parent).get(sonparent).get(sooonparent).get('discount')" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    <td><t t-esc="data.get(grand_parent).get(parent).get(sonparent).get(sooonparent).get('Total_Amount')" t-options='{"widget": "float", "precision": 2}'/></td>
+                                     <t t-set="product_quantity" t-value="product_quantity + data.get(grand_parent).get(parent).get(sonparent).get(sooonparent).get('Quantity')"/>
+                                    <t t-set="product_total" t-value="product_total + data.get(grand_parent).get(parent).get(sonparent).get(sooonparent).get('Total_Amount')"/>
+                                    <t t-set="product_tax" t-value="product_tax + data.get(grand_parent).get(parent).get(sonparent).get(sooonparent).get('Tax')"/>
+                                     <t t-set="product_sub_total" t-value="product_sub_total + data.get(grand_parent).get(parent).get(sonparent).get(sooonparent).get('SubTotalAmount')"/>
+                                    <t t-set="product_discount" t-value="product_discount + data.get(grand_parent).get(parent).get(sonparent).get(sooonparent).get('discount')"/>
+
+
+                                    </tr>
+                                </t>
+
+
+
+
+                                 <tr style="font-weight:bold"> 
+                                    <td style="border-right: none; border-bottom: none; border-top: none;"/>
+                                    <td style="border-right: none; border-bottom: none; border-top: none;"/>
+                                    <td/>
+                                     
+                                    
+                                    <t t-if ="sonparent != False">
+                                    <td>Total <t t-esc="sonparent"/></td>
+                                </t>
+                                <t t-else="">
+                                    <td>Total Sub Uncatagorized</td>
+                                </t>
+                                    
+                                    
+                                    <td> <t t-esc="product_quantity" t-options='{"widget": "float", "precision": 2}'/> </td>
+                                    <td/>
+                                    <td> <t t-esc="product_tax"  t-options='{"widget": "float", "precision": 2}'/> </td>
+                                    <td> <t t-esc="product_sub_total"  t-options='{"widget": "float", "precision": 2}'/> </td>
+                                    <td> <t t-esc="product_discount" t-options='{"widget": "float", "precision": 2}'/> </td>
+                                    <td> <t t-esc="product_total" t-options='{"widget": "float", "precision": 2}'/> </td>
+
+                                     <t t-set="parent_product_quantity" t-value="parent_product_quantity + product_quantity "/>
+                                    <t t-set="parent_product_total" t-value="parent_product_total + product_total "/>
+                                    <t t-set="parent_product_sub_total" t-value="parent_product_sub_total + product_sub_total"/>
+                                    <t t-set="parent_product_tax" t-value="parent_product_tax + product_tax "/>
+                                     <t t-set="parent_product_discount" t-value="parent_product_discount + product_discount "/>
+
+
+
+
+
+                             </tr>
+
+
+                             </tr>
+                            </t>
+                             <tr style="font-weight:bold;"> 
+                                    <td style="border-right: none; border-bottom: none; border-top: none;" />
+                                    <td style="border-right: none; border-bottom: none; border-top: none;"/>
+                                    <td style="border-right: none; border-bottom: none; border-top: none;"/>
+
+                                   
+                                    <t t-if ="parent != False">
+                                    <td>Total <t t-esc="parent"/></td>
+                                </t>
+                                <t t-else="">
+                                    <td>Total Uncatagorized</td>
+                                </t>
+
+
+                                    <td> <t t-esc="parent_product_quantity" t-options='{"widget": "float", "precision": 2}'/> </td>
+                                    <td/>
+                                    <td> <t t-esc="parent_product_tax" t-options='{"widget": "float", "precision": 2}'/> </td>
+                                    <td> <t t-esc="parent_product_sub_total" t-options='{"widget": "float", "precision": 2}'/> </td>
+                                    <td> <t t-esc="parent_product_discount" t-options='{"widget": "float", "precision": 2}'/> </td>
+                                    <td> <t t-esc="parent_product_total" t-options='{"widget": "float", "precision": 2}'/> </td>
+                                    <t t-set="parent_parent_product_quantity" t-value='parent_parent_product_quantity + parent_product_quantity'/>
+                                    <t t-set="parent_parent_product_total" t-value='parent_parent_product_total + parent_product_total '/>
+                                    <t t-set="parent_parent_product_sub_total" t-value='parent_parent_product_sub_total + parent_product_sub_total '/>
+                                    <t t-set="parent_parent_product_tax" t-value='parent_parent_product_tax + parent_product_tax'/>
+                                    <t t-set="parent_parent_product_discount" t-value='parent_parent_product_discount + parent_product_discount'/>
+
+
+                             </tr>
+                        </t>
+                        <tr>
+                             <td style="border-bottom: none; border-left: none;border-right: none;"></td>
+                              <td style="border-bottom: none; border-left: none;border-right: none;"></td>
+                               <td style="border-bottom: none; border-left: none;border-right: none;"></td>
+                             </tr >
+                        </table>
+                        <br/><br/><br/>
+                        <table align="right" id="second" class="table table-sm o_main_table">
+                    
+                      <tr>
+                        <tr>
+                            <td>Sub Total</td>
+                            <td>
+                                <t t-esc ="parent_parent_product_sub_total" t-options='{"widget": "float", "precision": 2}'/> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Addtional Charge</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>Discount</td>
+                            <td><t t-esc ="parent_parent_product_discount" t-options='{"widget": "float", "precision": 2}'/></td>
+                        </tr>
+                        <tr>
+                            <td>Tax Amount</td>
+                            <td>
+                                <t t-esc ="parent_parent_product_tax" t-options='{"widget": "float", "precision": 2}'/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Grand Total</td>
+                            <td>
+                                <t t-esc ="parent_parent_product_total" t-options='{"widget": "float", "precision": 2}'/>
+                            </td>
+                        </tr>
+                      </tr>  
+                     </table> 
+
+                </div>
+                  <br/><br/><br/><br/><br/><br/><br/><br/>
+                <table align="left" id="second" class="table">
+                    <tr style="font-weight:bold;">
+                        <td colspan="2">Denomination</td>
+                    </tr>
+                    <tr>
+                        <td>200 Birr</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                    <tr>
+                        <td>100 Birr</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                    <tr>
+                        <td>50 Birr</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                    <tr>
+                        <td>10 Birr</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                    <tr>
+                        <td>5 Birr</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                    <tr>
+                        <td>1 Birr</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                    <tr>
+                        <td>Total Cents</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                    <tr style="font-weight:bold;">
+                        <td>TOTAL</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                </table>
+                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                <table align="left">
+                    <tr>
+                        <td align="justify">Add Cheque ____________________</td>
+                    </tr>
+                    <tr>
+                        <td align="justify">Grand Total ____________________</td>
+                    </tr>
+                    <tr>
+                        <td align="justify">Audit Strip Total ____________________</td>
+                    </tr>
+                    <tr>
+                        <td align="justify">Diffrence Shortage ____________________</td>
+                    </tr>
+                    <tr>
+                        <td align="justify">Overage       ____________________</td>
+                    </tr>
+                </table>
+                <div class="chartcategory">
+<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+                    
+                </div>
+                
+                
+                </t>
+                <script>
+                    function decodeHTMLEntities(htmlString) {
+                        var doc = new DOMParser().parseFromString(htmlString, "text/html");
+                        return doc.documentElement.textContent;
+                        }
+
+
+                myda="<t t-esc='data'/>"
+
+                console.log("data",myda)
+                console.log("kkk",myda.result)
+                var decodedResponse = decodeHTMLEntities(myda);
+                console.log(decodedResponse)
+                var validJSON = decodedResponse.replace(/'/g, '"');
+                var parsedResponse = JSON.parse(decodedResponse);
+               
+                console.log("heyy",typeof decodedResponse);
+                //console.log("rr",parsedResponse);
+                            const xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+                            const yValues = [55, 49, 44, 24, 15];
+                            const barColors = ["red", "green","blue","orange","brown"];
+
+                            new Chart("myChart", {
+                            type: "bar",
+                            data: {
+                                labels: xValues,
+                                datasets: [{
+                                backgroundColor: barColors,
+                                data: yValues
+                                }]
+                            },
+                            options: {
+                                legend: {display: false},
+                                title: {
+                                display: true,
+                                text: "World Wine Production 2018"
+                                }
+                            }
+                            });
+                </script>
+             </t>   
+        </t>
+    </template>
+</odoo>

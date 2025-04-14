@@ -1,0 +1,6 @@
+<odoo>
+    <record id="default_branch_config" model="ir.config_parameter">
+        <field name="key">manufacturing.default_branch</field>
+        <field name="value">1</field>
+    </record>
+</odoo>

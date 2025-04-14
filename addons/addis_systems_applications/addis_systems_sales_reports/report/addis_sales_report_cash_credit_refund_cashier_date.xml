@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="addis_sales_summary_report_cash_credit_cashier" model="ir.actions.report">
+            <field name="name">Summary in Sales Cash Credit Refund</field>
+            <field name="model">sales.summary.report.cash.credit.cashier.date</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">addis_systems_sales_reports.report_Summary_sales_cash_credit_refund_cashier_date</field>
+            <field name="report_file">addis_systems_sales_reports.report_Summary_sales_cash_credit_refund_cashier_date</field>
+            <field name="print_report_name">'Summary in sales Cash Credit Refund'</field>
+            <field name="binding_model_id" ref="model_sales_summary_report_cash_credit_cashier_date"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+    <template id="report_Summary_sales_cash_credit_refund_cashier_date">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="addis_systems_sales_reports.addis_pay_custom_header_layout_summariesed_cash_credit_refund_cashier_date">
+                    </t>
+                    
+
+                    <style>
+                    table,th,td{
+                    font-size: 14px;
+                    padding-top: 1px;
+                    }
+                    th{
+                        text-align: center;
+
+                    }
+                    #first {
+                    font-family: Arial, Helvetica, sans-serif;
+                    border-collapse: collapse;
+                    width: 100%;
+                    }
+                    #first td, #first th{
+                    padding-top: 1px;
+                    padding-bottom: 1px;
+                    font-size: 14px;
+                    border: 1px solid #000000;
+                    }
+                    #second {
+                    font-family: Arial, Helvetica, sans-serif;
+                    border-collapse: collapse;
+                    width: 32%;
+                    }
+                    #second td, #second th{
+                    padding-top: 1px;
+                    padding-bottom: 1px;
+                    text-align: center;
+                    font-size: 14px;
+                    border: 2px solid #000000;
+                    }
+                </style>
+
+                <div class="page">
+                            <table id="first">
+                           
+                            <tr style="font-weight:bold; color: rgb(4,36,133);">
+                                <th>Date</th>
+                                <th>Cashier</th>
+                                <th>Cash Sales</th>
+                                <th>Credit sales</th>
+                                <th>Sales refund</th>
+                                <th>Total Receipt</th>
+                                <th>With holding</th>
+                                <th>Cash collacted</th>
+                            </tr>
+                            
+                            <t t-set="sn" t-value='0'/>
+                            <t t-set="total_cash_sales" t-value='0'/>
+                            <t t-set="total_credit_sales" t-value='0'/>
+                            <t t-set="total_sales_refund" t-value='0'/>
+                            <t t-set="total_receipt" t-value='0'/>
+                             <t t-set="total_with_holding" t-value='0'/>
+                            <t t-set="total_cash_collected" t-value='0'/>
+                            
+                            <t t-set="datas" t-value="doc.get_dates()"/>
+                            <t t-foreach="datas" t-as="data">
+
+                               
+                                    <tr>
+
+                                         <td t-attf-rowspan="{{len(datas.get(data).get('cashiers'))+1}}"><t t-esc="datas.get(data).get('date_start')" /> to <t t-esc="datas.get(data).get('date_end')" /></td>
+                                       
+                                    </tr>
+                                   <t t-foreach="datas.get(data).get('cashiers')" t-as="cashier">
+                                    <t t-set ="cash_data" t-value="doc.cashiers_detail(cashier=cashier,moves=datas.get(data).get('moves'))"/>
+                                    <t t-foreach="cash_data" t-as="cashier_content">
+                                        <t t-set = "cashsales" t-value="cash_data.get(cashier_content).get('cashsales')"/>
+                                         <t t-set ="creditsales" t-value="cash_data.get(cashier_content).get('creditsales')"/>
+                                          <t t-set = "salesrefund" t-value="cash_data.get(cashier_content).get('salesrefund')"/>
+                                          <t t-set = "receipt" t-value="cashsales+creditsales+salesrefund"/>
+                                          <t t-set = "withholding" t-value="0"/>
+                                          <t t-set = "cashcollacted" t-value="receipt-withholding"/>
+                                        <td  align="center"><t t-esc="cashier.name" /> </td>
+                                        <td  align="center"><t t-esc="cashsales" t-options='{"widget": "float", "precision": 2}'/> </td>
+                                        <td  align="center"><t t-esc="creditsales" t-options='{"widget": "float", "precision": 2}'/> </td>
+                                        <td  align="center"><t t-esc="salesrefund" t-options='{"widget": "float", "precision": 2}'/> </td>
+                                         <td  align="center"><t t-esc="receipt" t-options='{"widget": "float", "precision": 2}'/> </td>
+                                        <td  align="center">0</td>
+                                        <td  align="center"><t t-esc="cashcollacted" t-options='{"widget": "float", "precision": 2}'/> </td>
+                                        <t t-set="total_cash_sales" t-value='total_cash_sales + cashsales'/>
+                                        <t t-set="total_credit_sales" t-value='total_credit_sales + creditsales'/>
+                                        <t t-set="total_sales_refund" t-value='total_sales_refund + salesrefund'/>
+                                        <t t-set="total_receipt" t-value='total_receipt + receipt '/>
+                                        <t t-set="total_with_holding" t-value='total_with_holding'/>
+                                        <t t-set="total_cash_collected" t-value='total_cash_collected + cashcollacted'/>
+                                    </t>
+
+                                   </t>
+
+                                  
+                                    </t>
+                            
+                        </table>
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <br/>
+                <table align="right" id="second" class="table table-sm o_main_table">
+                       <!-- <t t-foreach="doc.sales_id" t-as="sales"> -->
+                       <!-- <t table-sm="doc.sales_id" t-as="sum"> -->
+                      
+                        <tr>
+                            <td>Total cash sales</td>
+                             <td align="center"><t t-esc="total_cash_sales" t-options='{"widget": "float", "precision": 2}'/></td>
+                           
+                        </tr>
+                        <tr>
+                            <td>Total credit sales</td>
+                            <td align="center"><t t-esc="total_credit_sales" t-options='{"widget": "float", "precision": 2}'/></td>
+
+                        </tr>
+                        <tr>
+                            <td>Total sales refund</td>
+                           <td align="center"><t t-esc="total_sales_refund" t-options='{"widget": "float", "precision": 2}'/></td>
+                          
+                        </tr>
+                        <tr>
+                            <td>Total receipt</td>
+                           <td align="center"><t t-esc="total_receipt" t-options='{"widget": "float", "precision": 2}'/></td>
+
+                        </tr>
+                        <tr>
+                            <td>Total with holding</td>
+                           <td align="center"><t t-esc="total_with_holding" t-options='{"widget": "float", "precision": 2}'/></td>
+                                </tr>
+                         <tr>
+                            <td>Total Cash collacted</td>
+                           <td align="center"><t t-esc="total_cash_collected" t-options='{"widget": "float", "precision": 2}'/></td>
+
+                        </tr>
+                      
+                     </table> 
+                </div>
+                <br/><br/><br/><br/><br/><br/><br/><br/>
+                <table align="left" id="second" class="table">
+                    <tr style="font-weight:bold;">
+                        <td colspan="2">Denomination</td>
+                    </tr>
+                    <tr>
+                        <td>200 Birr</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                    <tr>
+                        <td>100 Birr</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                    <tr>
+                        <td>50 Birr</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                    <tr>
+                        <td>10 Birr</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                    <tr>
+                        <td>5 Birr</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                    <tr>
+                        <td>1 Birr</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                    <tr>
+                        <td>Total Cents</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                    <tr style="font-weight:bold;">
+                        <td>TOTAL</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                </table>
+                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                <table align="left">
+                    <tr>
+                        <td align="justify">Add Cheque ____________________</td>
+                    </tr>
+                    <tr>
+                        <td align="justify">Grand Total ____________________</td>
+                    </tr>
+                    <tr>
+                        <td align="justify">Audit Strip Total ____________________</td>
+                    </tr>
+                    <tr>
+                        <td align="justify">Diffrence Shortage ____________________</td>
+                    </tr>
+                    <tr>
+                        <td align="justify">Overage       ____________________</td>
+                    </tr>
+                </table>
+
+                
+             </t>   
+        </t>
+    </template>
+</odoo>

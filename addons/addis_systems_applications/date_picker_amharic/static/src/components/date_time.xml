@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="date_picker_amharic.DateEthiopiaField" owl="1">
+        <input t-if="!props.readonly"  type="text" class="o_input"  t-att-id="datePickerId" t-att-value="formattedValue"  t-ref="input"
+        />
+        <span t-if="props.readonly" class="text-truncate" t-esc="formattedValue" />
+    </t>
+</templates>

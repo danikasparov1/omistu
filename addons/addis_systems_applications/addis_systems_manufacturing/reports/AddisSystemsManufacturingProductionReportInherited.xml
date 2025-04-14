@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="addis_systems_report_mrp_order_inherit" inherit_id="mrp.report_mrporder">
+        <xpath expr="//t[@t-call='web.internal_layout']/div[hasclass('page')]/div[3]" position="after">
+            <div class="row mt32 mb32" t-if="o.customer_id">
+                <div class="col-3">
+                    <strong>Customer:</strong>
+                    <br/>
+                    <span t-field="o.customer_id">Not Assigned</span>
+                </div>
+                <div class="col-3">
+                    <strong>Tin Number:</strong>
+                    <br/>
+                    <span t-field="o.customer_tin_number">Not Assigned</span>
+                </div>
+                <div class="col-3" t-if="o.customer_phone or o.customer_mobile or o.customer_email">
+                    <strong>Customer Contact:</strong>
+                    <br/>
+                    <span t-if="o.customer_phone" t-field="o.customer_phone"/>
+                    <span t-elif="o.customer_mobile" t-field="o.customer_mobile"/>
+                    <span t-elif="o.customer_email" t-field="o.customer_email"/>
+                </div>
+            </div>
+        </xpath>
+<!--        <xpath expr="//t//t//t//div[@t-if='o.user_id']" position="after">-->
+<!--            <div class="col-6">-->
+<!--                <strong>Customer:</strong>-->
+<!--                <br/>-->
+<!--                <span t-field="o.customer_id">Not Assigned</span>-->
+<!--                <br/>-->
+<!--                <t t-if="o.customer_id.vat">-->
+<!--                    <b t-esc="'Tin no :'"/>-->
+<!--                    <span t-field="o.customer_id.vat"></span>-->
+<!--                    <br/>-->
+<!--                </t>-->
+<!--                <t t-if="o.customer.phone">-->
+<!--                    <b>Phone :</b>-->
+<!--                    <span t-field="o.customer_id.phone"></span>-->
+<!--                    <br/>-->
+<!--                </t>-->
+<!--                <t t-if="o.customer_id.contact_address and o.customer_id.contact_address.strip() ">-->
+<!--                    <b>Address :</b>-->
+<!--                    <span t-field="o.customer_id.contact_address"></span>-->
+<!--                    <br/>-->
+<!--                </t>-->
+
+<!--            </div>-->
+<!--        </xpath>-->
+
+<!--        <xpath expr="//t//t//t//div[@class='oe_structure'][1]" position="after">-->
+<!--            <div class="col-12">-->
+<!--                <h2>Manufacturing Order</h2>-->
+<!--            </div>-->
+<!--        </xpath>-->
+    </template>
+</odoo>

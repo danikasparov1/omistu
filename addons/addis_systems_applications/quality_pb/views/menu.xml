@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Employee Purchase Requisition menu -->
+   <menuitem id="quality_check"
+              name="Quality"
+              web_icon="quality_pb,static/description/icon.png"
+              action="employee_purchase_requisition.purchase_requisition_details"/>
+   
+  
+</odoo>

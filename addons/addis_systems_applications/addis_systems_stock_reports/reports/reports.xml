@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- PDF REPORTS : paperformat -->
+    <record id="report_qweb_paperformat" model="report.paperformat">
+        <field name="name">Addissystems INventory report qweb paperformat</field>
+        <field name="default" eval="True" />
+        <field name="format">custom</field>
+        <field name="page_height">297</field>
+        <field name="page_width">210</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">12</field>
+        <field name="margin_bottom">8</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False" />
+        <field name="header_spacing">10</field>
+        <field name="dpi">110</field>
+    </record>
+    
+    <record id="addis_systems_stock_reports.action_print_report_inventory_html" model="ir.actions.report">
+        <field name="name">Stock Expiry</field>
+        <field name="model">inventory.expiry.product.wizard</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">addis_systems_stock_reports.invenotory_product_expiry</field>
+        <field name="report_file">addis_systems_stock_reports.invenotory_product_expiry</field>
+        <field name="paperformat_id" ref="report_qweb_paperformat" />
+    </record>
+
+    <record id="addis_systems_stock_reports.action_print_report_inventory_by_customer_html" model="ir.actions.report">
+        <field name="name">Inventory Summary by Customer</field>
+        <field name="model">inventory.category.customer.wizard</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">addis_systems_stock_reports.customer_movement</field>
+        <field name="report_file">addis_systems_stock_reports.customer_movement</field>
+        <field name="paperformat_id" ref="report_qweb_paperformat" />
+    </record>
+
+    <record id="addis_systems_stock_reports.action_print_report_inventory_by_customer_pdf" model="ir.actions.report">
+        <field name="name">Inventory Summary by Customer</field>
+        <field name="model">inventory.category.customer.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">addis_systems_stock_reports.customer_movement</field>
+        <field name="report_file">addis_systems_stock_reports.customer_movement</field>
+        <field name="paperformat_id" ref="report_qweb_paperformat" />
+    </record>
+
+    <record id="addis_systems_stock_reports.action_print_report_inventory_pdf" model="ir.actions.report">
+        <field name="name">Stock Expiry</field>
+        <field name="model">inventory.expiry.product.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">addis_systems_stock_reports.report_pro</field>
+        <field name="report_file">addis_systems_stock_reports.report_pro</field>
+    </record>
+
+    <record id="addis_systems_stock_reports.action_print_report_inventory_product_category_html" model="ir.actions.report">
+        <field name="name">Inventory Summary by Product Category</field>
+        <field name="model">inventory.product.category.wizard</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">addis_systems_stock_reports.product_category</field>
+        <field name="report_file">addis_systems_stock_reports.product_category</field>
+        <field name="paperformat_id" ref="report_qweb_paperformat" />
+    </record>
+    <record id="addis_systems_stock_reports.action_print_report_inventory_product_category_pdf" model="ir.actions.report">
+        <field name="name">Inventory Summary by Product Category qweb-pdf</field>
+        <field name="model">inventory.product.category.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">addis_systems_stock_reports.product_category</field>
+        <field name="report_file">addis_systems_stock_reports.product_category</field>
+        <field name="paperformat_id" ref="report_qweb_paperformat" />
+    </record>
+
+    <record id="addis_systems_stock_reports.action_print_report_inventory_product_date_html" model="ir.actions.report">
+        <field name="name">Inventory Summary by Date</field>
+        <field name="model">inventory.product.date.wizard</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">addis_systems_stock_reports.product_date</field>
+        <field name="report_file">addis_systems_stock_reports.product_date</field>
+        <field name="paperformat_id" ref="report_qweb_paperformat" />
+    </record>
+    <record id="addis_systems_stock_reports.action_print_report_inventory_product_date_pdf" model="ir.actions.report">
+        <field name="name">Inventory Summary by Date </field>
+        <field name="model">inventory.product.date.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">addis_systems_stock_reports.product_date</field>
+        <field name="report_file">addis_systems_stock_reports.product_date</field>
+        <field name="paperformat_id" ref="report_qweb_paperformat" />
+    </record>
+
+    <record id="addis_systems_stock_reports.action_print_report_inventory_product_trxname_html" model="ir.actions.report">
+        <field name="name">Inventory Summary by Transaction name</field>
+        <field name="model">inventory.product.trxname.wizard</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">addis_systems_stock_reports.product_trxname</field>
+        <field name="report_file">addis_systems_stock_reports.product_trxname</field>
+        <field name="paperformat_id" ref="report_qweb_paperformat" />
+    </record>
+
+    
+    <record id="addis_systems_stock_reports.action_print_report_inventory_product_trxname_pdf" model="ir.actions.report">
+        <field name="name">Inventory Summary by trxname</field>
+        <field name="model">inventory.product.trxname.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">addis_systems_stock_reports.product_trxname</field>
+        <field name="report_file">addis_systems_stock_reports.product_trxname</field>
+        <field name="paperformat_id" ref="report_qweb_paperformat" />
+    </record>
+
+     <record id="addis_systems_stock_reports.action_print_report_inventory_product_bincard_html" model="ir.actions.report">
+        <field name="name">Inventory Summary Bincard</field>
+        <field name="model">inventory.product.bincard.wizard</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">addis_systems_stock_reports.product_bincard</field>
+        <field name="report_file">addis_systems_stock_reports.product_bincard</field>
+        <field name="paperformat_id" ref="report_qweb_paperformat" />
+    </record>
+
+    
+    <record id="addis_systems_stock_reports.action_print_report_inventory_product_bincard_pdf" model="ir.actions.report">
+        <field name="name">Inventory Summary by Bincard</field>
+        <field name="model">inventory.product.bincard.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">addis_systems_stock_reports.product_bincard</field>
+        <field name="report_file">addis_systems_stock_reports.product_bincard</field>
+        <field name="paperformat_id" ref="report_qweb_paperformat" />
+    </record>
+
+
+
+
+</odoo>

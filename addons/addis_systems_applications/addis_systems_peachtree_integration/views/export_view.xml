@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.actions.server" id="download_account_invoices">
+        <field name="name">Export Peachtree format</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="binding_model_id" ref="account.model_account_move"/>
+        <field name="binding_view_types">form,list</field>
+        <field name="state">code</field>
+        <field name="code">
+            action = {
+                'type': 'ir.actions.act_url',
+                'url': '/web/accountmovepeachtree/download?account_move_ids=' + ','.join(map(str, records.ids)),
+                'target': 'download',
+            }
+        </field>
+    </record>
+
+    <record model="ir.actions.server" id="download_product_templates">
+        <field name="name">Export Peachtree format</field>
+        <field name="model_id" ref="product.model_product_template"/>
+        <field name="binding_model_id" ref="product.model_product_template"/>
+        <field name="binding_view_types">form,list</field>
+        <field name="state">code</field>
+        <field name="code">
+            action = {
+                'type': 'ir.actions.act_url',
+                'url': 'web/productpeachtree/download?product_template_ids=' + ','.join(map(str, records.ids)),
+                'target': 'download',
+            }
+        </field>
+    </record>
+
+    <record model="ir.actions.server" id="download_partner">
+        <field name="name">Export Peachtree format</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="binding_model_id" ref="base.model_res_partner"/>
+        <field name="binding_view_types">form,list</field>
+        <field name="state">code</field>
+        <field name="code">
+            action = {
+                'type': 'ir.actions.act_url',
+                'url': 'web/partnerpeachtree/download?partner_ids=' + ','.join(map(str, records.ids)),
+                'target': 'download',
+            }
+        </field>
+    </record>
+
+
+
+     <record model="ir.actions.server" id="download_chartofaccunts">
+        <field name="name">Export Peachtree format</field>
+        <field name="model_id" ref="account.model_account_account"/>
+        <field name="binding_model_id" ref="account.model_account_account"/>
+        <field name="binding_view_types">form,list</field>
+        <field name="state">code</field>
+        <field name="code">
+            action = {
+                'type': 'ir.actions.act_url',
+                'url': 'web/coapeachtree/download?account_ids=' + ','.join(map(str, records.ids)),
+                'target': 'download',
+            }
+        </field>
+    </record>
+
+
+    
+    
+</odoo>

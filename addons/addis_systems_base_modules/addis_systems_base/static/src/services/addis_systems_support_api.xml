@@ -1,0 +1,5 @@
+<template>
+  <div>Current Value: { myValue }</div>
+  <button t-on-click="incrementValue">Increment</button>
+  <button t-on-click="decrementValue">Decrement</button>
+</template>

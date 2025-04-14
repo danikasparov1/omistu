@@ -1,0 +1,122 @@
+<odoo>
+    <!-- Form View for GitLab Events -->
+    <record id="view_form_project_task_gitlab" model="ir.ui.view">
+        <field name="name">project.task.gitlab.form</field>
+        <field name="model">project.task.gitlab</field>
+        <field name="arch" type="xml">
+            <form string="GitLab Event">
+                <sheet>
+                    <group>
+                    <field name="reference" readonly="1"/>
+
+                        <field name="sub_task_id"/>
+                         <field name="gitlab_event_id"/>
+                        <field name="gitlab_event_type"/>
+                        <field name="commit_message"/>
+                        <field name="gitlab_event_data"/>
+                        <field name="gitlab_project"/>
+                        <field name="partner"/>
+                    </group>
+                    
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- List View for GitLab Events -->
+    <record id="view_tree_project_task_gitlab" model="ir.ui.view">
+        <field name="name">project.task.gitlab.tree</field>
+        <field name="model">project.task.gitlab</field>
+        <field name="arch" type="xml">
+            <tree string="GitLab Events">
+                <field name="reference"/>
+                <field name="sub_task_id"/>
+                 <field name="commit_message"/>
+                <field name="gitlab_event_type"/>
+                <field name="gitlab_project"/>
+                <field name="partner"/>
+            </tree>
+        </field>
+    </record>
+
+     <record id="view_search_project_task_gitlab" model="ir.ui.view">
+        <field name="name">project.task.gitlab.search</field>
+        <field name="model">project.task.gitlab</field>
+        <field name="arch" type="xml">
+            <search string="Search GitLab Events">
+                <field name="gitlab_event_id"/>
+                <field name="gitlab_event_type"/>
+                <field name="commit_message"/>
+                <field name="gitlab_project"/>
+                <filter string="Push Events" name="push" domain="[('gitlab_event_type', '=', 'push')]"/>
+                <filter string="Pipeline Events" name="pipeline" domain="[('gitlab_event_type', '=', 'pipeline')]"/>
+                <filter string="Merge Request Events" name="merge_request" domain="[('gitlab_event_type', '=', 'merge_request')]"/>
+            </search>
+        </field>
+    </record>
+
+<record id="view_pivot_project_task_gitlab" model="ir.ui.view">
+    <field name="name">project.task.gitlab.pivot</field>
+    <field name="model">project.task.gitlab</field>
+    <field name="arch" type="xml">
+        <pivot string="GitLab Events Pivot">
+            <!-- Rows (grouping by sub_task_id) -->
+            <field name="sub_task_id" type="row"/>
+            <!-- Columns (grouping by partner) -->
+            <field name="partner" type="col"/>
+            <!-- Measures (count of gitlab_event_id) -->
+        </pivot>
+    </field>
+</record>
+
+
+    <!-- Graph View for GitLab Events -->
+    <record id="view_graph_project_task_gitlab" model="ir.ui.view">
+        <field name="name">project.task.gitlab.graph</field>
+        <field name="model">project.task.gitlab</field>
+        <field name="arch" type="xml">
+            <graph string="GitLab Events Graph" type="bar" sample="1">
+            <field name="sub_task_id" type="col"/>
+            <field name="partner" type="row"/>
+
+            </graph>
+        </field>
+    </record>
+
+
+    <record id="view_kanban_project_task_gitlab" model="ir.ui.view">
+        <field name="name">project.task.gitlab.kanban</field>
+        <field name="model">project.task.gitlab</field>
+        <field name="arch" type="xml">
+            <kanban  class="o_kanban_mobile" sample="1" quick_create="false">
+                <field name="gitlab_event_type"/>
+                <field name="commit_message"/>
+                <field name="gitlab_project"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                            <strong><field name="commit_message"/></strong>
+                            <p><field name="gitlab_event_type"/></p>
+                            <div><field name="gitlab_project"/></div>
+                            <div><field name="partner"/></div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+    <record id="action_project_task_gitlab" model="ir.actions.act_window">
+        <field name="name">GitLab Events</field>
+        <field name="res_model">project.task.gitlab</field>
+        <field name="view_mode">pivot,graph,kanban,tree,form</field>
+        <field name="view_id" ref="view_tree_project_task_gitlab"/>
+        <field name="target">current</field>
+    </record>
+
+    <menuitem id="menu_project_task_gitlab" 
+              name="GitLab Events" 
+              parent="project.menu_project_management" 
+              action="action_project_task_gitlab"/>
+</odoo>

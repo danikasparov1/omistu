@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+     <record id="addis_systems_third_party_integration_res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.addis_systems_third_party</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="1"/>
+            <field name="inherit_id" ref="addis_systems_base.addis_systems_base_res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <app name="addis_systems_base" position="inside">
+                    <block title="Addis Systems Third Party Integration" name="Addis Systems Third Party Integration_res_config" id="addis_systems_third_party_setting_section">
+                        <setting id="addis_systems_third_party_cnet" help="Integrate with cnet">
+                                <field name="cnet" required="0"/>
+                                <div class="content-group" invisible="not cnet">
+                                    <div class="row mt16">
+                                        <field name="cnet_xml_path" required="0" width="100%" style="width:100%" placeholder="put cnet xml path here"/>
+                                    </div>
+                                </div>
+                        </setting>
+                        <setting id="addis_systems_third_party_maraki" help="Integrate with maraki">
+                            <field name="maraki" required="0"/>
+                            <div class="content-group" invisible="not maraki">
+                                <div class="row mt16">
+                                    <field name="maraki_xml_path" width="100%" style="width:100%" required="0" placeholder="put maraki xml path here"/>
+                                </div>
+                            </div>
+                        </setting>
+                        <setting id="addis_systems_third_party_peds" help="Integrate with peds">
+                            <field name="peds" required="0"/>
+                            <div class="content-group" invisible="not peds">
+                                <div class="row mt16">
+                                    <field name="peds_xml_path" width="100%" style="width:100%" required="0" placeholder="put peds xml path here"/>
+                                </div>
+                            </div>
+                        </setting>
+                    </block>
+
+                    
+                </app>
+            </field>
+        </record>
+    </data>
+    </odoo>

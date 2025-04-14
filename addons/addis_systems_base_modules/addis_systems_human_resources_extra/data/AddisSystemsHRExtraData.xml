@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record model="res.config.settings" id="addis_systems_hr_extra_setting_settler">
+            <field name="hr_presence_control_login" eval="0"/>
+            <field name="module_hr_attendance" eval="1"/>
+            <field name="hr_attendance_display_overtime" eval="1"/>
+        </record>
+
+        <function name="execute" model="res.config.settings">
+            <value eval="[ref('addis_systems_hr_extra_setting_settler')]"/>
+        </function>
+
+    </data>
+</odoo>

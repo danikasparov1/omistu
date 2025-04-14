@@ -1,0 +1,106 @@
+<templates xml:space="preserve">
+    <t t-name="accounting_drill_down_report.partner_ledgure_report" t-inherit="accounting_drill_down_report.base_template" owl="1">
+        <xpath expr="//t//div[@name='default_filters']" position='after'>
+        <div class="row ms-3 mt-3 mb-3">
+        <div class="col">
+        <Dropdown togglerClass="'btn btn-secondary'">
+            <t t-set-slot="toggler">
+                <strong> Filter By :</strong> <span t-if="state.account_type" t-esc="state.account_type.label" /><i class="fa fa-caret-down ms-1"/>
+            </t>
+            <t t-if="state.account_type">
+            <t t-foreach="[{'name':'customer','label':'Receivable Accounts'},{'name':'supplier','label':'Payable Accounts'},{'name':'customer_supplier','label':'Receivable and Payable Accounts'}]" t-as="accty" t-key="accty.name">
+                <DropdownItem class="{ o_menu_item: true }"
+                    t-esc="accty.label"
+                    onSelected="() => set_account_type(accty)"
+                />
+            </t>
+            </t>
+        </Dropdown>
+                </div>
+    <div class="col">
+     <Dropdown togglerClass="'btn btn-secondary'">
+    <t t-set-slot="toggler">
+        <strong>Partners:</strong>
+        <t t-if="state.partners">
+            <t t-foreach="state.partners" t-as="ptnl" t-key="ptnl.id">
+                <span t-if="ptnl.selected" t-esc="ptnl.name" />
+                <span t-if="ptnl.selected" t-esc="' ,'" />
+            </t>
+        </t>
+        <i class="fa fa-caret-down ms-1"/>
+    </t>
+    <t t-if="state.partners">
+        <t t-foreach="state.partners" t-as="ptnl" t-key="ptnl.id">
+            <DropdownItem 
+                class="{ o_menu_item: true, selected: ptnl.selected }"
+                parentClosingMode="'none'"
+                t-esc="ptnl.name"
+                onSelected="() => this.set_partners(ptnl.id)" />
+        </t>
+    </t>
+</Dropdown>
+
+
+    </div>
+</div>
+
+        </xpath>
+
+    <xpath expr="//div[@class='scrollable-section pb-5 w-100']" position='inside'>
+            <table class="table table-sm table-reports table-hover">
+
+        <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>JRNL</th>
+                        <th>Account</th>
+                        <th>Ref</th>
+                        <th>Debit</th>
+                        <th>Credit</th>
+                        <th>Balance</th>
+                    </tr>
+                </thead>
+            <t t-if ="state['lines']" t-foreach="state['lines']" t-as="line" t-key="line">
+                <tr style="background-color: #f0f0f0;">
+                            <td>
+                             <span t-on-click="()=>toggle_lines(line)">  <i t-if="!state.lines[line].selected" class="fa fa-caret-right"/> <i t-if="state.lines[line].selected" class="fa fa-caret-down"/> <strong t-esc="state['lines'][line]['name']"/></span>
+                            </td>
+                             <td/>
+                            <td/>
+                            <td/>
+
+                             <td>
+                                <strong t-esc="formatCurrency(state['lines'][line]['total_data'][2])"/>
+                            </td>
+                             <td>
+                                <strong t-esc="formatCurrency(state['lines'][line]['total_data'][3])"/>
+                            </td>
+                             <td>
+                                <strong t-esc="formatCurrency(state['lines'][line]['total_data'][4])"/>
+                            </td>
+
+                </tr>
+
+                <t t-if ="state['lines'][line]['data']" t-foreach="state['lines'][line]['data']" t-as="line_2" t-key="line_2">
+                    <tr t-if="state.lines[line].selected">
+                    <td>
+                          <strong class="ms-3" t-esc="line_2[0]"/>
+                            </td>
+                             <td t-esc="line_2[1]"/>
+                            <td t-esc="line_2[2]"/>
+                            <td t-on-dblclick = "()=>goto_journal_entry(line_2[8])" t-esc="line_2[3]"/>
+                            <td t-esc="formatCurrency(line_2[4])"/>
+                            <td t-esc="formatCurrency(line_2[5])"/>
+                            <td t-esc="formatCurrency(line_2[6])"/>
+
+                       
+                </tr>
+                </t>
+            </t>
+
+        <tbody>
+        </tbody>
+        </table>
+    </xpath>
+    </t>
+</templates>

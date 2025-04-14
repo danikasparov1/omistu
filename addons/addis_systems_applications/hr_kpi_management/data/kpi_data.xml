@@ -1,0 +1,10 @@
+<odoo>
+    <record id="kpi_sales_target" model="hr.kpi">
+        <field name="name">Sales Targets Achievement</field>
+        <field name="description">Percentage of sales targets achieved per quarter</field>
+        <field name="kpi_type">quantitative</field>
+        <field name="measurement_unit">%</field>
+        <field name="target_value">90</field>
+        <field name="frequency">quarterly</field>
+    </record>
+</odoo>

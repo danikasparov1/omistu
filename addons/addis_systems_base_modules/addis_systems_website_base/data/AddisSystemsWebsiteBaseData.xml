@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record model="res.config.settings" id="addis_systems_website_base_setting_settler">
+            <field name="website_cookies_bar" eval="1"/>
+        </record>
+
+        <function name="execute" model="res.config.settings">
+            <value eval="[ref('addis_systems_website_base_setting_settler')]"/>
+        </function>
+
+    </data>
+</odoo>

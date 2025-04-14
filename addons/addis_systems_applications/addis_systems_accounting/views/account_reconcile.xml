@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Dixmit
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <data>
+        <!-- Inherit the existing view -->
+        <record id="inherit_bank_statement_line_form_reconcile_view" model="ir.ui.view">
+            <field name="name">inherit.bank.statement.line.reconcile</field>
+            <field name="model">account.bank.statement.line</field>
+            <field name="inherit_id" ref="account_reconcile_oca.bank_statement_line_form_reconcile_view"/>
+            <field name="arch" type="xml">
+                <!-- Modify the context of the specific field -->
+                <field name="add_account_move_line_id" position="attributes">
+                    <attribute name="context">
+                        {'search_default_journal_id':journal_id,'search_default_partner_id': partner_id, 
+                         'tree_view_ref': 'account_reconcile_oca.account_move_line_tree_reconcile_view', 
+                         'search_view_ref': 'account_reconcile_oca.account_move_line_search_reconcile_view', 
+                         'new_context_key': 'new_value'}
+                    </attribute>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

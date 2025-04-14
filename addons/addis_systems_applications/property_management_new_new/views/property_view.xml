@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+
+    <!-- Property Tree View -->
+    <record id="view_property_tree" model="ir.ui.view">
+        <field name="name">property.management.tree</field>
+        <field name="model">property.management</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="site"/>
+                <field name="floor"/>
+                <field name="area"/>
+                <field name="bedroom_count"/>
+                <field name="price"/>
+                <field name="quantity"/>
+                <field name="status"/>
+                <field name="property_code" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Property Form View -->
+    <record id="view_property_form" model="ir.ui.view">
+        <field name="name">property.management.form</field>
+        <field name="model">property.management</field>
+        <field name="arch" type="xml">
+            <form string="Property">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="site"/>
+                        <field name="floor"/>
+                        <field name="area"/>
+                        <field name="bedroom_count"/>
+                        <field name="price"/>
+                        <field name="quantity"/>
+                        <field name="status"/>
+                        <field name="property_code" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- CRM Lead View with Property Selection -->
+    <record id="view_crm_lead_form" model="ir.ui.view">
+        <field name="name">crm.lead.form.inherit</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/group" position="inside">
+                <group>
+                    <field name="property_ids" widget="many2many_tags"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Property List View -->
+
+    <record id="action_crm_leads" model="ir.actions.act_window">
+    <field name="name">Leads</field>
+    <field name="res_model">crm.lead</field>
+    <field name="view_mode">tree,form</field>
+    <field name="domain">[]</field>
+</record>
+    <record id="action_property_list" model="ir.actions.act_window">
+        <field name="name">Properties</field>
+        <field name="res_model">property.management</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p>Manage available and sold properties here.</p>
+        </field>
+    </record>
+
+        <!-- Main Menu -->
+    <menuitem id="real_estate_menu_new" name="Real Estate" sequence="1"/>
+
+    <!-- Property Management Menu -->
+    <menuitem id="property_management_menu_netskfjaslkfj" name="Properties1" parent="real_estate_menu_new"/>
+        <!-- Property Menu Item -->
+    <menuitem id="property_list_menu_sfsaf" name="All Properties" parent="property_management_menu_netskfjaslkfj" action="action_property_list"/>
+
+    <!-- CRM Lead Menu (Linked to Properties) -->
+    <menuitem id="real_estate_crm_menu_safsafsaf" name="Leads" parent="real_estate_menu_new" action="action_crm_leads"/>
+
+</odoo>

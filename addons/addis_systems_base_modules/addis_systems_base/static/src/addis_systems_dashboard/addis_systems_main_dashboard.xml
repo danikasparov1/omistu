@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="addis_systems_base.AddisSystemsAdministratorDashboardTemplate" owl="1">
+        <div class="vh-100 overflow-auto bg-muted">
+            <div class="row m-3">
+                <div class="col-lg-7">
+                    <div class="row">
+                        <div class="col m-0 p-0">
+                            <div class="shadow-sm border m-2 p-4 bg-secondary">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <h1 class="text-primary fw-bold">Administrator Dashboard</h1>
+                                    <div>
+                                        <select class="form-select">
+                                            <option value="0">Select Period</option>
+                                            <option value="7">Last 24 Hours</option>
+                                            <option value="7">Last 7 Days</option>
+                                            <option value="7">Last 15 Days</option>
+                                            <option value="30">Last 30 Days</option>
+                                            <option value="90">Last 90 Days</option>
+                                            <option value="365">Last 365 Days</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col m-0 p-0">
+                            <div class="shadow-sm border m-2 p-4 bg-white">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <h3 class="text-primary fw-bold">Daily Connected Users</h3>
+                                    <div class="px-3 py-1 bg-primary cursor-pointer">
+                                        <span class="fa fa-arrow-right text-white"/>
+                                    </div>
+                                </div>
+                                <AddisSystemsAdministratorDashboardConnected type="'bar'" id="'connected_users'" title="'Daily Connected Users'"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 m-0 p-0">
+                            <div class="shadow-sm border m-2 p-4 bg-white">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <h3 class="text-primary fw-bold">Outgoing Mail</h3>
+                                    <div class="px-3 py-1 bg-primary cursor-pointer">
+                                        <span class="fa fa-arrow-right text-white"/>
+                                    </div>
+                                </div>
+                                <AddisSystemsAdministratorDashboardOutgoingMail type="'line'" id="'outgoing_mail'" title="'Outgoing Mail Last 10 Days'"/>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 m-0 p-0">
+                            <div class="shadow-sm border m-2 p-4 bg-white">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <h3 class="text-primary fw-bold">Odoo Messages</h3>
+                                    <div class="px-3 py-1 bg-primary cursor-pointer">
+                                        <span class="fa fa-arrow-right text-white"/>
+                                    </div>
+                                </div>
+                                <AddisSystemsAdministratorDashboardOdooMessages type="'line'" id="'odoo_messages'" title="'Odoo Messages Last 5 Days'"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="row">
+                        <AddisSystemsPendingInvitationsKpiCard name="'Quotations'" value="state.aa.value" percentage="state.aa.percent"/>
+                        <AddisSystemsActiveUsersKpiCard name="'Orders'" value="state.bb.value" percentage="state.bb.percent"/>
+                    </div>
+                    <div class="row">
+                        <AddisSystemsContactsKpiCard name="'Quotations'" value="state.bb.value" percentage="state.bb.percent"/>
+                        <AddisSystemsPendingInvitationsKpiCard name="'Orders'" value="state.cc.value" percentage="state.cc.percent"/>
+                    </div>
+                    <div class="row">
+                        <AddisSystemsContactsKpiCard name="'Installed'" value="state.cc.value" percentage="state.cc.percent"/>
+                        <AddisSystemsPendingInvitationsKpiCard name="'Orders'" value="state.dd.value" percentage="state.dd.percent"/>
+                    </div>
+                    <div class="row">
+                        <AddisSystemsContactsKpiCard name="'Non Installed'" value="state.dd.value" percentage="state.dd.percent"/>
+                        <AddisSystemsPendingInvitationsKpiCard name="'Orders'" value="state.aa.value" percentage="state.aa.percent"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

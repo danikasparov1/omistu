@@ -1,0 +1,117 @@
+<templates xml:space="preserve">
+    <t t-name="accounting_drill_down_report.aged_payable_report_owl" t-inherit="accounting_drill_down_report.base_template" owl="1">
+        <xpath expr="//div[@name='jrnl_filter']" position="replace">
+            <div></div>
+        </xpath>
+       <xpath expr="//t//div[@name='default_filters']" position='after'>
+        <div class="row ms-3 mt-3 mb-3">
+        <div class="col">
+        <Dropdown togglerClass="'btn btn-secondary'">
+            <t t-set-slot="toggler">
+                <strong> Filter By :</strong> <span t-if="state.account_type" t-esc="state.account_type.label" /><i class="fa fa-caret-down ms-1"/>
+            </t>
+            <t t-if="state.account_type">
+            <t t-foreach="[{'name':'customer','label':'Receivable Accounts'},{'name':'supplier','label':'Payable Accounts'},{'name':'customer_supplier','label':'Receivable and Payable Accounts'}]" t-as="accty" t-key="accty.name">
+                <DropdownItem class="{ o_menu_item: true }"
+                    t-esc="accty.label"
+                    onSelected="() => set_account_type(accty)"
+                />
+            </t>
+            </t>
+        </Dropdown>
+                </div>
+    <div class="col">
+     <Dropdown togglerClass="'btn btn-secondary'">
+    <t t-set-slot="toggler">
+        <strong>Partners:</strong>
+        <t t-if="state.partners">
+            <t t-foreach="state.partners" t-as="ptnl" t-key="ptnl.id">
+                <span t-if="ptnl.selected" t-esc="ptnl.name" />
+                <span t-if="ptnl.selected" t-esc="' ,'" />
+            </t>
+        </t>
+        <i class="fa fa-caret-down ms-1"/>
+    </t>
+    <t t-if="state.partners">
+        <t t-foreach="state.partners" t-as="ptnl" t-key="ptnl.id">
+            <DropdownItem 
+                class="{ o_menu_item: true, selected: ptnl.selected }"
+                parentClosingMode="'none'"
+                t-esc="ptnl.name"
+                onSelected="() => this.set_partners(ptnl.id)" />
+        </t>
+    </t>
+</Dropdown>
+
+
+    </div>
+</div>
+
+        </xpath>
+
+
+          <xpath expr="//div[@class='scrollable-section pb-5 w-100']" position='inside'>
+           <table class="table table-sm table-reports table-hover">
+                <thead>
+                
+                     <tr>
+                                <th>Partners</th>
+                                <th class="text-end">
+                                    <span>Not due</span>
+                                </th>
+                                <t t-if="state['lines']['data']">
+                                <th class="text-end"><span t-esc="state['lines']['data'][4]['name']"/></th>
+                                <th class="text-end"><span t-esc="state['lines']['data']['3']['name']"/></th>
+                                <th class="text-end"><span t-esc="state['lines']['data']['2']['name']"/></th>
+                                <th class="text-end"><span t-esc="state['lines']['data']['1']['name']"/></th>
+                                <th class="text-end"><span t-esc="state['lines']['data']['0']['name']"/></th>
+                                </t>
+                                <th class="text-end">Total</th>
+                            </tr>
+
+                            <tr t-if="state['lines']['get_partner_lines']">
+                                <th>Account Total</th>
+                                <th class="text-end"><span t-esc="formatCurrency(state['lines']['get_direction'][6])" /></th>
+                                <th class="text-end"><span t-esc="formatCurrency(state['lines']['get_direction'][4])" /></th>
+                                <th class="text-end"><span t-esc="formatCurrency(state['lines']['get_direction'][3])" /></th>
+                                <th class="text-end"><span t-esc="formatCurrency(state['lines']['get_direction'][2])" /></th>
+                                <th class="text-end"><span t-esc="formatCurrency(state['lines']['get_direction'][1])" /></th>
+                                <th class="text-end"><span t-esc="formatCurrency(state['lines']['get_direction'][0])" /></th>
+                                <th class="text-end"><span t-esc="formatCurrency(state['lines']['get_direction'][5])" /></th>
+                            </tr>
+                </thead>
+                <tbody>
+                <t t-log="'hello',state['lines']['get_partner_lines']"/>
+                <t t-if="state['lines']['get_partner_lines']">
+                 <tr t-if="state['lines']['get_partner_lines']" t-foreach="state['lines']['get_partner_lines']" t-as="partner" t-key="partner_index">
+                                <td>
+                                    <span t-esc="partner['name']"/>
+                                </td>
+                                <td class="text-end">
+                                    <span t-esc="formatCurrency(partner['direction'])" />
+                                </td>
+                                <td class="text-end">
+                                    <span t-esc="formatCurrency(partner['4'])" />
+                                </td>
+                                <td class="text-end">
+                                    <span t-esc="formatCurrency(partner['3'])" />
+                                </td>
+                                <td class="text-end">
+                                    <span t-esc="formatCurrency(partner['2'])" />
+                                </td>
+                                <td class="text-end">
+                                    <span t-esc="formatCurrency(partner['1'])" />
+                                </td>
+                                <td class="text-end">
+                                    <span t-esc="formatCurrency(partner['0'])" />
+                                </td>
+                                <td class="text-end">
+                                    <span t-esc="formatCurrency(partner['total'])" />
+                                </td>
+                            </tr>
+                            </t>
+            </tbody>
+            </table>
+        </xpath>
+    </t>
+</templates>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!--    Company User Modifications    -->
+
+        <record id="base.main_partner" model="res.partner" context="{'default_is_company': True}">
+            <field name="image_1920" type="base64" file="addis_systems_theme/static/description/icon.png"/>
+        </record>
+
+        <record id="base.main_company" model="res.company">
+            <field name="appbar_image" type="base64" file="addis_systems_theme/static/description/icon.png"/>
+            <field name="favicon" type="base64" file="addis_systems_theme/static/description/icon.png"/>
+            <field name="logo" type="base64" file="addis_systems_theme/static/description/icon.png"/>
+            <field name="logo_web" type="base64" file="addis_systems_theme/static/description/icon.png"/>
+        </record>
+
+        <!--    Addis Systems access point User Create    -->
+
+        <record id="base.user_admin" model="res.users">
+            <!--      Note Temporary      -->
+            <field name="login">support@addissystems.et</field>
+            <field name="password">e1j16n$)ZJv|%M|B</field>
+            <field name="signature"><![CDATA[<span>-- <br/> Addis Systems Support</span>]]></field>
+            <field name="image_1920" type="base64" file="addis_systems_theme/static/description/icon.png"/>
+        </record>
+
+        <record model="res.partner" id="base.partner_root">
+            <field name="image_1920" type="base64" file="addis_systems_theme/static/description/icon.png"/>
+            <field name="active" eval="False"/>
+        </record>
+
+        <record model="res.users" id="base.user_root">
+            <field name="image_1920" type="base64" file="addis_systems_theme/static/description/icon.png"/>
+            <field name="signature"><![CDATA[<span>-- <br/>System</span>]]></field>
+        </record>
+    </data>
+</odoo>

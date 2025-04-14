@@ -1,0 +1,67 @@
+<odoo>
+    <record id="view_manager_dashboard_form" model="ir.ui.view">
+        <field name="name">manager.dashboard.form</field>
+        <field name="model">manager.dashboard</field>
+        <field name="arch" type="xml">
+            <form string="Manager Pre-Dashboard">
+                <sheet>
+                    <div class="oe_title">
+                        <h3 class="oe_header_title" style="text-align:center; color:#4CAF50; font-size:24px; margin-bottom:20px;">
+                            Select an Option
+                        </h3>
+                    </div>
+                    <!-- <group>
+                        <div style="text-align:center;">
+                            <button name="action_show_reports" string="Reports" type="object"
+                                    class="btn btn-primary" style="margin: 10px; padding: 10px 20px;" />
+                            <button name="open_tasks_menu" string="Tasks" type="object"
+                                    class="btn btn-secondary" style="margin: 10px; padding: 10px 20px;" />
+                        </div>
+                    </group> -->
+                    <group name="report_buttons" modifiers="{'invisible': [('state', '!=', 'show_reports')]}">
+                        <!-- <div style="text-align:center;">
+                            <button name="open_reports_menu" string="Sales" type="object"
+                                    class="btn btn-primary" style="margin: 10px; padding: 10px 20px;" />
+                        </div>
+                        <div>
+                            <button name="open_tasks_menu" string="Sent Sales" type="object"
+                                    class="btn btn-secondary" style="margin: 10px; padding: 10px 20px;" />
+                        </div> -->
+                        <div style="text-align:center;">
+                            <button name="open_purchase_reports" string="Reports" type="object"
+                                    class="btn btn-success" style="margin: 10px 20px 10px 10px; padding: 10px 20px;" />
+                        </div>
+                        <div>
+                            <button name="open_inventory_reports" string="Tasks" type="object"
+                                    class="btn btn-info" style="margin: 10px 10px 10px 20px; padding: 10px 20px;" />
+                        </div>
+                        <!-- <div style="text-align:center;">
+                            <button name="open_accounting_menu" string="Dynamic Accounting Reports" type="object"
+                                    class="btn btn-warning" style="margin: 10px; padding: 10px 20px;" />
+                        </div> -->
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_manager_dashboard" model="ir.actions.act_window">
+        <field name="name">Manager Pre-Dashboard</field>
+        <field name="res_model">manager.dashboard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="action_accounting_reports_popup" model="ir.actions.client">
+        <field name="name">Dynamic Accounting Reports</field>
+        <field name="tag">accounting_reports_popup</field>
+    </record>
+
+    <menuitem id="menu_accounting_dynamic_report_popup"
+              name="Dynamic Accounting Reports"
+              action="action_accounting_reports_popup"
+              parent="account.account_reports_management_menu" />
+
+    <menuitem id="menu_manager_dashboard" name="Manager Pre-Dashboard" action="action_manager_dashboard" sequence="1" />
+</odoo>
+

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="addis_systems_stock_reports.product_bincard">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.internal_layout">
+                    <div class="page">
+                        <h3>Bincard Summary</h3>
+                        <h6>
+                            <t t-if="doc.date_to">
+                                Date: Until <t t-esc="doc.date_to"/>
+                            </t>
+                            <t t-if="not doc.date_to">
+                                Date: Not Specified
+                            </t>
+                        </h6>
+                        <table class="table table-sm table-reports">
+                            <thead>
+                                <tr>
+                                    <th>Stock Location</th>
+                                    <th>Total Opening Stock</th>
+                                    <th>Total Stock In</th>
+                                    <th>Total Stock Out</th>
+                                    <th>Total Closing Stock</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="doc.get_data()" t-as="location_data">
+                                    <tr>
+                                        <td><t t-esc="location_data['location_id'].name"/></td>
+                                        <td><t t-esc="location_data['opening_stock']" t-options='{"widget": "float", "precision": 2}'/></td>
+                                        <td><t t-esc="location_data['stock_in']" t-options='{"widget": "float", "precision": 2}'/></td>
+                                        <td><t t-esc="location_data['stock_out']" t-options='{"widget": "float", "precision": 2}'/></td>
+                                        <td><t t-esc="location_data['balance']" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    </tr>
+                                    <t t-foreach="[]" t-as="product">
+                                        <tr>
+                                            <td></td>
+                                            <td><strong><t t-esc="product[0].display_name"/></strong></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td><t t-esc="product[1]"/></td>
+                                        </tr>
+                                        <t t-foreach="doc.get_references(product[0].id,categ[0])" t-as="reference">
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td><t t-esc="doc.get_operation_type(reference[0]).picking_type_id.name"/></td>
+                                                <td><t t-esc="reference[0]"/></td>
+                                                
+                                                <td><t t-esc="reference[1]"/></td>
+                                            </tr>
+                                        </t>
+                                    </t>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

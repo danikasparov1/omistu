@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+
+
+
+
+    <record id="quality_check_view_form" model="ir.ui.view">
+        <field name="name">quality.check.view.form</field>
+        <field name="model">quality.check</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_pass" type="object" invisible ="quality_state != 'fail'" groups="quality_pb.group_quality_user" string="Pass" data-hotkey="q"/>
+                    <button name="action_fail" type="object" invisible = "quality_state != 'pass'" groups="quality_pb.group_quality_user" string="Fail" data-hotkey="w"/>
+                    
+                    <field name="quality_state" widget="statusbar" states='draft,pass,fail'/>
+
+                </header>
+
+                <sheet>
+                   <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="New"/>
+                        </h1>
+                    </div>
+                    <group>
+                    
+                        <field name="stock_id" decoration-bf="1"/>
+                        <field name="origin" optional="show"/>
+                        <field name="inspection_date" string="Checked Date" optional="show"/>
+                        <field name="user_id" string="Checked By" optional="show" widget='many2one_avatar_user'/>
+                       
+                        <field name="quality_state" 
+                        optional="show" 
+                        widget='badge' 
+                        decoration-success="quality_state == 'pass'" 
+                        decoration-info="quality_state == 'none'" 
+                        decoration-danger="quality_state == 'fail'"/>
+
+
+
+                        <field name="company_id" groups="base.group_multi_company"/>
+                    </group>
+
+
+                    <notebook>
+
+                  
+
+
+
+                        <page string="Notes" name="notes">
+                            <group>
+                                <field string="Note" name="additional_note"/>
+                            </group>
+                        </page>
+                    </notebook>
+
+                </sheet>
+
+                <div class="oe_chatter">
+                    <field name="message_ids" widget="mail_thread"/>
+                    <field name="activity_ids"/>
+                </div>
+
+
+            </form>
+        </field>
+    </record>
+
+    <record id="quality_check_view_tree" model="ir.ui.view">
+        <field name="name">quality.check.view.tree</field>
+        <field name="model">quality.check</field>
+        <field name="arch" type="xml">
+            <tree default_order="id desc" sample="1" decoration-info="quality_state == 'none'">
+                <field name="name"/>
+                <field name="stock_id" decoration-bf="1"/>
+                <field name="origin" optional="show"/>
+                <field name="inspection_date" string="Checked Date" optional="show"/>
+                <field name="user_id" string="Checked By" optional="show" widget='many2one_avatar_user'/>
+                <field name="quality_state" optional="show" widget='badge' decoration-success="quality_state == 'pass'" decoration-info="quality_state == 'none'" decoration-danger="quality_state == 'fail'"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="quality_check_view_graph" model="ir.ui.view">
+        <field name="name">quality.check.view.graph</field>
+        <field name="model">quality.check</field>
+        <field name="arch" type="xml">
+            <graph string="Quality Check Analysis" sample="1">
+                <field name="inspection_date" interval="day"/>
+                <field name="quality_state"/>
+            </graph>
+        </field>
+    </record>
+
+
+    <record id="quality_check_view_pivot" model="ir.ui.view">
+        <field name="name">quality.check.view.pivot</field>
+        <field name="model">quality.check</field>
+        <field name="arch" type="xml">
+            <pivot string="Quality Check Analysis" sample="1">
+                <field name="inspection_date" type="col" interval="day"/>
+                <field name="move_ids" type="row"/>
+            </pivot>
+        </field>
+    </record>
+
+
+    <record id="quality_check_action_spc" model="ir.actions.act_window">
+        <field name="name">Quality Checks SPC</field>
+        <field name="res_model">quality.check</field>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="quality_check_view_graph"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No data yet!
+            </p>
+        </field>
+    </record>
+
+
+    <record id="quality_check_action_main" model="ir.actions.act_window">
+        <field name="name">Quality Checks</field>
+        <field name="res_model">quality.check</field>
+        <field name="view_mode">tree,kanban,form,pivot,graph</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+              No quality check found
+            </p>
+            <p>
+              Define Quality Control Points in order to automatically generate
+              quality checks at the right logistic operation: transfers, manufacturing orders.
+            </p>
+        </field>
+    </record>
+
+
+    <record id="action_quality_check_tree_form" model="ir.actions.act_window">
+        <field name="name">Quality Check</field>
+        <field name="res_model">quality.check</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+    </record>
+
+    <menuitem id="menu_quality_root" name="Quality" web_icon="quality_pb,static/description/icon.svg" sequence="150"/>
+    <menuitem id="quality_check" name="Orders" web_icon="quality_pb,static/description/icon.png" action="action_quality_check_tree_form" parent="menu_quality_root"/>
+
+
+</odoo>

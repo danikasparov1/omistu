@@ -1,0 +1,38 @@
+<odoo>
+    <record id="view_payment_order_form" model="ir.ui.view">
+        <field name="name">payment.order.form</field>
+        <field name="model">payment.order</field>
+        <field name="arch" type="xml">
+            <form string="Payment Order">
+                <sheet>
+                    <group>
+                        <field name="payment_for"/>
+                        <field name="payment_reason"/>
+                        <field name="date"/>
+                        <field name="amount"/>
+                        <field name="tax"/>
+                        <field name="withholding"/>
+                        <field name="total_amount" readonly="1"/>
+                        <field name="debit_account_id"/>
+                        <field name="journal_id"/>
+                    </group>
+                    <footer>
+                        <button string="Create Journal Entry" type="object" name="action_create_journal_entry" 
+                                class="oe_highlight" attrs="{'invisible': [('state', '=', 'posted')]}"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action Window -->
+    <record id="action_payment_order" model="ir.actions.act_window">
+        <field name="name">Payment Orders</field>
+        <field name="res_model">payment.order</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu Item -->
+    <menuitem id="menu_payment_order" name="Payment Orders" parent="account.menu_finance" 
+              action="action_payment_order" sequence="10"/>
+</odoo>

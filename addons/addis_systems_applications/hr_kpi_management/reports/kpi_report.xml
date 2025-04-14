@@ -1,0 +1,8 @@
+<odoo>
+    <record id="report_kpi" model="ir.actions.report">
+        <field name="name">KPI Report</field>
+        <field name="model">hr.kpi.evaluation</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hr_kpi_management.kpi_report_template</field>
+    </record>
+</odoo>

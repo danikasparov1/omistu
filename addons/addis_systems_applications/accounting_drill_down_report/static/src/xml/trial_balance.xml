@@ -1,0 +1,47 @@
+<templates xml:space="preserve">
+    <t t-name="accounting_drill_down_report.trial_balance_report_owl" t-inherit="accounting_drill_down_report.base_template" owl="1">
+        <xpath expr="//div[@class='scrollable-section pb-5 w-100']" position='inside'>
+            <table class="table table-sm table-reports table-hover">
+                <thead>
+                    <tr>
+                        <th>Account</th>
+
+                        <th class="text-end">Debit</th>
+                        <th class="text-end">Credit</th>
+                        <th class="text-end">Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+  
+
+                    <t t-if ="state['lines']" t-foreach="state['lines']" t-as="line" t-key="line">
+                        <tr t-on-dblclick="() => goto_general_ledgure(line)">
+                            <td>
+                                <span> <strong class="ms-3" t-esc="state['lines'][line]['label']"/></span>
+                            </td>
+                          
+                            <td class="text-end">
+                                <strong t-esc="formatCurrency(state['lines'][line]['debit'])"/>
+                            </td>
+                            <td class="text-end">
+                                <strong t-esc="formatCurrency(state['lines'][line]['credit'])"/>
+                            </td>
+                            <td class="text-end">
+                                <strong t-esc="formatCurrency(state['lines'][line]['balance'])"/>
+                            </td>
+                        </tr>
+                       
+
+                   
+                    </t>
+
+
+                </tbody>
+
+            </table>
+        </xpath>
+    </t>
+
+
+
+</templates>

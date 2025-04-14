@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="accounting_income_statement_twelve_report_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.internal_layout">
+                    <div class="page">
+                        <h2 t-esc="'Income Statement 12 Periods'"/>
+                        <div class="row mt32 mb32">
+                            <div class="col-4">
+                                <strong>Target Moves:</strong>
+                                <p>
+                                    <span t-if="o.target_move == ' '">All Entries</span>
+                                    <span t-if="o.target_move == 'posted'">All Posted Entries</span>
+                                </p>
+                            </div>
+                            <div class="col-4">
+                                <p>
+                                    <t t-if="o.date_from">
+                                        <strong>Date from :</strong>
+                                        <span t-esc="o.date_from" />
+                                        <br />
+                                    </t>
+                                    <t t-if="o.date_to">
+                                        <strong>Date to :</strong>
+                                        <span t-esc="o.date_to" />
+                                    </t>
+                                </p>
+                            </div>
+                            <div class="col-4">
+                                <p>
+                                    <t t-if="o.period_from"><strong>Period from :</strong> <span t-esc="o.period_from.name"/><br/></t>
+                                    <t t-if="o.period_to"><strong>Period to :</strong> <span t-esc="o.period_to.name"/></t>
+                                </p>
+                            </div>
+                        </div>
+
+                        <table class="table table-sm table-reports">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <t t-foreach='range(1,13)' t-as="i">
+                                        <th t-esc="'period ' +str(i)"></th>
+                                    </t>
+                                    
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="categs"
+                                    t-value="{'income':'Revenues','expense':'Expenses'}" />
+                                <t t-set="net_income" t-value="0" />
+                                <t t-set="net_income_month" t-value="0" />
+                                <t t-set="net_budget" t-value="0" />
+                                <t t-set="net_budget_month" t-value="0" />
+
+                                <t t-if="1">
+                                    <t t-set="stylebold" t-value="'font-weight: bold;'" />
+                                </t>
+                                <t t-foreach="categs" t-as='categ'>
+                                    <t t-set="total_balance" t-value="0" />
+                                    <t t-set="total_budget" t-value="0" />
+                                    <t t-set="total_budget_month" t-value="0" />
+
+                                    <t t-set="total_balance_month" t-value="0" />
+                                    <tr>
+                                        <td>
+                                            <span t-att-style="stylebold" t-esc="categs.get(categ)" />
+                                        </td>
+                                        <td />
+                                        <td />
+                                        <td />
+                                        <td />
+                                        <td />
+                                        <td />
+                                        <td />
+                                        <td />
+                                        <td />
+                                        <td />
+                                        <td />
+                                        <td />
+                                       
+
+
+                                    </tr>
+                                    <tr t-foreach="o.get_accounts(categ=categ)" t-as="acct">
+                                        <t t-if="1">
+                                            <t t-set="style" t-value="'font-weight: normal;'" />
+                                        </t>
+                                        <td>
+                                            <span style="color: white;" t-esc="'....'" />
+                                            <span t-att-style="style" t-esc="acct.name" />
+                                        </td>
+                                        <t t-foreach='range(1,13)' t-as="per">
+                                            <td>
+                                                <span style="color: white;" t-esc="''" />
+                                                <t t-set="current_balance" t-value="o.get_balance_with_period(account_id=acct.id,period_idx=per)"/>
+                                                <span t-if ="current_balance != 'N/A'" t-att-style="style"
+                                                    t-esc="current_balance"
+                                                    t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}" />
+                                                 <span t-else ="" t-att-style="style"
+                                                    t-esc="'N/A'"/>
+                                                </td>
+
+                                        </t>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <span t-att-style="stylebold"
+                                                t-esc="'Total ' + categs.get(categ)" />
+                                        </td>
+                                        <t t-foreach='range(1,13)' t-as="per">
+                                        <td>
+                                            <t t-set="current_categ_balance" t-value="o.get_balance_under_category(categ=categ,period_idx=per)"/>
+                                            <span t-if ="current_categ_balance != 'N/A'" t-att-style="style"
+                                                    t-esc="current_categ_balance"
+                                                    t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}" />
+                                                 <span t-else ="" t-att-style="style"
+                                                    t-esc="'N/A'"/>
+                                        </td>
+                                    </t>
+                                    </tr>
+                                </t>
+                                <tr>
+                                    <td>
+                                        <span t-att-style="stylebold" t-esc="'Net Income'" />
+                                    </td>
+                                    <t t-foreach='range(1,13)' t-as="per">
+                                        <td>
+                                            <t t-set="net_income_balnce_twelve" t-value="o.get_net_income_balance_twelve_period(period_idx=per)"/>
+                                            <span t-if ="net_income_balnce_twelve != 'N/A'" t-att-style="stylebold"
+                                                    t-esc="net_income_balnce_twelve"
+                                                    t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}" />
+                                                 <span t-else ="" t-att-style="style"
+                                                    t-esc="'N/A'"/>
+                                        </td>
+                                        </t>
+                                    
+                                    
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

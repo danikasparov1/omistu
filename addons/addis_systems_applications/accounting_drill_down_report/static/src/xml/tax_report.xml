@@ -1,0 +1,54 @@
+<templates xml:space="preserve">
+    <t t-name="accounting_drill_down_report.tax_report_owl" t-inherit="accounting_drill_down_report.base_template" owl="1">
+    <xpath expr="//div[@name='jrnl_filter']" position="replace">
+    <div></div>
+    </xpath>
+            <xpath expr="//div[@class='scrollable-section pb-5 w-100']" position='inside'>
+
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Sale</th>
+                            <th>Net</th>
+                            <th>Tax</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-set="total_sale_tax" t-value="0"/>
+                        <t t-set="total_purchase_tax" t-value="0"/>
+                        <t t-set="total_sale_net" t-value="0"/>
+                        <t t-set="total_purchase_net" t-value="0"/>
+                        <tr  t-on-dblclick="() => goto_general_ledgure(line['tax_id'])" align="left" t-foreach="state.lines['sale'] or []" t-as="line" t-key="line_index">
+                            <td> <span> <t t-esc="line['name']"/></span></td>
+                            <td><t t-esc="formatCurrency(line['net'])"/></td>
+                            <td><t t-esc="formatCurrency(line['tax'])"/></td>
+                            <t t-set="total_sale_tax" t-value="total_sale_tax + line['tax']"/>
+                            <t t-set="total_sale_net" t-value="total_sale_net + line['net']"/>
+                        </tr>
+                        <tr>
+                            <td t-esc="'Total Sales'"/>
+                            <td/>
+                            <td t-esc="formatCurrency(total_sale_tax)"/>
+                        </tr>
+                        <tr>
+                            <td>Purchase</td>
+                            <td colspan="2"></td>
+                            </tr>
+                            <tr t-on-dblclick="() => goto_general_ledgure(line['tax_id'])" align="left" t-foreach="state.lines['purchase'] or []" t-as="line" t-key="line_index">
+                            <td> <span> <t t-esc="line['name']"/></span></td>
+                            <td><t t-esc="formatCurrency(line['net'])"/></td>
+                            <td><t t-esc="formatCurrency(line['tax'])"/></td>
+                            <t t-set="total_purchase_tax" t-value="total_purchase_tax + line['tax']"/>
+                            <t t-set="total_purchase_net" t-value="total_purchase_net + line['net']"/>
+                        </tr>
+                         <tr>
+                            <td t-esc="'Total Purchase'"/>
+                            <td/>
+                            <td t-esc="formatCurrency(total_purchase_tax)"/>
+                        </tr>
+                    </tbody>
+                </table>
+</xpath>                
+</t>     
+</templates>

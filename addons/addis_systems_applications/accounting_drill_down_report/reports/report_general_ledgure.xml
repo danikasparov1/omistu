@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_generalledgure">
+        <t t-call="web.html_container">
+            <t t-set="data_report_margin_top" t-value="12"/>
+            <t t-set="data_report_header_spacing" t-value="9"/>
+            <t t-set="data_report_dpi" t-value="110"/>
+            <t t-call="web.internal_layout">
+                <div class="page">
+                 <h2 t-esc="'General Ledgure Report'"/>
+                 <div class="row mt32 mb32">
+                       
+                        <div class="col-3">
+                            <t>
+                                <strong>Date from :</strong>
+                                <span t-esc="data['date_from']"/>
+                            </t>
+                            <br/>
+                            <t>
+                                <strong>Date to :</strong>
+                                <span t-esc="data['date_to']"/>
+                            </t>
+                        </div>
+
+                         <div class="col-3">
+                                <p>
+                                    <t t-if="data['period_start']"><strong>Period from :</strong> <span t-esc="data['period_start']['name']"/><br/></t>
+                                    <t t-if="data['period_end']"><strong>Period to :</strong> <span t-esc="data['period_end']['name']"/></t>
+                                </p>
+                            </div>
+
+                        <div class="col-3">
+                            <strong>Target Moves:</strong>
+                            <p>
+                                <span t-if="data['target_move'] == 'all'">All Entries</span>
+                                <span t-if="data['target_move'] == 'posted'">All Posted Entries</span>
+                            </p>
+                        </div>
+
+                    </div><table class="table table-sm table-reports table-hover">
+                <thead>
+                    <tr>
+                        <th>Account</th>
+                        <th class="text-end">Date</th>
+                        <!-- <th class="text-end">Communication</th> -->
+                        <th class="text-end">Partner</th>
+
+                        <th class="text-end">Debit</th>
+                        <th class="text-end">Credit</th>
+                        <th class="text-end">Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+  
+
+                    <t t-if ="data['lines']" t-foreach="data['lines']" t-as="line" t-key="line">
+                        <tr style="background-color: #f0f0f0;">
+                            <td>
+             <strong class="ms-3" t-esc="data['lines'][line]['label']"/>
+                            </td>
+                            <td/>
+                            <td/>
+                            <td class="text-end">
+                                <strong t-esc="data['lines'][line]['debit']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                            </td>
+                            <td class="text-end">
+                                <strong t-esc="data['lines'][line]['credit']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                            </td>
+                            <td class="text-end">
+                                <strong t-esc="data['lines'][line]['balance']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                            </td>
+                        </tr>
+                        <t t-if ="data['lines'][line]['data_lines']" t-foreach="data['lines'][line]['data_lines']" t-as="line_2" t-key="line_2.id">
+                            <tr>
+                                
+                                <td> <span class="ms-5" t-esc="line_2['name']"/></td>
+                                <td class="text-end" t-esc="line_2['date']"/>
+                                 <!-- <td class="text-end" t-esc="line_2['communication']">
+                                </td> -->
+                                <td class="text-end" t-esc="line_2['partner']"/>
+                                 <td class="text-end" t-esc="line_2['debit']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                 <td class="text-end" t-esc="line_2['credit']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                                 <td class="text-end" t-esc="line_2['balance']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+                            </tr>
+                        
+                            
+                          
+                        </t>
+
+                   
+                    </t>
+
+
+                </tbody>
+
+            </table>
+        </div>
+            </t>
+        </t>
+    </template>
+
+</odoo>

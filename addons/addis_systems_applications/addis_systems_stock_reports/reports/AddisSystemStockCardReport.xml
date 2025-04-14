@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="report_addis_systems_stock_card_report_html" model="ir.actions.report">
+            <field name="name">Stock Card</field>
+            <field name="model">report.stock.move.stock.card</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">addis_systems_stock_reports.report_addis_systems_stock_card_template</field>
+            <field name="report_file">addis_systems_stock_reports.report_addis_systems_stock_card_template</field>
+            <field name="print_report_name">'Stock Card - %s %s' % (object.stock_location.name, object.product_id.name or object.product_category.name)</field>
+            <field name="binding_model_id" ref="model_report_stock_move_stock_card"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="report_addis_systems_stock_card_report_pdf" model="ir.actions.report">
+            <field name="name">Stock Card</field>
+            <field name="model">report.stock.move.stock.card</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">addis_systems_stock_reports.report_addis_systems_stock_card_template</field>
+            <field name="report_file">addis_systems_stock_reports.report_addis_systems_stock_card_template</field>
+            <field name="print_report_name">'Stock Card - %s %s' % (object.stock_location.name, object.product_id.name or object.product_category.name)
+            </field>
+            <field name="binding_model_id" ref="model_report_stock_move_stock_card"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <template id="report_addis_systems_stock_card_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.internal_layout">
+                        <div class="page">
+                            <h3 align="center">Stock Card</h3>
+                            <div class="oe_structure"/>
+                            <div t-if='o.product_id' class="row mt32 mb32" style="margin-top: 15px;" id="informations">
+                                <div class="col-auto col-3 mw-100 mb-2">
+                                    <strong>Product Code:</strong>
+                                    <p class="m-0" t-field="o.product_id.default_code"/>
+                                </div>
+                                <div class="col-auto col-3 mw-100 mb-2">
+                                    <strong>Product Name:</strong>
+                                    <p class="m-0" t-field="o.product_id.name"/>
+                                </div>
+                                <div class="col-auto col-3 mw-100 mb-2">
+                                    <strong>Unit of Measure</strong>
+                                    <p class="m-0" t-field="o.product_id.uom_id"/>
+                                </div>
+                                <div class="col-auto col-3 mw-100 mb-2">
+                                    <strong>Cost:</strong>
+                                    <p class="m-0" t-field="o.product_id.standard_price"/>
+                                </div>
+                                <div class="col-auto col-3 mw-100 mb-2">
+                                    <strong>Selling Price</strong>
+                                    <p class="m-0" t-field="o.product_id.list_price"/>
+                                </div>
+                            </div>
+                            <div class="row mt32 mb32" id="informations_two">
+                                <div class="col-auto col-3 mw-100 mb-2">
+                                    <strong>Company:</strong>
+                                    <p class="m-0" t-field="o.company_id"/>
+                                </div>
+                                <div class="col-auto col-3 mw-100 mb-2">
+                                    <strong>Inventory Location:</strong>
+                                    <p class="m-0" t-field="o.stock_location.name"/>
+                                </div>
+                                <div t-if='o.product_category' class="col-auto col-3 mw-100 mb-2">
+                                    <strong>Product Category:</strong>
+                                    <p class="m-0" t-field="o.product_category.name"/>
+                                </div>
+                            </div>
+                            <table class="table table-sm border-0" style="margin-top: 20px;">
+                                <thead style="display: table-row-group">
+                                    <tr>
+                                        <th id="date" rowspan="2" style="text-align: center">Date</th>
+                                        <th id="reference" rowspan="2" style="text-align: left;">Reference</th>
+                                        <th id="quantity" colspan="3" style="text-align: center;">Quantity</th>
+                                        <th id="remark" rowspan="2" style="text-align: center;width: 20%">Partner</th>
+                                    </tr>
+                                    <tr>
+                                        <th id="received" headers="quantity">
+                                            <span>Received</span>
+                                        </th>
+                                        <th id="issued" headers="quantity">
+                                            <span>Issued</span>
+                                        </th>
+                                        <th id="balance" headers="quantity">
+                                            <span>Balance</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-if='o.product_category' style="height:auto;" t-foreach="o.category_products" t-as="category_products">
+                                        <t t-set="quantity_done" t-value="0"/>
+                                        <tr t-if='o.product_done_moves_count(category_products, o.product_moves) != 0'>
+                                            <td class="text-left" colspan="6" style="height:4mm;font-weight: bold; background-color: #F1EEEE; color: black;">
+                                                <span t-if="category_products.default_code">[<small t-esc="category_products.default_code"/>]
+                                                    <small t-esc="category_products.name"/>
+                                                </span>
+                                                <span t-else="">
+                                                    <small t-esc="category_products.name"/>
+                                                </span>
+                                            </td>
+                                            <tr t-foreach="o.category_product_moves(category_products, o.product_moves)" t-as="product_move">
+                                                <td class="text-center" style="height:4mm;">
+                                                    <small t-esc="product_move.date"/>
+                                                </td>
+                                                <td class="text-left" style="height:4mm;">
+                                                    <small t-esc="product_move.reference"/>
+                                                </td>
+                                                <td class="text-center" style="height:4mm;">
+                                                    <small t-if='product_move.location_dest_id == o.stock_location' t-esc="product_move.quantity"/>
+                                                </td>
+                                                <td class="text-center" style="height:4mm;">
+                                                    <small t-if='product_move.location_id == o.stock_location' t-esc="product_move.quantity"/>
+                                                </td>
+                                                <td class="text-center" style="height:4mm;">
+                                                    <t t-if='product_move.location_dest_id == o.stock_location'>
+                                                        <t t-set="quantity_done" t-value="round(quantity_done + product_move.quantity,3)"/>
+                                                    </t>
+                                                    <t t-if='product_move.location_id == o.stock_location'>
+                                                        <t t-set="quantity_done" t-value="round(quantity_done - product_move.quantity,3)"/>
+                                                    </t>
+                                                    <small t-esc="round(quantity_done, 3)"/>
+                                                </td>
+                                                <td class="text-left" style="height:4mm;">
+                                                    <small t-esc="product_move.picking_id.partner_id.name"/>
+                                                </td>
+                                            </tr>
+                                        </tr>
+                                    </t>
+                                    <t t-set="quantity_done" t-value="0"/>
+                                    <tr t-if='o.product_id' style="height:auto;" t-foreach="o.product_moves" t-as="move">
+                                        <t t-if='not o.stock_location or (move.location_id == o.stock_location or move.location_dest_id == o.stock_location)'>
+                                            <td class="text-center" style="height:4mm;">
+                                                <small t-esc="move.date"/>
+                                            </td>
+                                            <td class="text-left" style="height:4mm;">
+                                                <small t-esc="move.reference"/>
+                                            </td>
+                                            <td class="text-center" style="height:4mm;">
+                                                <small t-if='move.location_dest_id == o.stock_location' t-esc="move.quantity"/>
+                                            </td>
+                                            <td class="text-center" style="height:4mm;">
+                                                <small t-if='move.location_id == o.stock_location' t-esc="move.quantity"/>
+                                            </td>
+                                            <td class="text-center" style="height:4mm;">
+                                                <t t-if='move.location_dest_id == o.stock_location'>
+                                                    <t t-set="quantity_done" t-value="round(quantity_done + move.quantity,3)"/>
+                                                </t>
+                                                <t t-if='move.location_id == o.stock_location'>
+                                                    <t t-set="quantity_done" t-value="round(quantity_done - move.quantity,3)"/>
+                                                </t>
+                                                <small t-esc="round(quantity_done, 3)"/>
+                                            </td>
+                                            <td class="text-left" style="height:4mm;">
+                                                <small t-esc="move.picking_id.partner_id.name"/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

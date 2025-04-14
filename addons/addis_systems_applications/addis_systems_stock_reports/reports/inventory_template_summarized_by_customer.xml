@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="addis_systems_stock_reports.customer_movement">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.internal_layout">
+                    <div class="page">
+                       <h3>Inventory Summary By Customer</h3>
+                       <h6>
+                        <t t-if="doc.date_from and doc.date_to">
+                            Date Range: <t t-esc="doc.date_from"/> to <t t-esc="doc.date_to"/>
+                        </t>
+                        <t t-if="doc.date_from and not doc.date_to">
+                            Date: From <t t-esc="doc.date_from"/>
+                        </t>
+                        <t t-if="not doc.date_from and doc.date_to">
+                            Date: Until <t t-esc="doc.date_to"/>
+                        </t>
+                        <t t-if="not doc.date_from and not doc.date_to">
+                            Date: Not Specified
+                        </t>
+                       </h6>
+                       <table class="table table-sm table-reports">
+                        <thead>
+                            <tr>
+                                <th>Customer</th>
+                                <th>Product</th>
+                                <th>Total Opening Stock</th>
+                                <th>Total Stock In</th>
+                                <th>Total Stock Out</th>
+                                <th>Total Closing Stock</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           <t t-foreach="doc.get_customers()" t-as="partner">
+                            <tr>
+                                <td><span t-att-style="style" t-esc="partner.name"/></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <t t-foreach="doc.get_products(partner.id)" t-as="product">
+                                <t t-set="product_data" t-value="doc.get_product_detail(product.id,partner.id)"/>
+                                <t t-set="opening_stock" t-value="doc.get_opening_product_detail(product.id,partner.id)"/>
+                                <t t-set="closing_stock" t-value="doc.get_closing_product_detail(product.id,partner.id)"/>
+
+                                <tr>
+                                    
+                                    <td></td>
+                                    <td><t t-esc="product.name"/></td>
+                                    <td><t t-esc="opening_stock" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    <td><t t-esc="product_data.get('stock_in')" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    <td><t t-esc="product_data.get('stock_out')" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    <td><t t-esc="closing_stock" t-options='{"widget": "float", "precision": 2}'/></td>
+                            </tr>
+                            </t>
+                        </t>
+                            </tbody>
+                    </table>
+
+
+
+
+                        </div>
+                        </t>
+                    </t>
+                    </t>
+                    </template>
+                    </odoo>
+                    

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="addis_sales_summary_report_report_detail" model="ir.actions.report">
+            <field name="name">Summary by Detail</field>
+            <field name="model">sales.summary.report.detail</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">addis_systems_sales_reports.report_Summary_detail</field>
+            <field name="report_file">addis_systems_sales_reports.report_Summary_detail</field>
+            <field name="print_report_name">'Summary by Detail'</field>
+            <field name="binding_model_id" ref="model_sales_summary_report_detail"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+    <template id="report_Summary_detail">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="addis_systems_sales_reports.addis_pay_custom_header_layout_detail">
+                </t>
+                <style>
+                    table,th,td{
+                    font-size: 14px;
+                    padding-top: 1px;
+                    }
+                    #first {
+                    font-family: Arial, Helvetica, sans-serif;
+                    border-collapse: collapse;
+                    width: 100%;
+                    }
+                    #first td, #first th{
+                    padding-top: 1px;
+                    padding-bottom: 1px;
+                    font-size: 14px;
+                    border: 1px solid #000000;
+                    }
+                    #second {
+                    font-family: Arial, Helvetica, sans-serif;
+                    border-collapse: collapse;
+                    width: 32%;
+                    }
+                    #second td, #second th{
+                    padding-top: 1px;
+                    padding-bottom: 1px;
+                    text-align: center;
+                    font-size: 14px;
+                    border: 2px solid #000000;
+                    }
+                </style>
+                <div class="page">
+                <table id="first" class="table table-sm o_main_table">
+                        <tr style="font-weight:bold; color: rgb(4,36,133);">
+                            <th>Invoice Number</th>
+                            <th>Date</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th>Tax</th>
+                            <th>Sub Total</th>
+                        </tr>
+                    <t t-set="grand_subtotal" t-value='0'/>
+                    <t t-set="grand_total" t-value='0'/>
+                    <t t-set="grand_tax" t-value='0'/>
+                    <t t-set="grand_discount" t-value='0'/>
+
+                    <t t-foreach="doc.test_three(doc.invoices_id)" t-as="part">
+                        <tr>
+                            <td align="center"><t t-esc="part.name"/></td>
+                            <td align="center">
+                                <t t-if="doc.type =='invoice'" t-esc="part.invoice_date"/>
+                                <t t-if="doc.type !='invoice'" t-esc="part.date_order"/>
+
+                            
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                           
+                            <t t-set="product_subtotal" t-value='0'/>
+                            <t t-set="product_total" t-value='0'/>
+                            <t t-set="product_tax" t-value='0'/>
+                            <t t-set="product_discount" t-value='0'/>
+                            <t t-foreach="doc.test_one(part, doc.date_from, doc.date_to)" t-as="invoice">
+                            
+                            <t t-foreach="doc.test_two(invoice)" t-as="invoice2">
+                            <tr>
+                            <t t-set="product_total" t-value='product_total + invoice2.price_total'/>
+                            <t t-set="product_subtotal" t-value='product_subtotal + invoice2.price_subtotal'/>
+                            <t t-set="product_tax" t-value='product_tax + (invoice2.price_total - invoice2.price_subtotal)'/>
+                            <t t-set="product_discount" t-value='product_discount + invoice2.discount*invoice2.price_subtotal/100'/>
+                            <td style="border-right: none; border-bottom: none; border-top: none;"></td>
+                            <td style="border-right: none; border-bottom: none; border-top: none;"></td>
+                            <td align="center"><t t-esc="invoice2.name"/></td>
+                            <td align="center">
+                                <t t-if="doc.type == 'invoice'" t-esc="invoice2.quantity" t-options='{"widget": "float", "precision": 2}'/>
+                                <t t-if="doc.type != 'invoice'" t-esc="invoice2.product_uom_qty" t-options='{"widget": "float", "precision": 2}'/>
+
+                                
+                            
+                            </td>
+                            <td align="center"><t t-esc="invoice2.price_unit" t-options='{"widget": "float", "precision": 2}'/></td>
+                            <td align="center"><t t-esc="invoice2.price_total - invoice2.price_subtotal" t-options='{"widget": "float", "precision": 2}'/></td>
+                            <td align="center"><t t-esc="invoice2.price_subtotal" t-options='{"widget": "float", "precision": 2}'/></td>
+                            </tr>
+                            </t>
+                        
+                        
+                        <t t-set="grand_subtotal" t-value='grand_subtotal + product_subtotal'/>
+                        <t t-set="grand_total" t-value='grand_total + product_total'/>
+                        <t t-set="grand_tax" t-value='grand_tax + product_tax'/>
+                        <t t-set="grand_discount" t-value='grand_discount + product_discount'/>
+
+                        <tr align="right">
+                        <td style="border-right: none; border-bottom: none; border-top: none;"></td>
+                        <td style="border-right: none; border-bottom: none; border-top: none;"/>
+                        <td style="border-right: none; border-bottom: none; border-top: none;" align="right" colspan="3"></td>
+                        <td align="right" colspan="1">Sub Total</td>
+                        <td align="right" colspan="1"><t t-esc='product_subtotal' t-options='{"widget": "float", "precision": 2}'/></td>
+                        </tr>    
+                        <tr>
+                        <td style="border-right: none; border-bottom: none; border-top: none;"></td>
+                        <td style="border-right: none; border-bottom: none; border-top: none;"/>
+                        <td style="border-right: none; border-bottom: none; border-top: none;" align="right" colspan="3"></td>
+                        <td align="right" colspan="1">Additional Charge</td>
+                        <td align="right" colspan="1">0</td>
+                        </tr>
+                        <tr>
+                     <td style="border-right: none; border-bottom: none; border-top: none;"></td>
+                        <td style="border-right: none; border-bottom: none; border-top: none;"/>
+                        <td style="border-right: none; border-bottom: none; border-top: none;" align="right" colspan="3"></td>
+                        <td align="right" colspan="1">Discount</td>
+                        <td align="right" colspan="1">0</td>
+                        </tr>
+                        <tr>
+                        <td style="border-right: none; border-bottom: none; border-top: none;"></td>
+                        <td style="border-right: none; border-bottom: none; border-top: none;"/>
+                        <td style="border-right: none; border-bottom: none; border-top: none;" align="right" colspan="3"></td>
+                        <td align="right" colspan="1">Tax Amount</td>
+                        <td align="right" colspan="1"><t t-esc='product_tax' t-options='{"widget": "float", "precision": 2}'/></td>
+                        </tr>
+                        <tr>
+                        <td style="border-right: none; border-bottom: none; border-top: none;"></td>
+                        <td style="border-right: none; border-bottom: none; border-top: none;"/>
+                        <td style="border-right: none;  border-top: none;" align="right" colspan="3"></td>
+                        <td align="right" colspan="1">Total</td>
+                        <td align="right" colspan="1"><t t-esc='product_total' t-options='{"widget": "float", "precision": 2}'/></td>
+                        
+                        </tr>
+
+                        
+                        
+                        </t>
+                        </tr>
+                    </t>
+                    <tr>
+                        <td style="border-bottom: none; border-left: none;border-right: none;"></td>
+                        <td style="border-bottom: none; border-left: none;border-right: none;"></td>
+                    </tr >
+                </table>
+                    <table align="right" id="second" class="table table-sm o_main_table">
+                       <!-- <t t-foreach="doc.sales_id" t-as="sales"> -->
+                       <!-- <t table-sm="doc.sales_id" t-as="sum"> -->
+                        
+                        <tr>
+                            <td>Sub Total</td>
+                            <td>
+                                <t t-set ="summation" t-value ="0" />
+                                    <t t-set ="summation" t-value ="grand_subtotal" />
+                                <t t-esc ="summation" t-options='{"widget": "float", "precision": 2}'/> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Addtional Charge</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>Discount</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>Tax Amount</td>
+                            <td>
+                                <t t-set ="summation" t-value ="0" />
+                                    <t t-set ="summation" t-value ="grand_tax" />
+                                <t t-esc ="summation" t-options='{"widget": "float", "precision": 2}'/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Grand Total</td>
+                            <td>
+                                <t t-set ="summation" t-value ="0" />
+                                    <t t-set ="summation" t-value ="grand_total" />
+                                <t t-esc ="summation" t-options='{"widget": "float", "precision": 2}'/>
+                            </td>
+                        </tr>
+                      <!-- </t>   -->
+                    </table>
+                </div>
+                <br/><br/><br/><br/><br/><br/><br/><br/>
+                <table align="left" id="second" class="table">
+                    <tr style="font-weight:bold;">
+                        <td colspan="2">Denomination</td>
+                    </tr>
+                    <tr>
+                        <td>200 Birr</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                    <tr>
+                        <td>100 Birr</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                    <tr>
+                        <td>50 Birr</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                    <tr>
+                        <td>10 Birr</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                    <tr>
+                        <td>5 Birr</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                    <tr>
+                        <td>1 Birr</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                    <tr>
+                        <td>Total Cents</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                    <tr style="font-weight:bold;">
+                        <td>TOTAL</td>
+                        <td style="color: rgb(255,255,255);">____________________</td>
+                    </tr>
+                </table>
+                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                <table align="left">
+                    <tr>
+                        <td align="justify">Add Cheque ____________________</td>
+                    </tr>
+                    <tr>
+                        <td align="justify">Grand Total ____________________</td>
+                    </tr>
+                    <tr>
+                        <td align="justify">Audit Strip Total ____________________</td>
+                    </tr>
+                    <tr>
+                        <td align="justify">Diffrence Shortage ____________________</td>
+                    </tr>
+                    <tr>
+                        <td align="justify">Overage       ____________________</td>
+                    </tr>
+                </table>
+
+            </t>
+        </t>
+    </template>
+</odoo>

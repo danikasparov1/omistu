@@ -1,0 +1,12 @@
+<odoo>
+    <record id="group_manufacturing_manager" model="res.groups">
+        <field name="name">Manufacturing Manager</field>
+    </record>
+
+    <record id="branch_manufacturing_order_access" model="ir.rule">
+        <field name="name">Access manufacturing orders based on branch</field>
+        <field name="model_id" ref="model_mrp_production"/>
+        <field name="domain_force">[('branch_id', '=', user.default_branch_id)]</field>
+        <field name="groups" eval="[(4, ref('group_manufacturing_manager'))]"/>
+    </record>
+</odoo>

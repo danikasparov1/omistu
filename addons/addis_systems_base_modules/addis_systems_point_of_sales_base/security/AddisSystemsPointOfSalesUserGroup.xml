@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="group_pos_auditor_user" model="res.groups">
+            <field name="name">PoS: Auditor (Read Only)</field>
+            <field name="category_id" ref="base.module_category_sales_point_of_sale"/>
+        </record>
+
+        <record id="point_of_sale.group_pos_user" model="res.groups">
+            <field name="name">PoS: Cashier</field>
+            <field name="category_id" ref="base.module_category_sales_point_of_sale"/>
+            <field name="implied_ids" eval="[(4, ref('addis_systems_point_of_sales_base.group_pos_auditor_user'))]" />
+        </record>
+
+        <record id="group_pos_sales_manger_user" model="res.groups">
+            <field name="name">PoS: Sales Manger</field>
+            <field name="category_id" ref="base.module_category_sales_point_of_sale"/>
+            <field name="implied_ids" eval="[(4, ref('point_of_sale.group_pos_user'))]" />
+        </record>
+
+        <record id="point_of_sale.group_pos_manager" model="res.groups">
+            <field name="name">PoS: Administrator</field>
+            <field name="category_id" ref="base.module_category_sales_point_of_sale"/>
+            <field name="implied_ids" eval="[(4, ref('addis_systems_point_of_sales_base.group_pos_sales_manger_user'))]" />
+        </record>
+
+    </data>
+</odoo>

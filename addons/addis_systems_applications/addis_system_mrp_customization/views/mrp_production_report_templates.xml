@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+
+
+    <record id="view_custom_fields_tree" model="ir.ui.view">
+        <field name="name">custom.fields.tree</field>
+        <field name="model">custom.fields.model</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="field_type"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_custom_fields_form" model="ir.ui.view">
+        <field name="name">custom.fields.form</field>
+        <field name="model">custom.fields.model</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="field_type"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+        <record id="action_add_custom_fields_new_one" model="ir.actions.act_window">
+        <field name="name">Custom Fields</field>
+        <field name="res_model">custom.fields.model</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help">"Use this menu to add custom fields."</field>
+    </record>
+
+        <menuitem id="menu_add_custom_fields_new_one" 
+              name="Custom Fields" 
+             
+              action="action_add_custom_fields_new_one" 
+              sequence="10"/>
+</odoo>

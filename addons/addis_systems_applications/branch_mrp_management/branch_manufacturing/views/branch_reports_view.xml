@@ -1,0 +1,16 @@
+<odoo>
+    <record id="view_branch_report_form" model="ir.ui.view">
+        <field name="name">branch.report.form</field>
+        <field name="model">branch.report</field>
+        <field name="arch" type="xml">
+            <form string="Branch Reports">
+                <sheet>
+                    <group>
+                        <field name="branch_id" />
+                        <!-- Fields for production volumes, operation times, resource utilization -->
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

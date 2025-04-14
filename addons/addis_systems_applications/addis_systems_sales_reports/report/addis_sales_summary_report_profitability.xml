@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="adis_sales_summary_report_report_profitability" model="ir.actions.report">
+            <field name="name">Summary in Sales Profitability</field>
+            <field name="model">sales.summary.report.profitability</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">addis_systems_sales_reports.report_Summary_sales_profitability</field>
+            <field name="report_file">addis_systems_sales_reports.report_Summary_sales_profitability</field>
+            <field name="print_report_name">'Summary in sales Profitability'</field>
+            <field name="binding_model_id" ref="model_sales_summary_report_profitability"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+    <template id="report_Summary_sales_profitability">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="addis_systems_sales_reports.addis_pay_custom_header_layout_profitability">
+                    </t>
+                    
+
+                    <style>
+                    table,th,td{
+                    font-size: 14px;
+                    padding-top: 1px;
+                    }
+                    #first {
+                    font-family: Arial, Helvetica, sans-serif;
+                    border-collapse: collapse;
+                    width: 100%;
+                    }
+                    #first td, #first th{
+                    padding-top: 1px;
+                    padding-bottom: 1px;
+                    font-size: 14px;
+                    border: 1px solid #000000;
+                    }
+                    #second {
+                    font-family: Arial, Helvetica, sans-serif;
+                    border-collapse: collapse;
+                    width: 32%;
+                    }
+                    #second td, #second th{
+                    padding-top: 1px;
+                    padding-bottom: 1px;
+                    text-align: center;
+                    font-size: 14px;
+                    border: 2px solid #000000;
+                    }
+                </style>
+
+                <div class="page">
+                            <table id="first">
+                            <tr style="font-weight:bold; color: rgb(4,36,133);">
+                                <th>SN</th>
+                                <th>Category</th>
+                                <th>Total Sale</th>
+                                <th>Total Cost</th>
+                                <th> Profit</th>
+                                
+                                
+                            </tr>
+                            <t t-set="data" t-value="doc.check()"/>
+        
+                            <t t-foreach="data" t-as="parent">
+                                <t t-set="sn" t-value='0'/>
+                                <t t-set="GTotalProfit" t-value='0'/>
+                                <t t-set="GTotalSale" t-value='0'/>
+                                <t t-set="GTotalCost" t-value='0'/>
+                                <t t-foreach="data.get(parent)" t-as="son">
+                                    <tr>
+                                        <t t-set="sn" t-value='sn + 1'/>
+                                        <t t-set="GTotalSale" t-value="GTotalSale + data.get(parent).get(son).get('Total_sale')"/>
+                                        <t t-set="GTotalProfit" t-value="GTotalProfit + data.get(parent).get(son).get('Total_profit')"/>
+                                        <t t-set="GTotalCost" t-value="GTotalCost + data.get(parent).get(son).get('Total_Cost')"/>
+                                        <td><t t-esc="sn"/></td>
+                                        <td><t t-esc="son"/></td>
+                                        <td><t t-esc="data.get(parent).get(son).get('Total_sale')" t-options='{"widget": "float", "precision": 2}'/></td>
+                                        <td><t t-esc="data.get(parent).get(son).get('Total_Cost')" t-options='{"widget": "float", "precision": 2}'/></td>
+                                        <td><t t-esc="data.get(parent).get(son).get('Total_profit')" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    </tr>
+                                    </t>
+                                    <tr>
+                                       <td/>
+                                       <td>Total</td>
+                                        <td><t t-esc="GTotalSale"/></td>
+                                        <td><t t-esc="GTotalCost"/></td>
+                                        <td><t t-esc="GTotalProfit"/></td>
+
+
+
+                                    </tr>
+
+
+                                </t>
+                        </table>
+
+                       
+                </div>
+             </t>   
+        </t>
+    </template>
+</odoo>

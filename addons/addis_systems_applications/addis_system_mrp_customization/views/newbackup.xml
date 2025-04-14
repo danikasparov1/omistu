@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Existing views for manufacturing.other.fields -->
+    <record id="view_manufacturing_other_fields_tree" model="ir.ui.view">
+        <field name="name">manufacturing.other.fields.tree</field>
+        <field name="model">manufacturing.other.fields</field>
+        <field name="arch" type="xml">
+            <tree string="Manufacturing Other Fields">
+                <field name="name"/>
+                <field name="other_field_1"/>
+                <field name="other_field_2"/>
+                <field name="other_field_3"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_manufacturing_other_fields_form" model="ir.ui.view">
+        <field name="name">manufacturing.other.fields.form</field>
+        <field name="model">manufacturing.other.fields</field>
+        <field name="arch" type="xml">
+            <form string="Manufacturing Other Fields">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="other_field_1"/>
+                        <field name="other_field_2"/>
+                        <field name="other_field_3"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_manufacturing_other_fields_gg" model="ir.actions.act_window">
+        <field name="name">Other Fields</field>
+        <field name="res_model">manufacturing.other.fields</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Define additional fields for Manufacturing Configuration.
+            </p>
+        </field>
+    </record>
+
+    <!-- Add a menu -->
+    <menuitem id="menu_mrp_configuration_new" parent="mrp.menu_mrp_configuration" name="Attributes" action="action_manufacturing_other_fields_gg" sequence="100"/>
+
+<record id="view_mrp_form_inherit_new_cool" model="ir.ui.view">
+    <field name="name">mrp.production.form.inherit_cool</field>
+    <field name="model">mrp.production</field>
+    <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+    <field name="arch" type="xml">
+        <notebook position="inside">
+            <page string="Service">
+                <group>
+                    <field name="manufacturing_other_fields_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                </group>
+            </page>
+        </notebook>
+    </field>
+</record>
+
+</odoo>

@@ -1,0 +1,20 @@
+{
+    'name': 'Branch Manufacturing Management',
+    'version': '1.0',
+    'category': 'Manufacturing',
+    'summary': 'Manage manufacturing orders and operations based on specific branches.',
+    'description': 'This module allows the management of manufacturing orders, operations, and resources based on specific branches.',
+    'author': 'Daniel Tibebu',
+    'website': 'https://www.example.com',
+    'depends': ['base', 'mrp', 'stock'],
+    'data': [
+        # 'security/security.xml',
+        # 'security/ir.model.access.csv',
+        'views/manufacturing_order_view.xml',
+        'views/manufacturing_operation_view.xml',
+        'views/branch_reports_view.xml',
+        'data/branch_config_data.xml',
+    ],
+    'installable': True,
+    'application': True,
+}

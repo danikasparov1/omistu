@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- View report.stock.move.serial.stock.card View List -->
+    <record id="view_report_stock_move_serial_stock_card_list" model="ir.ui.view">
+        <field name="name">view.report.stock.move.serial.stock.card.list</field>
+        <field name="model">report.stock.move.serial.stock.card</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- View report.stock.move.serial.stock.card form -->
+    <record id="view_report_stock_move_serial_stock_card_form" model="ir.ui.view">
+        <field name="name">view.report.stock.move.serial.stock.card.form</field>
+        <field name="model">report.stock.move.serial.stock.card</field>
+        <field name="arch" type="xml">
+            <form string="Report Stock Move Serial Stock Card">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="Name..."/>
+                        </h1>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- View report.stock.move.serial.stock.card search -->
+    <record id="view_report_stock_move_serial_stock_card_search" model="ir.ui.view">
+        <field name="name">view.report.stock.move.serial.stock.card.search</field>
+        <field name="model">report.stock.move.serial.stock.card</field>
+        <field name="arch" type="xml">
+            <search>
+                <group expand="1" string="Group By">
+                    <filter string="Name" name="name" domain="[]" context="{'group_by':'name'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action report.stock.move.serial.stock.card -->
+    <record id="action_report_stock_move_serial_stock_card" model="ir.actions.act_window">
+        <field name="name">Report Stock Move Serial Stock Card</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">report.stock.move.serial.stock.card</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                There is no examples click here to add new Report Stock Move Serial Stock Card.
+            </p>
+        </field>
+    </record>
+
+</odoo>

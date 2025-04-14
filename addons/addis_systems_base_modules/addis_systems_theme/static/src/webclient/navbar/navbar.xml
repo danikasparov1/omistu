@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+
+	<t 
+		t-name="addis_systems_theme.NavBar"
+		t-inherit="web.NavBar" 
+		t-inherit-mode="extension" 
+	>
+	<xpath expr="//nav" position="inside">
+		<!-- <AppsBar apps="this.getAppsMenuItems()"/> -->
+	</xpath>
+
+	<xpath expr="//t[@t-call='web.NavBar.AppsMenu']" position="replace">
+		<AppsMenu 
+			hotkey="'h'" 
+			title="'Home Menu'" 
+			class="'o_navbar_apps_menu'" 
+		>
+			<t t-set-slot="toggler">
+				<i class="fa fa-th" />
+			</t>
+			<DropdownItem
+				t-foreach="this.appMenuService.getAppsMenuItems()"
+				t-as="app"
+				t-key="app.id"
+				class="'o_app'"
+				dataset="{ menuXmlid: app.xmlid, section: app.id }"
+				onSelected="() => app.action()"
+				parentClosingMode="'none'"
+			>
+				
+				<a 
+					t-att-href="app.href" 
+					t-on-click.prevent=""
+				>
+					<!-- This Not Note WORKING Inconsistent Return-->
+					
+					<!-- <t t-set="addis_systems_icon" t-value="this.appMenuService.checkAddisSystemsAlternativeAppIcon(app.name, '/addis_systems_theme/static/img/icons/')"/> -->
+					<!-- <img 
+						t-if="addis_systems_icon === true"
+						class="addis_systems_app_icon"
+						t-attf-src="/addis_systems_theme/static/img/icons/{{app.name.replaceAll(' ' , '_')}}.png"/> -->
+					<img 
+						t-if="app.webIconData"          		
+						class="addis_systems_app_icon" 
+						t-att-src="app.webIconData"
+					/>
+					<img  
+						t-else="" 
+						class="addis_systems_app_icon" 
+						src="/addis_systems_theme/static/description/icon.png"
+					/>
+					<span class="addis_systems_app_name">
+						<t t-out="app.name"/>
+					</span>
+				</a>
+			</DropdownItem>
+		</AppsMenu>
+	</xpath>
+		
+	</t>
+	
+</templates>

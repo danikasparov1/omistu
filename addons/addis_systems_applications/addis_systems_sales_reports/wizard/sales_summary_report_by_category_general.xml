@@ -1,0 +1,63 @@
+<odoo>
+    <record id="sales_summary_report_category_general_form" model="ir.ui.view">
+        <field name="name">addissystems.sales.summary.reports.category.general.view.form</field>
+        <field name="model">sales.summary.report.category.general</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <group>
+                    <group>
+                        <field name="date_from"></field>
+                    </group>
+                    <group>
+                        <field name="date_to"></field>
+                    </group>
+
+                    <group>
+                        <field name="product_categ_ids" widget="many2many_tags"
+                        options="{'no_create': True}"></field>
+                    </group>
+                    <group>
+                        <field name="type" required="1"></field>
+                    </group>
+                    <group invisible="type!='invoice'">
+                        <field name="status"></field>
+                    </group>
+                    
+                    <group invisible="type!='invoice'">
+                        <field name="payment_status"></field>
+                    </group>
+
+                    <group invisible="type!='invoice'">
+                        <field name="journal"></field>
+                    </group>
+                    <group>
+                        <field name="user_id"></field>
+                    </group>
+
+                    <group>
+                        <field name="customer_id"></field>
+                    </group>
+                    
+                </group>
+                <footer>
+                    <button string="Generate Report" name="generate_report_category" type="object" class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="sales_summary_report_category_general_action" model="ir.actions.act_window">
+        <field name="name">Sales Summary by Category</field>
+        <field name="res_model">sales.summary.report.category.general</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    <menuitem
+            id="sales_summary_report_category_general_menu"
+            name="Sales Summary by Category"
+            action="sales_summary_report_category_general_action"
+            parent="sale.menu_sale_report"
+            sequence="15"
+    />
+</odoo>

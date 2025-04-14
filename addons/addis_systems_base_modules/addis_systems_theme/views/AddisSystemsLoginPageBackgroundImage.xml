@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="custom_bg_image" name="Frontend Layout Image" inherit_id="web.frontend_layout">
+            <xpath expr="//body" position="attributes">
+                <attribute name="style" add="background-image: url('/addis_systems_theme/static/src/img/login_page_bg.jpg');background-repeat: no-repeat;background-size: cover;"/>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

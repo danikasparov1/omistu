@@ -1,0 +1,47 @@
+{
+    "name": "Addis Systems Base",
+    "version": "17.0.1.0",
+    "sequence": 2,
+    "summary": "Addis Systems Base",
+    "description": """
+        This is a Base Module for Addis Systems Instances.
+            ========================================
+    """,
+    "category": "Addis Systems/Base",
+    "author": "Addis Systems/Beruk W.",
+    "website": "https://www.addissystems.et/",
+    "license": "LGPL-3",
+    "depends": ["base", "web", "web_editor", "website", "widget_preview_image", "mail", "auth_oauth", "addis_systems_theme", "contacts"],
+    "external_dependencies": {"python": ["xlsxwriter", "pulsar-client", "avro", "avro-schema"]},
+    "data": [
+        "security/AddisSystemsBaseUserGroup.xml",
+        "data/AddisSystemsBaseRecords.xml",
+        "data/AddisSystemsEthiopiaBanksData.xml",
+        # "data/AddisSystemsEthiopiaAddressAdjustments.xml",
+        "views/AddisSystemsUIConfiguration.xml",
+        # "views/AddisSystemsCompanyInheritedView.xml",
+        # "views/AddisSystemsPartnerInheritedView.xml",
+        # "views/AddisSystemsBankInheritedView.xml",
+    ],
+    "assets": {
+        "web._assets_primary_variables": [],
+        "web._assets_backend_helpers": [],
+        "web.assets_backend": [
+            'addis_systems_base/static/src/js/action_manager.js',
+            'addis_systems_base/static/src/addis_systems_dashboard/**/*.js',
+            'addis_systems_base/static/src/addis_systems_dashboard/**/*.xml',
+        ],
+        "web.assets_frontend": [],
+        "web.assets_tests": [],
+        "web.qunit_suite_tests": [],
+        "web.assets_qweb": [],
+    },
+    "demo": [],
+    "pre_init_hook": "_pre_init_hook",
+    "post_init_hook": "_post_init_hook",
+    "installable": True,
+    "price": 49.99,
+    "currency": "ETB",
+    "application": False,
+    'auto_install': ["base", "web", "web_editor", "website", "widget_preview_image", "mail", "auth_oauth", "addis_systems_theme", "contacts"],
+}

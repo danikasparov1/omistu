@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="report_addis_systems_fiscal_year_beginning_balance_report_html" model="ir.actions.report">
+            <field name="name">Fiscal Year Beginning Balance HTML</field>
+            <field name="model">report.fiscal.year.beginning.balance</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">addis_systems_stock_reports.report_addis_systems_fiscal_year_beginning_balance_template</field>
+            <field name="report_file">addis_systems_stock_reports.report_addis_systems_fiscal_year_beginning_balance_template</field>
+            <field name="print_report_name">'Fiscal Year Inventory Opening for %s Company %s' % (object.fiscal_year.name, object.company_id.name)</field>
+            <field name="binding_model_id" ref="model_report_fiscal_year_beginning_balance"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="report_addis_systems_fiscal_year_beginning_balance_report_pdf" model="ir.actions.report">
+            <field name="name">Fiscal Year Beginning Balance PDF</field>
+            <field name="model">report.fiscal.year.beginning.balance</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">addis_systems_stock_reports.report_addis_systems_fiscal_year_beginning_balance_template</field>
+            <field name="report_file">addis_systems_stock_reports.report_addis_systems_fiscal_year_beginning_balance_template</field>
+            <field name="print_report_name">'Fiscal Year Inventory Opening for %s Company %s' % (object.fiscal_year.name, object.company_id.name)</field>
+            <field name="binding_model_id" ref="model_report_fiscal_year_beginning_balance"/>
+            <field name="binding_type">report</field>
+        </record>
+
+
+        <template id="report_addis_systems_fiscal_year_beginning_balance_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.internal_layout">
+                        <div class="page">
+                            <h3 align="center">Fiscal Year Beginning Balance for Fiscal Year
+                                <t t-esc="o.fiscal_year.name"/>
+                            </h3>
+                            <div class="oe_structure"/>
+
+                            <div t-if='o.fiscal_year' class="row mt32 mb32" style="margin-top: 15px;" id="informations">
+                                <div class="col-auto col-3 mw-100 mb-2">
+                                    <strong>Fiscal Year:</strong>
+                                    <p class="m-0" t-field="o.fiscal_year.name"/>
+                                </div>
+                                <div class="col-auto col-3 mw-100 mb-2">
+                                    <strong>Opening Date:</strong>
+                                    <p class="m-0" t-field="o.fiscal_year_opening_date"/>
+                                </div>
+                                <div class="col-auto col-3 mw-100 mb-2">
+                                    <strong>Closing Date:</strong>
+                                    <p class="m-0" t-field="o.fiscal_year_closing_date"/>
+                                </div>
+                                <div class="col-auto col-3 mw-100 mb-2">
+                                    <strong>Company:</strong>
+                                    <p class="m-0" t-field="o.company_id"/>
+                                </div>
+                            </div>
+
+                            <table class="table table-sm border-0" style="margin-top: 20px;">
+                                <thead style="display: table-row-group">
+                                    <tr>
+                                        <th id="date" rowspan="2" style="text-align: center">Date</th>
+                                        <th id="reference" rowspan="2" style="text-align: left;">Reference</th>
+                                        <th id="quantity" colspan="3" style="text-align: center;">Quantity</th>
+                                        <th id="remark" rowspan="2" style="text-align: center;width: 20%">State</th>
+                                    </tr>
+                                    <tr>
+                                        <th id="received" headers="quantity">
+                                            <span>Source</span>
+                                        </th>
+                                        <th id="issued" headers="quantity">
+                                            <span>Destination</span>
+                                        </th>
+                                        <th id="balance" headers="quantity">
+                                            <span>Quantity</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="o.stock_locations" t-as="location">
+                                        <tr>
+                                            <td class="text-left" colspan="6" style="height:4mm;font-weight: bold; background-color: #F1EEEE;">
+                                                <h4>
+                                                    Stock Location :
+                                                    <b>
+                                                        <t t-esc="location.name"/>
+                                                    </b>
+                                                </h4>
+                                            </td>
+                                        </tr>
+                                        <t t-foreach="o.all_products" t-as="product">
+                                            <tr>
+                                                <td class="text-center" colspan="1" style="height:4mm;font-weight: bold; background-color: #F1EEEE; color: black;">
+                                                    <h5>
+                                                        Opening Balance for
+                                                    </h5>
+                                                </td>
+                                                <td class="text-center" colspan="1" style="height:4mm;font-weight: bold; background-color: #F1EEEE; color: black;">
+                                                    <h5>
+                                                        <t t-esc="product.name"/>
+                                                    </h5>
+                                                </td>
+                                                <td class="text-center" colspan="1" style="height:4mm;font-weight: bold; background-color: #F1EEEE; color: black;">
+                                                    <h5>
+                                                        in
+                                                        <t t-esc="location.name"/>
+                                                    </h5>
+                                                </td>
+                                                <td class="text-center" colspan="3" style="height:4mm;font-weight: bold; background-color: #F1EEEE; color: black;">
+                                                    <h5>
+                                                        10
+                                                    </h5>
+                                                </td>
+                                            </tr>
+                                            <t t-foreach="o.period_product_moves" t-as="moves">
+                                                <tr>
+                                                    <td>
+                                                        <t t-esc="moves.date"/>
+                                                    </td>
+                                                    <td>
+                                                        <t t-esc="moves.reference"/>
+                                                    </td>
+                                                    <td>
+                                                        <t t-esc="moves.location_id.name"/>
+                                                    </td>
+                                                    <td>
+                                                        <t t-esc="moves.location_dest_id.name"/>
+                                                    </td>
+                                                    <td>
+                                                        <t t-esc="moves.quantity"/>
+                                                    </td>
+                                                    <td>
+                                                        <t t-esc="moves.state"/>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                            <tr style="border-bottom: solid 2px red;">
+                                                <td class="text-center" colspan="1" style="height:4mm;font-weight: bold; background-color: #F1EEEE; color: black;">
+                                                    <h5>
+                                                        Closing Balance for
+                                                    </h5>
+                                                </td>
+                                                <td class="text-center" colspan="1" style="height:4mm;font-weight: bold; background-color: #F1EEEE; color: black;">
+                                                    <h5>
+                                                        <t t-esc="product.name"/>
+                                                    </h5>
+                                                </td>
+                                                <td class="text-center" colspan="1" style="height:4mm;font-weight: bold; background-color: #F1EEEE; color: black;">
+                                                    <h5>
+                                                        in
+                                                        <t t-esc="location.name"/>
+                                                    </h5>
+                                                </td>
+                                                <td class="text-center" colspan="3" style="height:4mm;font-weight: bold; background-color: #F1EEEE; color: black;">
+                                                    <h5>
+                                                        10
+                                                    </h5>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </t>
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

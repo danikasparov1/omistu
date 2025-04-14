@@ -1,0 +1,48 @@
+<odoo>
+    <record id="view_payment_order_form" model="ir.ui.view">
+        <field name="name">payment.order.form</field>
+        <field name="model">payment.order</field>
+        <field name="arch" type="xml">
+            <form string="Payment Order">
+                <sheet>
+                <header>
+                        <button name="action_approve" type="object" string="Approve"  groups="payment_order.group_user_addis_systems_manager_payment_order" invisible="state != 'draft'" />
+                        <button name="action_pay" type="object" string="Done" groups="payment_order.group_user_addis_systems_manager_payment_order" invisible="state != 'approved'"/>
+                        <button name="action_cancel" type="object" string="Cancel"  groups="payment_order.group_user_addis_systems_manager_payment_order" invisible="state == 'done'"/>
+                        <!-- <button name="action_print_report" type="object" string="Print Report" class="btn-primary"/> -->
+                        <field name="state" widget="statusbar" statusbar_visible="draft,approved,done"/>
+                </header>
+                    <group>
+                        <field name="payment_for" readonly="id != False"/>
+                        <field name="payment_reason" readonly="id != False" />
+                        <field name="date" readonly="id != False"/>
+                        <field name="amount" readonly="id != False" />
+                        <field name="tax" readonly="id != False" />
+                        <field name="withholding" readonly="id != False"/>
+                        <field name="total_amount" readonly="1" />
+                        <!-- <field name="debit_account_id" readonly="id != False" />
+                        <field name="journal_id" readonly="id != False"/> -->
+                        <field name="state" readonly="1" />
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="create_journal_entry" string="Confirm Payment" type="object" class="btn-primary" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_payment_order_tree" model="ir.ui.view">
+        <field name="name">payment.order.tree</field>
+        <field name="model">payment.order</field>
+        <field name="arch" type="xml">
+            <tree string="Payment Orders">
+                <field name="payment_for" readonly="id != False"/>
+                <field name="date" readonly="id != False"/>
+                <field name="amount" readonly="id != False"/>
+                <field name="total_amount" readonly="id != False"/>
+                <field name="state" widget="badge" optional="show" decoration-info="state == 'approved'" decoration-danger="state == 'cancelled'" decoration-success="state == 'done'"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

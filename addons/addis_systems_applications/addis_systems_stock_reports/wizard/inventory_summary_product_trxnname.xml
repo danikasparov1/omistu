@@ -1,0 +1,84 @@
+<odoo>
+
+
+<record id="inventory_product_trxname_report" model="ir.ui.view">
+        <field name="name">inventory.product.trxname.report.form</field>
+        <field name="model">inventory.product.trxname.wizard</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <group>
+                    <group>
+                        <field name="date_from"></field>
+                    </group>
+                    <group>
+                        <field name="date_to"></field>
+                    </group>
+                    <group>
+                        <field name="stock_picking_type" widget="many2many_tags"
+                        options="{'no_create': True}"></field>
+                    </group>
+
+                    <group>
+                        <field name="product_categ_ids" widget="many2many_tags"
+                        options="{'no_create': True}"></field>
+                    </group>
+                    <group>
+                    <field name="product_ids" widget="many2many_tags"
+                        options="{'no_create': True}"
+                        invisible="not product_categ_ids"
+                        domain="[
+                        '|',
+                        ('categ_id', 'in', product_categ_ids),
+                        ('id', '=', False)
+                    ]"/>
+                    <field name="product_ids" widget="many2many_tags" options="{'no_create': True}" invisible="product_categ_ids"/>
+                    </group>
+
+
+                    <group>
+                        <field name="warehouse_ids"  widget="many2many_tags"
+                        options="{'no_create': True}"></field>
+                    </group>
+                    
+                    <group>
+                        <field name="stock_location_ids" invisible="not warehouse_ids" widget="many2many_tags"
+                    domain="[
+                        '|',
+                        ('warehouse_id', 'in', warehouse_ids),
+                        ('id', '=', False)
+                    ]"/>
+                    <field name="stock_location_ids" invisible="warehouse_ids" widget="many2many_tags"/>
+                    </group>
+                        
+                    <group>
+                        <field name="state" invisible="0"></field>
+                    </group>
+
+                    
+                </group>
+                <footer>
+                    <button string="Preview" name="preview_html"  type="object" default_focus="1" class="oe_highlight" data-hotkey="q" />
+                    <button string="Excel" name="process_excel"  type="object" default_focus="1" class="oe_highlight" data-hotkey="q" />
+                    <button string="pdf" name="process_pdf" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+</form>
+</field>
+</record>
+
+
+<record id="action_inventory_product_trxname_report" model="ir.actions.act_window">
+    <field name="name">Inventory Summary by Transaction name.</field>
+    <field name="res_model">inventory.product.trxname.wizard</field>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+</record>
+
+<menuitem
+        id="inventory_product_trxname_report_menu"
+        name="Inventory Report by Transaction Name"
+        action="action_inventory_product_trxname_report"
+        parent="stock.menu_warehouse_report"
+        sequence="15"
+/>
+</odoo>

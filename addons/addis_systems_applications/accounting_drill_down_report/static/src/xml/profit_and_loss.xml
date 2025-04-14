@@ -1,0 +1,99 @@
+<templates xml:space="preserve">
+    <t t-name="accounting_drill_down_report.profit_and_loss_report_owl" t-inherit="accounting_drill_down_report.base_template" owl="1">
+        <xpath expr="//div[@class='scrollable-section pb-5 w-100']" position='inside'>
+            <table class="table table-sm table-reports table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th class="text-end">Debit</th>
+                        <th class="text-end">Credit</th>
+                        <th class="text-end">Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-set="total_asset_non_current_debit" t-value="0"/>
+                    <t t-set="total_asset_non_current_credit" t-value="0"/>
+                    <t t-set="total_asset_non_current_balance" t-value="0"/>
+
+                    <t t-if ="state.lines" t-foreach="state.lines" t-as="line" t-key="line">
+                        <tr style="background-color: #f0f0f0;">
+                            <td>
+                                <strong t-esc="line"/>
+                            </td>
+                            <td class="text-end">
+                                <strong t-esc="formatCurrency(state.lines[line].total_data[0])"/>
+                            </td>
+                            <td class="text-end">
+                                <strong t-esc="formatCurrency(state.lines[line].total_data[1])"/>
+                            </td>
+                            <td class="text-end">
+                                <strong t-esc="formatCurrency(state.lines[line].total_data[2])"/>
+                            </td>
+                        </tr>
+                        <t t-if ="state.lines[line].datasets" t-foreach="state.lines[line].datasets" t-as="line_2" t-key="line_2">
+                            <tr>
+                                <td>
+                                
+                                  <span t-on-click="()=>toggle_lines(line,line_2)"><i t-if="!state.lines[line].datasets[line_2]['selected']" class="fa fa-caret-right"/> <i t-if="state.lines[line].datasets[line_2]['selected']" class="fa fa-caret-down"/> <strong class="ms-3" t-esc="state.lines[line].datasets[line_2]['label']"/></span> 
+                                </td>
+                                <td class="text-end">
+                                    <strong t-esc="formatCurrency(state.lines[line].datasets[line_2]['total_data'][0])"/>
+                                </td>
+                                <td class="text-end">
+                                    <strong t-esc="formatCurrency(state.lines[line].datasets[line_2]['total_data'][1])"/>
+                                </td>
+                                <td class="text-end">
+                                    <strong t-esc="formatCurrency(state.lines[line].datasets[line_2]['total_data'][2])"/>
+                                </td>
+                            </tr>
+                            <t t-set="total_current_debit" t-value="0"/>
+                            <t t-set="total_current_credit" t-value="0"/>
+                            <t t-set="total_current_balance" t-value="0"/>
+                            <tr t-on-dblclick="() => goto_general_ledgure(current_line[0])" t-if ="state.lines[line].datasets[line_2]['data'] and state.lines[line].datasets[line_2]['selected']" t-foreach="state.lines[line].datasets[line_2]['data']" t-as="current_line" t-key="current_line">
+                                <td>
+                                    <span  class="ms-4" t-esc="current_line[1] +' ' + current_line[2].en_US " />
+                                </td>
+                                <td  class="text-end">
+                                    <t t-esc="formatCurrency(current_line[3])"/>
+                                </td>
+                                <td class="text-end">
+                                    <t t-esc="formatCurrency(current_line[4])"/>
+                                </td>
+                                <td class="text-end">
+                                    <t t-esc="formatCurrency(current_line[5])"/>
+                                </td>
+                                <t t-set="total_current_debit" t-value="total_current_debit + (current_line[3] or 0)"/>
+                                <t t-set="total_current_credit" t-value="total_current_credit + (current_line[4] or 0)"/>
+                                <t t-set="total_current_balance" t-value="total_current_balance + (current_line[5] or 0)"/>
+                            </tr>
+
+                            <tr>
+                                <td t-if="0">
+                                    <strong class="ms-3" t-esc="state.lines[line].datasets[line_2]['total']"/>
+                                </td>
+                                <td t-if="0" class="text-end" t-esc="formatCurrency(total_current_debit)"/>
+                                <td t-if="0" class="text-end" t-esc="formatCurrency(total_current_credit)"/>
+                                <td t-if="0" class="text-end" t-esc="formatCurrency(total_current_balance)"/>
+                            </tr>
+                        </t>
+
+
+
+                    </t>
+
+
+
+
+
+
+
+
+                </tbody>
+
+            </table>
+        </xpath>
+    </t>
+
+
+
+</templates>

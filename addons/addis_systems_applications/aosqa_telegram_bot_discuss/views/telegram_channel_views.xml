@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Telegram Channel List View -->
+    <record id="view_telegram_channel_list" model="ir.ui.view">
+        <field name="name">telegram.channel.list</field>
+        <field name="model">telegram.channel</field>
+        <field name="arch" type="xml">
+            <tree string="Telegram Channel">
+                <field name="name"/>
+                <field name="channel_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Telegram Channel Form View -->
+    <record id="view_telegram_channel_form" model="ir.ui.view">
+        <field name="name">telegram.channel.form</field>
+        <field name="model">telegram.channel</field>
+        <field name="arch" type="xml">
+            <form string="Telegram Channel">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="channel_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Telegram Channel Discuss List View -->
+    <record id="view_telegram_channel_discuss_list" model="ir.ui.view">
+        <field name="name">telegram.channel.discuss.list</field>
+        <field name="model">telegram.channel.discuss</field>
+        <field name="arch" type="xml">
+            <tree string="Telegram Channel Discuss">
+                <field name="name"/>
+                <field name="odoo_disccuss"/>
+                <field name="telegram_channel"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <!-- Telegram Channel Discuss Form View -->
+    <record id="view_telegram_channel_discuss_form" model="ir.ui.view">
+        <field name="name">telegram.channel.discuss.form</field>
+        <field name="model">telegram.channel.discuss</field>
+        <field name="arch" type="xml">
+            <form string="Telegram Channel Discuss">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="odoo_disccuss"/>
+                        <field name="telegram_channel"/>
+
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action for Telegram Channel -->
+    <record id="action_telegram_channel" model="ir.actions.act_window">
+        <field name="name">Telegram Channels</field>
+        <field name="res_model">telegram.channel</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Action for Telegram Channel Discuss -->
+    <record id="action_telegram_channel_discuss" model="ir.actions.act_window">
+        <field name="name">Telegram Channel Discuss</field>
+        <field name="res_model">telegram.channel.discuss</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu Items -->
+    <menuitem id="menu_telegram_channel_root" name="Telegram Bot Discuss" parent="mail.menu_root_discuss" sequence="1"/>
+    <menuitem id="menu_telegram_channel" name="Telegram Channels" parent="menu_telegram_channel_root" action="action_telegram_channel" sequence="10"/>
+    <menuitem id="menu_telegram_channel_discuss" name="Channel Discuss" parent="menu_telegram_channel_root" action="action_telegram_channel_discuss" sequence="20"/>
+</odoo>

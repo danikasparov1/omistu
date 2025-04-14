@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="addis_systems_customer_product_request_tree_view" model="ir.ui.view">
+        <field name="name">addis_systems_stock.customer.product.request.tree.view</field>
+        <field name="model">customer.product.request</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="picking_type_id"/>
+                <field name="name"/>
+                <field name="requested_date"/>
+
+                <field name="partner_id"/>
+                <field name="state"
+                    decoration-success="state == 'validated'"
+                    decoration-info="state == 'draft'"
+                    decoration-danger="state == 'canceled'"
+                    decoration-primary="state == 'sent'"
+                    widget="badge"
+                />
+
+
+            </tree>
+        </field>
+        </record>
+
+
+    <record id="addis_systems_customer_product_request_form_view" model="ir.ui.view">
+        <field name="name">addis_systems_stock.customer.product.request.form.view</field>
+        <field name="model">customer.product.request</field>
+        <field name="arch" type="xml">
+            <form string="Product Request">
+                <header>
+                    <button name="action_confirm" class="oe_highlight" string="Confirm" type="object" invisible="state != 'draft'"/>
+                    <button name="action_validate" class="oe_highlight" string="Validate" type="object" invisible="state in ['draft','canceled','validated']"/>
+                    <button name="action_cancel" class="oe_highlight" string="cancel" type="object" invisible="state in ['draft','canceled','validated']"/>
+                    <button name="action_print"  string="print" type="object"/>
+
+
+                    <field name="state" widget="statusbar"/>
+
+                </header>
+                <sheet>
+                    <!-- <widget name="web_ribbon" title="Draft" bg_color="bg-info" invisible="state != 'draft'"/>
+                    <widget name="web_ribbon" title="Sent" invisible="state != 'sent'"/>
+                    <widget name="web_ribbon" title="Canceled" bg_color="bg-danger" invisible="state != 'canceled'"/> -->
+
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="Title" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="partner_id" invisible="1"/>
+                            <field name="user_id" required="1"/>
+                        </group>
+                        <group>
+                            <field name="expire_date"/>
+                            <field name="picking_type_id" invisible="1"/>
+                            <field name="company_id" invisible="1"/>
+
+
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Request Lines" name="request_lines">
+
+                    <field name="request_line" widget="section_and_note_one2many" readonly="state in ['sent', 'canceled']">
+                        <tree string="Products" editable="bottom">
+                            <field name="product_id" />
+                            <field name="qty_requested" />
+
+
+                            </tree>
+
+
+
+                    </field>
+                    </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record model="res.config.settings" id="addis_systems_accounting_base_setting_settler">
+            <field name="tax_calculation_rounding_method">round_globally</field>
+            <field name="fiscalyear_last_month">7</field>
+            <field name="fiscalyear_last_day">7</field>
+            <field name="group_warning_account" eval="1"/>
+            <field name="group_cash_rounding" eval="1"/>
+            <field name="group_show_sale_receipts" eval="1"/>
+            <field name="display_invoice_amount_total_words" eval="1"/>
+            <field name="qr_code" eval="1"/>
+            <field name="group_show_purchase_receipts" eval="1"/>
+        </record>
+
+        <function name="execute" model="res.config.settings">
+            <value eval="[ref('addis_systems_accounting_base_setting_settler')]"/>
+        </function>
+
+    </data>
+</odoo>

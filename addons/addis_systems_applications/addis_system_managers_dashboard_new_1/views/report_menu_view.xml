@@ -1,0 +1,192 @@
+<odoo>
+    <record id="view_custom_reports_form" model="ir.ui.view">
+        <field name="name">custom.reports.form</field>
+        <field name="model">custom.reports</field>
+        <field name="arch" type="xml">
+            <form string="Custom Reports">
+                <sheet>
+                    <div style="border: 1px solid #ddd; border-radius: 8px; padding: 20px; background-color: #bdd8f2;">
+                        <h3 style="text-align: center; color: #333; font-weight: bold;">Custom Reports</h3>
+                        
+                        <!-- Date Field -->
+                        <div style="margin-bottom: 20px; text-align: center;">
+                            <field name="date" style="margin: 0 auto; display: inline-block;" />
+                        </div>
+
+                        <!-- Button Group -->
+                        <div name="report_buttons" modifiers="{'invisible': [('state', '!=', 'show_reports')]}">
+                            <div style="display: flex; justify-content: space-between; gap: 20px;">
+                                <!-- Purchase Report Button -->
+                                <button name="open_purchase_reports" string="Purchase Report" type="object"
+                                        class="btn btn-success"
+                                        style="flex: 1; background-color: #28a745; color: white; border-radius: 5px; padding: 15px; font-size: 16px;" />
+
+                                <!-- Inventory Report Button -->
+                                <button name="open_inventory_reports" string="Inventory Report" type="object"
+                                        class="btn btn-info"
+                                        style="flex: 1; background-color: #17a2b8; color: white; border-radius: 5px; padding: 15px; font-size: 16px;" />
+
+                                <!-- Accounting Reports Button -->
+                                <button name="action_show_accounting_reports_wizard" string="Accounting Reports" type="object"
+                                        class="btn btn-warning"
+                                        style="flex: 1; background-color: #ffc107; color: white; border-radius: 5px; padding: 15px; font-size: 16px;" />
+                            </div>
+                        </div>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_custom_reports" model="ir.actions.act_window">
+        <field name="name">Custom Reports</field>
+        <field name="res_model">custom.reports</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    <record id="action_reports_approval_wizard" model="ir.actions.act_window">
+        <field name="name">Reports Approval Wizard</field>
+        <field name="res_model">reports.approval.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+        <!-- <record id="view_reports_approval_wizard_form" model="ir.ui.view">
+        <field name="name">reports.approval.wizard.form</field>
+        <field name="model">reports.approval.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Reports Approval Wizard">
+                <group>
+                    <button name="get_purchase_orders" string="Purchase Orders" type="object" class="btn-primary" />
+                    <button name="get_sale_orders" string="Sales Orders" type="object" class="btn-primary" />
+                    <button name="get_payment_orders" string="Payment Orders" type="object" class="btn-primary" />
+                </group>
+            </form>
+        </field>
+    </record> -->
+
+        <record id="view_reports_approval_wizard_form" model="ir.ui.view">
+        <field name="name">reports.approval.wizard.form</field>
+        <field name="model">reports.approval.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Reports Approval Wizard">
+                <!-- Title Section -->
+                <div class="oe_title">
+                    <h3 class="oe_subheader_title" 
+                        style="text-align: center; color: #4CAF50; font-size: 20px; margin-bottom: 30px;">
+                        Choose an Option Below
+                    </h3>
+                </div>
+
+                <!-- Card Section -->
+                <div style="background-color: #bdd8f2; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);">
+                    <!-- Button Section -->
+                    <div style="display: flex; justify-content: space-around; align-items: center; padding: 20px; gap: 20px;">
+                        <!-- Purchase Orders Button -->
+                        <button name="get_purchase_orders" string="Purchase Orders" type="object"
+                                class="btn btn-primary"
+                                style="background-color: #28a745; color: white; border: none; border-radius: 8px; padding: 15px 30px; font-size: 16px; font-weight: bold; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" />
+
+                        <!-- Sales Orders Button -->
+                        <button name="get_sale_orders" string="Sales Orders" type="object"
+                                class="btn btn-primary"
+                                style="background-color: #17a2b8; color: white; border: none; border-radius: 8px; padding: 15px 30px; font-size: 16px; font-weight: bold; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" />
+
+                        <!-- Payment Orders Button -->
+                        <button name="get_payment_orders" string="Payment Orders" type="object"
+                                class="btn btn-primary"
+                                style="background-color: #ffc107; color: white; border: none; border-radius: 8px; padding: 15px 30px; font-size: 16px; font-weight: bold; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" />
+                    </div>
+                </div>
+            </form>
+        </field>
+    </record>
+
+        <!-- <record id="view_accounting_reports_wizard_form" model="ir.ui.view">
+        <field name="name">accounting.reports.wizard.form</field>
+        <field name="model">accounting.reports.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Accounting Reports Wizard">
+                <group>
+                    <button name="open_tax_report" string="Tax Report" type="object" class="btn-primary" />
+                    <button name="open_balance_sheet_report" string="Balance Sheet Report" type="object" class="btn-primary" />
+                    <button name="open_partner_ledger_report" string="Partner Ledger Report" type="object" class="btn-primary" />
+                    <button name="open_profit_and_loss_report" string="Profit and Loss Report" type="object" class="btn-primary" />
+                    <button name="open_bank_book_report" string="Bank Book Report" type="object" class="btn-primary" />
+                    <button name="open_cash_book_report" string="Cash Book Report" type="object" class="btn-primary" />
+                    <button name="open_aged_payable_report" string="Aged Payable Report" type="object" class="btn-primary" />
+                    <button name="open_general_ledger_report" string="General Ledger Report" type="object" class="btn-primary" />
+                    <button name="open_trial_balance_report" string="Trial Balance Report" type="object" class="btn-primary" />
+                </group>
+            </form>
+        </field>
+    </record> -->
+
+    
+    <record id="view_accounting_reports_wizard_form" model="ir.ui.view">
+        <field name="name">accounting.reports.wizard.form</field>
+        <field name="model">accounting.reports.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Accounting Reports Wizard">
+                <!-- Title Section -->
+                <div class="oe_title">
+                    <h3 class="oe_subheader_title" 
+                        style="text-align: center; color: #4CAF50; font-size: 20px; margin-bottom: 30px;">
+                        Select an Accounting Report
+                    </h3>
+                </div>
+
+                <!-- Card Section -->
+                <div style="background-color: #bdd8f2; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);">
+                    <!-- Button Grid -->
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 20px;">
+                        <!-- Tax Report Button -->
+                        <button name="open_tax_report" string="Tax Report" type="object"
+                                style="background-color: #f44336; color: white; border: none; border-radius: 8px; padding: 15px 30px; font-size: 16px; font-weight: bold; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" />
+                        
+                        <!-- Balance Sheet Report Button -->
+                        <button name="open_balance_sheet_report" string="Balance Sheet Report" type="object"
+                                style="background-color: #2196f3; color: white; border: none; border-radius: 8px; padding: 15px 30px; font-size: 16px; font-weight: bold; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" />
+                        
+                        <!-- Partner Ledger Report Button -->
+                        <button name="open_partner_ledger_report" string="Partner Ledger Report" type="object"
+                                style="background-color: #4caf50; color: white; border: none; border-radius: 8px; padding: 15px 30px; font-size: 16px; font-weight: bold; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" />
+                        
+                        <!-- Profit and Loss Report Button -->
+                        <button name="open_profit_and_loss_report" string="Profit and Loss Report" type="object"
+                                style="background-color: #ff9800; color: white; border: none; border-radius: 8px; padding: 15px 30px; font-size: 16px; font-weight: bold; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" />
+                        
+                        <!-- Bank Book Report Button -->
+                        <button name="open_bank_book_report" string="Bank Book Report" type="object"
+                                style="background-color: #673ab7; color: white; border: none; border-radius: 8px; padding: 15px 30px; font-size: 16px; font-weight: bold; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" />
+                        
+                        <!-- Cash Book Report Button -->
+                        <button name="open_cash_book_report" string="Cash Book Report" type="object"
+                                style="background-color: #03a9f4; color: white; border: none; border-radius: 8px; padding: 15px 30px; font-size: 16px; font-weight: bold; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" />
+                        
+                        <!-- Aged Payable Report Button -->
+                        <button name="open_aged_payable_report" string="Aged Payable Report" type="object"
+                                style="background-color: #e91e63; color: white; border: none; border-radius: 8px; padding: 15px 30px; font-size: 16px; font-weight: bold; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" />
+                        
+                        <!-- General Ledger Report Button -->
+                        <button name="open_general_ledger_report" string="General Ledger Report" type="object"
+                                style="background-color: #9c27b0; color: white; border: none; border-radius: 8px; padding: 15px 30px; font-size: 16px; font-weight: bold; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" />
+                        
+                        <!-- Trial Balance Report Button -->
+                        <button name="open_trial_balance_report" string="Trial Balance Report" type="object"
+                                style="background-color: #795548; color: white; border: none; border-radius: 8px; padding: 15px 30px; font-size: 16px; font-weight: bold; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" />
+                    </div>
+                </div>
+            </form>
+        </field>
+    </record>
+
+
+
+       <record id="action_accounting_reports_wizard" model="ir.actions.act_window">
+        <field name="name">Accounting Reports Wizard</field>
+        <field name="res_model">accounting.reports.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

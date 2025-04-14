@@ -1,0 +1,20 @@
+<odoo>
+    <t t-name="manager_pre_dashboard.AccountingReportsPopup">
+        <Dialog title="Accounting Reports">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a href="#" data-action="action_cash_book_report" t-on-click="onActionClick">Cash Book Report</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#" data-action="action_aged_payable_report" t-on-click="onActionClick">Aged Payable Report</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#" data-action="action_general_ledgure_report" t-on-click="onActionClick">General Ledger Report</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#" data-action="action_trial_balance_report" t-on-click="onActionClick">Trial Balance Report</a>
+                </li>
+            </ul>
+        </Dialog>
+    </t>
+</odoo>

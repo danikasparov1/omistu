@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--    Stock Card form view    -->
+
+        <record id="addis_systems_stock_move_serial_stock_card_wizard" model="ir.ui.view">
+            <field name="name">addis.systems.report.stock.move.serial.stock.card</field>
+            <field name="model">report.stock.move.serial.stock.card</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="stock_location" required="not product_id" string="Location" options="{'no_create': True, 'no_open': True}"/>
+                        </group>
+                        <group>
+                            <field name="date_to" invisible="1"/>
+                            <field name="date_from" widget="daterange" options="{'end_date_field': 'date_to'}"/>
+                        </group>
+                        <group invisible="not stock_location">
+                            <field name="product_category" readonly="product_id" required="stock_location and not product_id" invisible="not stock_location" string="Product Category" options="{'no_create': True, 'no_open': True}"/>
+                        </group>
+                        <group invisible="not stock_location">
+                            <field name="product_id" readonly="product_category" required="stock_location and not product_category" invisible="not stock_location" string="Product" options="{'no_create': True, 'no_open': True}"/>
+                        </group>
+                        <group invisible="not stock_location">
+                            <field name="lot_serial" widget="many2many_tags"
+                            options="{'no_create': True}"
+                            domain="[
+                        '|',
+                        ('product_id', '=', product_id),
+                        ('product_id.categ_id', '=', product_category)
+                    ]"
+                            ></field>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="preview_html" string="Preview" type="object" class="oe_highlight"/>
+                        <button name="process_pdf" string="PDF" type="object" class="oe_highlight"/>
+                        <button name="process_excel" string="Excel" type="object" class="oe_highlight"/>
+                        <button string="Discard" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!--    Action for profit and loss    -->
+
+        <record id="action_stock_move_serial_stock_card_report" model="ir.actions.act_window">
+            <field name="name">Serial Stock Card</field>
+            <field name="res_model">report.stock.move.serial.stock.card</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="addis_systems_stock_move_serial_stock_card_wizard"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem name="Serial Stock Card" id="menu_addis_systems_serial_stock_card" parent="stock.menu_warehouse_report" sequence="260" action="action_stock_move_serial_stock_card_report"/>
+
+    </data>
+</odoo>

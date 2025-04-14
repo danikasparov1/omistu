@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_manager_dashboard,access_manager_dashboard,model_manager_dashboard,,1,1,1,1
+access_reportsnew_wizard,access_reportsnew_wizard,model_reportsnew_wizard,,1,1,1,1
+access_custom_reports,access_custom_reports,model_custom_reports,,1,1,1,1
+access_reports_approval_wizard,access_reports_approval_wizard,model_reports_approval_wizard,,1,1,1,1
+access_accounting_reports_wizard,access_accounting_reports_wizard,model_accounting_reports_wizard,,1,1,1,1

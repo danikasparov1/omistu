@@ -1,0 +1,53 @@
+<templates xml:space="preserve">
+    <t t-name="accounting_drill_down_report.aged_receivable_report_owl" t-inherit="accounting_drill_down_report.base_template" owl="1">
+        <xpath expr="//div[@name='jrnl_filter']" position="replace">
+            <div></div>
+        </xpath>
+        <xpath expr="//t//div[@name='default_filters']" position='after'>
+            <div class="row ms-3 mt-3 mb-3">
+                <div class="col">
+                    <Dropdown togglerClass="'btn btn-secondary'">
+                        <t t-set-slot="toggler">
+                            <strong> Filter By :</strong> <span t-if="state.account_type" t-esc="state.account_type.label" /><i class="fa fa-caret-down ms-1"/>
+                        </t>
+                        <t t-if="state.account_type">
+                            <t t-foreach="[{'name':'customer','label':'Receivable Accounts'},{'name':'supplier','label':'Payable Accounts'},{'name':'customer_supplier','label':'Receivable and Payable Accounts'}]" t-as="accty" t-key="accty.name">
+                                <DropdownItem class="{ o_menu_item: true }"
+                                    t-esc="accty.label"
+                                    onSelected="() => set_account_type(accty)"
+                                />
+                            </t>
+                        </t>
+                    </Dropdown>
+                </div>
+                <div class="col">
+                    <Dropdown togglerClass="'btn btn-secondary'">
+                        <t t-set-slot="toggler">
+                            <strong>Partners:</strong>
+                            <t t-if="state.partners">
+                                <t t-foreach="state.partners" t-as="ptnl" t-key="ptnl.id">
+                                    <span t-if="ptnl.selected" t-esc="ptnl.name" />
+                                    <span t-if="ptnl.selected" t-esc="' ,'" />
+                                </t>
+                            </t>
+                            <i class="fa fa-caret-down ms-1"/>
+                        </t>
+                        <t t-if="state.partners">
+                            <t t-foreach="state.partners" t-as="ptnl" t-key="ptnl.id">
+                                <DropdownItem 
+                                    class="{ o_menu_item: true, selected: ptnl.selected }"
+                                    parentClosingMode="'none'"
+                                    t-esc="ptnl.name"
+                                    onSelected="() => this.set_partners(ptnl.id)" />
+                            </t>
+                        </t>
+                    </Dropdown>
+                </div>
+            </div>
+        </xpath>
+
+        <!-- <xpath expr="//div[@class='scrollable-section pb-5 w-100']" position='inside'>
+            <h2>here we go</h2>
+        </xpath> -->
+    </t>
+</templates>

@@ -1,0 +1,115 @@
+.o_web_client {
+	display: grid !important;
+    grid-template-areas:
+        "banner banner"
+        "navbar navbar"
+        "sidebar content"
+        "components components";
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-columns: auto 1fr;
+    > div:has(#oe_neutralize_banner) {
+    	grid-area: banner;
+    }
+    > .o_navbar {
+    	grid-area: navbar;
+    }
+    > .addis_systems_apps_sidebar_panel {
+    	grid-area: sidebar;
+    }
+    > .o_action_manager {
+    	grid-area: content;
+    }
+    > .o-main-components-container {
+    	grid-area: components;
+    }
+}
+
+.addis_systems_apps_sidebar_panel {
+    @include addis-systems-disable-scrollbar();
+    background-color: $addis-systems-appbar-background;
+    width: var(--addis_systems-sidebar-width, 0);
+    overflow-y: auto;
+    .addis_systems_apps_sidebar {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+	    white-space: nowrap;
+	    .addis_systems_apps_sidebar_menu {
+	    	padding: 0;
+		    > li > a {
+		        cursor: pointer;
+	            font-size: 16px;
+	            font-weight: 300;
+	            overflow: hidden;
+	            padding: 8px 11px;
+	            text-decoration: none;
+	            color: $addis-systems-appbar-color;
+	            text-overflow: ellipsis;
+	            .addis_systems_apps_sidebar_icon {
+				    width: 25px;
+				    height: 25px;
+	    			margin-right: 5px;
+				}
+		    }
+	        > li.active > a {
+			    background: $addis-systems-appbar-active;
+	        }
+	        > li:hover > a {
+			    background: $addis-systems-appbar-active;
+	        }
+	    }
+	}
+}
+
+.addis_systems_sidebar_type_large {
+	--addis_systems-sidebar-width: #{$addis-systems-sidebar-large-width};
+}
+
+.addis_systems_sidebar_type_small {
+	--addis_systems-sidebar-width: #{$addis-systems-sidebar-small-width};
+	.addis_systems_apps_sidebar_name {
+		display: none;
+	}
+	.addis_systems_apps_sidebar_icon {
+		margin-right: 0 !important;
+	}
+   	.addis_systems_apps_sidebar_logo {
+		display: none;
+	}
+}
+
+.addis_systems_sidebar_type_invisible {
+	--addis_systems-sidebar-width: 0;
+}
+
+.editor_has_snippets_hide_backend_navbar,
+.o_home_menu_background,
+.o_fullscreen {
+	--addis_systems-sidebar-width: 0;
+}
+
+.editor_has_snippets_hide_backend_navbar .addis_systems_apps_sidebar_panel {
+    transition: width 300ms;
+}
+
+@include media-breakpoint-only(md) {
+	.addis_systems_sidebar_type_large {
+		--addis_systems-sidebar-width: #{$addis-systems-sidebar-small-width};
+		.addis_systems_apps_sidebar_name {
+			display: none;
+		}
+		.addis_systems_apps_sidebar_icon {
+			margin-right: 0 !important;
+		}
+	   	.addis_systems_apps_sidebar_logo {
+			display: none;
+		}
+	}
+}
+
+@include media-breakpoint-down(md) {
+	.addis_systems_sidebar_type_large, .addis_systems_sidebar_type_small {
+		--addis_systems-sidebar-width: 0;
+	}
+}

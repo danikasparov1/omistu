@@ -1,0 +1,31 @@
+// Colors
+
+$addis_systems_color_brand: #000066;
+$addis_systems_color_primary: #b71862;
+
+$addis_systems_color_success: #4bdf44;
+$addis_systems_color_info: #33cce1;
+$addis_systems_color_warning: #ebae4b;
+$addis_systems_color_danger:  #d8312c;
+
+// Override
+
+$o-community-color: $addis-systems-color-brand;
+$o-enterprise-color: $addis-systems-color-brand;
+$o-enterprise-action-color: $addis-systems-color-primary;
+
+$o-brand-odoo: $addis-systems-color-brand;
+$o-brand-primary: $addis-systems-color-primary;
+
+$o-success: $addis-systems-color-success;
+$o-info: $addis-systems-color-info;
+$o-warning: $addis-systems-color-warning;
+$o-danger: $addis-systems-color-danger;
+
+$o-theme-text-colors: (
+    "primary": $addis-systems-color-brand,
+    "success": $o-success,
+    "info": $o-info,
+    "warning": $o-warning,
+    "danger": $o-danger,
+);

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	
+    <record id="res_users_preferences" model="ir.ui.view">
+        <field name="name">res.users.preferences</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form_simple_modif" />
+        <field name="arch" type="xml">
+             <xpath expr="//field[@name='tz_offset']" position="after">
+                <field name="sidebar_type" readonly="0"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="res_config_settings_view_form_about" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.about</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='about_setting_container']" position="replace">
+                <div>
+                        <div id="about">
+                            <h2>About Ashewa Technology Solutions</h2>
+                            <div class="row mt16 o_settings_container" name="about_setting_container">
+                                <a href="https://smarterp.ashewatechnology.com/" style="color: blue;" target="_blank"> About Ashewa Technology Solutions </a>
+                            </div>
+                        </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

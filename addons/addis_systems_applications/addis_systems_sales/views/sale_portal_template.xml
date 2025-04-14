@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="sale_order_portal_content_inherit_addissystems" inherit_id="sale.sale_order_portal_content">
+    <xpath expr="//div[@id='introduction']" position="before">
+        <div class="row" id="intro_row">
+            <h4 class="my-0 col-12 col-lg flex-grow-1 mb-1 mb-lg-0">
+                <em t-out="res_company.name"/>
+            </h4>
+        </div>
+        <table class="table table-borderless table-sm">
+            <tbody style="white-space:nowrap" id="sale_info_table">
+                <tr>
+                    <th class="ps-0 pb-0">Tin Number:</th>
+                    <td class="w-100 pb-0 text-wrap"><span t-out="res_company.vat"/></td>
+                </tr>
+                <tr>
+                    <th  class="ps-0 pb-0">Address:</th>
+                    <td class="w-100 pb-0 text-wrap"><span t-out="res_company.partner_id.contact_address"/></td>
+                </tr>
+                <tr>
+                    <th  class="ps-0 pb-0">Phone:</th>
+                    <td class="w-100 pb-0 text-wrap"><span t-out="res_company.phone"/></td>
+                </tr>
+             </tbody>
+            </table>
+    </xpath>
+</template>
+
+<template id="sale_order_portal_content_inherit_sale_Stock_addissystems" inherit_id="sale_stock.sale_order_portal_content_inherit_sale_stock">
+    <xpath expr="//div[@name='delivery_details']" position="after">
+        <div class="small d-lg-inline-block">
+            Source Location:
+            <span class="text-muted"
+                t-field="picking.location_id"
+                t-options="{'date_only': True}"/>
+            
+        </div>
+        </xpath>
+</template>
+
+    <template id="document_tax_totals_addissystems_inherit" inherit_id="account.document_tax_totals_template">
+        <xpath expr="//t//tr" position="replace">
+            <td>
+                <strong t-if="subtotal['name'] == 'Untaxed Amount'">Sub Total</strong>
+                <strong t-if="subtotal['name'] != 'Untaxed Amount'" t-out="subtotal['name']">Sub Total</strong>
+            </td>
+
+                    <td class="text-end">
+                        <span
+                            t-att-class="oe_subtotal_footer_separator"
+                            t-out="subtotal['formatted_amount']"
+                        >27.00</span>
+                    </td>
+        </xpath>
+
+        <xpath expr="//tr[@class='border-black o_total']" position="replace">
+            <td><strong>Grand Total</strong></td>
+                <td  class="text-end">
+                    <span t-out="tax_totals['formatted_amount_total']">31.05</span>
+                </td>
+            </xpath>
+    </template>
+
+
+</odoo>

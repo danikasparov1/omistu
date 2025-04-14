@@ -1,0 +1,55 @@
+<odoo>
+    <record id="addis_sales_summary_report_cash_credit_cashier_date_form" model="ir.ui.view">
+        <field name="name">addis.sales.summary.reports.cash.credit.refund.cashier.date.view.form</field>
+        <field name="model">sales.summary.report.cash.credit.cashier.date</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <group>
+                    <group>
+                        <field name="date_from"></field>
+                        
+                    </group>
+                    <group>
+                        <field name="date_to"></field>
+                    </group>
+                    <group>
+                        <field name="status"></field>
+                    </group>
+                    <group>
+                        <field name="payment_status"></field>
+                    </group>
+
+                    <group>
+                        <field name="journal"></field>
+                    </group>
+                    <group>
+                        <field name="user_id"></field>
+                    </group>
+
+                    <group>
+                        <field name="customer_id"></field>
+                    </group>
+
+                </group>
+                <footer>
+                    <button string="Generate Report" name="generate_report" type="object" class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="addis_sales_summary_report_cash_credit_cashier_date_action" model="ir.actions.act_window">
+        <field name="name">Sales Summary Summarized Cash Report</field>
+        <field name="res_model">sales.summary.report.cash.credit.cashier.date</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    <menuitem
+            id="addis_sales_summary_report_cash_credit_cashier_date_menu"
+            name="Sales Summary Summarized Cash Report"
+            action="addis_sales_summary_report_cash_credit_cashier_date_action"
+            parent="sale.menu_sale_report"
+            sequence="15"
+    />
+</odoo>

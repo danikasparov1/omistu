@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+aosqa_telegram_bot_discuss.access_telegram_channel,access_telegram_channel,aosqa_telegram_bot_discuss.model_telegram_channel,base.group_user,1,1,1,1
+aosqa_telegram_bot_discuss.access_telegram_channel_discuss,access_telegram_channel_discuss,aosqa_telegram_bot_discuss.model_telegram_channel_discuss,base.group_user,1,1,1,1
+aosqa_telegram_bot_discuss.access_project_task_gitlab,access_project_task_gitlab,aosqa_telegram_bot_discuss.model_project_task_gitlab,base.group_user,1,1,1,1

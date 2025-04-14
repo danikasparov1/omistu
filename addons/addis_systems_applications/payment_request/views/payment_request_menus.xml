@@ -1,0 +1,9 @@
+<odoo>
+    <record id="action_payment_request" model="ir.actions.act_window">
+        <field name="name">Payment Requests</field>
+        <field name="res_model">payment.request</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="payment_request_menu" parent="account.menu_finance_entries" name="Payment Requests" sequence="0"/>
+    <menuitem id="payment_request_submenu" name="Requests" parent="payment_request_menu" action="action_payment_request"/>
+</odoo>

@@ -1,0 +1,9 @@
+<odoo>
+<record id="seq_project_task_gitlab" model="ir.sequence">
+    <field name="name">GitLab Task Reference</field>
+    <field name="code">project.task.gitlab.reference</field>
+    <field name="prefix">Commit-</field>
+    <field name="padding">0</field>  <!-- Number of digits in the reference -->
+    <field name="number_increment">1</field>
+</record>
+</odoo>

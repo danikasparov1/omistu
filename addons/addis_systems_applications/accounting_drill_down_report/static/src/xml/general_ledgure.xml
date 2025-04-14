@@ -1,0 +1,66 @@
+<templates xml:space="preserve">
+    <t t-name="accounting_drill_down_report.general_ledgure_report_owl" t-inherit="accounting_drill_down_report.base_template" owl="1">
+        <xpath expr="//div[@class='scrollable-section pb-5 w-100']" position='inside'>
+            <table class="table table-sm table-reports table-hover">
+                <thead>
+                    <tr>
+                        <th>Account</th>
+                        <th class="text-end">Date</th>
+                        <!-- <th class="text-end">Communication</th> -->
+                        <th class="text-end">Partner</th>
+
+                        <th class="text-end">Debit</th>
+                        <th class="text-end">Credit</th>
+                        <th class="text-end">Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+  
+
+                    <t t-if ="state['lines']" t-foreach="state['lines']" t-as="line" t-key="line">
+                        <tr style="background-color: #f0f0f0;">
+                            <td>
+                                <span t-on-click="()=>toggle_lines(line)"><i t-if="!state['lines'][line]['selected']" class="fa fa-caret-right"/> <i t-if="state['lines'][line]['selected']" class="fa fa-caret-down"/> <strong class="ms-3" t-esc="state['lines'][line]['label']"/></span>
+                            </td>
+                            <td/>
+                            <td/>
+                            <td class="text-end">
+                                <strong t-esc="formatCurrency(state['lines'][line]['debit'])"/>
+                            </td>
+                            <td class="text-end">
+                                <strong t-esc="formatCurrency(state['lines'][line]['credit'])"/>
+                            </td>
+                            <td class="text-end">
+                                <strong t-esc="formatCurrency(state['lines'][line]['balance'])"/>
+                            </td>
+                        </tr>
+                        <t t-if ="state['lines'][line]['data_lines']" t-foreach="state['lines'][line]['data_lines']" t-as="line_2" t-key="line_2.id">
+                            <tr t-if="state['lines'][line]['selected']" >
+                                
+                                <td t-on-dblclick = "()=>goto_journal_entry(line_2.move_id)"> <span class="ms-5" t-esc="line_2['name']"/></td>
+                                <td class="text-end" t-esc="line_2['date']"/>
+                                 <!-- <td class="text-end" t-esc="line_2['communication']">
+                                </td> -->
+                                <td class="text-end" t-esc="line_2['partner']"/>
+                                 <td class="text-end" t-esc="formatCurrency(line_2['debit'])"/>
+                                 <td class="text-end" t-esc="formatCurrency(line_2['credit'])"/>
+                                 <td class="text-end" t-esc="formatCurrency(line_2['balance'])"/>
+                            </tr>
+                        
+                            
+                          
+                        </t>
+
+                   
+                    </t>
+
+
+                </tbody>
+
+            </table>
+        </xpath>
+    </t>
+
+
+
+</templates>

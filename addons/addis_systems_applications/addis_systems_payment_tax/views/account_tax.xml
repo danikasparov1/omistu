@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+
+        <record id="addis_systems_account_tax_inherited_form_view" model="ir.ui.view">
+            <field name="name">addis.systems.account.tax.form.inherit</field>
+            <field name="model">account.tax</field>
+            <field name="inherit_id" ref="account.view_tax_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='tax_scope']" position="after">
+                    <field name="account_payment_id"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

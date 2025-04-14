@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- <template id="addisystems_report_picking" inherit_id="stock.report_picking">
+            <xpath expr="//div[@class='row justify-content-end mb16']" position="before">
+                <h2><strong><span t-if="o.picking_type_id" t-out="o.picking_type_id.name"></span></strong></h2>
+            </xpath>
+        </template> -->
+        <!-- <template id="addisystems_report_delivery_document" inherit_id="stock.report_delivery_document">
+            <xpath expr="//h2//span[@t-field='o.name']" position="before">
+                <h2><strong><span t-if="o.picking_type_id" t-out="o.picking_type_id.name"></span></strong></h2>
+            </xpath>
+        </template> -->
+        <template id="addisystems_report_return_slip" inherit_id="stock.report_return_slip">
+            <xpath expr="//h2" position="before">
+                <h2><strong><span t-if="o.picking_type_id" t-out="o.picking_type_id.name"></span></strong></h2>
+
+            </xpath>
+        </template>
+        
+    </data>
+</odoo>

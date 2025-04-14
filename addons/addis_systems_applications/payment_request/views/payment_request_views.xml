@@ -1,0 +1,60 @@
+<odoo>
+    <record id="view_payment_request_form" model="ir.ui.view">
+        <field name="name">payment.request.form</field>
+        <field name="model">payment.request</field>
+        <field name="arch" type="xml">
+            <form>
+    
+                <header>
+                        <button name="action_create_payment_order" type="object" groups="payment_request.group_user_addis_systems_manager_payment" string="Approve"  invisible="state != 'draft'" />
+                        <button name="action_pay" type="object" string="Done" groups="payment_request.group_user_addis_systems_manager_payment" invisible="state != 'approved'"/>
+                        <button name="action_cancel" type="object" string="Cancel"  groups="payment_request.group_user_addis_systems_manager_payment" invisible="state == 'done'"/>
+                        <button name="action_print_report" type="object" string="Print Report" class="btn-primary"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,approved,done"/>
+                </header>
+                            <sheet>
+                    <group>
+                        <group>
+                            <field name="payment_for" required="1"/>
+                            <field name="payment_reason" widget="text" required="1"/>
+                            <field name="request_date" required="1"/>
+                            <field name="amount" required="1"/>
+                            <field name="amount_in_words" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="tax_type" widget="many2many_tags"/>
+                            <field name="tax_deduction"/>
+                            <!-- <field name="vat"/>
+                            <field name="withholding_amount"/> -->
+                            <field name="total_amount" readonly="1"/>
+                            <field name="department_id" readonly="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_report_payment_request" model="ir.actions.report">
+        <field name="name">Payment Request Report</field>
+        <field name="model">payment.request</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">payment_request.report_payment_request</field>
+        <field name="report_file">payment_request.report_payment_request</field>
+    </record>
+    
+
+    <record id="view_payment_request_tree" model="ir.ui.view">
+        <field name="name">payment.request.tree</field>
+        <field name="model">payment.request</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="payment_for"/>
+                <field name="request_date"/>
+                <field name="amount"/>
+                 <field name="tax_type"/>
+                <field name="total_amount"/>
+                <field name="state" widget="badge" optional="show" decoration-info="state == 'approved'" decoration-danger="state == 'cancelled'" decoration-success="state == 'done'"/>
+            </tree>
+        </field>
+    </record>
+</odoo>
