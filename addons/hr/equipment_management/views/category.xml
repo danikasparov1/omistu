@@ -1,0 +1,30 @@
+<odoo>
+    <record id="view_equipment_form" model="ir.ui.view">
+        <field name="name">equipment.management.equipment.form</field>
+        <field name="model">equipment.management.equipment</field>
+        <field name="arch" type="xml">
+            <form string="Equipment">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="item_code"/>
+                        <field name="category_id"/>
+                        <field name="description"/>
+                        <field name="status"/>
+                        <field name="workcenter_id"/>
+                    </group>
+                    <notebook>
+                        <page string="Components">
+                            <field name="components">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="is_working"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

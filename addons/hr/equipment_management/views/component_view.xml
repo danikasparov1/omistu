@@ -14,7 +14,19 @@
             </form>
         </field>
     </record>
- 
+
+
+    <record id="view_product_normal_form_inherit_finished_product" model="ir.ui.view">
+        <field name="name">product.normal.form.inherit.finished.product</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_tag_ids']" position="after">
+                <field name="is_finished_product"/>
+            </xpath>
+        </field>
+    </record>
+    
     <!-- <record id="view_mrp_workcenter_form_inherit_equipment" model="ir.ui.view">
         <field name="name">mrp.workcenter.form.inherit.equipment</field>
         <field name="model">mrp.workcenter</field>
@@ -53,24 +65,37 @@
     </record> -->
 
     
-    <record id="view_mrp_workcenter_form_inherit_equipment" model="ir.ui.view">
-        <field name="name">mrp.workcenter.form.inherit.equipment</field>
-        <field name="model">mrp.workcenter</field>
-        <field name="inherit_id" ref="mrp.mrp_workcenter_view" />
-        <field name="arch" type="xml">
-            <notebook position="inside">
-                <page string="Equipment">
-                    <field name="equipment_ids">
-                        <tree editable="bottom">
-                            <field name="name"/>
-                            <field name="status"/>
-                            <field name="description"/>
-                        </tree>
-                    </field>
-                </page>
-            </notebook>
-        </field>
-    </record>
+
+        <record id="view_mrp_workcenter_form_inherit_equipment" model="ir.ui.view">
+            <field name="name">mrp.workcenter.form.inherit.equipment</field>
+            <field name="model">mrp.workcenter</field>
+            <field name="inherit_id" ref="mrp.mrp_workcenter_view" />
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Equipment">
+                        <field name="equipment_ids">
+                            <tree editable="bottom">
+                                <field name="name"/>
+                                <field name="item_code"/>
+                                <field name="status"/>
+                                <field name="description"/>
+                            </tree>
+                            <form string="Equipment Details">
+                                <sheet>
+                                    <group>
+                                        <field name="name"/>
+                                        <field name="item_code"/>
+                                        <field name="status"/>
+                                        <field name="description"/>
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+    
 
     <record id="view_product_template_form_inherit_finished_product" model="ir.ui.view">
     <field name="name">product.template.form.inherit.finished.product</field>
@@ -82,6 +107,8 @@
         </xpath>
     </field>
 </record>
+
+
 
 
     <record id="action_component" model="ir.actions.act_window">

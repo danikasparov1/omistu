@@ -1,0 +1,44 @@
+<odoo>
+    <record id="view_car_registration_tree" model="ir.ui.view">
+        <field name="name">car.registration.tree</field>
+        <field name="model">car.registration</field>
+        <field name="arch" type="xml">
+            <tree string="Car Registrations">
+                <field name="name"/>
+                <field name="plate_number"/>
+                <field name="car_type"/>
+                <field name="driver_name"/>
+                <field name="supplier_name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_car_registration_form" model="ir.ui.view">
+        <field name="name">car.registration.form</field>
+        <field name="model">car.registration</field>
+        <field name="arch" type="xml">
+            <form string="Car Registration">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="plate_number"/>
+                        <field name="car_type"/>
+                        <field name="driver_name"/>
+                        <field name="supplier_name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_car_registration" model="ir.actions.act_window">
+        <field name="name">Car Registrations</field>
+        <field name="res_model">car.registration</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Place the menu under Manufacturing > Configuration -->
+    <menuitem id="menu_car_registration" name="Car Registrations" 
+              parent="mrp.menu_mrp_configuration" 
+              action="action_car_registration" sequence="10"/>
+</odoo>

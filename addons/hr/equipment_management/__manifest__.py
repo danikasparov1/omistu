@@ -9,7 +9,9 @@
     'data': [
         'views/equipment_view.xml',
         'views/component_view.xml',
+        'security/ir.model.access.csv',
         'views/equipment_component_view.xml',
+        'views/category.xml',
         'data/equipment_data.xml',
     ],
     'installable': True,

@@ -17,7 +17,8 @@
                             <field name="bom_component_ids" readonly="1">
                                 <tree>
                                     <field name="component_name"/>
-                                    <field name="quantity"/>
+                                    <!-- <field name="quantity"/> -->
+                                    <field name="consumed_quantity"/>
                                 </tree>
                             </field>
                         </page>
@@ -37,7 +38,35 @@
             <!-- Insert field in the tree view of bom_line_ids under Components tab -->
             <xpath expr="//page[@name='components']/field[@name='bom_line_ids']/tree" position="inside">
                 <field name="wastage_tolerance"/>
+                <field name="consumed_quantity"/> 
             </xpath>
+        </field>
+    </record>
+
+
+
+    <record id="view_annual_production_plan_form" model="ir.ui.view">
+        <field name="name">annual.production.plan.form</field>
+        <field name="model">annual.production.plan</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="year"/>
+                        <field name="product_id"/>
+                        <field name="planned_quantity"/>
+                        <field name="is_produced"/>
+                    </group>
+                    <field name="bom_component_ids">
+                        <tree editable="false">
+                            <field name="component_id"/>
+                            <!-- <field name="quantity" invisible="1"/> -->
+                            <field name="consumed_quantity"/>
+                        </tree>
+                    </field>
+                </sheet>
+            </form>
         </field>
     </record>
 

@@ -6,7 +6,7 @@
             <form string="Car Weight">
                 <sheet>
                     <group>
-                        <field name="name"/>
+                        <field name="source_document"/>
                         <field name="operation_type"/>
                         <field name="driver_name"/> <!-- Add driver name field -->
                     <field name="plate_number"/> <!-- Add plate number field -->
@@ -16,6 +16,10 @@
                         <field name="exit_weight"/>
                         <field name="result_weight" readonly="1"/>
                         <field name="linked_car_id"/>
+                        <!-- <field name="supplier_name"/> -->
+                        <field name="supplier_name" invisible="operation_type == 'exit'"/>
+                        <!-- Memo Number: Visible only when operation_type is 'exit' -->
+                        <field name="memo_number"   invisible="operation_type == 'entry'"/>
                     </group>
                     <group>
                         <field name="entry_time"/>
@@ -40,7 +44,7 @@
         <field name="model">car.weight</field>
         <field name="arch" type="xml">
             <tree string="Car Weights">
-                <field name="name"/>
+                <field name="source_document"/>
                 <field name="operation_type"/>
                 <field name="entry_weight"/>
                 <field name="exit_weight"/>
@@ -48,6 +52,7 @@
                 <field name="linked_car_id"/>
                     <field name="driver_name"/> <!-- Add driver name field -->
                     <field name="plate_number"/> <!-- Add plate number field -->
+                    <field name="supplier_name"/>
             </tree>
         </field>
     </record>
