@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Add JS file to backend assets -->
+    <template id="assets_backend" inherit_id="web.assets_backend" name="Annual Production Plan Assets">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/annual_production_plan_new/static/js/annual_plan_widget.js"></script>
+        </xpath>
+    </template>
+
+    <!-- QWeb Template for the Annual Plan Widget -->
+    <template id="AnnualPlanInfoWidget" name="Annual Plan Info Widget" xml:space="preserve">
+        <div class="o_annual_plan_info"/>
+    </template>
+</odoo>

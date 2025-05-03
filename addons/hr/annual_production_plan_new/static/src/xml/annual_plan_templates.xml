@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="assets_backend" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/annual_production_plan_new/static/js/annual_plan_widget.js"/>
+        </xpath>
+    </template>
+
+    <templates id="annual_plan_templates" xml:space="preserve">
+        <t t-name="AnnualPlanInfoWidget">
+            <div class="o_annual_plan_info"/>
+        </t>
+    </templates>
+</odoo>

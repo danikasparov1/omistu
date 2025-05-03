@@ -1,74 +1,3 @@
-# from odoo import models, fields, api, _
-# from odoo.exceptions import UserError
-# class AnnualProductionPlanBOMLine(models.Model):
-#     _name = 'annual.production.plan.bom.line'
-#     _description = 'Annual Production Plan BOM Line'
-
-#     plan_id = fields.Many2one('annual.production.plan', string='Production Plan', ondelete='cascade')
-#     component_id = fields.Many2one('product.product', string='Component', required=True)
-#     component_name = fields.Char(string='Component Name', related='component_id.name', readonly=True, store=True)
-#     quantity = fields.Float(string='Quantity', required=True, digits='Product Unit of Measure')
-#     wastage_tolerance = fields.Float(string="Wastage Tolerance (%)", default=0.0)
-#     consumed_quantity = fields.Float(
-#         string="Consumed Quantity",
-#         compute="_compute_consumed_quantity",
-#         store=True,
-#         help="Quantity consumed including wastage tolerance."
-#     )
-
-#     @api.depends('quantity', 'wastage_tolerance')
-#     def _compute_consumed_quantity(self):
-#         for line in self:
-#             wastage_factor = 1 + (line.wastage_tolerance / 100)
-#             line.consumed_quantity = line.quantity * wastage_factor
-
-
-# class AnnualProductionPlan(models.Model):
-#     _name = 'annual.production.plan'
-#     _description = 'Annual Production Plan'
-
-#     name = fields.Char(string='Plan Name', required=True)
-#     year = fields.Integer(string='Year', required=True)
-#     product_id = fields.Many2one('product.product', string='Product', required=True)
-#     planned_quantity = fields.Float(string='Planned Quantity', required=True)
-#     is_produced = fields.Boolean(string='Produced', compute='_compute_is_produced', store=True)
-#     bom_id = fields.Many2one('mrp.bom', string='BOM Reference', compute='_compute_bom_id')
-
-#     bom_component_ids = fields.One2many(
-#         'annual.production.plan.bom.line',
-#         'plan_id',
-#         string='BOM Components',
-#         readonly=False
-#     )
-
-#     def action_confirm_plan(self):
-#         """Confirm the production plan and consume inventory."""
-#         for line in self.bom_component_ids:
-#             if line.component_id.qty_available < line.consumed_quantity:
-#                 raise UserError(_(
-#                     "Not enough stock for %s. Required: %s, Available: %s"
-#                 ) % (line.component_id.name, line.consumed_quantity, line.component_id.qty_available))
-
-#             # Deduct the consumed quantity from inventory
-#             line.component_id.sudo().write({
-#                 'qty_available': line.component_id.qty_available - line.consumed_quantity
-#             })
-
-#     @api.depends('planned_quantity')
-#     def _compute_is_produced(self):
-#         for record in self:
-#             record.is_produced = record.planned_quantity > 0
-
-#     @api.depends('product_id')
-#     def _compute_bom_id(self):
-#         for record in self:
-#             record.bom_id = self.env['mrp.bom'].search([
-#                 '|',
-#                 ('product_id', '=', record.product_id.id),
-#                 '&',
-#                 ('product_id', '=', False),
-#                 ('product_tmpl_id', '=', record.product_id.product_tmpl_id.id)
-#             ], order='product_id asc', limit=1)
 
 
 from odoo import models, fields, api, _
@@ -107,7 +36,7 @@ class AnnualProductionPlan(models.Model):
     year = fields.Integer(string='Year', required=True)
     product_id = fields.Many2one('product.product', string='Product', required=True)
     planned_quantity = fields.Float(string='Planned Quantity', required=True)
-    is_produced = fields.Boolean(string='Produced', compute='_compute_is_produced', store=True)
+    is_produced = fields.Boolean(string='Planned', compute='_compute_is_produced', store=True)
     bom_id = fields.Many2one('mrp.bom', string='BOM Reference', compute='_compute_bom_id')
 
     bom_component_ids = fields.One2many(
@@ -195,6 +124,31 @@ class AnnualProductionPlan(models.Model):
                 ('product_id', '=', False),
                 ('product_tmpl_id', '=', record.product_id.product_tmpl_id.id)
             ], order='product_id asc', limit=1)
+
+    
+    def action_view_purchases(self):
+        self.ensure_one()
+        component_ids = self.bom_component_ids.ids
+        return {
+            'name': _('Component Purchases'),
+            'type': 'ir.actions.act_window',
+            'res_model': 'purchase.order.line',
+            'view_mode': 'tree,form',
+            'domain': [('annual_plan_component_id', 'in', component_ids)],
+            'context': {'create': False},
+        }
+    
+    def action_view_stock_moves(self):
+        self.ensure_one()
+        component_ids = self.bom_component_ids.ids
+        return {
+            'name': _('Component Stock Moves'),
+            'type': 'ir.actions.act_window',
+            'res_model': 'stock.move',
+            'view_mode': 'tree,form',
+            'domain': [('annual_plan_component_id', 'in', component_ids)],
+            'context': {'create': False},
+        }
 
 class MrpProduction(models.Model):
     _inherit = 'mrp.production'
