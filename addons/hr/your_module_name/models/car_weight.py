@@ -71,10 +71,16 @@ class CarWeight(models.Model):
     )
     # Related fields to automatically fetch data from the linked car
     car_name = fields.Char(related='linked_car_id.name', string='Car Name', readonly=True)
-    plate_number = fields.Char(related='linked_car_id.plate_number', string='Plate Number', readonly=True)
+    # product_loaded = fields.Char(related='product.product', string='product Loaded', readonly=True)
+    # product_loaded = fields.Many2one()
+    product_loaded = fields.Many2one('product.product', string='Products')
+    # plate_number = fields.Char(related='linked_car_id.plate_number', string='Plate Number', readonly=True)
+    plate_number = fields.Char(string='Plate Number')
     car_type = fields.Char(related='linked_car_id.car_type', string='Car Type', readonly=True)
-    driver_name = fields.Char(related='linked_car_id.driver_name', string='Driver Name', readonly=True)
-    supplier_name = fields.Char(related='linked_car_id.supplier_name', string='Supplier Name', readonly=True)
+    # driver_name = fields.Char(related='linked_car_id.driver_name', string='Driver Name', readonly=True)
+    driver_name = fields.Char(string='Driver Name')
+    # supplier_name = fields.Char(related='linked_car_id.supplier_name', string='Supplier Name', readonly=True)
+    supplier_name = fields.Char(string='Supplier Name')
     memo_number = fields.Char(string='Memo Number')  # New field for memo number
 
     @api.depends('entry_weight', 'exit_weight', 'operation_type')

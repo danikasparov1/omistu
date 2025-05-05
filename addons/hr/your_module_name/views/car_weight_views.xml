@@ -6,8 +6,10 @@
             <form string="Car Weight">
                 <sheet>
                     <group>
+                    <field name="supplier_name" invisible="operation_type == 'exit'"/>
                         <field name="source_document"/>
                         <field name="operation_type"/>
+                        <field name="product_loaded"/>
                         <field name="driver_name"/> <!-- Add driver name field -->
                     <field name="plate_number"/> <!-- Add plate number field -->
                     </group>
@@ -17,7 +19,7 @@
                         <field name="result_weight" readonly="1"/>
                         <field name="linked_car_id"/>
                         <!-- <field name="supplier_name"/> -->
-                        <field name="supplier_name" invisible="operation_type == 'exit'"/>
+                        
                         <!-- Memo Number: Visible only when operation_type is 'exit' -->
                         <field name="memo_number"   invisible="operation_type == 'entry'"/>
                     </group>
