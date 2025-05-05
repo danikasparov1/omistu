@@ -74,6 +74,7 @@ class CarWeight(models.Model):
     # product_loaded = fields.Char(related='product.product', string='product Loaded', readonly=True)
     # product_loaded = fields.Many2one()
     product_loaded = fields.Many2one('product.product', string='Products')
+    vender_name = fields.Many2one('res.partner', string='Vender Name')
     # plate_number = fields.Char(related='linked_car_id.plate_number', string='Plate Number', readonly=True)
     plate_number = fields.Char(string='Plate Number')
     car_type = fields.Char(related='linked_car_id.car_type', string='Car Type', readonly=True)

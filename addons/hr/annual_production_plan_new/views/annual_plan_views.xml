@@ -38,12 +38,23 @@
     <field name="model">annual.production.plan</field>
     <field name="arch" type="xml">
         <form string="Annual Production Plan">
-            <header>
+            <!-- <header>
                 <button name="action_view_purchases" type="object" string="Purchases" class="oe_highlight"/>
                 <button name="action_view_stock_moves" type="object" string="Stock Moves"/>
-                <!-- <field name="state" widget="statusbar"/> -->
-            </header>
-            <sheet>
+             
+            </header> -->
+
+            <sheet>                
+            <div class="oe_button_box" name="button_box">
+                <button 
+                    name="action_view_purchase_orders" 
+                    type="object" 
+                    class="oe_stat_button"
+                    icon="fa-shopping-cart">
+                    <field name="purchase_order_count" widget="statinfo" string="Purchases"/>
+                </button>
+            </div>
+
                 <group>
                     <field name="name"/>
                     <field name="year"/>
@@ -58,6 +69,7 @@
                             <tree>
                                 <field name="component_name"/>
                                 <field name="consumed_quantity"/>
+                                <field name="annual_planned_quantity"/>
                             </tree>
                         </field>
                     </page>
@@ -67,6 +79,36 @@
     </field>
 </record>
 
+<!-- Add to product form view -->
+<record id="product_product_view_form_inherit" model="ir.ui.view">
+    <field name="name">product.product.view.form.inherit</field>
+    <field name="model">product.product</field>
+    <field name="inherit_id" ref="product.product_normal_form_view"/>
+    <field name="arch" type="xml">
+        <xpath expr="//sheet" position="inside">
+            <div class="oe_button_box" name="button_box">
+                <button 
+                    name="action_view_annual_plan_purchases" 
+                    type="object" 
+                    class="oe_stat_button"
+                    icon="fa-shopping-cart">
+                    <field name="annual_planned_quantity" widget="statinfo" string="Planned Purchases"/>
+                </button>
+            </div>
+        </xpath>
+    </field>
+</record>
+<!-- Add to your purchase order line form view -->
+<record id="purchase_order_line_form_inherit" model="ir.ui.view">
+    <field name="name">purchase.order.line.form.inherit</field>
+    <field name="model">purchase.order.line</field>
+    <field name="inherit_id" ref="purchase.purchase_order_line_form2"/>
+    <field name="arch" type="xml">
+        <field name="product_id" position="after">
+            <field name="annual_plan_component_id" widget="many2one" options="{'no_open': True}"/>
+        </field>
+    </field>
+</record>
     <!-- <record id="view_product_form_annual_plan_woeiruio" model="ir.ui.view">
         <field name="name">product.form.annual.plan</field>
         <field name="model">product.product</field>
@@ -163,6 +205,7 @@
                             <field name="component_id"/>
                             <!-- <field name="quantity" invisible="1"/> -->
                             <field name="consumed_quantity"/>
+                            <field name="annual_planned_quantity" digits="Product Unit of Measure"/>
                         </tree>
                     </field>
                 </sheet>

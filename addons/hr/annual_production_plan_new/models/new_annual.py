@@ -3,6 +3,28 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
 
+# class AnnualProductionPlanBOMLine(models.Model):
+#     _name = 'annual.production.plan.bom.line'
+#     _description = 'Annual Production Plan BOM Line'
+
+#     plan_id = fields.Many2one('annual.production.plan', string='Production Plan', ondelete='cascade')
+#     component_id = fields.Many2one('product.product', string='Component', required=True)
+#     component_name = fields.Char(string='Component Name', related='component_id.name', readonly=True, store=True)
+#     quantity = fields.Float(string='Quantity', digits='Product Unit of Measure')
+#     wastage_tolerance = fields.Float(string="Wastage Tolerance (%)", default=0.0)
+#     consumed_quantity = fields.Float(
+#         string="Consumed Quantity",
+#         compute="_compute_consumed_quantity",
+#         store=True,
+#         help="Quantity consumed including wastage tolerance."
+#     )
+
+#     @api.depends('quantity', 'wastage_tolerance')
+#     def _compute_consumed_quantity(self):
+#         for line in self:
+#             wastage_factor = 1 + (line.wastage_tolerance / 100)
+#             line.consumed_quantity = line.quantity * wastage_factor
+
 class AnnualProductionPlanBOMLine(models.Model):
     _name = 'annual.production.plan.bom.line'
     _description = 'Annual Production Plan BOM Line'
@@ -18,12 +40,22 @@ class AnnualProductionPlanBOMLine(models.Model):
         store=True,
         help="Quantity consumed including wastage tolerance."
     )
+    annual_planned_quantity = fields.Float(
+        string="Annual Planned Qty",
+        compute="_compute_annual_planned_quantity",
+        help="Total quantity needed for the annual plan (consumed quantity × planned production)"
+    )
 
     @api.depends('quantity', 'wastage_tolerance')
     def _compute_consumed_quantity(self):
         for line in self:
             wastage_factor = 1 + (line.wastage_tolerance / 100)
             line.consumed_quantity = line.quantity * wastage_factor
+
+    @api.depends('consumed_quantity', 'plan_id.planned_quantity')
+    def _compute_annual_planned_quantity(self):
+        for line in self:
+            line.annual_planned_quantity = line.consumed_quantity * line.plan_id.planned_quantity
 
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError

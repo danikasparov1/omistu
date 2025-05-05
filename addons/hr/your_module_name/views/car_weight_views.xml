@@ -10,6 +10,7 @@
                         <field name="source_document"/>
                         <field name="operation_type"/>
                         <field name="product_loaded"/>
+                        <field name="vender_name"/>
                         <field name="driver_name"/> <!-- Add driver name field -->
                     <field name="plate_number"/> <!-- Add plate number field -->
                     </group>
